@@ -1,6 +1,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { sessionService, gameService } from '../services/api'
 import socket from '../services/socket'
+import { useSpeech } from './useSpeech' // AJOUTER
 
 /**
  * Composable pour le Player (viewers)
@@ -12,6 +13,7 @@ export function usePlayerGame() {
     const hasAnswered = ref(false)
     const answerResult = ref(null)
     const isLoading = ref(false)
+    const { speak, stop, isSpeaking, isSpeechEnabled } = useSpeech()
 
     /**
      * Rejoindre la session active
@@ -42,9 +44,18 @@ export function usePlayerGame() {
 
             // Écouter les nouvelles questions
             socket.on('question:new', (question) => {
+
+                // Arrêter toute lecture en cours
+                stop()
+
                 currentQuestion.value = question
                 hasAnswered.value = false
                 answerResult.value = null
+
+                // AJOUTER : Lire la question
+                setTimeout(() => {
+                    speak(question.question)
+                }, 100)
             })
 
             // Écouter les résultats
@@ -69,6 +80,7 @@ export function usePlayerGame() {
     const submitAnswer = async (answer) => {
         if (hasAnswered.value || !currentQuestion.value || !player.value) return
 
+        stop()
         hasAnswered.value = true
         isLoading.value = true
 
@@ -97,6 +109,7 @@ export function usePlayerGame() {
     // Nettoyer à la destruction
     onUnmounted(() => {
         socket.disconnect()
+        stop()
     })
 
     return {
@@ -106,7 +119,10 @@ export function usePlayerGame() {
         hasAnswered,
         answerResult,
         isLoading,
+        isSpeaking,        // AJOUTER
+        isSpeechEnabled,   // AJOUTER
         joinSession,
-        submitAnswer
+        submitAnswer,
+        stop 
     }
 }

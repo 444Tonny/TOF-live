@@ -2,8 +2,17 @@
   <div class="host-dashboard">
     <header>
       <h1>🎬 Dashboard Host</h1>
-      <router-link to="/" class="back-btn">← Retour</router-link>
+      <div class="header-actions">
+        <!-- AJOUTER : Bouton speech toggle -->
+        <router-link to="/" class="back-btn">← Retour</router-link>
+      </div>
+      <SpeechToggle />
     </header>
+
+    <!-- AJOUTER : Indicateur vocal -->
+    <div v-if="isSpeaking" class="voice-indicator">
+      🎙️ Lecture en cours...
+    </div>
 
     <div v-if="isLoading" class="loading">
       Chargement...
@@ -40,6 +49,7 @@
 import { useHostGame } from '../composables/useHostGame'
 import QuestionSelector from '../components/host/QuestionSelector.vue'
 import Leaderboard from '../components/host/Leaderboard.vue'
+import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
 
 /**
  * Dashboard pour le host (contrôle du jeu)
@@ -49,6 +59,7 @@ const {
   leaderboard,
   availableQuestions,
   isLoading,
+  isSpeaking,
   broadcastQuestion
 } = useHostGame()
 </script>
@@ -149,4 +160,27 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+/* voice indicator */
+.voice-indicator {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1;
+  }
+  50% { 
+    opacity: 0.85;
+  }
+}
+
 </style>

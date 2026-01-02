@@ -2,7 +2,11 @@
   <div class="player-view">
     <header>
       <h1>🎯 Mode Joueur</h1>
-      <router-link to="/" class="back-btn">← Retour</router-link>
+      <div class="header-actions">
+        <!-- AJOUTER : Bouton speech toggle (seulement si joueur connecté) -->
+        <SpeechToggle v-if="player" />
+        <router-link to="/" class="back-btn">← Retour</router-link>
+      </div>
     </header>
 
     <!-- Formulaire de connexion -->
@@ -22,6 +26,12 @@
 
     <!-- Interface de jeu -->
     <div v-else class="game-interface">
+      
+      <!-- AJOUTER : Indicateur vocal -->
+      <div v-if="isSpeaking" class="voice-indicator">
+        🎙️ Animateur en train de parler...
+      </div>
+
       <!-- Info joueur -->
       <div class="player-info">
         <span class="player-name">{{ player.username }}</span>
@@ -61,6 +71,7 @@ import { ref } from 'vue'
 import { usePlayerGame } from '../composables/usePlayerGame'
 import WaitingRoom from '../components/player/WaitingRoom.vue'
 import AnswerButtons from '../components/player/AnswerButtons.vue'
+import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
 
 /**
  * Interface joueur
@@ -73,6 +84,7 @@ const {
   hasAnswered,
   answerResult,
   isLoading,
+  isSpeaking, 
   joinSession,
   submitAnswer
 } = usePlayerGame()
@@ -104,6 +116,35 @@ header {
   align-items: center;
   margin-bottom: 30px;
 }
+
+/* AJOUTER ces styles */
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.voice-indicator {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1;
+  }
+  50% { 
+    opacity: 0.85;
+  }
+}
+/* */
 
 h1 {
   color: white;

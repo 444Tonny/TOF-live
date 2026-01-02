@@ -1,6 +1,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { sessionService, questionService } from '../services/api'
 import socket from '../services/socket'
+import { useSpeech } from './useSpeech'
 
 /**
  * Composable pour le Host (vous qui contrôlez le jeu)
@@ -11,6 +12,7 @@ export function useHostGame() {
   const leaderboard = ref([])
   const availableQuestions = ref([])
   const isLoading = ref(false)
+  const { speak, stop, isSpeaking, isSpeechEnabled } = useSpeech() // AJOUTER : Intégrer le speech
 
   /**
    * Créer ou récupérer la session active
@@ -62,11 +64,19 @@ export function useHostGame() {
    * Lancer une question
    */
   const broadcastQuestion = (questionId) => {
+    // Arrêter toute lecture en cours
+    stop()
+
     currentQuestion.value = availableQuestions.value.find(q => q.id === questionId)
     socket.emit('host:broadcast-question', {
       sessionId: session.value.id,
       questionId
     })
+
+    // AJOUTER : Lire la question
+    setTimeout(() => {
+      //speak(currentQuestion.value.question)
+    }, 100)
   }
 
   /**
@@ -91,6 +101,7 @@ export function useHostGame() {
   // Nettoyer à la destruction
   onUnmounted(() => {
     socket.disconnect()
+    stop() // AJOUTER : Arrêter le speech à la sortie
   })
 
   return {
@@ -99,7 +110,10 @@ export function useHostGame() {
     leaderboard,
     availableQuestions,
     isLoading,
+    isSpeaking,        
+    isSpeechEnabled, 
     broadcastQuestion,
-    loadLeaderboard
+    loadLeaderboard,
+    stop               
   }
 }
