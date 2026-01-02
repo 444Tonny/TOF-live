@@ -63,3 +63,35 @@ CREATE TABLE player_answers (
 CREATE INDEX idx_session_status ON game_sessions(status);
 CREATE INDEX idx_player_session ON players(session_id);
 CREATE INDEX idx_player_score ON players(session_id, score DESC);
+
+--- 01-01-2026 Add speech control functions
+
+-- Ajouter la colonne answer_detail
+ALTER TABLE questions 
+ADD COLUMN answer_detail TEXT NULL;
+
+-- Mettre à jour les questions existantes
+UPDATE questions SET answer_detail = 'La Tour Eiffel mesure exactement 330 mètres avec ses antennes.' WHERE id = 1;
+UPDATE questions SET answer_detail = 'C''est la Terre qui tourne autour du Soleil, pas l''inverse.' WHERE id = 2;
+UPDATE questions SET answer_detail = 'La France a remporté la Coupe du Monde en battant la Croatie 4-2.' WHERE id = 3;
+UPDATE questions SET answer_detail = 'Un triangle a 3 côtés par définition.' WHERE id = 4;
+UPDATE questions SET answer_detail = 'Vue.js est bien un framework JavaScript créé par Evan You.' WHERE id = 5;
+
+-- Insérer de nouvelles questions avec answer_detail
+INSERT INTO questions (question, answer, answer_detail) VALUES
+('Le soleil tourne autour de la Terre', false, 'C''est la Terre qui tourne autour du Soleil.'),
+('JavaScript et Java sont le même langage', false, 'JavaScript et Java sont deux langages complètement différents.'),
+('Le Canada est le deuxième plus grand pays du monde', true, 'Le Canada est le deuxième plus grand pays après la Russie.'),
+('L''eau bout à 100 degrés Celsius', true, 'L''eau bout à 100 degrés Celsius au niveau de la mer.'),
+('Mars est la planète la plus proche du Soleil', false, 'Mercure est la planète la plus proche du Soleil, pas Mars.');
+
+
+-- Alter on cascade 
+ALTER TABLE player_answers
+DROP FOREIGN KEY player_answers_ibfk_2;
+
+ALTER TABLE player_answers
+ADD CONSTRAINT fk_player_answers_question
+FOREIGN KEY (question_id)
+REFERENCES questions(id)
+ON DELETE CASCADE;

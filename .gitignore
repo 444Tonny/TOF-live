@@ -1,6 +1,6 @@
 # Dépendances
 node_modules/
-frontend/node_modules/
+client/node_modules/
 server/node_modules/
 
 # Fichiers d'environnement
@@ -11,7 +11,7 @@ server/node_modules/
 # Builds / dist
 dist/
 build/
-frontend/dist/
+client/dist/
 server/dist/
 
 # Logs

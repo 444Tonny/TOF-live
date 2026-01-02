@@ -35,7 +35,7 @@ export function useHostGame() {
     if (session.value) {
       socket.connect()
       socket.emit('host:join', session.value.id)
-      
+
       // Écouter les mises à jour du classement
       socket.on('leaderboard:update', (newLeaderboard) => {
         leaderboard.value = newLeaderboard
