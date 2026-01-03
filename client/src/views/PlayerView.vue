@@ -38,6 +38,14 @@
         <span class="player-score">Score : {{ player.score }}</span>
       </div>
 
+      <!-- AJOUTER : Timer -->
+      <GameTimer 
+        v-if="currentQuestion"
+        :timeLeft="timeLeft"
+        :progress="progress"
+        :isPaused="isPaused"
+      />
+
       <!-- En attente de question -->
       <WaitingRoom v-if="!currentQuestion" />
 
@@ -72,6 +80,7 @@ import { usePlayerGame } from '../composables/usePlayerGame'
 import WaitingRoom from '../components/player/WaitingRoom.vue'
 import AnswerButtons from '../components/player/AnswerButtons.vue'
 import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
+import GameTimer from '../components/GameTimer.vue' // AJOUTER
 
 /**
  * Interface joueur
@@ -85,6 +94,9 @@ const {
   answerResult,
   isLoading,
   isSpeaking, 
+  timeLeft,        // AJOUTER
+  progress,        // AJOUTER
+  isPaused,
   joinSession,
   submitAnswer
 } = usePlayerGame()

@@ -2,6 +2,9 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { sessionService, gameService } from '../services/api'
 import socket from '../services/socket'
 import { useSpeech } from './useSpeech' // AJOUTER
+import { useGameTimer } from './useGameTimer'
+import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, getRandomPhrase } from '../constants/speechPhrases' // AJOUTER
+
 
 /**
  * Composable pour le Player (viewers)
@@ -13,7 +16,8 @@ export function usePlayerGame() {
     const hasAnswered = ref(false)
     const answerResult = ref(null)
     const isLoading = ref(false)
-    const { speak, stop, isSpeaking, isSpeechEnabled } = useSpeech()
+    const { speak, speakSequence, stop, isSpeaking, isSpeechEnabled } = useSpeech()
+    const { timeLeft, progress, isRunning, isPaused, start: startTimer, pause: pauseTimer } = useGameTimer()
 
     /**
      * Rejoindre la session active
@@ -56,6 +60,16 @@ export function usePlayerGame() {
                 setTimeout(() => {
                     speak(question.question)
                 }, 100)
+
+                // MODIFIER : Démarrer le timer avec callback pour jouer la transition
+                startTimer(async () => {
+                    await playTransition(question)
+
+                    // AJOUTER : Signaler au host que la transition est terminée
+                    socket.emit('player:transition-complete', {
+                        sessionId: session.value.id
+                    })
+                })
             })
 
             // Écouter les résultats
@@ -81,6 +95,7 @@ export function usePlayerGame() {
         if (hasAnswered.value || !currentQuestion.value || !player.value) return
 
         stop()
+
         hasAnswered.value = true
         isLoading.value = true
 
@@ -106,6 +121,27 @@ export function usePlayerGame() {
         }
     }
 
+    /**
+   * Jouer la transition vocale côté player
+   */
+    const playTransition = async (question) => {
+        const answerText = question.answer ? 'vrai' : 'faux'
+        const connector = getRandomPhrase(ANSWER_CONNECTORS)
+        const answerDetail = question.answer_detail || ''
+        const transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)
+
+        const speechSequence = [
+        `${connector}, ${answerText}.`,
+            answerDetail,
+            transition
+        ]
+
+        debugger
+
+        pauseTimer()
+        await speakSequence(speechSequence)
+    }
+
     // Nettoyer à la destruction
     onUnmounted(() => {
         socket.disconnect()
@@ -119,10 +155,13 @@ export function usePlayerGame() {
         hasAnswered,
         answerResult,
         isLoading,
-        isSpeaking,        // AJOUTER
-        isSpeechEnabled,   // AJOUTER
+        isSpeaking,
+        isSpeechEnabled,
+        timeLeft,
+        progress,
+        isPaused,
         joinSession,
         submitAnswer,
-        stop 
+        stop
     }
 }

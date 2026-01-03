@@ -2,6 +2,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { sessionService, questionService } from '../services/api'
 import socket from '../services/socket'
 import { useSpeech } from './useSpeech'
+import { useGameTimer } from './useGameTimer'
+
 
 /**
  * Composable pour le Host (vous qui contrôlez le jeu)
@@ -12,7 +14,11 @@ export function useHostGame() {
   const leaderboard = ref([])
   const availableQuestions = ref([])
   const isLoading = ref(false)
-  const { speak, stop, isSpeaking, isSpeechEnabled } = useSpeech() // AJOUTER : Intégrer le speech
+  const isAutoMode = ref(false)
+  const recentQuestionIds = ref([]) // Garder les 3 dernières questions
+
+  const { timeLeft, progress, isRunning, isPaused, start: startTimer, pause: pauseTimer, reset: resetTimer } = useGameTimer()
+
 
   /**
    * Créer ou récupérer la session active
@@ -43,6 +49,14 @@ export function useHostGame() {
         leaderboard.value = newLeaderboard
       })
 
+      // AJOUTER : Écouter la fin des transitions
+      socket.on('transition:complete', () => {
+        // Relancer la prochaine question si en mode auto
+        if (isAutoMode.value) {
+          broadcastRandomQuestion()
+        }
+      })
+
       // Charger le classement initial
       await loadLeaderboard()
     }
@@ -61,23 +75,94 @@ export function useHostGame() {
   }
 
   /**
-   * Lancer une question
+   * Sélectionner une question aléatoire (exclure les 3 dernières)
+   */
+  const getRandomQuestion = () => {
+    // Filtrer les questions non utilisées récemment
+    const eligibleQuestions = availableQuestions.value.filter(
+      q => !recentQuestionIds.value.includes(q.id)
+    )
+
+    // Si moins de 3 questions éligibles, réinitialiser l'historique
+    if (eligibleQuestions.length === 0) {
+      recentQuestionIds.value = []
+      return availableQuestions.value[
+        Math.floor(Math.random() * availableQuestions.value.length)
+      ]
+    }
+
+    // Sélectionner aléatoirement parmi les questions éligibles
+    const randomIndex = Math.floor(Math.random() * eligibleQuestions.length)
+    const selectedQuestion = eligibleQuestions[randomIndex]
+
+    // Ajouter à l'historique et garder seulement les 3 dernières
+    recentQuestionIds.value.push(selectedQuestion.id)
+    if (recentQuestionIds.value.length > 3) {
+      recentQuestionIds.value.shift() // Enlever la plus ancienne
+    }
+
+    return selectedQuestion
+  }
+
+
+  /**
+   * Lancer une question spécifique (mode manuel)
    */
   const broadcastQuestion = (questionId) => {
-    // Arrêter toute lecture en cours
-    stop()
+    
+    const question = availableQuestions.value.find(q => q.id === questionId)
+    if (!question) return
 
-    currentQuestion.value = availableQuestions.value.find(q => q.id === questionId)
+    currentQuestion.value = question
     socket.emit('host:broadcast-question', {
       sessionId: session.value.id,
       questionId
     })
-
-    // AJOUTER : Lire la question
-    setTimeout(() => {
-      //speak(currentQuestion.value.question)
-    }, 100)
   }
+
+  /**
+   * Lancer une question aléatoire (mode auto)
+   */
+  const broadcastRandomQuestion = () => {
+    resetTimer()
+
+    const question = getRandomQuestion()
+    currentQuestion.value = question
+
+    socket.emit('host:broadcast-question', {
+      sessionId: session.value.id,
+      questionId: question.id
+    })
+
+    // Démarrer le timer (quand il atteint 0, pause puis nouvelle question)
+    startTimer(() => {
+      pauseTimer()
+    })
+  }
+
+  /**
+   * Démarrer le mode automatique (boucle infinie)
+   */
+  const startAutoMode = () => {
+    if (availableQuestions.value.length === 0) {
+      console.error('Aucune question disponible')
+      return
+    }
+
+    isAutoMode.value = true
+    
+    // Lancer la première question immédiatement
+    broadcastRandomQuestion()
+  }
+
+  /**
+   * Arrêter le mode automatique
+   */
+  const stopAutoMode = () => {
+    isAutoMode.value = false
+    resetTimer()
+  }
+
 
   /**
    * Charger le classement
@@ -100,8 +185,8 @@ export function useHostGame() {
 
   // Nettoyer à la destruction
   onUnmounted(() => {
+    stopAutoMode()
     socket.disconnect()
-    stop() // AJOUTER : Arrêter le speech à la sortie
   })
 
   return {
@@ -110,10 +195,12 @@ export function useHostGame() {
     leaderboard,
     availableQuestions,
     isLoading,
-    isSpeaking,        
-    isSpeechEnabled, 
-    broadcastQuestion,
+    isAutoMode,
+    timeLeft,
+    progress,
+    isPaused,
+    startAutoMode,
+    stopAutoMode,
     loadLeaderboard,
-    stop               
   }
 }

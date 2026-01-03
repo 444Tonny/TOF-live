@@ -40,7 +40,7 @@ class GameController {
             // Vérifier s'il a déjà répondu
             const hasAnswered = await PlayerModel.hasAnswered(player.id, session.current_question_id);
             if (hasAnswered) {
-                return res.status(400).json({ message: 'Déjà répondu à cette question' });
+                //return res.status(400).json({ message: 'Déjà répondu à cette question' });
             }
 
             // Récupérer la bonne réponse

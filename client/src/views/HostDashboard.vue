@@ -6,19 +6,47 @@
         <!-- AJOUTER : Bouton speech toggle -->
         <router-link to="/" class="back-btn">← Retour</router-link>
       </div>
-      <SpeechToggle />
     </header>
-
-    <!-- AJOUTER : Indicateur vocal -->
-    <div v-if="isSpeaking" class="voice-indicator">
-      🎙️ Lecture en cours...
-    </div>
 
     <div v-if="isLoading" class="loading">
       Chargement...
     </div>
 
     <div v-else class="dashboard-content">
+
+      <!-- AJOUTER : Contrôles mode automatique -->
+      <div class="auto-controls">
+        <h2>Mode Automatique</h2>
+        <p class="description">
+          Les questions tournent en boucle toutes les 15 secondes (sans répéter les 3 dernières)
+        </p>
+        <button 
+          v-if="!isAutoMode"
+          @click="startAutoMode" 
+          class="btn-auto start"
+        >
+          ▶️ Démarrer le mode automatique
+        </button>
+        <button 
+          v-else
+          @click="stopAutoMode" 
+          class="btn-auto stop"
+        >
+          ⏸️ Arrêter le mode automatique
+        </button>
+        <div v-if="isAutoMode" class="auto-status">
+          🔄 Mode automatique actif
+        </div>
+
+         <!-- AJOUTER : Timer -->
+        <GameTimer 
+          v-if="isAutoMode"
+          :timeLeft="timeLeft"
+          :progress="progress"
+          :isPaused="isPaused"
+        />
+      </div>
+
       <!-- Question actuelle -->
       <div class="current-question">
         <h2>Question actuelle</h2>
@@ -34,10 +62,12 @@
       </div>
 
       <!-- Sélecteur de questions -->
-      <QuestionSelector
-        :questions="availableQuestions"
-        @select="broadcastQuestion"
-      />
+      <!-- Mode manuel (seulement si auto désactivé) -->
+      <div v-if="!isAutoMode">
+        <QuestionSelector
+          :questions="availableQuestions"
+        />
+      </div>
 
       <!-- Classement -->
       <Leaderboard :players="leaderboard" />
@@ -49,7 +79,7 @@
 import { useHostGame } from '../composables/useHostGame'
 import QuestionSelector from '../components/host/QuestionSelector.vue'
 import Leaderboard from '../components/host/Leaderboard.vue'
-import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
+import GameTimer from '../components/GameTimer.vue' // AJOUTER
 
 /**
  * Dashboard pour le host (contrôle du jeu)
@@ -59,8 +89,12 @@ const {
   leaderboard,
   availableQuestions,
   isLoading,
-  isSpeaking,
-  broadcastQuestion
+  isAutoMode,
+  timeLeft,        // AJOUTER
+  progress,        // AJOUTER
+  isPaused,
+  startAutoMode,
+  stopAutoMode
 } = useHostGame()
 </script>
 
@@ -161,26 +195,74 @@ h1 {
   }
 }
 
-/* voice indicator */
-.voice-indicator {
+/* Auto controls */
+/* AJOUTER ces styles */
+.auto-controls {
+  grid-column: 1 / -1;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.auto-controls h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.btn-auto {
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-auto.start {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-align: center;
-  margin-bottom: 20px;
+}
+
+.btn-auto.start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.btn-auto.stop {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.btn-auto.stop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+}
+
+.auto-status {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 8px;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  display: inline-block;
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { 
-    opacity: 1;
-  }
-  50% { 
-    opacity: 0.85;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 </style>

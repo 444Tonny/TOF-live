@@ -47,7 +47,7 @@ function setupGameSocket(io) {
             try {
                 // Récupérer la question
                 const [rows] = await db.execute(
-                    'SELECT id, question FROM questions WHERE id = ?',
+                    'SELECT id, question, answer, answer_detail FROM questions WHERE id = ?',
                     [questionId]
                 );
 
@@ -63,7 +63,7 @@ function setupGameSocket(io) {
                 io.to(`session:${sessionId}`).emit('question:new', question);
                 io.to(`host:${sessionId}`).emit('question:new', question);
 
-                console.log(`📢 Question ${questionId} envoyée à session ${sessionId}`);
+                //console.log(`📢 Question ${questionId} envoyée à session ${sessionId}`);
 
             } catch (error) {
                 console.error('Erreur broadcast-question:', error);
@@ -88,6 +88,14 @@ function setupGameSocket(io) {
                 console.error('Erreur answer-submitted:', error);
             }
         });
+
+        /**
+         * PLAYER : Signaler que la transition est terminée
+         */
+        socket.on('player:transition-complete', ({ sessionId }) => {
+            // Notifier le host que la transition est terminée
+            io.to(`host:${sessionId}`).emit('transition:complete')
+        })
 
         /**
          * Déconnexion

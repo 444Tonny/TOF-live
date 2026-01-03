@@ -66,7 +66,7 @@ const {
   loadRandomQuestion,
   submitAnswer,
   resetGame,
-  stop
+  stop,
 } = useGameLogic()
 
 onMounted(() => {
