@@ -70,7 +70,10 @@
       </div>
 
       <!-- Classement -->
-      <Leaderboard :players="leaderboard" />
+      <div class="leaderboards-container">
+        <Leaderboard :players="scoreLeaderboard" />
+        <StreakLeaderboard :players="streakLeaderboard" />
+      </div>
     </div>
   </div>
 </template>
@@ -79,6 +82,7 @@
 import { useHostGame } from '../composables/useHostGame'
 import QuestionSelector from '../components/host/QuestionSelector.vue'
 import Leaderboard from '../components/host/Leaderboard.vue'
+import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
 
 /**
@@ -86,7 +90,8 @@ import GameTimer from '../components/GameTimer.vue' // AJOUTER
  */
 const {
   currentQuestion,
-  leaderboard,
+  scoreLeaderboard,
+  streakLeaderboard,
   availableQuestions,
   isLoading,
   isAutoMode,
@@ -263,6 +268,20 @@ h1 {
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
+}
+
+/* Leaderboards container */
+.leaderboards-container {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 968px) {
+  .leaderboards-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 </style>

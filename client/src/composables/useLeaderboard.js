@@ -5,22 +5,28 @@ import { sessionService } from '../services/api'
  * Composable réutilisable pour gérer le classement
  */
 export function useLeaderboard(sessionId) {
-  const leaderboard = ref([])
+  const scoreLeaderboard = ref([])
+  const streakLeaderboard = ref([])
   const isLoading = ref(false)
   const error = ref(null)
 
   /**
    * Charger le classement
    */
-  const loadLeaderboard = async () => {
+  const loadLeaderboards = async () => {
     if (!sessionId.value) return
-    
+
     isLoading.value = true
     error.value = null
 
     try {
-      const response = await sessionService.getLeaderboard(sessionId.value)
-      leaderboard.value = response.data
+      const [scoreRes, streakRes] = await Promise.all([
+        sessionService.getLeaderboard(sessionId.value),
+        sessionService.getStreakLeaderboard(sessionId.value)
+      ])
+
+      scoreLeaderboard.value = scoreRes.data
+      streakLeaderboard.value = streakRes.data
     } catch (err) {
       console.error('Erreur chargement classement:', err)
       error.value = 'Impossible de charger le classement'
@@ -32,15 +38,17 @@ export function useLeaderboard(sessionId) {
   /**
    * Mettre à jour le classement (depuis socket)
    */
-  const updateLeaderboard = (newLeaderboard) => {
-    leaderboard.value = newLeaderboard
+  const updateLeaderboards = (data) => {
+    scoreLeaderboard.value = data.score
+    streakLeaderboard.value = data.streak
   }
 
   return {
-    leaderboard,
+    scoreLeaderboard,
+    streakLeaderboard,
     isLoading,
     error,
-    loadLeaderboard,
-    updateLeaderboard
+    loadLeaderboards,
+    updateLeaderboards
   }
 }

@@ -76,13 +76,17 @@ function setupGameSocket(io) {
         socket.on('player:answer-submitted', async ({ sessionId, playerId, isCorrect }) => {
             try {
                 // Récupérer le classement mis à jour
-                const leaderboard = await SessionModel.getLeaderboard(sessionId);
+                const scoreLeaderboard = await SessionModel.getLeaderboard(sessionId);
+                const streakLeaderboard = await SessionModel.getStreakLeaderboard(sessionId);
 
-                // Envoyer le classement à l'host
-                io.to(`host:${sessionId}`).emit('leaderboard:update', leaderboard);
+                const data = {
+                    score: scoreLeaderboard,
+                    streak: streakLeaderboard
+                };
 
-                // CORRIGER : Envoyer à toute la session, pas juste un player
-                io.to(`session:${sessionId}`).emit('leaderboard:update', leaderboard);
+                // Envoyer aux joueurs ET au host
+                io.to(`session:${sessionId}`).emit('leaderboard:update', data);
+                io.to(`host:${sessionId}`).emit('leaderboard:update', data); // AJOUTER
 
                 // Notifier le joueur du résultat
                 socket.emit('answer:result', { isCorrect });

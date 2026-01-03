@@ -19,7 +19,7 @@ export function useHostGame() {
 
   //const leaderboard = ref([])
   const sessionId = computed(() => session.value?.id)
-  const { leaderboard, loadLeaderboard, updateLeaderboard } = useLeaderboard(sessionId)
+  const { scoreLeaderboard, streakLeaderboard, loadLeaderboards, updateLeaderboards } = useLeaderboard(sessionId)
 
   /**
    * Créer ou récupérer la session active
@@ -53,7 +53,7 @@ export function useHostGame() {
 
       // MODIFIER : Utiliser updateLeaderboard
       socket.on('leaderboard:update', (newLeaderboard) => {
-        updateLeaderboard(newLeaderboard)
+        updateLeaderboards(newLeaderboard)
       })
 
       // AJOUTER : Écouter la fin des transitions
@@ -65,7 +65,7 @@ export function useHostGame() {
       })
 
       // Charger le classement initial
-      await loadLeaderboard()
+      await loadLeaderboards()
     }
   }
 
@@ -185,7 +185,8 @@ export function useHostGame() {
   return {
     session,
     currentQuestion,
-    leaderboard,
+    scoreLeaderboard,
+    streakLeaderboard,
     availableQuestions,
     isLoading,
     isAutoMode,
@@ -194,6 +195,6 @@ export function useHostGame() {
     isPaused,
     startAutoMode,
     stopAutoMode,
-    loadLeaderboard
+    loadLeaderboards
   }
 }

@@ -21,7 +21,7 @@ export function usePlayerGame() {
 
     // AJOUTER : Utiliser le composable
     const sessionId = computed(() => session.value?.id)
-    const { leaderboard, loadLeaderboard, updateLeaderboard } = useLeaderboard(sessionId)
+    const { scoreLeaderboard, streakLeaderboard, loadLeaderboards, updateLeaderboards } = useLeaderboard(sessionId)
 
     /**
      * Rejoindre la session active
@@ -55,7 +55,7 @@ export function usePlayerGame() {
                 leaderboard.value = newLeaderboard
             }) */
             socket.on('leaderboard:update', (newLeaderboard) => {
-                updateLeaderboard(newLeaderboard)
+                updateLeaderboards(newLeaderboard)
             })
 
             // Écouter les nouvelles questions
@@ -93,7 +93,7 @@ export function usePlayerGame() {
             })
 
             // Charger le classement initial
-            await loadLeaderboard()
+            await loadLeaderboards()
 
         } catch (error) {
             console.error('Erreur rejoindre session:', error)
@@ -169,7 +169,8 @@ export function usePlayerGame() {
     return {
         session,
         player,
-        leaderboard,
+        scoreLeaderboard,
+        streakLeaderboard,
         currentQuestion,
         hasAnswered,
         answerResult,
@@ -181,7 +182,7 @@ export function usePlayerGame() {
         isPaused,
         joinSession,
         submitAnswer,
-        loadLeaderboard,
+        loadLeaderboards,
         stop
     }
 }

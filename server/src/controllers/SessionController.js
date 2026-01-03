@@ -52,6 +52,20 @@ class SessionController {
             res.status(500).json({ message: 'Erreur serveur' });
         }
     }
+
+    /**
+     * Récupérer le classement par streak
+     */
+    static async getStreakLeaderboard(req, res) {
+        try {
+            const { sessionId } = req.params;
+            const leaderboard = await SessionModel.getStreakLeaderboard(sessionId);
+            res.json(leaderboard);
+        } catch (error) {
+            console.error('Erreur récupération classement streak:', error);
+            res.status(500).json({ message: 'Erreur serveur' });
+        }
+    }
 }
 
 module.exports = SessionController;

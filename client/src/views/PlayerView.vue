@@ -71,8 +71,11 @@
         </div>
       </div>
       
-      <!-- Classement -->
-      <Leaderboard :players="leaderboard" />
+      <!-- Classements -->
+      <div class="leaderboards-container">
+        <Leaderboard :players="scoreLeaderboard" />
+        <StreakLeaderboard :players="streakLeaderboard" />
+      </div>
 
     </div>
   </div>
@@ -86,6 +89,7 @@ import AnswerButtons from '../components/player/AnswerButtons.vue'
 import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
 import Leaderboard from '../components/host/Leaderboard.vue'
+import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
 
 /**
  * Interface joueur
@@ -93,7 +97,8 @@ import Leaderboard from '../components/host/Leaderboard.vue'
 const username = ref('')
 
 const {
-  leaderboard,
+  scoreLeaderboard,
+  streakLeaderboard,
   player,
   currentQuestion,
   hasAnswered,
@@ -321,4 +326,19 @@ h1 {
     transform: scale(1);
   }
 }
+
+/*  Leaderbaord */
+.leaderboards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .leaderboards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>

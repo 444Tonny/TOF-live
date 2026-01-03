@@ -83,6 +83,32 @@ class PlayerModel {
         );
         return rows.length > 0;
     }
+
+    /**
+     * Incrémenter le streak
+     */
+    static async incrementStreak(playerId) {
+        await db.execute(
+            'UPDATE players SET current_streak = current_streak + 1 WHERE id = ?',
+            [playerId]
+        );
+        
+        // Mettre à jour le best_streak si nécessaire
+        await db.execute(
+            'UPDATE players SET best_streak = GREATEST(best_streak, current_streak) WHERE id = ?',
+            [playerId]
+        );
+        }
+
+        /**
+         * Réinitialiser le streak
+         */
+        static async resetStreak(playerId) {
+        await db.execute(
+            'UPDATE players SET current_streak = 0 WHERE id = ?',
+            [playerId]
+        );
+    }
 }
 
 module.exports = PlayerModel;

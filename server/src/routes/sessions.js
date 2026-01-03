@@ -11,4 +11,7 @@ router.get('/active', SessionController.getActiveSession);
 // GET /api/sessions/:sessionId/leaderboard - Récupérer le classement
 router.get('/:sessionId/leaderboard', SessionController.getLeaderboard);
 
+// GET /api/sessions/:sessionId/streak-leaderboard
+router.get('/:sessionId/streak-leaderboard', SessionController.getStreakLeaderboard);
+
 module.exports = router;

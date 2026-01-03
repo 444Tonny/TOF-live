@@ -67,6 +67,17 @@ class SessionModel {
         );
         return rows;
     }
+
+    /**
+     * Récupérer le classement par streak
+     */
+    static async getStreakLeaderboard(sessionId) {
+    const [rows] = await db.execute(
+        'SELECT username, current_streak, best_streak FROM players WHERE session_id = ? ORDER BY current_streak DESC, best_streak DESC, created_at ASC LIMIT 10',
+        [sessionId]
+    );
+    return rows;
+    }
 }
 
 module.exports = SessionModel;

@@ -62,6 +62,11 @@ class GameController {
             // Mettre à jour le score si correct
             if (isCorrect) {
                 await PlayerModel.incrementScore(player.id);
+                await PlayerModel.incrementStreak(player.id); // AJOUTER
+            }
+            // Arreter le streak si incorrect
+            else {
+                await PlayerModel.resetStreak(player.id); // AJOUTER
             }
 
             res.json({

@@ -58,6 +58,10 @@ export const sessionService = {
 
   getLeaderboard(sessionId) {
     return api.get(`/sessions/${sessionId}/leaderboard`)
+  },
+
+  getStreakLeaderboard(sessionId) {
+    return api.get(`/sessions/${sessionId}/streak-leaderboard`)
   }
 }
 
