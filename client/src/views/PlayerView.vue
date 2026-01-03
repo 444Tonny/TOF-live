@@ -70,6 +70,10 @@
           </div>
         </div>
       </div>
+      
+      <!-- Classement -->
+      <Leaderboard :players="leaderboard" />
+
     </div>
   </div>
 </template>
@@ -81,6 +85,7 @@ import WaitingRoom from '../components/player/WaitingRoom.vue'
 import AnswerButtons from '../components/player/AnswerButtons.vue'
 import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
+import Leaderboard from '../components/host/Leaderboard.vue'
 
 /**
  * Interface joueur
@@ -88,6 +93,7 @@ import GameTimer from '../components/GameTimer.vue' // AJOUTER
 const username = ref('')
 
 const {
+  leaderboard,
   player,
   currentQuestion,
   hasAnswered,

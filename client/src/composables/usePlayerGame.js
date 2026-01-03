@@ -1,10 +1,10 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { sessionService, gameService } from '../services/api'
 import socket from '../services/socket'
 import { useSpeech } from './useSpeech' // AJOUTER
 import { useGameTimer } from './useGameTimer'
 import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, getRandomPhrase } from '../constants/speechPhrases' // AJOUTER
-
+import { useLeaderboard } from './useLeaderboard' // AJOUTER
 
 /**
  * Composable pour le Player (viewers)
@@ -18,6 +18,10 @@ export function usePlayerGame() {
     const isLoading = ref(false)
     const { speak, speakSequence, stop, isSpeaking, isSpeechEnabled } = useSpeech()
     const { timeLeft, progress, isRunning, isPaused, start: startTimer, pause: pauseTimer } = useGameTimer()
+
+    // AJOUTER : Utiliser le composable
+    const sessionId = computed(() => session.value?.id)
+    const { leaderboard, loadLeaderboard, updateLeaderboard } = useLeaderboard(sessionId)
 
     /**
      * Rejoindre la session active
@@ -44,6 +48,14 @@ export function usePlayerGame() {
             socket.emit('player:join', {
                 sessionId: session.value.id,
                 playerId: platformUserId
+            })            
+
+            /* Écouter les mises à jour du classement
+                socket.on('leaderboard:update', (newLeaderboard) => {
+                leaderboard.value = newLeaderboard
+            }) */
+            socket.on('leaderboard:update', (newLeaderboard) => {
+                updateLeaderboard(newLeaderboard)
             })
 
             // Écouter les nouvelles questions
@@ -80,6 +92,9 @@ export function usePlayerGame() {
                 }
             })
 
+            // Charger le classement initial
+            await loadLeaderboard()
+
         } catch (error) {
             console.error('Erreur rejoindre session:', error)
             throw error
@@ -94,7 +109,7 @@ export function usePlayerGame() {
     const submitAnswer = async (answer) => {
         if (hasAnswered.value || !currentQuestion.value || !player.value) return
 
-        stop()
+        //stop() enlevé pour ne pas interrompre la parole
 
         hasAnswered.value = true
         isLoading.value = true
@@ -105,6 +120,9 @@ export function usePlayerGame() {
                 player.value.platform_user_id,
                 answer
             )
+
+            // MODIFIER : Stocker le résultat mais ne pas l'afficher tout de suite
+            answerResult.value = response.data
 
             // Notifier via Socket.io pour mise à jour temps réel
             socket.emit('player:answer-submitted', {
@@ -136,7 +154,7 @@ export function usePlayerGame() {
             transition
         ]
 
-        debugger
+        //debugger
 
         pauseTimer()
         await speakSequence(speechSequence)
@@ -151,6 +169,7 @@ export function usePlayerGame() {
     return {
         session,
         player,
+        leaderboard,
         currentQuestion,
         hasAnswered,
         answerResult,
@@ -162,6 +181,7 @@ export function usePlayerGame() {
         isPaused,
         joinSession,
         submitAnswer,
+        loadLeaderboard,
         stop
     }
 }

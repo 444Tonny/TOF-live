@@ -1,8 +1,8 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { sessionService, questionService } from '../services/api'
 import socket from '../services/socket'
-import { useSpeech } from './useSpeech'
 import { useGameTimer } from './useGameTimer'
+import { useLeaderboard } from './useLeaderboard' // AJOUTER
 
 
 /**
@@ -11,20 +11,22 @@ import { useGameTimer } from './useGameTimer'
 export function useHostGame() {
   const session = ref(null)
   const currentQuestion = ref(null)
-  const leaderboard = ref([])
   const availableQuestions = ref([])
   const isLoading = ref(false)
   const isAutoMode = ref(false)
   const recentQuestionIds = ref([]) // Garder les 3 dernières questions
-
   const { timeLeft, progress, isRunning, isPaused, start: startTimer, pause: pauseTimer, reset: resetTimer } = useGameTimer()
 
+  //const leaderboard = ref([])
+  const sessionId = computed(() => session.value?.id)
+  const { leaderboard, loadLeaderboard, updateLeaderboard } = useLeaderboard(sessionId)
 
   /**
    * Créer ou récupérer la session active
    */
   const initSession = async () => {
     isLoading.value = true
+    
     try {
       // Essayer de récupérer une session active
       const response = await sessionService.getActiveSession()
@@ -44,9 +46,14 @@ export function useHostGame() {
       socket.connect()
       socket.emit('host:join', session.value.id)
 
-      // Écouter les mises à jour du classement
+      /* Écouter les mises à jour du classement
       socket.on('leaderboard:update', (newLeaderboard) => {
         leaderboard.value = newLeaderboard
+      }) */
+
+      // MODIFIER : Utiliser updateLeaderboard
+      socket.on('leaderboard:update', (newLeaderboard) => {
+        updateLeaderboard(newLeaderboard)
       })
 
       // AJOUTER : Écouter la fin des transitions
@@ -163,20 +170,6 @@ export function useHostGame() {
     resetTimer()
   }
 
-
-  /**
-   * Charger le classement
-   */
-  const loadLeaderboard = async () => {
-    if (!session.value) return
-    try {
-      const response = await sessionService.getLeaderboard(session.value.id)
-      leaderboard.value = response.data
-    } catch (error) {
-      console.error('Erreur chargement classement:', error)
-    }
-  }
-
   // Initialiser au montage
   onMounted(() => {
     initSession()
@@ -201,6 +194,6 @@ export function useHostGame() {
     isPaused,
     startAutoMode,
     stopAutoMode,
-    loadLeaderboard,
+    loadLeaderboard
   }
 }

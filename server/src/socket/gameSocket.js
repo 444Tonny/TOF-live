@@ -81,6 +81,9 @@ function setupGameSocket(io) {
                 // Envoyer le classement à l'host
                 io.to(`host:${sessionId}`).emit('leaderboard:update', leaderboard);
 
+                // CORRIGER : Envoyer à toute la session, pas juste un player
+                io.to(`session:${sessionId}`).emit('leaderboard:update', leaderboard);
+
                 // Notifier le joueur du résultat
                 socket.emit('answer:result', { isCorrect });
 
