@@ -144,8 +144,8 @@ h1 {
 }
 
 .dashboard-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   max-width: 1400px;
   margin: 0 auto;
@@ -272,15 +272,13 @@ h1 {
 
 /* Leaderboards container */
 .leaderboards-container {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 20px;
 }
 
 @media (max-width: 968px) {
   .leaderboards-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 }
 

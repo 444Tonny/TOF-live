@@ -95,3 +95,8 @@ ADD CONSTRAINT fk_player_answers_question
 FOREIGN KEY (question_id)
 REFERENCES questions(id)
 ON DELETE CASCADE;
+
+-- Ajouter la colonne streak
+ALTER TABLE players 
+ADD COLUMN current_streak INT DEFAULT 0,
+ADD COLUMN best_streak INT DEFAULT 0;

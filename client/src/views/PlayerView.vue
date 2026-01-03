@@ -54,19 +54,20 @@
         <div class="question-card">
           <p class="question-text">{{ currentQuestion.question }}</p>
           
-          <!-- Boutons de réponse -->
+          <!-- Boutons toujours visibles, mais désactivés après réponse -->
+           
           <AnswerButtons
-            v-if="!hasAnswered"
+            v-if="!revealAnswer && currentQuestion"
             @answer="submitAnswer"
-            :disabled="isLoading"
+            :disabled="hasAnswered || isLoading"
+            :selectedAnswer="selectedAnswer"
           />
 
-          <!-- Résultat -->
-          <div v-if="answerResult" class="result" :class="{ correct: answerResult.isCorrect }">
-            <span class="result-icon">{{ answerResult.isCorrect ? '✅' : '❌' }}</span>
-            <span class="result-text">
-              {{ answerResult.isCorrect ? 'Bonne réponse !' : 'Mauvaise réponse' }}
-            </span>
+          <!-- Révélation de la réponse (après fin du timer) -->
+          <div v-if="revealAnswer && currentQuestion" class="answer-reveal">
+            <p class="reveal-text">
+              La réponse était : <strong>{{ currentQuestion.answer ? 'VRAI' : 'FAUX' }}</strong>
+            </p>
           </div>
         </div>
       </div>
@@ -102,7 +103,9 @@ const {
   player,
   currentQuestion,
   hasAnswered,
+  selectedAnswer,
   answerResult,
+  revealAnswer,
   isLoading,
   isSpeaking, 
   timeLeft,        // AJOUTER
@@ -288,32 +291,22 @@ h1 {
   line-height: 1.6;
 }
 
-.result {
+.answer-reveal {
   text-align: center;
   padding: 30px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   border-radius: 10px;
   margin-top: 20px;
-  animation: fadeIn 0.5s;
 }
 
-.result.correct {
-  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+.reveal-text {
+  font-size: 1.3rem;
+  color: #1e3a8a;
 }
 
-.result:not(.correct) {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-}
-
-.result-icon {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.result-text {
+.reveal-text strong {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+  color: #1e40af;
 }
 
 @keyframes fadeIn {
@@ -329,15 +322,14 @@ h1 {
 
 /*  Leaderbaord */
 .leaderboards-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 15px;
   margin-top: 20px;
 }
 
 @media (max-width: 768px) {
   .leaderboards-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 }
 

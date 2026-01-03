@@ -3,6 +3,7 @@
     <button
       @click="$emit('answer', true)"
       :disabled="disabled"
+      :class="getButtonClass(true)"
       class="btn btn-true"
     >
       VRAI
@@ -10,6 +11,7 @@
     <button
       @click="$emit('answer', false)"
       :disabled="disabled"
+      :class="getButtonClass(false)"
       class="btn btn-false"
     >
       FAUX
@@ -18,17 +20,28 @@
 </template>
 
 <script setup>
-/**
- * Boutons de réponse pour le joueur
- */
-defineProps({
+const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
+  },
+  selectedAnswer: {
+    default: null
   }
 })
 
 defineEmits(['answer'])
+
+// Fonction pour déterminer les classes CSS
+const getButtonClass = (value) => {
+  if (props.selectedAnswer === null) {
+    return '' // Aucune sélection
+  }
+  if (props.selectedAnswer === value) {
+    return 'selected' // Bouton sélectionné
+  }
+  return 'unselected' // Bouton non sélectionné (grisé)
+}
 </script>
 
 <style scoped>
@@ -46,7 +59,7 @@ defineEmits(['answer'])
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.2s;
 }
 
 .btn:hover:not(:disabled) {
@@ -54,7 +67,6 @@ defineEmits(['answer'])
 }
 
 .btn:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -66,5 +78,17 @@ defineEmits(['answer'])
 .btn-false {
   background: #ef4444;
   color: white;
+}
+
+/* Bouton sélectionné reste normal */
+.btn.selected {
+  opacity: 1;
+}
+
+/* Bouton non sélectionné devient grisé */
+.btn.unselected {
+  background: #d1d5db;
+  color: #6b7280;
+  opacity: 0.5;
 }
 </style>

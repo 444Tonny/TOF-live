@@ -23,6 +23,9 @@ export function usePlayerGame() {
     const sessionId = computed(() => session.value?.id)
     const { scoreLeaderboard, streakLeaderboard, loadLeaderboards, updateLeaderboards } = useLeaderboard(sessionId)
 
+    const revealAnswer = ref(false) // AJOUTER
+    const selectedAnswer = ref(null) // AJOUTER
+
     /**
      * Rejoindre la session active
      */
@@ -67,6 +70,8 @@ export function usePlayerGame() {
                 currentQuestion.value = question
                 hasAnswered.value = false
                 answerResult.value = null
+                revealAnswer.value = false // AJOUTER : Reset la révélation
+                selectedAnswer.value = null // AJOUTER : Reset la sélection
 
                 // AJOUTER : Lire la question
                 setTimeout(() => {
@@ -112,6 +117,7 @@ export function usePlayerGame() {
         //stop() enlevé pour ne pas interrompre la parole
 
         hasAnswered.value = true
+        selectedAnswer.value = answer // AJOUTER : Stocker la réponse choisie
         isLoading.value = true
 
         try {
@@ -140,7 +146,7 @@ export function usePlayerGame() {
     }
 
     /**
-   * Jouer la transition vocale côté player
+   * Jouer la transition vocale côté player apres une question
    */
     const playTransition = async (question) => {
         const answerText = question.answer ? 'vrai' : 'faux'
@@ -155,8 +161,11 @@ export function usePlayerGame() {
         ]
 
         //debugger
-
         pauseTimer()
+
+        // AJOUTER : Révéler la réponse maintenant
+        revealAnswer.value = true
+
         await speakSequence(speechSequence)
     }
 
@@ -180,6 +189,8 @@ export function usePlayerGame() {
         timeLeft,
         progress,
         isPaused,
+        revealAnswer,
+        selectedAnswer,
         joinSession,
         submitAnswer,
         loadLeaderboards,
