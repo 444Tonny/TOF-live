@@ -38,6 +38,21 @@
         <span class="player-score">Score : {{ player.score }}</span>
       </div>
 
+      <!-- En attente de question -->
+      <WaitingRoom v-if="!currentQuestion" />
+
+      <!-- Question active -->
+      <div v-else class="question-section">
+        <QuestionCard
+          :question="currentQuestion"
+          :disabled="hasAnswered || isLoading"
+          :isPlayerMode="true"
+          :selectedAnswer="selectedAnswer"
+          :revealAnswer="revealAnswer"
+          @answer="submitAnswer"
+        />
+      </div>
+
       <!-- AJOUTER : Timer -->
       <GameTimer 
         v-if="currentQuestion"
@@ -45,32 +60,6 @@
         :progress="progress"
         :isPaused="isPaused"
       />
-
-      <!-- En attente de question -->
-      <WaitingRoom v-if="!currentQuestion" />
-
-      <!-- Question active -->
-      <div v-else class="question-section">
-        <div class="question-card">
-          <p class="question-text">{{ currentQuestion.question }}</p>
-          
-          <!-- Boutons toujours visibles, mais désactivés après réponse -->
-           
-          <AnswerButtons
-            v-if="!revealAnswer && currentQuestion"
-            @answer="submitAnswer"
-            :disabled="hasAnswered || isLoading"
-            :selectedAnswer="selectedAnswer"
-          />
-
-          <!-- Révélation de la réponse (après fin du timer) -->
-          <div v-if="revealAnswer && currentQuestion" class="answer-reveal">
-            <p class="reveal-text">
-              La réponse était : <strong>{{ currentQuestion.answer ? 'VRAI' : 'FAUX' }}</strong>
-            </p>
-          </div>
-        </div>
-      </div>
       
       <!-- Classements -->
       <div class="leaderboards-container">
@@ -86,8 +75,8 @@
 import { ref } from 'vue'
 import { usePlayerGame } from '../composables/usePlayerGame'
 import WaitingRoom from '../components/player/WaitingRoom.vue'
-import AnswerButtons from '../components/player/AnswerButtons.vue'
 import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
+import QuestionCard from '../components/QuestionCard.vue' // AJOUTER
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
 import Leaderboard from '../components/host/Leaderboard.vue'
 import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
@@ -132,8 +121,10 @@ const handleJoin = async () => {
 <style scoped>
 .player-view {
   min-height: 100vh;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  padding: 20px;
+  width: 500px;
+  padding: 30px;
+  border: 3px solid #3a3a3a86;
+  border-radius: 30px;
 }
 
 header {
@@ -274,39 +265,6 @@ h1 {
 
 .question-section {
   margin-top: 20px;
-}
-
-.question-card {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.question-text {
-  font-size: 1.5rem;
-  color: #333;
-  text-align: center;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.answer-reveal {
-  text-align: center;
-  padding: 30px;
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-.reveal-text {
-  font-size: 1.3rem;
-  color: #1e3a8a;
-}
-
-.reveal-text strong {
-  font-size: 1.5rem;
-  color: #1e40af;
 }
 
 @keyframes fadeIn {

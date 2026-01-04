@@ -18,7 +18,6 @@
       </svg>
       <div class="timer-text">
         <span class="time">{{ timeLeft }}</span>
-        <span class="label">{{ isPaused ? 'Pause' : 'sec' }}</span>
       </div>
     </div>
   </div>
@@ -56,13 +55,16 @@ const strokeDashoffset = computed(() => {
 .game-timer {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  background: var(--color-bg3);
+  padding-bottom: 25px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .timer-circle {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 50px;
+  height: 50px;
 }
 
 .timer-svg {
@@ -79,8 +81,8 @@ const strokeDashoffset = computed(() => {
 
 .timer-progress {
   fill: none;
-  stroke: #10b981;
-  stroke-width: 8;
+  stroke: #d268ff;
+  stroke-width: 10;
   stroke-linecap: round;
   stroke-dasharray: 283;
   transition: stroke-dashoffset 1s linear, stroke 0.3s;
@@ -110,9 +112,10 @@ const strokeDashoffset = computed(() => {
 
 .time {
   display: block;
-  font-size: 2.5rem;
+  font-size: 22px;
   font-weight: bold;
-  color: #333;
+  color: #E6E6E6;
+  line-height: 4px;
 }
 
 .game-timer.warning .time {
@@ -127,12 +130,5 @@ const strokeDashoffset = computed(() => {
 @keyframes pulse-text {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
-}
-
-.label {
-  display: block;
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: -5px;
 }
 </style>

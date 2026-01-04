@@ -89,7 +89,7 @@ onUnmounted(() => {
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1f1f2e 0%, #18161a 100%);
   min-height: 100vh;
 }
 

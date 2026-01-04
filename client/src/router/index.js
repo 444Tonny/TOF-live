@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import HostDashboard from '../views/HostDashboard.vue'
 import PlayerView from '../views/PlayerView.vue'
 import SoloGame from '../views/SoloGame.vue'
+import VideoView from '../views/VideoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/play',
       name: 'play',
       component: PlayerView
+    },
+    {
+      path: '/video',
+      name: 'video',
+      component: VideoView
     }
   ],
 })

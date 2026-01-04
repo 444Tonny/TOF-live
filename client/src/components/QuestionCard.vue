@@ -1,41 +1,52 @@
 <template>
   <div class="question-card">
-    <!-- Loading state -->
-    <div v-if="isLoading" class="loading">
-      Chargement...
+    <!-- Texte de la question -->
+    <p class="question-text">
+      {{ question.question }}
+    </p>
+
+    <!-- Mode Player : Boutons avec état sélectionné/désactivé -->
+    <AnswerButtons
+      v-if="isPlayerMode && !revealAnswer"
+      @answer="$emit('answer', $event)"
+      :disabled="disabled"
+      :selectedAnswer="selectedAnswer"
+    />
+
+    <!-- Mode Solo : Boutons simples -->
+    <div v-else-if="!isPlayerMode && !revealAnswer" class="buttons">
+      <button 
+        @click="$emit('answer', true)" 
+        class="btn btn-true"
+        :disabled="disabled"
+      >
+        VRAI
+      </button>
+      
+      <button 
+        @click="$emit('answer', false)" 
+        class="btn btn-false"
+        :disabled="disabled"
+      >
+        FAUX
+      </button>
     </div>
 
-    <!-- Question -->
-    <div v-else>
-      <p class="question-text">
-        {{ question.question }}
+    <!-- Révélation de la réponse (mode Player) -->
+    <div v-if="revealAnswer && isPlayerMode" class="answer-reveal">
+      <p class="reveal-text">
+        La réponse était : <strong>{{ question.answer ? 'VRAI' : 'FAUX' }}</strong>
       </p>
-
-      <!-- Boutons -->
-      <div class="buttons">
-        <button 
-          @click="$emit('answer', true)" 
-          class="btn btn-true"
-          :disabled="isLoading"
-        >
-          VRAI
-        </button>
-        
-        <button 
-          @click="$emit('answer', false)" 
-          class="btn btn-false"
-          :disabled="isLoading"
-        >
-          FAUX
-        </button>
-      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import AnswerButtons from './player/AnswerButtons.vue'
+
 /**
- * Composant qui affiche une question avec état de chargement
+ * Composant qui affiche une question et les boutons de réponse
+ * Supporte mode Solo et mode Player
  */
 defineProps({
   question: {
@@ -43,6 +54,21 @@ defineProps({
     required: true
   },
   isLoading: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  isPlayerMode: {
+    type: Boolean,
+    default: false
+  },
+  selectedAnswer: {
+    default: null
+  },
+  revealAnswer: {
     type: Boolean,
     default: false
   }
@@ -53,25 +79,19 @@ defineEmits(['answer'])
 
 <style scoped>
 .question-card {
-  background: white;
-  border-radius: 15px;
+  background: var(--color-bg3);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   padding: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  min-height: 250px;
-}
-
-.loading {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #667eea;
-  padding: 60px 0;
+  padding-bottom: 20px;
 }
 
 .question-text {
-  font-size: 1.5rem;
+  font-size: 25px;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 30px;
-  color: #333;
+  color: #e6e6e6;
   line-height: 1.6;
 }
 
@@ -108,5 +128,23 @@ defineEmits(['answer'])
 .btn-false {
   background: #ef4444;
   color: white;
+}
+
+.answer-reveal {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.reveal-text {
+  font-size: 1.3rem;
+  color: #1e3a8a;
+}
+
+.reveal-text strong {
+  font-size: 1.5rem;
+  color: #1e40af;
 }
 </style>

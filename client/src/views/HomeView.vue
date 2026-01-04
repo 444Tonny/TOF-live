@@ -18,6 +18,12 @@
         👥 Mode Joueur
         <span>Rejoindre une partie</span>
       </router-link>
+
+      <router-link to="/video" class="menu-btn player-btn">
+        🎬 Mode Video
+        <span>Pour enregistrer des vidéos</span>
+      </router-link>
+
     </div>
   </div>
 </template>

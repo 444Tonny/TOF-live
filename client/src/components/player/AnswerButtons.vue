@@ -53,8 +53,8 @@ const getButtonClass = (value) => {
 
 .btn {
   flex: 1;
-  padding: 20px;
-  font-size: 1.2rem;
+  padding: 18px;
+  font-size: 22px;
   font-weight: bold;
   border: none;
   border-radius: 10px;
@@ -71,12 +71,14 @@ const getButtonClass = (value) => {
 }
 
 .btn-true {
-  background: #10b981;
+  border: 3px solid #10b981;
+  background: #10b9815b;
   color: white;
 }
 
 .btn-false {
-  background: #ef4444;
+  border: 3px solid #ef4444;
+  background: #ef444442;
   color: white;
 }
 
