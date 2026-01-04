@@ -55,7 +55,7 @@ const strokeDashoffset = computed(() => {
 .game-timer {
   display: flex;
   justify-content: center;
-  background: var(--color-bg3);
+  background: var(--color--bg3);
   padding-bottom: 25px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -75,13 +75,13 @@ const strokeDashoffset = computed(() => {
 
 .timer-bg {
   fill: none;
-  stroke: #e5e7eb;
+  stroke: var(--color--bg3);
   stroke-width: 8;
 }
 
 .timer-progress {
   fill: none;
-  stroke: #d268ff;
+  stroke: var(--color--white);
   stroke-width: 10;
   stroke-linecap: round;
   stroke-dasharray: 283;
@@ -89,12 +89,12 @@ const strokeDashoffset = computed(() => {
 }
 
 .game-timer.warning .timer-progress {
-  stroke: #ef4444;
+  stroke: var(--color--fail);
   animation: pulse-stroke 0.5s infinite;
 }
 
 .game-timer.paused .timer-progress {
-  stroke: #f59e0b;
+  stroke: var(--color--white);
 }
 
 @keyframes pulse-stroke {
@@ -119,12 +119,12 @@ const strokeDashoffset = computed(() => {
 }
 
 .game-timer.warning .time {
-  color: #ef4444;
+  color: var(--color--fail);
   animation: pulse-text 0.5s infinite;
 }
 
 .game-timer.paused .time {
-  color: #f59e0b;
+  color: var(--color--white);
 }
 
 @keyframes pulse-text {

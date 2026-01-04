@@ -1,8 +1,5 @@
 <template>
   <div class="player-view">
-    <header>
-      <h1>DUELIVE</h1>
-    </header>
 
     <div class="game-interface">
       <!-- En attente de question -->
@@ -10,6 +7,12 @@
 
       <!-- Question active -->
       <div v-else class="question-section">
+        <QuestionCounter
+          v-if="totalQuestions > 0"
+          :current="currentPosition"
+          :total="totalQuestions"
+        />
+
         <QuestionCard
           :question="currentQuestion"
           :disabled="true"
@@ -36,6 +39,7 @@ import { useVideoGame } from '../composables/useVideoGame'
 import WaitingRoom from '../components/player/WaitingRoom.vue'
 import QuestionCard from '../components/QuestionCard.vue'
 import GameTimer from '../components/GameTimer.vue'
+import QuestionCounter from '../components/QuestionCounter.vue'
 
 /**
  * Interface vidéo pour enregistrements
@@ -43,6 +47,8 @@ import GameTimer from '../components/GameTimer.vue'
 const {
   currentQuestion,
   revealAnswer,
+  currentPosition,   // AJOUTER
+  totalQuestions,    // AJOUTER
   timeLeft,
   progress,
   isPaused,
@@ -60,6 +66,7 @@ onMounted(() => {
   min-height: 100vh;
   width: 500px;
   padding: 30px;
+  padding-top: 10px;
   border: 3px solid #3a3a3a86;
   border-radius: 30px;
 }
@@ -68,13 +75,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-h1 {
-  color: white;
-  font-size: 2rem;
-}
 
 .game-interface {
   max-width: 700px;

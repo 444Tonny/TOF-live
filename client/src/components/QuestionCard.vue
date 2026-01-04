@@ -35,7 +35,12 @@
     <!-- Révélation de la réponse (mode Player) -->
     <div v-if="revealAnswer && isPlayerMode" class="answer-reveal">
       <p class="reveal-text">
-        La réponse était : <strong>{{ question.answer ? 'VRAI' : 'FAUX' }}</strong>
+        Réponse: 
+        <strong
+          :class="question.answer ? 'answer-true' : 'answer-false'"
+        >
+          {{ question.answer ? 'VRAI' : 'FAUX' }}
+        </strong>
       </p>
     </div>
   </div>
@@ -79,7 +84,7 @@ defineEmits(['answer'])
 
 <style scoped>
 .question-card {
-  background: var(--color-bg3);
+  background: var(--color--bg3);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   padding: 40px;
@@ -95,56 +100,35 @@ defineEmits(['answer'])
   line-height: 1.6;
 }
 
-.buttons {
-  display: flex;
-  gap: 15px;
-}
-
-.btn {
-  flex: 1;
-  padding: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.btn:hover:not(:disabled) {
-  transform: scale(1.05);
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.btn-true {
-  background: #10b981;
-  color: white;
-}
-
-.btn-false {
-  background: #ef4444;
-  color: white;
-}
-
 .answer-reveal {
-  text-align: center;
-  padding: 30px;
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 65px;
+  background: var(--color--primary);
   border-radius: 10px;
   margin-top: 20px;
 }
 
 .reveal-text {
-  font-size: 1.3rem;
-  color: #1e3a8a;
+  display: block;
+  text-align: center;
+  margin: auto;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--color--white);
 }
 
 .reveal-text strong {
-  font-size: 1.5rem;
-  color: #1e40af;
+  font-size: 25px;
 }
+
+.answer-true {
+  color: var(--color--success) 
+}
+
+.answer-false {
+  color: var(--color--fail) 
+}
+
 </style>

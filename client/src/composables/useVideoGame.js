@@ -12,6 +12,8 @@ export function useVideoGame() {
   const session = ref(null)
   const currentQuestion = ref(null)
   const revealAnswer = ref(false)
+  const currentPosition = ref(0) // AJOUTER
+  const totalQuestions = ref(0)  // AJOUTER
 
   const { speak, speakSequence, stop, isSpeaking, isSpeechEnabled } = useSpeech()
   const { timeLeft, progress, isPaused, start: startTimer, pause: pauseTimer } = useGameTimer()
@@ -59,10 +61,15 @@ export function useVideoGame() {
       })
 
       // Écouter les nouvelles questions
-      socket.on('question:new', (question) => {
+      socket.on('question:new', (data) => {
         stop()
+
+        // Extraire la question et les infos de position
+        const { currentPosition: pos, totalQuestions: total, ...question } = data
         
         currentQuestion.value = question
+        currentPosition.value = pos || 0      // AJOUTER
+        totalQuestions.value = total || 0     // AJOUTER
         revealAnswer.value = false
 
         setTimeout(() => {
@@ -89,6 +96,8 @@ export function useVideoGame() {
     session,
     currentQuestion,
     revealAnswer,
+    currentPosition,   // AJOUTER
+    totalQuestions,    // AJOUTER
     isSpeaking,
     isSpeechEnabled,
     timeLeft,

@@ -43,7 +43,7 @@ function setupGameSocket(io) {
         /**
          * HOST : Lancer une question
          */
-        socket.on('host:broadcast-question', async ({ sessionId, questionId }) => {
+        socket.on('host:broadcast-question', async ({ sessionId, questionId, currentPosition, totalQuestions }) => {
             try {
                 // Récupérer la question
                 const [rows] = await db.execute(
@@ -59,9 +59,16 @@ function setupGameSocket(io) {
                 await SessionModel.setCurrentQuestion(sessionId, questionId);
                 await SessionModel.updateStatus(sessionId, 'active');
 
+                // Envoyer la question avec les infos de position
+                const payload = {
+                    ...question,
+                    currentPosition: currentPosition || null,
+                    totalQuestions: totalQuestions || null
+                };
+
                 // Envoyer à tous les joueurs ET l'host
-                io.to(`session:${sessionId}`).emit('question:new', question);
-                io.to(`host:${sessionId}`).emit('question:new', question);
+                io.to(`session:${sessionId}`).emit('question:new', payload);
+                io.to(`host:${sessionId}`).emit('question:new', payload);
 
                 //console.log(`📢 Question ${questionId} envoyée à session ${sessionId}`);
 

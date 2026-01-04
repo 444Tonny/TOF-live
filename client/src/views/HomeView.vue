@@ -8,15 +8,20 @@
         🎯 Mode Solo
         <span>Jouer seul</span>
       </router-link>
-      
+
       <router-link to="/host" class="menu-btn host-btn">
-        🎬 Mode Host
+        👥 Host Online
         <span>Contrôler le jeu multi-joueurs</span>
       </router-link>
       
       <router-link to="/play" class="menu-btn player-btn">
         👥 Mode Joueur
         <span>Rejoindre une partie</span>
+      </router-link>
+
+      <router-link to="/video-dashboard" class="menu-btn player-btn">
+        🎬 Host Video
+        <span>Contrôler la vidéo</span>
       </router-link>
 
       <router-link to="/video" class="menu-btn player-btn">
