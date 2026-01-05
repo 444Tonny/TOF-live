@@ -1,34 +1,44 @@
 <template>
   <div class="player-view">
 
-    <div class="game-interface">
-      <!-- En attente de question -->
-      <WaitingRoom v-if="!currentQuestion" />
+    
+    <!-- Écran d'introduction -->
+    <IntroScreen v-if="showIntro" ref="introRef" />
 
-      <!-- Question active -->
-      <div v-else class="question-section">
-        <QuestionCounter
-          v-if="totalQuestions > 0"
-          :current="currentPosition"
-          :total="totalQuestions"
-        />
+    <!-- Écran de fin -->
+    <OutroScreen v-if="showOutro" />
 
-        <QuestionCard
-          :question="currentQuestion"
-          :disabled="true"
-          :isPlayerMode="true"
-          :selectedAnswer="null"
-          :revealAnswer="revealAnswer"
+    
+    <div v-show="!showIntro && !showOutro">
+      <div class="game-interface">
+        <!-- En attente de question -->
+        <WaitingRoom v-if="!currentQuestion" />
+
+        <!-- Question active -->
+        <div v-else class="question-section">
+          <QuestionCounter
+            v-if="totalQuestions > 0"
+            :current="currentPosition"
+            :total="totalQuestions"
+          />
+
+          <QuestionCard
+            :question="currentQuestion"
+            :disabled="true"
+            :isPlayerMode="true"
+            :selectedAnswer="null"
+            :revealAnswer="revealAnswer"
+          />
+        </div>
+
+        <!-- Timer -->
+        <GameTimer 
+          v-if="currentQuestion"
+          :timeLeft="timeLeft"
+          :progress="progress"
+          :isPaused="isPaused"
         />
       </div>
-
-      <!-- Timer -->
-      <GameTimer 
-        v-if="currentQuestion"
-        :timeLeft="timeLeft"
-        :progress="progress"
-        :isPaused="isPaused"
-      />
     </div>
   </div>
 </template>
@@ -40,6 +50,8 @@ import WaitingRoom from '../components/player/WaitingRoom.vue'
 import QuestionCard from '../components/QuestionCard.vue'
 import GameTimer from '../components/GameTimer.vue'
 import QuestionCounter from '../components/QuestionCounter.vue'
+import IntroScreen from '../components/video/IntroScreen.vue'
+import OutroScreen from '../components/video/OutroScreen.vue'
 
 /**
  * Interface vidéo pour enregistrements
@@ -49,6 +61,8 @@ const {
   revealAnswer,
   currentPosition,   // AJOUTER
   totalQuestions,    // AJOUTER
+  showIntro,      // AJOUTER
+  showOutro,
   timeLeft,
   progress,
   isPaused,

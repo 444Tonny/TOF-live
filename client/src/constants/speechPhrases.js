@@ -34,6 +34,25 @@ export const NEXT_QUESTION_TRANSITIONS = [
   "On continue"
 ]
 
+export const INTRO_PHRASES = [
+  "Bienvenue dans ce quiz ! Préparez-vous à tester vos connaissances.",
+  "C'est parti pour un nouveau quiz ! Êtes-vous prêt ?",
+  "Attention, le quiz commence ! Concentrez-vous bien.",
+  "Bonjour à tous ! Un nouveau quiz vous attend.",
+  "Prêts pour le défi ? Le quiz démarre maintenant !"
+]
+
+/**
+ * Phrases de conclusion (fin du quiz)
+ */
+export const OUTRO_PHRASES = [
+  "C'est terminé ! Merci d'avoir participé à ce quiz.",
+  "Voilà, le quiz est fini ! J'espère que vous vous êtes bien amusé.",
+  "Et c'est la fin ! N'oubliez pas de liker et vous abonner.",
+  "Le quiz se termine ici ! À très bientôt pour un nouveau défi.",
+  "Bravo d'avoir terminé ! On se retrouve dans la prochaine vidéo."
+]
+
 /**
  * Sélectionner une phrase aléatoire depuis un tableau
  */
