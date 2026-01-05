@@ -58,7 +58,7 @@ export function useVideoGame() {
       transition = ''
     }
 
-    debugger
+    // debugger
 
     const speechSequence = [
       `${connector}, ${answerText}.`,

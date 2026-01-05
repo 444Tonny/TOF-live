@@ -47,7 +47,7 @@ function setupGameSocket(io) {
             try {
                 // Récupérer la question
                 const [rows] = await db.execute(
-                    'SELECT id, question, answer, answer_detail FROM questions WHERE id = ?',
+                    'SELECT id, question, answer, answer_detail, image_file FROM questions WHERE id = ?',
                     [questionId]
                 );
 

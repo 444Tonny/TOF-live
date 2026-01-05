@@ -60,6 +60,11 @@
         :progress="progress"
         :isPaused="isPaused"
       />
+
+      <!-- Image -->
+      <ImageIllustration 
+        v-if="currentQuestion" :question="currentQuestion"
+      />
       
       <!-- Classements -->
       <div class="leaderboards-container">
@@ -80,6 +85,7 @@ import QuestionCard from '../components/QuestionCard.vue' // AJOUTER
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
 import Leaderboard from '../components/host/Leaderboard.vue'
 import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
+import ImageIllustration from '@/components/ImageIllustration.vue'
 
 /**
  * Interface joueur

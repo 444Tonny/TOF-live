@@ -38,6 +38,11 @@
           :progress="progress"
           :isPaused="isPaused"
         />
+        
+        <!-- Image -->
+        <ImageIllustration 
+          v-if="currentQuestion" :question="currentQuestion"
+        />
       </div>
     </div>
   </div>
@@ -52,6 +57,7 @@ import GameTimer from '../components/GameTimer.vue'
 import QuestionCounter from '../components/QuestionCounter.vue'
 import IntroScreen from '../components/video/IntroScreen.vue'
 import OutroScreen from '../components/video/OutroScreen.vue'
+import ImageIllustration from '@/components/ImageIllustration.vue'
 
 /**
  * Interface vidéo pour enregistrements

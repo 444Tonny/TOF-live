@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const { Server } = require('socket.io');
+const path = require('path');
 require('dotenv').config();
 
 const questionRoutes = require('./routes/questions');
@@ -29,6 +30,9 @@ app.use(cors()); // Permettre les requêtes depuis le frontend
 app.use(express.json()); // Parser le JSON
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/game', gameRoutes);
+
+// AJOUTER : Servir les images statiques
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
 
 /**
  * Routes
