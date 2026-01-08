@@ -129,7 +129,7 @@ const handleJoin = async () => {
   min-height: 100vh;
   width: 500px;
   padding: 30px;
-  border: 3px solid #3a3a3a86;
+  border: 3px solid #3a3a3a93;
   border-radius: 30px;
 }
 

@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
  * Composable pour gérer le timer du jeu
  */
 export function useGameTimer() {
-  const timeLeft = ref(15) // Temps restant en secondes
+  const timeLeft = ref(8) // Temps restant en secondes
   const isRunning = ref(false)
   const isPaused = ref(false)
   let intervalId = null
@@ -13,7 +13,7 @@ export function useGameTimer() {
    * Progression du timer en pourcentage
    */
   const progress = computed(() => {
-    return (timeLeft.value / 15) * 100
+    return (timeLeft.value / 8) * 100
   })
 
   /**
@@ -22,7 +22,7 @@ export function useGameTimer() {
   const start = (callback) => {
     if (isRunning.value) return
 
-    timeLeft.value = 15
+    timeLeft.value = 8
     isRunning.value = true
     isPaused.value = false
 
@@ -60,7 +60,7 @@ export function useGameTimer() {
    */
   const reset = () => {
     stop()
-    timeLeft.value = 15
+    timeLeft.value = 8
     isPaused.value = false
   }
 

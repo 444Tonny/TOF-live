@@ -11,6 +11,7 @@
       @answer="$emit('answer', $event)"
       :disabled="disabled"
       :selectedAnswer="selectedAnswer"
+      :key="question.id"
     />
 
     <!-- Mode Solo : Boutons simples -->
@@ -20,7 +21,7 @@
         class="btn btn-true"
         :disabled="disabled"
       >
-        VRAI
+        TRUE
       </button>
       
       <button 
@@ -28,18 +29,18 @@
         class="btn btn-false"
         :disabled="disabled"
       >
-        FAUX
+        FALSE
       </button>
     </div>
 
     <!-- Révélation de la réponse (mode Player) -->
-    <div v-if="revealAnswer && isPlayerMode" class="answer-reveal">
+    <div v-if="revealAnswer && isPlayerMode" :key="question.id" class="answer-reveal">
       <p class="reveal-text">
-        Réponse: 
+        ANSWER: 
         <strong
           :class="question.answer ? 'answer-true' : 'answer-false'"
         >
-          {{ question.answer ? 'VRAI' : 'FAUX' }}
+          {{ question.answer ? 'TRUE' : 'FALSE' }}
         </strong>
       </p>
     </div>
@@ -101,6 +102,12 @@ defineEmits(['answer'])
   line-height: 1.6;
 }
 
+.buttons
+{
+  animation: ease-in-out 0.6s bounceIn;
+  animation: ease-in-out 0.6s fadeIn;
+}
+
 .answer-reveal {
   display: flex;
   align-items: center;
@@ -109,6 +116,8 @@ defineEmits(['answer'])
   background: var(--color--primary);
   border-radius: 10px;
   margin-top: 20px;
+  animation: ease-in-out 0.6s bounceIn;
+  animation: ease-in-out 0.6s fadeIn;
 }
 
 .reveal-text {

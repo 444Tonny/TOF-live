@@ -6,7 +6,7 @@
       :class="getButtonClass(true)"
       class="btn btn-true"
     >
-      VRAI
+      TRUE
     </button>
     <button
       @click="$emit('answer', false)"
@@ -14,7 +14,7 @@
       :class="getButtonClass(false)"
       class="btn btn-false"
     >
-      FAUX
+      FALSE
     </button>
   </div>
 </template>

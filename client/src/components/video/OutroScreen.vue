@@ -1,13 +1,11 @@
 <template>
   <div class="outro-screen">
     <div class="content">
-      <div class="icon">👍</div>
-      <h1 class="title">Like & Subscribe</h1>
-      <p class="subtitle">Pour plus de quiz !</p>
+      <div class="icon"></div>
+      <h1 class="title">What's Your Score ?</h1>
+      <p class="subtitle">Challenge your friends</p>
       <div class="social-icons">
         <span class="social-icon">❤️</span>
-        <span class="social-icon">🔔</span>
-        <span class="social-icon">💬</span>
       </div>
     </div>
   </div>
@@ -26,8 +24,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  display: flex;
+  background: #090b1400; display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -35,18 +32,25 @@
 }
 
 .content {
+  position: relative;
+  top: -150px;
+  background: linear-gradient(135deg, #3f255fe1 0%, #161121e0 100%);
+  width: 460px;
+  border: 5px solid #252130;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 40px 25px;
   text-align: center;
-  color: white;
 }
 
 .icon {
-  font-size: 5rem;
+  font-size: 20px;
   margin-bottom: 20px;
   animation: bounceIn 1s ease-out;
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 40px;
   font-weight: bold;
   margin-bottom: 15px;
   animation: slideUp 1s ease-out 0.2s backwards;
@@ -54,10 +58,12 @@
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 22px;
+  font-weight: 400;
   animation: slideUp 1s ease-out 0.4s backwards;
   opacity: 0.95;
   margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .social-icons {
@@ -78,48 +84,5 @@
 
 .social-icon:nth-child(3) {
   animation-delay: 0.4s;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 </style>

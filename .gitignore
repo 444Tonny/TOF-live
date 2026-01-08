@@ -42,3 +42,4 @@ coverage/
 pids/
 *.pid
 *.seed
+*.mp4
