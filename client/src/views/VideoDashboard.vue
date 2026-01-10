@@ -43,16 +43,10 @@
         <div class="question-display">
           <p>{{ currentQuestion.question }}</p>
           <span class="answer-badge">
-            Réponse : {{ currentQuestion.answer ? 'VRAI' : 'FAUX' }}
+            Réponse : {{ currentQuestion.answer ? 'TRUE' : 'FALSE' }}
           </span>
         </div>
-        
-        <!-- Timer -->
-        <GameTimer 
-          :timeLeft="timeLeft"
-          :progress="progress"
-          :isPaused="isPaused"
-        />
+
       </div>
 
       <!-- Sélection et Playlist -->
@@ -77,7 +71,6 @@
 <script setup>
 import { useVideoDashboard } from '../composables/useVideoDashboard'
 import QuestionCounter from '../components/QuestionCounter.vue'
-import GameTimer from '../components/GameTimer.vue'
 import VideoQuestionSelector from '../components/video/VideoQuestionSelector.vue'
 import VideoPlaylist from '../components/video/VideoPlaylist.vue'
 
@@ -90,9 +83,6 @@ const {
   selectedQuestions,
   isPlaying,
   isLoading,
-  timeLeft,
-  progress,
-  isPaused,
   addQuestion,
   removeQuestion,
   startPlaylist,

@@ -79,7 +79,7 @@ export function useGameLogic() {
             }
 
             // Construire la séquence de phrases à lire
-            const answerText = currentQuestion.value.answer ? 'vrai' : 'faux'
+            const answerText = currentQuestion.value.answer ? 'true' : 'false'
             const connector = getRandomPhrase(ANSWER_CONNECTORS)
             const answerDetail = currentQuestion.value.answer_detail || ''
             const transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)

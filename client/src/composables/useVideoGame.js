@@ -1,7 +1,7 @@
 import { ref, onUnmounted } from 'vue'
 import { sessionService } from '../services/api'
 import socket from '../services/socket'
-import { useSpeech } from './useSpeech'
+import { useSpeech } from './usePiperSpeech'
 import { useGameTimer } from './useGameTimer'
 import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, INTRO_PHRASES, OUTRO_PHRASES, getRandomPhrase } from '../constants/speechPhrases'
 
@@ -26,6 +26,8 @@ export function useVideoGame() {
    * Jouer l'introduction
    */
   const playIntro = async () => {
+    showOutro.value = false
+    showIntro.value = true
     const introPhrase = getRandomPhrase(INTRO_PHRASES)
     await speak(introPhrase)
     
@@ -48,7 +50,7 @@ export function useVideoGame() {
    * Jouer la transition vocale
    */
   const playTransition = async (question) => {
-    const answerText = question.answer ? 'vrai' : 'faux'
+    const answerText = question.answer ? 'true' : 'false'
     const connector = getRandomPhrase(ANSWER_CONNECTORS)
     const answerDetail = question.answer_detail || ''
     let transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)

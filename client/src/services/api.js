@@ -75,4 +75,20 @@ export const gameService = {
   }
 }
 
+/**
+ * Service pour la synthèse vocale
+ */
+export const speechService = {
+  /**
+   * Générer l'audio d'un texte
+   */
+  async generateAudio(text) {
+    const response = await api.post('/speech/generate', 
+      { text },
+      { responseType: 'blob' } // Important pour recevoir l'audio
+    )
+    return response.data
+  }
+}
+
 export default api

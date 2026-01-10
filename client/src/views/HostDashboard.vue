@@ -53,7 +53,7 @@
         <div v-if="currentQuestion" class="question-display">
           <p>{{ currentQuestion.question }}</p>
           <span class="answer-badge">
-            Réponse : {{ currentQuestion.answer ? 'VRAI' : 'FAUX' }}
+            Réponse : {{ currentQuestion.answer ? 'TRUE' : 'FALSE' }}
           </span>
         </div>
         <div v-else class="no-question">

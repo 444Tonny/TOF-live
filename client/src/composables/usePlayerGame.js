@@ -149,7 +149,7 @@ export function usePlayerGame() {
    * Jouer la transition vocale côté player apres une question
    */
     const playTransition = async (question) => {
-        const answerText = question.answer ? 'vrai' : 'faux'
+        const answerText = question.answer ? 'true' : 'faux'
         const connector = getRandomPhrase(ANSWER_CONNECTORS)
         const answerDetail = question.answer_detail || ''
         const transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)

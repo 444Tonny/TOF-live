@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container">
       <div class="header">
-        <h1>Vrai ou Faux</h1>
+        <h1>True or False</h1>
         <SpeechToggle />
       </div>
 

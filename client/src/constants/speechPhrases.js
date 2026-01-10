@@ -7,51 +7,64 @@
  * Utilisés après que le joueur ait répondu
  */
 export const ANSWER_CONNECTORS = [
-  "La réponse était",
-  "Et c'était",
-  "La bonne réponse est",
-  "C'était",
-  "Il fallait répondre",
-  "Eh bien, c'était",
-  "Alors c'était",
-  "Réponse, c'était"
+  "The answer was",
+  "And it was",
+  "The correct answer is",
+  "It was",
+  "You had to answer",
+  "Well, it was",
+  "So it was",
+  "Answer: it was",
+  "The answer is",
+  "Correct answer",
+  "And the answer is",
+  "It was",
+  "The right answer is",
+  "Here it comes",
+  "Answer",
+  "And it is"
 ]
 
 /**
- * Transitions pour passer à la question suivante
+ * Transitions to move to the next question
  */
 export const NEXT_QUESTION_TRANSITIONS = [
-  "Prochaine question",
-  "Question suivante",
-  "Passons à la prochaine",
-  "Continuons",
-  "Allons-y pour la suivante",
-  "On enchaîne",
-  "Place à la question suivante",
-  "Voici la prochaine",
-  "Nouvelle question",
-  "C'est parti pour la suivante",
-  "On continue"
+  "Next question",
+  "Following question",
+  "Let's move on to the next one",
+  "Let's continue",
+  "Here comes the next one",
+  "Let's keep going",
+  "Now onto the next question",
+  "Here is the next one",
+  "New question",
+  "Let's go for the next one",
+  "Let's continue",
+  "Let's move on",
+  "Keep going",
+  "Up next",
+  "Ready for the next one"
 ]
 
 export const INTRO_PHRASES = [
-  "Bienvenue dans ce quiz ! Préparez-vous à tester vos connaissances.",
-  "C'est parti pour un nouveau quiz ! Êtes-vous prêt ?",
-  "Attention, le quiz commence ! Concentrez-vous bien.",
-  "Bonjour à tous ! Un nouveau quiz vous attend.",
-  "Prêts pour le défi ? Le quiz démarre maintenant !"
+  "Welcome to this quiz! Get ready to test your knowledge.",
+  "Here we go with a new quiz! Are you ready?",
+  "Attention, the quiz is starting! Stay focused.",
+  "Hello everyone! A new quiz is waiting for you.",
+  "Ready for the challenge? The quiz starts now!"
 ]
 
 /**
- * Phrases de conclusion (fin du quiz)
+ * Outro phrases (end of the quiz)
  */
 export const OUTRO_PHRASES = [
-  "C'est terminé ! Merci d'avoir participé à ce quiz.",
-  "Voilà, le quiz est fini ! J'espère que vous vous êtes bien amusé.",
-  "Et c'est la fin ! N'oubliez pas de liker et vous abonner.",
-  "Le quiz se termine ici ! À très bientôt pour un nouveau défi.",
-  "Bravo d'avoir terminé ! On se retrouve dans la prochaine vidéo."
+  "That's it! Thanks for taking part in this quiz.",
+  "And that's the end of the quiz! I hope you had fun.",
+  "And it's over! Don't forget to like and subscribe.",
+  "The quiz ends here! See you soon for a new challenge.",
+  "Well done for finishing! See you in the next video."
 ]
+
 
 /**
  * Sélectionner une phrase aléatoire depuis un tableau

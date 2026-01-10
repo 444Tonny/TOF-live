@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>🎮 Vrai ou Faux</h1>
+    <h1>🎮 True or False</h1>
     <p>Choisissez votre mode de jeu</p>
     
     <div class="menu">

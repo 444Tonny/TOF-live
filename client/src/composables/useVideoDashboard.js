@@ -101,7 +101,7 @@ export function useVideoDashboard() {
     const question = selectedQuestions.value[currentQuestionIndex.value]
     if (!question) return
 
-    resetTimer()
+    //resetTimer()
     currentQuestion.value = question
 
     socket.emit('host:broadcast-question', {
@@ -111,10 +111,10 @@ export function useVideoDashboard() {
       totalQuestions: selectedQuestions.value.length
     })
 
-    startTimer(() => {
-      pauseTimer()
+    //startTimer(() => {
+      //()
       // La suite se fait via socket 'transition:complete'
-    })
+    //})
   }
 
   /**
