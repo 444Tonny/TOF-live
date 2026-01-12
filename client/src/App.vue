@@ -26,7 +26,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('@/assets/bg-pattern.png');
 }
 
 :root {

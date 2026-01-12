@@ -94,12 +94,12 @@ defineEmits(['answer'])
 }
 
 .question-text {
-  font-size: 25px;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 55px;
   text-align: center;
   margin-bottom: 30px;
   color: #e6e6e6;
-  line-height: 1.6;
 }
 
 .buttons
@@ -124,8 +124,8 @@ defineEmits(['answer'])
   display: block;
   text-align: center;
   margin: auto;
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
   color: var(--color--white);
 }
 

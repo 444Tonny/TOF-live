@@ -4,6 +4,8 @@ import socket from '../services/socket'
 import { useSpeech } from './usePiperSpeech'
 import { useGameTimer } from './useGameTimer'
 import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, INTRO_PHRASES, OUTRO_PHRASES, getRandomPhrase } from '../constants/speechPhrases'
+import speechifyService from '../services/speechifyService' // AJOUTER en haut
+
 
 /**
  * Composable pour le mode vidéo (pas de joueur, juste affichage)
@@ -32,8 +34,26 @@ export function useVideoGame() {
     await speak(introPhrase)
     
     // Attendre 2 secondes après le speech
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    await new Promise(resolve => setTimeout(resolve, 1000))
     
+    showIntro.value = false
+  }
+
+  /**
+   * Jouer l'introduction avec Speechify
+   */
+  const playIntroWithSpeechify = async () => {
+    
+    showOutro.value = false
+    showIntro.value = true
+
+    const introPhrase = getRandomPhrase(INTRO_PHRASES)
+    
+    // Utiliser Speechify pour l'intro - XYZ
+    await speechifyService.speakSpeechify(introPhrase)
+    
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
     showIntro.value = false
   }
 
@@ -45,6 +65,18 @@ export function useVideoGame() {
     showOutro.value = true
     await speak(outroPhrase)
   }
+
+   /**
+   * Jouer l'outro avec Speechify
+   */
+  const playOutroWithSpeechify = async () => {
+    const outroPhrase = getRandomPhrase(OUTRO_PHRASES)
+    showOutro.value = true
+    
+    // Utiliser Speechify pour l'outro - XYZ
+    await speechifyService.speakSpeechify(outroPhrase)
+  }
+
 
   /**
    * Jouer la transition vocale
@@ -105,7 +137,7 @@ export function useVideoGame() {
         // Si c'est la première question, jouer l'intro
         if (pos === 1) {
           //isFirstQuestion.value = false
-          await playIntro()
+          await playIntroWithSpeechify()
         }
 
         currentQuestion.value = question
@@ -122,7 +154,7 @@ export function useVideoGame() {
 
           // Si c'était la dernière question, jouer l'outro
           if (pos === total) {
-            await playOutro()
+            await playOutroWithSpeechify()
           }
         })
       })
@@ -136,6 +168,7 @@ export function useVideoGame() {
   onUnmounted(() => {
     socket.disconnect()
     stop()
+    speechifyService.stopSpeechify()
   })
 
   return {

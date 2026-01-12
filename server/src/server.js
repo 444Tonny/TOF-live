@@ -8,8 +8,11 @@ require('dotenv').config();
 const questionRoutes = require('./routes/questions');
 const sessionRoutes = require('./routes/sessions');
 const gameRoutes = require('./routes/game');
-const speechRoutes = require('./routes/speech');
 const setupGameSocket = require('./socket/gameSocket');
+
+const speechRoutes = require('./routes/speech'); // piper
+const speechifyRoutes = require('./routes/speechify'); // NOUVEAU
+
 
 const app = express();
 const server = http.createServer(app);
@@ -42,8 +45,10 @@ app.use('/images', express.static(path.join(__dirname, '../public/images')));
  */
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/game', gameRoutes);
-app.use('/api/speech', speechRoutes); 
 app.use('/api/questions', questionRoutes);
+
+app.use('/api/speech', speechRoutes); 
+app.use('/api/speechify', speechifyRoutes);
 
 // Route de test
 app.get('/api/health', (req, res) => {

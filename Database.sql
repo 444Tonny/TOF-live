@@ -149,3 +149,9 @@ INSERT INTO questions (question, answer, answer_detail, image_file) VALUES
   'Canada is the second largest country in the world after Russia.',
   'eiffel_tower.jpg'
 );
+
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The human body contains enough iron to make a small nail', true, 'The human body contains about around 4 grams of iron, which is enough to make a small nail.', 'nails.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A volcano can erupt underwater', true, '', 'volcano.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Honey can be stored forever without spoiling', true, 'Honey can last indefinitely if stored properly.', 'honey.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The human body produces enough heat to boil water', false, '', 'body.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The Great Wall of China is visible to the naked eye from space', false, '', 'great_wall.jpg');

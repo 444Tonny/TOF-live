@@ -1,10 +1,11 @@
 import { ref, computed } from 'vue'
+import { GAME_CONFIG } from '@/constants/gameConfig'
 
 /**
  * Composable pour gérer le timer du jeu
  */
 export function useGameTimer() {
-  const timeLeft = ref(8) // Temps restant en secondes
+  const timeLeft = ref(GAME_CONFIG.ANSWER_TIMER_VIDEO) // Temps restant en secondes
   const isRunning = ref(false)
   const isPaused = ref(false)
   let intervalId = null
@@ -14,7 +15,7 @@ export function useGameTimer() {
    * Progression du timer en pourcentage
    */
   const progress = computed(() => {
-    return (timeLeft.value / 8) * 100
+    return (timeLeft.value / GAME_CONFIG.ANSWER_TIMER_VIDEO) * 100
   })
 
   /**
@@ -72,7 +73,7 @@ export function useGameTimer() {
   const start = (callback) => {
     if (isRunning.value) return
 
-    timeLeft.value = 8
+    timeLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
     isRunning.value = true
     isPaused.value = false
     stopCountdownAudio() // Arrêter l'audio au cas où
@@ -82,7 +83,7 @@ export function useGameTimer() {
         timeLeft.value--
 
         // Jouer l'audio quand on atteint 5 secondes
-        if (timeLeft.value === 5) {
+        if (timeLeft.value === GAME_CONFIG.PLAY_TIMER_AUDIO_AT) {
           playCountdownAudio()
         }
       } else {
@@ -118,7 +119,7 @@ export function useGameTimer() {
    */
   const reset = () => {
     stop()
-    timeLeft.value = 8
+    timeLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
     isPaused.value = false
   }
 

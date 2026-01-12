@@ -34,7 +34,7 @@ const handleImageError = (event) => {
 .question-image {
     margin: auto;
     margin-top: 40px;
-    width: 350px;
+    width: 580px;
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -45,7 +45,6 @@ const handleImageError = (event) => {
     height: auto;
     display: block;
     object-fit: cover;
-    max-height: 300px;
     animation: fadeIn 0.8s ease-out;
     animation: slideUp 0.8s ease-out;
 }

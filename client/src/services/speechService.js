@@ -46,7 +46,7 @@ class SpeechService {
     
     // Configuration
     utterance.voice = this.selectedVoice
-    utterance.rate = options.rate || 1.8      // Vitesse (0.1 à 10)
+    utterance.rate = options.rate || 5      // Vitesse (0.1 à 10)
     utterance.pitch = options.pitch || 0.6    // Tonalité (0 à 2)
     utterance.volume = options.volume || 1.0  // Volume (0 à 1)
     utterance.lang = 'fr-FR'

@@ -1,5 +1,5 @@
 <template>
-  <div class="game-timer" :class="{ warning: timeLeft <= 5, paused: isPaused }">
+  <div class="game-timer" :class="{ warning: timeLeft <= 6, paused: isPaused }">
     <div class="timer-circle">
       <svg class="timer-svg" viewBox="0 0 100 100">
         <circle
@@ -63,8 +63,8 @@ const strokeDashoffset = computed(() => {
 
 .timer-circle {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
 }
 
 .timer-svg {
@@ -112,7 +112,7 @@ const strokeDashoffset = computed(() => {
 
 .time {
   display: block;
-  font-size: 22px;
+  font-size: 32px;
   font-weight: bold;
   color: #E6E6E6;
   line-height: 4px;

@@ -1,0 +1,5 @@
+export const GAME_CONFIG = {
+  ANSWER_TIMER_VIDEO: 5,
+  PLAY_TIMER_AUDIO_AT: 2,
+  INTRO_DELAY_MS: 800,
+}

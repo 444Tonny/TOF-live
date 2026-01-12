@@ -7,6 +7,10 @@
  * Utilisés après que le joueur ait répondu
  */
 export const ANSWER_CONNECTORS = [
+  "It's",
+  "That's",
+  "It was",
+  /*
   "The answer was",
   "And it was",
   "The correct answer is",
@@ -18,18 +22,21 @@ export const ANSWER_CONNECTORS = [
   "The answer is",
   "Correct answer",
   "And the answer is",
-  "It was",
   "The right answer is",
   "Here it comes",
-  "Answer",
+  "Answer was",
   "And it is"
+  */
 ]
 
 /**
  * Transitions to move to the next question
  */
 export const NEXT_QUESTION_TRANSITIONS = [
-  "Next question",
+  "Next",
+  "Next!",
+  "Next?",
+  /*
   "Following question",
   "Let's move on to the next one",
   "Let's continue",
@@ -44,25 +51,29 @@ export const NEXT_QUESTION_TRANSITIONS = [
   "Keep going",
   "Up next",
   "Ready for the next one"
+  */
 ]
 
 export const INTRO_PHRASES = [
+  "General knowledge test! Can you get 5 right answers in a row?" /*
   "Welcome to this quiz! Get ready to test your knowledge.",
   "Here we go with a new quiz! Are you ready?",
   "Attention, the quiz is starting! Stay focused.",
   "Hello everyone! A new quiz is waiting for you.",
-  "Ready for the challenge? The quiz starts now!"
+  "Ready for the challenge? The quiz starts now!"*/
 ]
 
 /**
  * Outro phrases (end of the quiz)
  */
 export const OUTRO_PHRASES = [
-  "That's it! Thanks for taking part in this quiz.",
+  "Like the video if you scored more than 3 and write your score in the comments!",
+  /*
   "And that's the end of the quiz! I hope you had fun.",
   "And it's over! Don't forget to like and subscribe.",
   "The quiz ends here! See you soon for a new challenge.",
   "Well done for finishing! See you in the next video."
+  */
 ]
 
 

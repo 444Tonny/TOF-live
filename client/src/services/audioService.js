@@ -25,6 +25,7 @@ class AudioService {
 
       // Créer et jouer l'audio
       this.audio = new Audio(audioUrl)
+      this.audio.playbackRate = 1.25
       this.isPlaying = true
 
       // Attendre la fin de la lecture

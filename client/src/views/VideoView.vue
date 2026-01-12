@@ -29,7 +29,9 @@
 
 <script setup>
 import { onMounted } from 'vue'
+
 import { useVideoGame } from '../composables/useVideoGame'
+
 import WaitingRoom from '../components/player/WaitingRoom.vue'
 import QuestionCard from '../components/QuestionCard.vue'
 import GameTimer from '../components/GameTimer.vue'
@@ -63,12 +65,12 @@ onMounted(() => {
 <style scoped>
 .player-view {
   min-height: 100vh;
-  width: 500px;
+  width: 650px;
   padding: 30px;
   padding-top: 10px;
-  border: 3px solid #3a3a3a86;
+  border: 3px solid #231f3586;
   border-radius: 30px;
-  background: #272634c7;
+  background: #2726349c;
   animation: fadeIn 0.5s ease-out;
 }
 

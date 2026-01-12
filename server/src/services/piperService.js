@@ -11,6 +11,7 @@ class PiperService {
         // AJUSTEZ ces chemins selon votre installation
         this.piperPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\piper.exe';
         this.modelPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\espeak-ng-data\\voices\\en_US-bryce-medium.onnx';
+        //this.modelPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\espeak-ng-data\\voices\\en_US-kristin-medium.onnx';
         this.outputDir = path.join(__dirname, '../../public/audio/temp');
 
         this.ensureOutputDir();

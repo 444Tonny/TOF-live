@@ -24,7 +24,7 @@ defineProps({
 
 <style scoped>
 .question-counter {
-  width: 150px;
+  width: 200px;
   border-bottom: 1px solid rgba(43, 43, 43, 0.404);
   color: rgba(158, 158, 158, 0.801);
   background-color: var(--color--bg3);
@@ -36,12 +36,12 @@ defineProps({
 }
 
 .counter-text {
-  font-size: 17px;
+  font-size: 23px;
   font-weight: 600;
 }
 
 .counter-text strong {
-  font-size: 17px;
+  font-size: 25px;
   font-weight: 600;
 }
 </style>

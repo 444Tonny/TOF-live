@@ -2,11 +2,11 @@
   <div class="outro-screen">
     <div class="content">
       <div class="icon"></div>
-      <h1 class="title">What's Your Score ?</h1>
-      <p class="subtitle">Challenge your friends</p>
       <div class="social-icons">
         <span class="social-icon">❤️</span>
       </div>
+      <h1 class="title">Like for more</h1>
+      <p class="subtitle">Write your score below</p>
     </div>
   </div>
 </template>
@@ -33,14 +33,24 @@
 
 .content {
   position: relative;
-  top: -150px;
-  background: linear-gradient(135deg, #3f255fe1 0%, #161121e0 100%);
-  width: 460px;
+  text-align: center;
+  color: var(--color--white);
+  background: linear-gradient(135deg, #3f255fcb 0%, #33137eb9 100%);
+  width: 650px;
+  height: 1100px;
   border: 5px solid #252130;
   border-radius: 15px;
   box-sizing: border-box;
-  padding: 40px 25px;
-  text-align: center;
+  padding: 350px 30px 490px 30px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('@/assets/images/background/general.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .icon {
@@ -50,16 +60,16 @@
 }
 
 .title {
-  font-size: 40px;
-  font-weight: bold;
+  font-size: 70px;
+  font-weight: 900;
   margin-bottom: 15px;
   animation: slideUp 1s ease-out 0.2s backwards;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
-  font-size: 22px;
-  font-weight: 400;
+  font-size: 35px;
+  font-weight: 700;
   animation: slideUp 1s ease-out 0.4s backwards;
   opacity: 0.95;
   margin-bottom: 40px;
@@ -74,7 +84,7 @@
 }
 
 .social-icon {
-  font-size: 3rem;
+  font-size: 5rem;
   animation: float 2s ease-in-out infinite;
 }
 
