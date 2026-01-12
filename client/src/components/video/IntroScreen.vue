@@ -1,9 +1,9 @@
 <template>
   <div class="intro-screen" :class="{ fadeOut: isClosing }">
     <div class="content">
-      <h1 class="title">General Knowledge</h1>
+      <h1 class="title">GEOGRAPHY<br> QUIZ</h1>
       <!-- <p class="subtitle">Essayez de faire 5/5</p> -->
-      <div class="pulse-dot">🧠</div>
+      <div class="pulse-dot">🌎</div>
     </div>
   </div>
 </template>
@@ -65,12 +65,13 @@ defineExpose({
 }
 
 .title {
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 900;
   line-height: 80px;
   margin-bottom: 0px;
   animation: slideUp 1s ease-out;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.945) !important;
 }
 
 .subtitle {
@@ -93,7 +94,7 @@ defineExpose({
   animation: pulse 1.2s ease-in-out infinite;
   transform-origin: center center;
   position: relative;
-  right: 50px;
+  right: 35px;
   top: -10px;
 }
 </style>

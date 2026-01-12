@@ -55,7 +55,9 @@ export const NEXT_QUESTION_TRANSITIONS = [
 ]
 
 export const INTRO_PHRASES = [
-  "General knowledge test! Can you get 5 right answers in a row?" /*
+  "Do you think you know geography? Let’s find out!"/*
+  "Do you really know Naruto? Let’s find out!"/*
+  "General knowledge test! Can you get 5 right answers in a row?" 
   "Welcome to this quiz! Get ready to test your knowledge.",
   "Here we go with a new quiz! Are you ready?",
   "Attention, the quiz is starting! Stay focused.",
@@ -67,6 +69,7 @@ export const INTRO_PHRASES = [
  * Outro phrases (end of the quiz)
  */
 export const OUTRO_PHRASES = [
+  "Think you did well? Like the video and comment your score!" /*
   "Like the video if you scored more than 3 and write your score in the comments!",
   /*
   "And that's the end of the quiz! I hope you had fun.",

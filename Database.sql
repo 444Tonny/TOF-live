@@ -155,3 +155,29 @@ INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A v
 INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Honey can be stored forever without spoiling', true, 'Honey can last indefinitely if stored properly.', 'honey.jpg');
 INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The human body produces enough heat to boil water', false, '', 'body.jpg');
 INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The Great Wall of China is visible to the naked eye from space', false, '', 'great_wall.jpg');
+
+
+
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A dog has won “Man of the Match” in a football game.', true, 'A dog called Pickes won a fun, unofficial Man of the Match award.', 'dog.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A player can be offside from a corner kick.', false, '', 'corner_kick.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Cristiano Ronaldo has scored in five different FIFA World Cups.', true, 'He scored in the 2006, 2010, 2014, 2018 and 2022 World Cups.', 'ronaldo.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Clubs must always play in their home stadium for home matches.', false, '', 'foot_stadium.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Sevilla holds the record for the most Europa League titles.', true, '', 'sevilla.jpg');
+
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A referee once gave a red card to himself.', true, '', 'referee_red_card.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A football club once played a match with 7 players.', true, 'A match can continue with 7 players, but is abandoned below that.', 'seven_players.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A goalkeeper has been subbed off for being too tall.', false, '', 'goalkeeper.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A soccer match ended 149–0 in an official competition.', true, 'AS Adema beat the team of SO l’Emyrne 149–0 in Madagascar in 2002.', 'football_match.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A football club can change its logo during a season.', true, '', 'foot_logo.jpg');
+
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Naruto never killed any enemy directly.', false, '', 'naruto.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('A tailed beast can die permanently.', false, 'Tailed beasts reform after being destroyed.', 'tailed_beast.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The Akatsuki originally aimed to bring peace to the ninja world.', true, '', 'akatsuki.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Naruto became Hokage immediately after the war.', false, 'Naruto became Hokage years after the Fourth Great Ninja War.', 'hokage.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Naruto learned the Rasengan faster than Minato.', true, '', 'rasengan.jpg');
+
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Europe has more countries than Africa.', false, '', 'africa_europe.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Japan is made up of over 1,000 islands.', true, 'Japan consists of more than 6,800 islands.', 'japan_islands.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The Dead Sea is the lowest point on Earth’s surface.', true, 'It lies over 400 meters below sea level.', 'dead_sea.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The capital of Canada is Toronto.', false, 'The capital of Canada is Ottawa.', 'canada_capital.jpg');
+INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('France shares a land border with Brazil.', true, '', 'france_brazil.jpg');

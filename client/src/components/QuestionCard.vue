@@ -94,7 +94,7 @@ defineEmits(['answer'])
 }
 
 .question-text {
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 800;
   line-height: 55px;
   text-align: center;

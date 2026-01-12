@@ -65,7 +65,7 @@ export function useSpeech() {
         })
       })
       // Pause entre chaque phrase
-      await new Promise(resolve => setTimeout(resolve, 300))
+      await new Promise(resolve => setTimeout(resolve, 200))
     }
   }
 

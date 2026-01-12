@@ -26,7 +26,7 @@ class speechifyService {
               ${text}
             </prosody>
           </speechify:style>
-          <break time="400ms" />
+          <break time="100ms" />
         </speak>
       `;
 
