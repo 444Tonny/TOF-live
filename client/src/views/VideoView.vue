@@ -17,7 +17,7 @@
             :revealAnswer="revealAnswer" />
 
           <!-- Timer -->
-          <GameTimer v-if="currentQuestion" :timeLeft="timeLeft" :progress="progress" :isPaused="isPaused" />
+          <GameTimer v-if="currentQuestion" :timeQuestionLeft="timeQuestionLeft" :progress="progress" :isQuestionTimerPaused="isQuestionTimerPaused" />
         </div>
 
         <!-- Image -->
@@ -50,9 +50,9 @@ const {
   totalQuestions,    // AJOUTER
   showIntro,      // AJOUTER
   showOutro,
-  timeLeft,
+  timeQuestionLeft,
   progress,
-  isPaused,
+  isQuestionTimerPaused,
   connectToSession
 } = useVideoGame()
 

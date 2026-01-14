@@ -41,9 +41,9 @@
          <!-- AJOUTER : Timer -->
         <GameTimer 
           v-if="isAutoMode"
-          :timeLeft="timeLeft"
+          :timeQuestionLeft="timeQuestionLeft"
           :progress="progress"
-          :isPaused="isPaused"
+          :isQuestionTimerPaused="isQuestionTimerPaused"
         />
       </div>
 
@@ -95,9 +95,9 @@ const {
   availableQuestions,
   isLoading,
   isAutoMode,
-  timeLeft,        // AJOUTER
+  timeQuestionLeft,        // AJOUTER
   progress,        // AJOUTER
-  isPaused,
+  isQuestionTimerPaused,
   startAutoMode,
   stopAutoMode
 } = useHostGame()

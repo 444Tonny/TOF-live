@@ -1,7 +1,7 @@
 import { ref, onUnmounted } from 'vue'
 import { sessionService } from '../services/api'
 import socket from '../services/socket'
-import { useSpeech } from './usePiperSpeech'
+import { usePiperSpeech } from './usePiperSpeech'
 import { useGameTimer } from './useGameTimer'
 import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, INTRO_PHRASES, OUTRO_PHRASES, getRandomPhrase } from '../constants/speechPhrases'
 import speechifyService from '../services/speechifyService' // AJOUTER en haut
@@ -21,23 +21,8 @@ export function useVideoGame() {
   // const isFirstQuestion = ref(true)
   // const isLastQuestion = ref(false)
 
-  const { speak, speakSequence, stop, isSpeaking, isSpeechEnabled } = useSpeech()
-  const { timeLeft, progress, isPaused, start: startTimer, pause: pauseTimer } = useGameTimer()
-
-  /**
-   * Jouer l'introduction
-   */
-  const playIntro = async () => {
-    showOutro.value = false
-    showIntro.value = true
-    const introPhrase = getRandomPhrase(INTRO_PHRASES)
-    await speak(introPhrase)
-    
-    // Attendre 2 secondes après le speech
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    showIntro.value = false
-  }
+  const { speakPiper, speakSequencePiper, stopSpeakPiper, isPiperSpeaking, isPiperSpeechEnabled } = usePiperSpeech()
+  const { timeQuestionLeft, progress, isQuestionTimerPaused, startQuestionTimer, pauseQuestionTimer } = useGameTimer()
 
   /**
    * Jouer l'introduction avec Speechify
@@ -55,15 +40,6 @@ export function useVideoGame() {
     await new Promise(resolve => setTimeout(resolve, 1000))
 
     showIntro.value = false
-  }
-
-  /**
-   * Jouer l'outro
-   */
-  const playOutro = async () => {
-    const outroPhrase = getRandomPhrase(OUTRO_PHRASES)
-    showOutro.value = true
-    await speak(outroPhrase)
   }
 
    /**
@@ -100,10 +76,10 @@ export function useVideoGame() {
       transition
     ]
 
-    pauseTimer()
+    pauseQuestionTimer()
     revealAnswer.value = true
     
-    await speakSequence(speechSequence)
+    await speakSequencePiper(speechSequence)
 
     // AJOUTER : Signaler au host que la transition est terminée
     socket.emit('player:transition-complete', {
@@ -129,12 +105,12 @@ export function useVideoGame() {
 
       // Écouter les nouvelles questions
       socket.on('question:new', async (data) => {
-        stop()
+        stopSpeakPiper()
 
         // Extraire la question et les infos de position
         const { currentPosition: pos, totalQuestions: total, ...question } = data
         
-        // Si c'est la première question, jouer l'intro
+        // Si c'est la première question, jouer l'intro avant de poser la question
         if (pos === 1) {
           //isFirstQuestion.value = false
           await playIntroWithSpeechify()
@@ -146,10 +122,10 @@ export function useVideoGame() {
         revealAnswer.value = false
 
         setTimeout(() => {
-          speak(question.question)
+          speakPiper(question.question)
         }, 100)
 
-        startTimer(async () => {
+        startQuestionTimer(async () => {
           await playTransition(question)
 
           // Si c'était la dernière question, jouer l'outro
@@ -167,8 +143,8 @@ export function useVideoGame() {
 
   onUnmounted(() => {
     socket.disconnect()
-    stop()
-    speechifyService.stopSpeechify()
+    stopSpeakPiper()
+    speechifyService.stopSpeakSpeechify()
   })
 
   return {
@@ -179,12 +155,37 @@ export function useVideoGame() {
     totalQuestions,    // AJOUTER
     showIntro,      // AJOUTER
     showOutro,     // AJOUTER
-    isSpeaking,
-    isSpeechEnabled,
-    timeLeft,
+    isPiperSpeaking,
+    isPiperSpeechEnabled,
+    timeQuestionLeft,
     progress,
-    isPaused,
+    isQuestionTimerPaused,
     connectToSession,
-    stop
+    stopSpeakPiper
   }
 }
+
+  /**
+   * Jouer l'introduction avec Piper
+  const playIntro = async () => {
+    showOutro.value = false
+    showIntro.value = true
+    const introPhrase = getRandomPhrase(INTRO_PHRASES)
+    await speakPiper(introPhrase)
+    
+    // Attendre 2 secondes après le speech
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    showIntro.value = false
+  }
+
+  
+  /**
+   * Jouer l'outro avec Piper
+  const playOutro = async () => {
+    const outroPhrase = getRandomPhrase(OUTRO_PHRASES)
+    showOutro.value = true
+    await speakPiper(outroPhrase)
+  }
+
+*/

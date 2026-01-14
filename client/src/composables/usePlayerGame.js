@@ -1,7 +1,7 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { sessionService, gameService } from '../services/api'
 import socket from '../services/socket'
-import { useSpeech } from './useSpeech' // AJOUTER
+import { usePiperSpeech } from './usePiperSpeech' // AJOUTER
 import { useGameTimer } from './useGameTimer'
 import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, getRandomPhrase } from '../constants/speechPhrases' // AJOUTER
 import { useLeaderboard } from './useLeaderboard' // AJOUTER
@@ -16,8 +16,8 @@ export function usePlayerGame() {
     const hasAnswered = ref(false)
     const answerResult = ref(null)
     const isLoading = ref(false)
-    const { speak, speakSequence, stop, isSpeaking, isSpeechEnabled } = useSpeech()
-    const { timeLeft, progress, isRunning, isPaused, start: startTimer, pause: pauseTimer } = useGameTimer()
+    const { speakPiper, speakSequencePiper, stopSpeakPiper, isPiperSpeaking, isPiperSpeechEnabled } = usePiperSpeech()
+    const { timeQuestionLeft, progress, isQuestionTimerRunning, isQuestionTimerPaused, startQuestionTimer, pauseQuestionTimer } = useGameTimer()
 
     // AJOUTER : Utiliser le composable
     const sessionId = computed(() => session.value?.id)
@@ -65,7 +65,7 @@ export function usePlayerGame() {
             socket.on('question:new', (question) => {
 
                 // Arrêter toute lecture en cours
-                stop()
+                stopSpeakPiper()
 
                 currentQuestion.value = question
                 hasAnswered.value = false
@@ -75,11 +75,11 @@ export function usePlayerGame() {
 
                 // AJOUTER : Lire la question
                 setTimeout(() => {
-                    speak(question.question)
+                    speakPiper(question.question)
                 }, 100)
 
                 // MODIFIER : Démarrer le timer avec callback pour jouer la transition
-                startTimer(async () => {
+                startQuestionTimer(async () => {
                     await playTransition(question)
 
                     // AJOUTER : Signaler au host que la transition est terminée
@@ -114,7 +114,7 @@ export function usePlayerGame() {
     const submitAnswer = async (answer) => {
         if (hasAnswered.value || !currentQuestion.value || !player.value) return
 
-        //stop() enlevé pour ne pas interrompre la parole
+        //stopSpeakPiper() enlevé pour ne pas interrompre la parole
 
         hasAnswered.value = true
         selectedAnswer.value = answer // AJOUTER : Stocker la réponse choisie
@@ -149,7 +149,7 @@ export function usePlayerGame() {
    * Jouer la transition vocale côté player apres une question
    */
     const playTransition = async (question) => {
-        const answerText = question.answer ? 'true' : 'faux'
+        const answerText = question.answer ? 'true' : 'false'
         const connector = getRandomPhrase(ANSWER_CONNECTORS)
         const answerDetail = question.answer_detail || ''
         const transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)
@@ -161,18 +161,18 @@ export function usePlayerGame() {
         ]
 
         //debugger
-        pauseTimer()
+        pauseQuestionTimer()
 
         // AJOUTER : Révéler la réponse maintenant
         revealAnswer.value = true
 
-        await speakSequence(speechSequence)
+        await speakSequencePiper(speechSequence)
     }
 
     // Nettoyer à la destruction
     onUnmounted(() => {
         socket.disconnect()
-        stop()
+        stopSpeakPiper()
     })
 
     return {
@@ -184,16 +184,16 @@ export function usePlayerGame() {
         hasAnswered,
         answerResult,
         isLoading,
-        isSpeaking,
-        isSpeechEnabled,
-        timeLeft,
+        isPiperSpeaking,
+        isPiperSpeechEnabled,
+        timeQuestionLeft,
         progress,
-        isPaused,
+        isQuestionTimerPaused,
         revealAnswer,
         selectedAnswer,
         joinSession,
         submitAnswer,
         loadLeaderboards,
-        stop
+        stopSpeakPiper
     }
 }

@@ -99,7 +99,7 @@ class SpeechService {
   /**
    * Vérifier si une lecture est en cours
    */
-  isSpeaking() {
+  isPiperSpeaking() {
     return this.synth.speaking
   }
 }

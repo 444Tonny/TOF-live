@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const SpeechController = require('../controllers/SpeechController');
+const PiperSpeechController = require('../controllers/PiperSpeechController');
 
 // POST /api/speech/generate - Générer audio depuis texte
-router.post('/generate', SpeechController.generateQuestionAudio);
+router.post('/generate', PiperSpeechController.generateAudioFromText);
 
 module.exports = router;

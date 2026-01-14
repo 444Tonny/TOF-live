@@ -6,12 +6,12 @@ import { useSpeechStore } from '../stores/speechStore'
  * Composable pour gérer la synthèse vocale
  */
 export function useSpeech() {
-  const isSpeaking = ref(false)
+  const isPiperSpeaking = ref(false)
   const availableVoices = ref([])
   const currentVoice = ref(null)
 
   // Accéder au store pour vérifier si le speech est activé
-  const { isSpeechEnabled } = useSpeechStore()
+  const { isPiperSpeechEnabled } = useSpeechStore()
 
   /**
    * Charger les voix disponibles
@@ -29,23 +29,23 @@ export function useSpeech() {
   const speak = (text, options = {}) => {
 
     // Si le speech est désactivé, ne rien faire
-    if (!isSpeechEnabled.value) {
+    if (!isPiperSpeechEnabled.value) {
       console.log('Speech désactivé, texte ignoré:', text)
       if (options.onEnd) options.onEnd()
       return
     }
 
     // Sinon si le speech est activé
-    isSpeaking.value = true
+    isPiperSpeaking.value = true
 
     speechService.speak(text, {
       ...options,
       onEnd: () => {
-        isSpeaking.value = false
+        isPiperSpeaking.value = false
         if (options.onEnd) options.onEnd()
       },
       onError: () => {
-        isSpeaking.value = false
+        isPiperSpeaking.value = false
         if (options.onError) options.onError()
       }
     })
@@ -54,9 +54,9 @@ export function useSpeech() {
   /**
    * Lire plusieurs textes en séquence
    */
-  const speakSequence = async (texts) => {
+  const speakSequencePiper = async (texts) => {
     // Si le speech est désactivé, ne rien faire
-    if (!isSpeechEnabled.value) {
+    if (!isPiperSpeechEnabled.value) {
       return
     }
 
@@ -77,7 +77,7 @@ export function useSpeech() {
    */
   const stop = () => {
     speechService.stop()
-    isSpeaking.value = false
+    isPiperSpeaking.value = false
   }
 
   /**
@@ -97,12 +97,12 @@ export function useSpeech() {
   }
 
   return {
-    isSpeaking,
-    isSpeechEnabled,
+    isPiperSpeaking,
+    isPiperSpeechEnabled,
     availableVoices,
     currentVoice,
     speak,
-    speakSequence,
+    speakSequencePiper,
     stop,
     changeVoice
   }

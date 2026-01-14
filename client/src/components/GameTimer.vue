@@ -1,5 +1,5 @@
 <template>
-  <div class="game-timer" :class="{ warning: timeLeft <= 6, paused: isPaused }">
+  <div class="game-timer" :class="{ warning: timeQuestionLeft <= 6, paused: isQuestionTimerPaused }">
     <div class="timer-circle">
       <svg class="timer-svg" viewBox="0 0 100 100">
         <circle
@@ -17,7 +17,7 @@
         />
       </svg>
       <div class="timer-text">
-        <span class="time">{{ timeLeft }}</span>
+        <span class="time">{{ timeQuestionLeft }}</span>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@ import { computed } from 'vue'
  * Timer visuel circulaire
  */
 const props = defineProps({
-  timeLeft: {
+  timeQuestionLeft: {
     type: Number,
     required: true
   },
@@ -38,7 +38,7 @@ const props = defineProps({
     type: Number,
     required: true
   },
-  isPaused: {
+  isQuestionTimerPaused: {
     type: Boolean,
     default: false
   }

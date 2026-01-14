@@ -7,13 +7,13 @@
       </div>
 
       <!-- Indicateur voix active -->
-      <div v-if="isSpeaking" class="voice-indicator">
+      <div v-if="isPiperSpeaking" class="voice-indicator">
         🔊 Lecture en cours...
       </div>
 
       <!-- Feedback réponse -->
       <div 
-        v-if="lastAnswerWasCorrect !== null && !isSpeaking" 
+        v-if="lastAnswerWasCorrect !== null && !isPiperSpeaking" 
         class="answer-feedback"
         :class="{ correct: lastAnswerWasCorrect, incorrect: !lastAnswerWasCorrect }"
       >
@@ -61,12 +61,12 @@ const {
   currentQuestion,
   isLoading,
   error,
-  isSpeaking,
+  isPiperSpeaking,
   lastAnswerWasCorrect,
   loadRandomQuestion,
   submitAnswer,
   resetGame,
-  stop,
+  stopSpeakPiper,
 } = useGameLogic()
 
 onMounted(() => {
@@ -75,7 +75,7 @@ onMounted(() => {
 
 // Arrêter la voix quand on quitte la page
 onUnmounted(() => {
-  stop()
+  stopSpeakPiper()
 })
 
 </script>

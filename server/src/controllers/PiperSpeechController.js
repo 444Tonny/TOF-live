@@ -3,12 +3,12 @@ const piperService = require('../services/piperService');
 /**
  * Controller pour la synthèse vocale avec Piper
  */
-class SpeechController {
+class PiperSpeechController {
   
   /**
    * Générer l'audio d'une question
    */
-  static async generateQuestionAudio(req, res) {
+  static async generateAudioFromText(req, res) {
     try {
       const { text } = req.body;
 
@@ -29,4 +29,4 @@ class SpeechController {
   }
 }
 
-module.exports = SpeechController;
+module.exports = PiperSpeechController;

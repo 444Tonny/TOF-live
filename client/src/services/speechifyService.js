@@ -18,7 +18,13 @@ class speechifyService {
   async speakSpeechify(text, voiceId = 'henry') { // XYZ
     try {
       // Arrêter toute lecture en cours
-      this.stopSpeechify()
+      this.stopSpeakSpeechify()
+
+      // Si audio vide, ne rien faire
+      if (!text || !text.trim()) {
+        // Ne jamais appeler l'API si texte vide
+        return null
+      }
 
       // Appel API vers Speechify
       const response = await api.post('/speechify/generate-audio', 
@@ -65,7 +71,7 @@ class speechifyService {
   /**
    * Arrêter la lecture intro/outro
    */
-  stopSpeechify() {
+  stopSpeakSpeechify() {
     if (this.currentAudio) {
       this.currentAudio.pause()
       this.currentAudio.currentTime = 0

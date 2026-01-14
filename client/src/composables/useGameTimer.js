@@ -5,36 +5,36 @@ import { GAME_CONFIG } from '@/constants/gameConfig'
  * Composable pour gérer le timer du jeu
  */
 export function useGameTimer() {
-  const timeLeft = ref(GAME_CONFIG.ANSWER_TIMER_VIDEO) // Temps restant en secondes
-  const isRunning = ref(false)
-  const isPaused = ref(false)
+  const timeQuestionLeft = ref(GAME_CONFIG.ANSWER_TIMER_VIDEO) // Temps restant en secondes
+  const isQuestionTimerRunning = ref(false)
+  const isQuestionTimerPaused = ref(false)
   let intervalId = null
-  let countdownAudio = null
+  let countdownTimerAudio = null
 
   /**
    * Progression du timer en pourcentage
    */
   const progress = computed(() => {
-    return (timeLeft.value / GAME_CONFIG.ANSWER_TIMER_VIDEO) * 100
+    return (timeQuestionLeft.value / GAME_CONFIG.ANSWER_TIMER_VIDEO) * 100
   })
 
   /**
    * Initialiser l'audio du countdown
    */
-  const initCountdownAudio = () => {
-    if (!countdownAudio) {
-      countdownAudio = new Audio('/audio/timer2.mp3')
-      countdownAudio.volume = 0.8 // Ajustez le volume (0 à 1)
+  const initcountdownTimerAudio = () => {
+    if (!countdownTimerAudio) {
+      countdownTimerAudio = new Audio('/audio/timer2.mp3')
+      countdownTimerAudio.volume = 0.8 // Ajustez le volume (0 à 1)
     }
   }
 
   /**
    * Jouer l'audio du countdown
    */
-  const playCountdownAudio = () => {
-    initCountdownAudio()
-    countdownAudio.currentTime = 0
-    countdownAudio.play().catch(err => {
+  const playcountdownTimerAudio = () => {
+    initcountdownTimerAudio()
+    countdownTimerAudio.currentTime = 0
+    countdownTimerAudio.play().catch(err => {
       console.error('Erreur lecture audio countdown:', err)
     })
   }
@@ -42,25 +42,25 @@ export function useGameTimer() {
   /**
    * Arrêter l'audio du countdown
    */
-  const stopCountdownAudio = () => {
-    if (countdownAudio) {
-      countdownAudio.pause()
-      countdownAudio.currentTime = 0
+  const stopCountdownTimerAudio = () => {
+    if (countdownTimerAudio) {
+      countdownTimerAudio.pause()
+      countdownTimerAudio.currentTime = 0
     }
   }
 
   /*
   * Fade out progressif
-    const stopCountdownAudio = () => {
-    if (countdownAudio) {
+    const stopCountdownTimerAudio = () => {
+    if (countdownTimerAudio) {
       const fadeOut = setInterval(() => {
-        if (countdownAudio.volume > 0.1) {
-          countdownAudio.volume -= 0.1
+        if (countdownTimerAudio.volume > 0.1) {
+          countdownTimerAudio.volume -= 0.1
         } else {
           clearInterval(fadeOut)
-          countdownAudio.pause()
-          countdownAudio.currentTime = 0
-          countdownAudio.volume = 0.5 // Reset volume
+          countdownTimerAudio.pauseQuestionTimer()
+          countdownTimerAudio.currentTime = 0
+          countdownTimerAudio.volume = 0.5 // Reset volume
         }
       }, 50)
     }
@@ -70,25 +70,25 @@ export function useGameTimer() {
   /**
    * Démarrer le timer
    */
-  const start = (callback) => {
-    if (isRunning.value) return
+  const startQuestionTimer = (callback) => {
+    if (isQuestionTimerRunning.value) return
 
-    timeLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
-    isRunning.value = true
-    isPaused.value = false
-    stopCountdownAudio() // Arrêter l'audio au cas où
+    timeQuestionLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
+    isQuestionTimerRunning.value = true
+    isQuestionTimerPaused.value = false
+    stopCountdownTimerAudio() // Arrêter l'audio au cas où
 
     intervalId = setInterval(() => {
-      if (timeLeft.value > 0) {
-        timeLeft.value--
+      if (timeQuestionLeft.value > 0) {
+        timeQuestionLeft.value--
 
         // Jouer l'audio quand on atteint 5 secondes
-        if (timeLeft.value === GAME_CONFIG.PLAY_TIMER_AUDIO_AT) {
-          playCountdownAudio()
+        if (timeQuestionLeft.value === GAME_CONFIG.PLAY_TIMER_AUDIO_AT) {
+          playcountdownTimerAudio()
         }
       } else {
-        stop()
-        stopCountdownAudio() // Arrêter l'audio à 0
+        stopQuestionTimer()
+        stopCountdownTimerAudio() // Arrêter l'audio à 0
         if (callback) callback() // Appeler la fonction quand le timer atteint 0
       }
     }, 1000)
@@ -97,40 +97,40 @@ export function useGameTimer() {
   /**
    * Arrêter le timer
    */
-  const stop = () => {
+  const stopQuestionTimer = () => {
     if (intervalId) {
       clearInterval(intervalId)
       intervalId = null
     }
-    isRunning.value = false
-    stopCountdownAudio() // Arrêter l'audio
+    isQuestionTimerRunning.value = false
+    stopCountdownTimerAudio() // Arrêter l'audio
   }
 
   /**
    * Mettre en pause (pour les transitions vocales)
    */
-  const pause = () => {
-    isPaused.value = true
-    stop()
+  const pauseQuestionTimer = () => {
+    isQuestionTimerPaused.value = true
+    stopQuestionTimer()
   }
 
   /**
    * Réinitialiser
    */
-  const reset = () => {
-    stop()
-    timeLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
-    isPaused.value = false
+  const resetQuestionTimer = () => {
+    stopQuestionTimer()
+    timeQuestionLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
+    isQuestionTimerPaused.value = false
   }
 
   return {
-    timeLeft,
+    timeQuestionLeft,
     progress,
-    isRunning,
-    isPaused,
-    start,
-    stop,
-    pause,
-    reset
+    isQuestionTimerRunning,
+    isQuestionTimerPaused,
+    startQuestionTimer,
+    stopQuestionTimer,
+    pauseQuestionTimer,
+    resetQuestionTimer
   }
 }

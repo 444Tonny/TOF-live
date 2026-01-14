@@ -28,7 +28,7 @@
     <div v-else class="game-interface">
       
       <!-- AJOUTER : Indicateur vocal -->
-      <div v-if="isSpeaking" class="voice-indicator">
+      <div v-if="isPiperSpeaking" class="voice-indicator">
         🎙️ Animateur en train de parler...
       </div>
 
@@ -56,9 +56,9 @@
       <!-- AJOUTER : Timer -->
       <GameTimer 
         v-if="currentQuestion"
-        :timeLeft="timeLeft"
+        :timeQuestionLeft="timeQuestionLeft"
         :progress="progress"
-        :isPaused="isPaused"
+        :isQuestionTimerPaused="isQuestionTimerPaused"
       />
 
       <!-- Image -->
@@ -102,10 +102,10 @@ const {
   answerResult,
   revealAnswer,
   isLoading,
-  isSpeaking, 
-  timeLeft,        // AJOUTER
+  isPiperSpeaking, 
+  timeQuestionLeft,        // AJOUTER
   progress,        // AJOUTER
-  isPaused,
+  isQuestionTimerPaused,
   joinSession,
   submitAnswer
 } = usePlayerGame()
@@ -127,10 +127,13 @@ const handleJoin = async () => {
 <style scoped>
 .player-view {
   min-height: 100vh;
-  width: 500px;
+  width: 650px;
   padding: 30px;
-  border: 3px solid #3a3a3a93;
+  padding-top: 10px;
+  border: 3px solid #231f3586;
   border-radius: 30px;
+  background: #2726349c;
+  animation: fadeIn 0.5s ease-out;
 }
 
 header {

@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { questionService } from '../services/api'
-import { useSpeech } from './useSpeech'
+import { usePiperSpeech } from './usePiperSpeech'
 import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, getRandomPhrase } from '../constants/speechPhrases'
 
 
@@ -18,7 +18,7 @@ export function useGameLogic() {
     const lastAnswerWasCorrect = ref(null)
 
     // Ajouter le composable speech
-    const { speak, speakSequence, stop, isSpeaking, isSpeechEnabled } = useSpeech()
+    const { speakPiper, speakSequencePiper, stopSpeakPiper, isPiperSpeaking, isPiperSpeechEnabled } = usePiperSpeech()
 
     /**
     * Charge une question aléatoire depuis l'API
@@ -29,7 +29,7 @@ export function useGameLogic() {
         lastAnswerWasCorrect.value = null
 
         // Arrêter toute lecture en cours
-        stop()
+        stopSpeakPiper()
 
         try {
             // Appel API avec exclusion des questions déjà utilisées
@@ -41,7 +41,7 @@ export function useGameLogic() {
             // Lire la question après un court délai (sauf si skipSpeech)
             if (!skipSpeech) {
                 setTimeout(() => {
-                speak(response.data.question)
+                    speakPiper(response.data.question)
                 }, 500)
             }
 
@@ -62,7 +62,7 @@ export function useGameLogic() {
         if (!currentQuestion.value || isLoading.value) return
 
         // Arrêter la lecture
-        stop()
+        stopSpeakPiper()
 
         isLoading.value = true
 
@@ -92,7 +92,7 @@ export function useGameLogic() {
             ]
 
             // Lire la séquence puis charger la prochaine question
-            speakSequence(speechSequence).then(() => {
+            speakSequencePiper(speechSequence).then(() => {
                 // Charger la question suivante après la séquence
                 loadRandomQuestion()
             })
@@ -109,7 +109,7 @@ export function useGameLogic() {
      * Réinitialise le jeu
      */
     const resetGame = () => {
-        stop()
+        stopSpeakPiper()
         score.value = 0
         usedQuestionIds.value = []
         error.value = null
@@ -122,12 +122,12 @@ export function useGameLogic() {
         currentQuestion,
         isLoading,
         error,
-        isSpeaking,
-        isSpeechEnabled,
+        isPiperSpeaking,
+        isPiperSpeechEnabled,
         lastAnswerWasCorrect,
         loadRandomQuestion,
         submitAnswer,
         resetGame,
-        stop
+        stopSpeakPiper
     }
 }

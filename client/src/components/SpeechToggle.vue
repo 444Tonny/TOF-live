@@ -2,10 +2,10 @@
   <button 
     @click="toggleSpeech" 
     class="speech-toggle"
-    :class="{ active: isSpeechEnabled }"
+    :class="{ active: isPiperSpeechEnabled }"
   >
-    <span class="icon">{{ isSpeechEnabled ? '🔊' : '🔇' }}</span>
-    <span class="label">{{ isSpeechEnabled ? 'Voix ON' : 'Voix OFF' }}</span>
+    <span class="icon">{{ isPiperSpeechEnabled ? '🔊' : '🔇' }}</span>
+    <span class="label">{{ isPiperSpeechEnabled ? 'Voix ON' : 'Voix OFF' }}</span>
   </button>
 </template>
 
@@ -15,7 +15,7 @@ import { useSpeechStore } from '../stores/speechStore'
 /**
  * Bouton pour activer/désactiver la voix
  */
-const { isSpeechEnabled, toggleSpeech } = useSpeechStore()
+const { isPiperSpeechEnabled, toggleSpeech } = useSpeechStore()
 </script>
 
 <style scoped>

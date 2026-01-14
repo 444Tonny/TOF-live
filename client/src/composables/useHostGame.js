@@ -15,7 +15,7 @@ export function useHostGame() {
   const isLoading = ref(false)
   const isAutoMode = ref(false)
   const recentQuestionIds = ref([]) // Garder les 3 dernières questions
-  const { timeLeft, progress, isRunning, isPaused, start: startTimer, pause: pauseTimer, reset: resetTimer } = useGameTimer()
+  const { timeQuestionLeft, progress, isQuestionTimerRunning, isQuestionTimerPaused, startQuestionTimer, pauseQuestionTimer, resetQuestionTimer } = useGameTimer()
 
   //const leaderboard = ref([])
   const sessionId = computed(() => session.value?.id)
@@ -131,7 +131,7 @@ export function useHostGame() {
    * Lancer une question aléatoire (mode auto)
    */
   const broadcastRandomQuestion = () => {
-    resetTimer()
+    resetQuestionTimer()
 
     const question = getRandomQuestion()
     currentQuestion.value = question
@@ -142,8 +142,8 @@ export function useHostGame() {
     })
 
     // Démarrer le timer (quand il atteint 0, pause puis nouvelle question)
-    startTimer(() => {
-      pauseTimer()
+    startQuestionTimer(() => {
+      pauseQuestionTimer()
     })
   }
 
@@ -167,7 +167,7 @@ export function useHostGame() {
    */
   const stopAutoMode = () => {
     isAutoMode.value = false
-    resetTimer()
+    resetQuestionTimer()
   }
 
   // Initialiser au montage
@@ -190,9 +190,9 @@ export function useHostGame() {
     availableQuestions,
     isLoading,
     isAutoMode,
-    timeLeft,
+    timeQuestionLeft,
     progress,
-    isPaused,
+    isQuestionTimerPaused,
     startAutoMode,
     stopAutoMode,
     loadLeaderboards

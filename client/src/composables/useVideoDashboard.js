@@ -15,7 +15,7 @@ export function useVideoDashboard() {
   const isPlaying = ref(false)
   const isLoading = ref(false)
 
-  const { timeLeft, progress, isPaused, start: startTimer, pause: pauseTimer, reset: resetTimer } = useGameTimer()
+  const { timeQuestionLeft, progress, isQuestionTimerPaused, startQuestionTimertartTimer, pauseQuestionTimerauseTimer, resetQuestionTimeresetTimer } = useGameTimer()
 
   /**
    * Nombre total de questions sélectionnées
@@ -101,7 +101,7 @@ export function useVideoDashboard() {
     const question = selectedQuestions.value[currentQuestionIndex.value]
     if (!question) return
 
-    //resetTimer()
+    //resetQuestionTimer()
     currentQuestion.value = question
 
     socket.emit('host:broadcast-question', {
@@ -136,7 +136,7 @@ export function useVideoDashboard() {
    */
   const stopPlaylist = () => {
     isPlaying.value = false
-    resetTimer()
+    resetQuestionTimer()
     currentQuestion.value = null
   }
 
@@ -183,9 +183,9 @@ export function useVideoDashboard() {
     selectedQuestions,
     isPlaying,
     isLoading,
-    timeLeft,
+    timeQuestionLeft,
     progress,
-    isPaused,
+    isQuestionTimerPaused,
     addQuestion,
     removeQuestion,
     moveQuestion,

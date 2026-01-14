@@ -1,49 +1,49 @@
 import { ref } from 'vue'
-import audioService from '../services/audioService'
+import audioPiperService from '../services/audioPiperService'
 import { useSpeechStore } from '../stores/speechStore'
 
 /**
  * Composable pour gérer la synthèse vocale avec Piper
  */
-export function useSpeech() {
-  const isSpeaking = ref(false)
-  const availableVoices = ref([]) // Pour compatibilité, mais Piper n'a qu'une voix
-  const currentVoice = ref('Piper TTS')
+export function usePiperSpeech() {
+  const isPiperSpeaking = ref(false)
+  const availableVoicesPiper = ref([]) // Pour compatibilité, mais Piper n'a qu'une voix
+  const currentVoicePiper = ref('Piper TTS')
 
   // Accéder au store pour vérifier si le speech est activé
-  const { isSpeechEnabled } = useSpeechStore()
+  const { isPiperSpeechEnabled } = useSpeechStore()
 
   /**
    * Charger les voix disponibles (pour compatibilité)
    */
-  const loadVoices = () => {
+  const loadPiperVoices = () => {
     // Piper a une seule voix configurée
-    availableVoices.value = [{ name: 'Piper TTS' }]
-    currentVoice.value = 'Piper TTS'
+    availableVoicesPiper.value = [{ name: 'Piper TTS' }]
+    currentVoicePiper.value = 'Piper TTS'
   }
 
   /**
    * Lire un texte
    */
-  const speak = async (text, options = {}) => {
+  const speakPiper = async (text, options = {}) => {
     // Si le speech est désactivé, ne rien faire
-    if (!isSpeechEnabled.value) {
+    if (!isPiperSpeechEnabled.value) {
       console.log('Speech désactivé, texte ignoré:', text)
       if (options.onEnd) options.onEnd()
       return
     }
 
-    isSpeaking.value = true
+    isPiperSpeaking.value = true
 
     try {
-      await audioService.speak(text)
+      await audioPiperService.speakPiper(text)
       
-      isSpeaking.value = false
+      isPiperSpeaking.value = false
       if (options.onEnd) options.onEnd()
       
     } catch (error) {
       console.error('Erreur speech:', error)
-      isSpeaking.value = false
+      isPiperSpeaking.value = false
       if (options.onError) options.onError()
     }
   }
@@ -51,15 +51,15 @@ export function useSpeech() {
   /**
    * Lire plusieurs textes en séquence
    */
-  const speakSequence = async (texts) => {
+  const speakSequencePiper = async (texts) => {
     // Si le speech est désactivé, ne rien faire
-    if (!isSpeechEnabled.value) {
+    if (!isPiperSpeechEnabled.value) {
       return
     }
 
     for (const text of texts) {
       await new Promise((resolve) => {
-        speak(text, {
+        speakPiper(text, {
           onEnd: resolve,
           onError: resolve
         })
@@ -72,9 +72,9 @@ export function useSpeech() {
   /**
    * Arrêter la lecture
    */
-  const stop = () => {
-    audioService.stop()
-    isSpeaking.value = false
+  const stopSpeakPiper = () => {
+    audioPiperService.stopSpeakPiper()
+    isPiperSpeaking.value = false
   }
 
   /**
@@ -82,20 +82,27 @@ export function useSpeech() {
    */
   const changeVoice = (voiceName) => {
     console.log('Changement de voix non supporté avec Piper')
-    currentVoice.value = voiceName
+    currentVoicePiper.value = voiceName
   }
 
   // Charger les voix au démarrage
-  loadVoices()
+  loadPiperVoices()
 
   return {
-    isSpeaking,
-    isSpeechEnabled,
-    availableVoices,
-    currentVoice,
-    speak,
-    speakSequence,
-    stop,
-    changeVoice
+    isPiperSpeaking,
+    isPiperSpeechEnabled,
+    availableVoicesPiper,
+    currentVoicePiper,
+    speakPiper,
+    speakSequencePiper,
+    stopSpeakPiper
   }
 }
+
+/**
+   * Changer de voix (pour compatibilité, pas d'effet avec Piper)
+  const changeVoice = (voiceName) => {
+    console.log('Changement de voix non supporté avec Piper')
+    currentVoicePiper.value = voiceName
+  }
+*/

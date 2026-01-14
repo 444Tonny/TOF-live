@@ -3,7 +3,7 @@ import { speechService } from './api'
 /**
  * Service pour gérer la lecture audio avec Piper
  */
-class AudioService {
+class AudioPiperService {
   constructor() {
     this.audio = null
     this.isPlaying = false
@@ -12,10 +12,16 @@ class AudioService {
   /**
    * Générer et lire un texte
    */
-  async speak(text) {
+  async speakPiper(text) {
     try {
       // Arrêter toute lecture en cours
-      this.stop()
+      this.stopSpeakPiper()
+
+      // Si audio vide, ne rien faire
+      if (!text || !text.trim()) {
+        // Ne jamais appeler l'API si texte vide
+        return null
+      }
 
       // Générer l'audio depuis l'API Piper
       const audioBlob = await speechService.generateAudio(text)
@@ -56,7 +62,7 @@ class AudioService {
   /**
    * Arrêter la lecture
    */
-  stop() {
+  stopSpeakPiper() {
     if (this.audio) {
       this.audio.pause()
       this.audio.currentTime = 0
@@ -72,4 +78,4 @@ class AudioService {
   }
 }
 
-export default new AudioService()
+export default new AudioPiperService()
