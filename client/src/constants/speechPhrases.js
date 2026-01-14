@@ -79,6 +79,22 @@ export const OUTRO_PHRASES = [
   */
 ]
 
+export const MID_GAME_LEADERBOARD_INTRO = [
+  "Here is the current leaderboard",
+  "Let's take a look at the leaderboard",
+  "Let's see where the players stand",
+  "Here are the current scores",
+  "Current rankings"
+]
+
+export const MID_GAME_LEADERBOARD_OUTRO = [
+  "Alright, next question",
+  "Let's keep going",
+  "Let's resume the game",
+  "Here we go again",
+  "Let's move on"
+]
+
 
 /**
  * Sélectionner une phrase aléatoire depuis un tableau

@@ -1,77 +1,90 @@
 <template>
   <div class="player-view">
-    <header>
-      <h1>🎯 Mode Joueur</h1>
-      <div class="header-actions">
-        <!-- AJOUTER : Bouton speech toggle (seulement si joueur connecté) -->
-        <SpeechToggle v-if="player" />
-        <router-link to="/" class="back-btn">← Retour</router-link>
-      </div>
-    </header>
+     <!-- AJOUTER : Classement mid-game (overlay) -->
+    <MidGameLeaderboard
+      v-if="showMidGameLeaderboard"
+      :scoreLeaderboard="scoreLeaderboard"
+      :streakLeaderboard="streakLeaderboard"
+    />
 
-    <!-- Formulaire de connexion -->
-    <div v-if="!player" class="join-form">
-      <h2>Entrez votre pseudo</h2>
-      <input
-        v-model="username"
-        @keyup.enter="handleJoin"
-        type="text"
-        placeholder="Votre pseudo"
-        class="username-input"
-      />
-      <button @click="handleJoin" :disabled="!username" class="join-btn">
-        Rejoindre
-      </button>
-    </div>
+    <!-- Contenu existant (caché quand showMidGameLeaderboard = true) -->
+    <div v-show="!showMidGameLeaderboard">
 
-    <!-- Interface de jeu -->
-    <div v-else class="game-interface">
-      
-      <!-- AJOUTER : Indicateur vocal -->
-      <div v-if="isPiperSpeaking" class="voice-indicator">
-        🎙️ Animateur en train de parler...
-      </div>
+      <header>
+        <h1>🎯 Mode Joueur</h1>
+        <div class="header-actions">
+          <!-- AJOUTER : Bouton speech toggle (seulement si joueur connecté) -->
+          <SpeechToggle v-if="player" />
+          <router-link to="/" class="back-btn">← Retour</router-link>
+        </div>
+      </header>
 
-      <!-- Info joueur -->
-      <div class="player-info">
-        <span class="player-name">{{ player.username }}</span>
-        <span class="player-score">Score : {{ player.score }}</span>
-      </div>
-
-      <!-- En attente de question -->
-      <WaitingRoom v-if="!currentQuestion" />
-
-      <!-- Question active -->
-      <div v-else class="question-section">
-        <QuestionCard
-          :question="currentQuestion"
-          :disabled="hasAnswered || isLoading"
-          :isPlayerMode="true"
-          :selectedAnswer="selectedAnswer"
-          :revealAnswer="revealAnswer"
-          @answer="submitAnswer"
+      <!-- Formulaire de connexion -->
+      <div v-if="!player" class="join-form">
+        <h2>Entrez votre pseudo</h2>
+        <input
+          v-model="username"
+          @keyup.enter="handleJoin"
+          type="text"
+          placeholder="Votre pseudo"
+          class="username-input"
         />
+        <button @click="handleJoin" :disabled="!username" class="join-btn">
+          Rejoindre
+        </button>
       </div>
 
-      <!-- AJOUTER : Timer -->
-      <GameTimer 
-        v-if="currentQuestion"
-        :timeQuestionLeft="timeQuestionLeft"
-        :progress="progress"
-        :isQuestionTimerPaused="isQuestionTimerPaused"
-      />
+      <!-- Interface de jeu -->
+      <div v-else class="game-interface">
+        
+        <!-- AJOUTER : Indicateur vocal -->
+        <div v-if="isPiperSpeaking" class="voice-indicator">
+          🎙️ Animateur en train de parler...
+        </div>
 
-      <!-- Image -->
-      <ImageIllustration 
-        v-if="currentQuestion" :question="currentQuestion"
-      />
-      
-      <!-- Classements -->
-      <div class="leaderboards-container">
-        <Leaderboard :players="scoreLeaderboard" />
-        <StreakLeaderboard :players="streakLeaderboard" />
+        <!-- Info joueur -->
+        <div class="player-info">
+          <span class="player-name">{{ player.username }}</span>
+          <span class="player-score">Score : {{ player.score }}</span>
+        </div>
+
+        <!-- En attente de question -->
+        <WaitingRoom v-if="!currentQuestion" />
+
+        <!-- Question active -->
+        <div v-else class="question-section">    
+          <QuestionCounter :current="currentQuestionPosition" :total="totalQuestionsInSession" />
+
+          <QuestionCard
+            :question="currentQuestion"
+            :disabled="hasAnswered || isLoading"
+            :isPlayerMode="true"
+            :selectedAnswer="selectedAnswer"
+            :revealAnswer="revealAnswer"
+            @answer="submitAnswer"
+          />
+        </div>
+
+        <!-- AJOUTER : Timer -->
+        <GameTimer 
+          v-if="currentQuestion"
+          :timeQuestionLeft="timeQuestionLeft"
+          :progress="progress"
+          :isQuestionTimerPaused="isQuestionTimerPaused"
+        />
+
+        <!-- Image -->
+        <ImageIllustration 
+          v-if="currentQuestion" :question="currentQuestion"
+        />
+        
+        <!-- Classements -->
+        <div class="leaderboards-container">
+          <Leaderboard :players="scoreLeaderboard" />
+          <StreakLeaderboard :players="streakLeaderboard" />
+        </div>
+
       </div>
-
     </div>
   </div>
 </template>
@@ -82,10 +95,12 @@ import { usePlayerGame } from '../composables/usePlayerGame'
 import WaitingRoom from '../components/player/WaitingRoom.vue'
 import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
 import QuestionCard from '../components/QuestionCard.vue' // AJOUTER
+import QuestionCounter from '../components/QuestionCounter.vue'
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
 import Leaderboard from '../components/host/Leaderboard.vue'
 import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
 import ImageIllustration from '@/components/ImageIllustration.vue'
+import MidGameLeaderboard from '../components/player/MidGameLeaderboard.vue' // AJOUTER
 
 /**
  * Interface joueur
@@ -93,10 +108,10 @@ import ImageIllustration from '@/components/ImageIllustration.vue'
 const username = ref('')
 
 const {
-  scoreLeaderboard,
-  streakLeaderboard,
   player,
   currentQuestion,
+  currentQuestionPosition,
+  totalQuestionsInSession,
   hasAnswered,
   selectedAnswer,
   answerResult,
@@ -106,6 +121,10 @@ const {
   timeQuestionLeft,        // AJOUTER
   progress,        // AJOUTER
   isQuestionTimerPaused,
+  scoreLeaderboard,
+  streakLeaderboard,
+  showMidGameLeaderboard,
+
   joinSession,
   submitAnswer
 } = usePlayerGame()

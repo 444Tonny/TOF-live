@@ -3,6 +3,7 @@ import { sessionService, questionService } from '../services/api'
 import socket from '../services/socket'
 import { useGameTimer } from './useGameTimer'
 import { useLeaderboard } from './useLeaderboard' // AJOUTER
+import { GAME_CONFIG } from '@/constants/gameConfig'
 
 
 /**
@@ -10,7 +11,9 @@ import { useLeaderboard } from './useLeaderboard' // AJOUTER
  */
 export function useHostGame() {
   const session = ref(null)
-  const currentQuestion = ref(null)
+  const currentQuestion = ref(null) 
+  let currentQuestionIndex = 0 // AJOUTER : Index de la question actuelle
+  
   const availableQuestions = ref([])
   const isLoading = ref(false)
   const isAutoMode = ref(false)
@@ -60,7 +63,12 @@ export function useHostGame() {
       socket.on('transition:complete', () => {
         // Relancer la prochaine question si en mode auto
         if (isAutoMode.value) {
-          broadcastRandomQuestion()
+          if (currentQuestionIndex.value >= GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION) {
+            console.log('Session terminée : 50 questions atteintes')
+            stopAutoMode()
+          } else {
+            broadcastRandomQuestion()
+          }
         }
       })
 
@@ -132,19 +140,28 @@ export function useHostGame() {
    */
   const broadcastRandomQuestion = () => {
     resetQuestionTimer()
+    
+    // Increase by 1 the index
+    nextQuestionGame()
 
     const question = getRandomQuestion()
     currentQuestion.value = question
 
     socket.emit('host:broadcast-question', {
       sessionId: session.value.id,
-      questionId: question.id
+      questionId: question.id,
+      currentPosition: currentQuestionIndex,
+      totalQuestions: GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION
     })
 
     // Démarrer le timer (quand il atteint 0, pause puis nouvelle question)
     startQuestionTimer(() => {
       pauseQuestionTimer()
     })
+  }
+
+  const nextQuestionGame = () => {
+    currentQuestionIndex++;
   }
 
   /**
@@ -157,6 +174,7 @@ export function useHostGame() {
     }
 
     isAutoMode.value = true
+    currentQuestionIndex = 0
     
     // Lancer la première question immédiatement
     broadcastRandomQuestion()
@@ -167,6 +185,7 @@ export function useHostGame() {
    */
   const stopAutoMode = () => {
     isAutoMode.value = false
+    currentQuestionIndex = 0 // Reset
     resetQuestionTimer()
   }
 

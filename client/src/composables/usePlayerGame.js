@@ -3,7 +3,8 @@ import { sessionService, gameService } from '../services/api'
 import socket from '../services/socket'
 import { usePiperSpeech } from './usePiperSpeech' // AJOUTER
 import { useGameTimer } from './useGameTimer'
-import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, getRandomPhrase } from '../constants/speechPhrases' // AJOUTER
+import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, MID_GAME_LEADERBOARD_INTRO, MID_GAME_LEADERBOARD_OUTRO, getRandomPhrase } from '../constants/speechPhrases' // AJOUTER
+import { GAME_CONFIG } from '../constants/gameConfig' // AJOUTER
 import { useLeaderboard } from './useLeaderboard' // AJOUTER
 
 /**
@@ -12,7 +13,11 @@ import { useLeaderboard } from './useLeaderboard' // AJOUTER
 export function usePlayerGame() {
     const session = ref(null)
     const player = ref(null)
+
     const currentQuestion = ref(null)
+    const currentQuestionPosition = ref(0) // AJOUTER : pour tracker la position
+    const totalQuestionsInSession = GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION
+
     const hasAnswered = ref(false)
     const answerResult = ref(null)
     const isLoading = ref(false)
@@ -25,6 +30,8 @@ export function usePlayerGame() {
 
     const revealAnswer = ref(false) // AJOUTER
     const selectedAnswer = ref(null) // AJOUTER
+
+    const showMidGameLeaderboard = ref(false) // AJOUTER - midgame leaderboard
 
     /**
      * Rejoindre la session active
@@ -62,25 +69,35 @@ export function usePlayerGame() {
             })
 
             // Écouter les nouvelles questions
-            socket.on('question:new', (question) => {
+            socket.on('question:new', async (dataQuestion) => {
 
                 // Arrêter toute lecture en cours
                 stopSpeakPiper()
 
-                currentQuestion.value = question
+                // AJOUTER : Extraire currentQuestionPosition
+                const { currentPosition: pos, totalQuestions: total, ...question } = dataQuestion
+
+                currentQuestionPosition.value = pos || 0
+                currentQuestion.value = dataQuestion
                 hasAnswered.value = false
                 answerResult.value = null
                 revealAnswer.value = false // AJOUTER : Reset la révélation
                 selectedAnswer.value = null // AJOUTER : Reset la sélection
+                
+
+                // AJOUTER : Vérifier si on doit afficher le classement mid-game
+                if (shouldShowMidGameLeaderboard(pos)) {
+                    await playMidGameTransition()
+                }
 
                 // AJOUTER : Lire la question
                 setTimeout(() => {
-                    speakPiper(question.question)
+                    speakPiper(dataQuestion.question)
                 }, 100)
 
                 // MODIFIER : Démarrer le timer avec callback pour jouer la transition
                 startQuestionTimer(async () => {
-                    await playTransition(question)
+                    await playTransition(dataQuestion.question)
 
                     // AJOUTER : Signaler au host que la transition est terminée
                     socket.emit('player:transition-complete', {
@@ -169,6 +186,37 @@ export function usePlayerGame() {
         await speakSequencePiper(speechSequence)
     }
 
+    /**
+     * Jouer la transition mid-game (classement)
+     */
+    const playMidGameTransition = async () => {
+        // Intro classement
+        const introPhraseLeaderboard = getRandomPhrase(MID_GAME_LEADERBOARD_INTRO)
+        await speakPiper(introPhraseLeaderboard)
+
+        // Afficher le classement
+        showMidGameLeaderboard.value = true
+
+        // Attendre 10 secondes
+        await new Promise(resolve => setTimeout(resolve, 10000))
+
+        // Outro classement
+        const outroPhraseLeaderboard = getRandomPhrase(MID_GAME_LEADERBOARD_OUTRO)
+        await speakPiper(outroPhraseLeaderboard)
+
+        // Cacher le classement
+        showMidGameLeaderboard.value = false
+    }
+
+    /**
+     * Vérifier si on doit afficher le classement mid-game
+     */
+    const shouldShowMidGameLeaderboard = (position) => {
+        // Toutes les 5 questions (5, 10, 15, 20...)
+        console.log("positon Question = " +position);
+        return position > 0 && position % 5 === 0
+    }
+
     // Nettoyer à la destruction
     onUnmounted(() => {
         socket.disconnect()
@@ -181,6 +229,8 @@ export function usePlayerGame() {
         scoreLeaderboard,
         streakLeaderboard,
         currentQuestion,
+        currentQuestionPosition,
+        totalQuestionsInSession,
         hasAnswered,
         answerResult,
         isLoading,
@@ -191,6 +241,7 @@ export function usePlayerGame() {
         isQuestionTimerPaused,
         revealAnswer,
         selectedAnswer,
+        showMidGameLeaderboard, // AJOUTER
         joinSession,
         submitAnswer,
         loadLeaderboards,

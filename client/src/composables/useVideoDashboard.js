@@ -50,7 +50,7 @@ export function useVideoDashboard() {
 
       socket.on('transition:complete', () => {
         // Passer à la question suivante après la transition
-        nextQuestion()
+        nextQuestionVideo()
       })
     }
   }
@@ -143,7 +143,7 @@ export function useVideoDashboard() {
   /**
    * Question suivante
    */
-  const nextQuestion = () => {
+  const nextQuestionVideo = () => {
     if (currentQuestionIndex.value < selectedQuestions.value.length - 1) {
       currentQuestionIndex.value++
       broadcastCurrentQuestion()
@@ -191,7 +191,7 @@ export function useVideoDashboard() {
     moveQuestion,
     startPlaylist,
     stopPlaylist,
-    nextQuestion,
+    nextQuestionVideo,
     previousQuestion
   }
 }
