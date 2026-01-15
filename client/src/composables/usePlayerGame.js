@@ -84,12 +84,6 @@ export function usePlayerGame() {
                 revealAnswer.value = false // AJOUTER : Reset la révélation
                 selectedAnswer.value = null // AJOUTER : Reset la sélection
                 
-
-                // AJOUTER : Vérifier si on doit afficher le classement mid-game
-                if (shouldShowMidGameLeaderboard(pos)) {
-                    await playMidGameTransition()
-                }
-
                 // AJOUTER : Lire la question
                 setTimeout(() => {
                     speakPiper(dataQuestion.question)
@@ -112,6 +106,19 @@ export function usePlayerGame() {
                 if (result.isCorrect) {
                     player.value.score++
                 }
+            })
+
+            // AJOUTER : Écouter le signal de pause mid-game
+            socket.on('midgame-pause:start', async ({ currentPosition, totalQuestionsInSession }) => {
+                console.log(`⏸️ Pause mid-game détectée à la question ${currentPosition}`)
+                
+                // Lancer la transition mid-game
+                await playMidGameTransition()
+                
+                // Signaler au host que la pause est terminée
+                socket.emit('player:midgame-pause-complete', {
+                    sessionId: session.value.id
+                })
             })
 
             // Charger le classement initial
@@ -206,15 +213,6 @@ export function usePlayerGame() {
 
         // Cacher le classement
         showMidGameLeaderboard.value = false
-    }
-
-    /**
-     * Vérifier si on doit afficher le classement mid-game
-     */
-    const shouldShowMidGameLeaderboard = (position) => {
-        // Toutes les 5 questions (5, 10, 15, 20...)
-        console.log("positon Question = " +position);
-        return position > 0 && position % 5 === 0
     }
 
     // Nettoyer à la destruction

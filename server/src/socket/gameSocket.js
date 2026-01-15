@@ -112,6 +112,29 @@ function setupGameSocket(io) {
         })
 
         /**
+         * HOST : Broadcaster une pause mid-game (classement)
+         */
+        socket.on('host:broadcast-midgame-pause', ({ sessionId, currentPosition, totalQuestions }) => {
+            // Envoyer à tous les joueurs qu'on entre en pause mid-game
+            io.to(`session:${sessionId}`).emit('midgame-pause:start', {
+                currentPosition,
+                totalQuestions
+            })
+            
+            console.log(`⏸️ Pause mid-game lancée pour session ${sessionId}`)
+        })
+
+        /**
+         * PLAYER : Signaler que la pause mid-game est terminée
+         */
+        socket.on('player:midgame-pause-complete', ({ sessionId }) => {
+            // Notifier le host que la pause mid-game est terminée
+            io.to(`host:${sessionId}`).emit('midgame-pause:complete')
+            
+            console.log(`✅ Pause mid-game terminée pour session ${sessionId}`)
+        })
+
+        /**
          * Déconnexion
          */
         socket.on('disconnect', () => {
@@ -121,3 +144,24 @@ function setupGameSocket(io) {
 }
 
 module.exports = setupGameSocket;
+
+
+
+/*
+    ✅ Flow complet maintenant
+    Question 5 (pause mid-game) :
+
+    Host : broadcastRandomQuestion() détecte position = 5
+    Host : Émet host:broadcast-midgame-pause (PAS de question envoyée)
+    Players : Reçoivent midgame-pause:start
+    Players : Lancent playMidGameTransition() (intro → affichage 10s → outro)
+    Players : Émettent player:midgame-pause-complete
+    Host : Reçoit midgame-pause:complete
+    Host : Appelle broadcastRandomQuestion() pour lancer la question 6
+
+    Questions normales (1-4, 6-9, etc.) :
+
+    Host : broadcastRandomQuestion() lance la question directement
+    Players : Reçoivent question:new et jouent normalement
+
+*/

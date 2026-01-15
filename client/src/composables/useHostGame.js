@@ -12,8 +12,8 @@ import { GAME_CONFIG } from '@/constants/gameConfig'
 export function useHostGame() {
   const session = ref(null)
   const currentQuestion = ref(null) 
-  let currentQuestionIndex = 0 // AJOUTER : Index de la question actuelle
-  
+  let currentQuestionIndex = 1 // AJOUTER : Index de la question actuelle
+
   const availableQuestions = ref([])
   const isLoading = ref(false)
   const isAutoMode = ref(false)
@@ -63,13 +63,28 @@ export function useHostGame() {
       socket.on('transition:complete', () => {
         // Relancer la prochaine question si en mode auto
         if (isAutoMode.value) {
-          if (currentQuestionIndex.value >= GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION) {
+          if (currentQuestionIndex >= GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION) {
             console.log('Session terminée : 50 questions atteintes')
             stopAutoMode()
           } else {
-            broadcastRandomQuestion()
+            console.log("Index -" + currentQuestionIndex)
+            let bool = shouldShowMidGameLeaderboard(currentQuestionIndex)
+            console.log("Bookl -" + bool)
+            if(bool === false)
+            {
+              nextQuestionGame()
+              broadcastRandomQuestion()
+            }
+            else emitMidGameLeaderboardPause();
           }
         }
+      })
+
+      // AJOUTER : Écouter la fin de la pause mid-game
+      socket.on('midgame-pause:complete', () => {
+        console.log('Pause mid-game terminée, lancement question suivante')
+        nextQuestionGame()
+        broadcastRandomQuestion()
       })
 
       // Charger le classement initial
@@ -139,10 +154,9 @@ export function useHostGame() {
    * Lancer une question aléatoire (mode auto)
    */
   const broadcastRandomQuestion = () => {
+
+    // Sinon, lancer la question normalement
     resetQuestionTimer()
-    
-    // Increase by 1 the index
-    nextQuestionGame()
 
     const question = getRandomQuestion()
     currentQuestion.value = question
@@ -174,7 +188,6 @@ export function useHostGame() {
     }
 
     isAutoMode.value = true
-    currentQuestionIndex = 0
     
     // Lancer la première question immédiatement
     broadcastRandomQuestion()
@@ -185,9 +198,43 @@ export function useHostGame() {
    */
   const stopAutoMode = () => {
     isAutoMode.value = false
-    currentQuestionIndex = 0 // Reset
+    currentQuestionIndex = 1 // Reset
     resetQuestionTimer()
   }
+
+    /**
+     * Déclenche une pause mid-game (classement)
+     * toutes les `step` questions.
+     *
+     * @param {number} currentQuestionIndex - Index de la question actuelle (1-based)
+     * @param {number} step - Fréquence de la pause (ex: toutes les 5 questions)
+     * @returns {boolean} true si une pause a été déclenchée, sinon false
+     */
+    const emitMidGameLeaderboardPause = () =>
+    {
+      // Informer les joueurs de la pause
+      socket.emit('host:broadcast-midgame-pause', {
+        sessionId: session.value.id,
+        currentPosition: currentQuestionIndex,
+        totalQuestions: GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION
+      })
+    }
+
+    const shouldShowMidGameLeaderboard = (position) => {
+      console.log(position)
+
+      if (position <= 0) {
+        return false
+      }
+
+      if (position % 5 !== 0) {
+        return false
+      }
+
+      return true
+    }
+
+
 
   // Initialiser au montage
   onMounted(() => {
