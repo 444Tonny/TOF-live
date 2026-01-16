@@ -12,15 +12,23 @@ const setupGameSocket = require('./socket/gameSocket');
 
 const speechRoutes = require('./routes/speech'); // piper
 const speechifyRoutes = require('./routes/speechify'); // NOUVEAU
+const tiktokRoutes = require('./routes/tiktok');
 
 
 const app = express();
 const server = http.createServer(app);
 
-// Configuration Socket.io avec CORS
+/* Configuration Socket.io avec CORS
 const io = new Server(server, {
   cors: {
     origin: 'http://localhost:5173',
+    methods: ['GET', 'POST']
+  }
+}); */
+
+const io = new Server(server, {
+  cors: {
+    origin: '*',
     methods: ['GET', 'POST']
   }
 });
@@ -32,6 +40,14 @@ const PORT = process.env.PORT || 3000;
  */
 app.use(cors()); // Permettre les requêtes depuis le frontend
 app.use(express.json()); // Parser le JSON
+
+// ===============================
+// SERVIR LE FRONTEND (VUE BUILD)
+// ===============================
+const clientDistPath = path.join(__dirname, '../../client/dist');
+
+// servir les fichiers statiques Vue
+app.use(express.static(clientDistPath));
 
 // AJOUTER : Servir les fichiers statiques
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
@@ -50,9 +66,21 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/speech', speechRoutes); 
 app.use('/api/speechify', speechifyRoutes);
 
+/**
+ * Routes TikTok
+ */
+app.use('/api/tiktok', tiktokRoutes); 
+
 // Route de test
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Serveur opérationnel' });
+});
+
+// ===============================
+// SPA fallback (Vue Router)
+// ===============================
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
 /**
