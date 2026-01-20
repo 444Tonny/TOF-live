@@ -83,6 +83,9 @@ app.get(/.*/, (req, res) => {
   res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
+// AJOUTER : Rendre io accessible dans les routes
+app.set('io', io);
+
 /**
  * Setup Socket.io
  */

@@ -181,3 +181,8 @@ INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Jap
 INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The Dead Sea is the lowest point on Earth’s surface.', true, 'It lies over 400 meters below sea level.', 'dead_sea.jpg');
 INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('The capital of Canada is Toronto.', false, 'The capital of Canada is Ottawa.', 'canada_capital.jpg');
 INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('France shares a land border with Brazil.', true, '', 'france_brazil.jpg');
+
+-- TikTOk Intregration
+
+ALTER TABLE players 
+ADD COLUMN profile_picture VARCHAR(500) NULL AFTER platform_user_id;

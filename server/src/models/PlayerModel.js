@@ -8,7 +8,7 @@ class PlayerModel {
     /**
      * Trouver ou créer un joueur automatiquement
      */
-    static async findOrCreate(sessionId, username, platformUserId) {
+    static async findOrCreate(sessionId, username, platformUserId, profilePicture = null) {
         // Chercher si le joueur existe déjà dans cette session
         const [existing] = await db.execute(
             'SELECT * FROM players WHERE session_id = ? AND platform_user_id = ?',
@@ -16,7 +16,19 @@ class PlayerModel {
         );
 
         if (existing.length > 0) {
-            return existing[0];
+            const player = existing[0];
+
+            // Mettre à jour la photo de profil si elle a changé
+            if (profilePicture && player.profile_picture !== profilePicture) {
+                await db.execute(
+                    'UPDATE players SET profile_picture = ? WHERE id = ?',
+                    [profilePicture, player.id]
+                );
+                player.profile_picture = profilePicture;
+                console.log(`📸 Photo de profil mise à jour pour @${username}`);
+            }
+            
+            return player;
         }
 
         // Créer le joueur
@@ -29,7 +41,8 @@ class PlayerModel {
             id: result.insertId,
             username,
             score: 0,
-            platform_user_id: platformUserId
+            platform_user_id: platformUserId,
+            profile_picture: profilePicture
         };
     }
 
@@ -42,6 +55,16 @@ class PlayerModel {
             [playerId]
         );
         return rows[0] || null;
+    }
+
+    /**
+     * Mettre à jour la photo de profil d'un joueur
+     */
+    static async updateProfilePicture(playerId, profilePicture) {
+        await db.execute(
+            'UPDATE players SET profile_picture = ? WHERE id = ?',
+            [profilePicture, playerId]
+        );
     }
 
     /**

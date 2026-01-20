@@ -1,8 +1,8 @@
 <template>
   <div class="leaderboard">
-    <h3>🏆 Classement</h3>
+    <h3>TOP STREAKS</h3>
     <div v-if="players.length === 0" class="empty">
-      En attente de joueurs...
+      Waiting for players...
     </div>
     <div v-else class="players-list">
       <div
@@ -11,9 +11,19 @@
         class="player-item"
         :class="{ 'top-3': index < 3 }"
       >
-        <span class="rank">{{ index + 1 }}</span>
+        <span class="rank">#{{ index + 1 }}</span>
+        <img 
+          v-if="player.profile_picture"
+          :src="player.profile_picture" 
+          :alt="player.username"
+          class="profile-picture"
+        />
+        <div v-else class="profile-placeholder">
+          {{ player.username.charAt(0).toUpperCase() }}
+        </div>
+
         <span class="username">{{ player.username }}</span>
-        <span class="score">{{ player.score }} pts</span>
+        <span class="score">{{ player.score }}<i>pts</i></span>
       </div>
     </div>
   </div>
@@ -33,14 +43,17 @@ defineProps({
 
 <style scoped>
 .leaderboard {
-  background: white;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 20px;
   border-radius: 10px;
+  color: #fdfdfd;
 }
 
 h3 {
   margin-bottom: 15px;
-  color: #333;
+  color: #fdfdfd;
 }
 
 .empty {
@@ -59,13 +72,14 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  background: #f9fafb;
+  padding: 12px 18px;
+  background: #15002057;
   border-radius: 8px;
+  border: 3px solid #667eea;
 }
 
 .player-item.top-3 {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  background: linear-gradient(135deg, #667eea7c 0%, #667eeac5 100%);
   font-weight: bold;
 }
 
@@ -73,16 +87,53 @@ h3 {
   width: 30px;
   text-align: center;
   font-weight: bold;
-  color: #667eea;
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .username {
   flex: 1;
   margin-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .score {
   font-weight: bold;
-  color: #10b981;
+  font-size: 30px;
+  color: #ffffff;
 }
+
+.score i {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  color: #ffffff;
+  margin-left: 3px;
+}
+
+/* Photo de profil */
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.profile-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #667eea;
+}
+
 </style>

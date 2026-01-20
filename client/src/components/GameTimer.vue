@@ -56,9 +56,14 @@ const strokeDashoffset = computed(() => {
   display: flex;
   justify-content: center;
   background: var(--color--bg3);
-  padding-bottom: 25px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  padding-top: 5px;
+  padding-bottom: 14px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  margin: 15px;
+  margin-top: 0px;
+  border: 3px solid rgba(250, 250, 250, 0.2);
+  border-top: none;
 }
 
 .timer-circle {

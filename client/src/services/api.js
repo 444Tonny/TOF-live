@@ -66,12 +66,22 @@ export const sessionService = {
 }
 
 export const gameService = {
-  submitAnswer(username, platformUserId, answer) {
-    return api.post('/game/answer', {
-      username,
-      platform_user_id: platformUserId,
-      answer
-    })
+  
+    submitAnswer(username, platformUserId, answer, profilePicture = null) {
+      try{ 
+        return api.post('/game/answer', {
+          username,
+          platform_user_id: platformUserId,
+          answer,
+          // N'envoyer profile_picture que si elle existe
+          ...(profilePicture && { profile_picture: profilePicture })
+        })
+      }
+      
+      catch (error) {
+        console.error('Erreur soumission réponse:', error)
+        hasAnswered.value = false
+      }
   }
 }
 

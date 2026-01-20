@@ -1,5 +1,6 @@
 const SessionModel = require('../models/SessionModel');
 const PlayerModel = require('../models/PlayerModel');
+const { handleAnswerSubmitted } = require('../services/gameService');
 const db = require('../config/database');
 
 /**
@@ -12,7 +13,7 @@ class GameController {
      */
     static async submitAnswer(req, res) {
         try {
-            const { username, platform_user_id, answer } = req.body;
+            const { username, platform_user_id, answer, profile_picture } = req.body;
 
             // Validation
             if (!username || !platform_user_id || answer === undefined) {
@@ -34,7 +35,8 @@ class GameController {
             const player = await PlayerModel.findOrCreate(
                 session.id,
                 username,
-                platform_user_id
+                platform_user_id,
+                profile_picture // NOUVEAU
             );
 
             // Vérifier s'il a déjà répondu
@@ -69,13 +71,20 @@ class GameController {
                 await PlayerModel.resetStreak(player.id); // AJOUTER
             }
 
+            const io = req.app.get('io');
+            // Soumets la reponse et actualise le leaderboard
+            if (io) {
+                await handleAnswerSubmitted(io, session.id);
+            }
+
             res.json({
                 success: true,
                 isCorrect,
                 player: {
                     id: player.id,
                     username: player.username,
-                    score: isCorrect ? (player.score + 1) : player.score
+                    score: isCorrect ? (player.score + 1) : player.score,
+                    profile_picture: player.profile_picture // NOUVEAU
                 }
             });
 

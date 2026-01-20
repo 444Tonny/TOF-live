@@ -91,7 +91,7 @@ export function usePlayerGame() {
 
                 // MODIFIER : Démarrer le timer avec callback pour jouer la transition
                 startQuestionTimer(async () => {
-                    await playTransition(dataQuestion.question)
+                    await playTransition(dataQuestion)
 
                     // AJOUTER : Signaler au host que la transition est terminée
                     socket.emit('player:transition-complete', {
@@ -111,6 +111,8 @@ export function usePlayerGame() {
             // AJOUTER : Écouter le signal de pause mid-game
             socket.on('midgame-pause:start', async ({ currentPosition, totalQuestionsInSession }) => {
                 console.log(`⏸️ Pause mid-game détectée à la question ${currentPosition}`)
+     
+                stopSpeakPiper()
                 
                 // Lancer la transition mid-game
                 await playMidGameTransition()
@@ -153,13 +155,6 @@ export function usePlayerGame() {
 
             // MODIFIER : Stocker le résultat mais ne pas l'afficher tout de suite
             answerResult.value = response.data
-
-            // Notifier via Socket.io pour mise à jour temps réel
-            socket.emit('player:answer-submitted', {
-                sessionId: session.value.id,
-                playerId: player.value.platform_user_id,
-                isCorrect: response.data.isCorrect
-            })
 
         } catch (error) {
             console.error('Erreur soumission réponse:', error)
@@ -205,7 +200,7 @@ export function usePlayerGame() {
         showMidGameLeaderboard.value = true
 
         // Attendre 10 secondes
-        await new Promise(resolve => setTimeout(resolve, 10000))
+        await new Promise(resolve => setTimeout(resolve, GAME_CONFIG.DELAY_LEADERBOARD_MIDGAME))
 
         // Outro classement
         const outroPhraseLeaderboard = getRandomPhrase(MID_GAME_LEADERBOARD_OUTRO)
@@ -213,6 +208,8 @@ export function usePlayerGame() {
 
         // Cacher le classement
         showMidGameLeaderboard.value = false
+
+        stopSpeakPiper()
     }
 
     // Nettoyer à la destruction

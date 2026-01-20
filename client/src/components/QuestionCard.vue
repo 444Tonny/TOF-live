@@ -87,15 +87,19 @@ defineEmits(['answer'])
 <style scoped>
 .question-card {
   background: var(--color--bg3);
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  margin-left: 15px;
+  margin-right: 15px;
   padding: 40px;
   padding-bottom: 20px;
+  border: 3px solid rgba(250, 250, 250, 0.2);
+  border-bottom: none;
 }
 
 .question-text {
-  font-size: 45px;
-  font-weight: 800;
+  font-size: 42px;
+  font-weight: 700;
   line-height: 55px;
   text-align: center;
   margin-bottom: 30px;
@@ -113,7 +117,7 @@ defineEmits(['answer'])
   align-items: center;
   box-sizing: border-box;
   height: 65px;
-  background: var(--color--primary);
+  background: white;
   border-radius: 10px;
   margin-top: 20px;
   animation: ease-in-out 0.6s bounceIn;
@@ -126,7 +130,7 @@ defineEmits(['answer'])
   margin: auto;
   font-size: 24px;
   font-weight: 600;
-  color: var(--color--white);
+  color: #242424;
 }
 
 .reveal-text strong {

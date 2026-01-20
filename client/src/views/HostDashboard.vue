@@ -7,6 +7,9 @@
         <router-link to="/" class="back-btn">← Retour</router-link>
       </div>
     </header>
+    
+    <!-- NOUVEAU : Test TikTok -->
+    <TikTokPanel />
 
     <div v-if="isLoading" class="loading">
       Chargement...
@@ -75,6 +78,7 @@
         <StreakLeaderboard :players="streakLeaderboard" />
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -84,6 +88,7 @@ import QuestionSelector from '../components/host/QuestionSelector.vue'
 import Leaderboard from '../components/host/Leaderboard.vue'
 import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
+import TikTokPanel from '../components/host/TikTokPanel.vue' // NOUVEAU
 
 /**
  * Dashboard pour le host (contrôle du jeu)
@@ -101,6 +106,8 @@ const {
   startAutoMode,
   stopAutoMode
 } = useHostGame()
+
+
 </script>
 
 <style scoped>

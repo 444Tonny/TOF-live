@@ -2,7 +2,7 @@
   <div class="player-view">
      <!-- AJOUTER : Classement mid-game (overlay) -->
     <MidGameLeaderboard
-      v-if="showMidGameLeaderboard"
+     v-if="showMidGameLeaderboard"
       :scoreLeaderboard="scoreLeaderboard"
       :streakLeaderboard="streakLeaderboard"
     />
@@ -10,14 +10,16 @@
     <!-- Contenu existant (caché quand showMidGameLeaderboard = true) -->
     <div v-show="!showMidGameLeaderboard">
 
+      <!--
       <header>
-        <h1>🎯 Mode Joueur</h1>
+        <h1> Mode Joueur</h1>
         <div class="header-actions">
-          <!-- AJOUTER : Bouton speech toggle (seulement si joueur connecté) -->
+          <!-- AJOUTER : Bouton speech toggle (seulement si joueur connecté) 
           <SpeechToggle v-if="player" />
           <router-link to="/" class="back-btn">← Retour</router-link>
         </div>
       </header>
+    -->
 
       <!-- Formulaire de connexion -->
       <div v-if="!player" class="join-form">
@@ -36,17 +38,12 @@
 
       <!-- Interface de jeu -->
       <div v-else class="game-interface">
-        
-        <!-- AJOUTER : Indicateur vocal -->
-        <div v-if="isPiperSpeaking" class="voice-indicator">
-          🎙️ Animateur en train de parler...
-        </div>
 
-        <!-- Info joueur -->
+        <!-- Info joueur 
         <div class="player-info">
           <span class="player-name">{{ player.username }}</span>
-          <span class="player-score">Score : {{ player.score }}</span>
-        </div>
+          <!-- <span class="player-score">Score : {{ player.score }}</span> 
+        </div>-->
 
         <!-- En attente de question -->
         <WaitingRoom v-if="!currentQuestion" />
@@ -77,11 +74,24 @@
         <ImageIllustration 
           v-if="currentQuestion" :question="currentQuestion"
         />
+
+        <ScrollingBanner />
         
         <!-- Classements -->
         <div class="leaderboards-container">
-          <Leaderboard :players="scoreLeaderboard" />
-          <StreakLeaderboard :players="streakLeaderboard" />
+          <Transition name="slide-fade">
+            <TopStreakLeaderboard 
+              v-if="showTopStreakLeaderboard" 
+              :players="streakLeaderboard" 
+            />
+          </Transition>
+          
+          <Transition name="slide-fade">
+            <TopScoreLeaderboard 
+              v-if="!showTopStreakLeaderboard" 
+              :players="scoreLeaderboard" 
+            />
+          </Transition>
         </div>
 
       </div>
@@ -90,17 +100,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { usePlayerGame } from '../composables/usePlayerGame'
 import WaitingRoom from '../components/player/WaitingRoom.vue'
-import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
+//import SpeechToggle from '../components/SpeechToggle.vue' // AJOUTER
 import QuestionCard from '../components/QuestionCard.vue' // AJOUTER
 import QuestionCounter from '../components/QuestionCounter.vue'
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
-import Leaderboard from '../components/host/Leaderboard.vue'
-import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
+import TopStreakLeaderboard from '../components/host/TopStreakLeaderboard.vue'
+import TopScoreLeaderboard from '../components/host/TopScoreLeaderboard.vue'
 import ImageIllustration from '@/components/ImageIllustration.vue'
 import MidGameLeaderboard from '../components/player/MidGameLeaderboard.vue' // AJOUTER
+import ScrollingBanner from '@/components/player/ScrollingBanner.vue'
+import { GAME_CONFIG } from '../constants/gameConfig' // AJOUTER
 
 /**
  * Interface joueur
@@ -141,17 +153,38 @@ const handleJoin = async () => {
     alert('Erreur : Aucune session active')
   }
 }
+
+// AJOUTER cette ref
+const showTopStreakLeaderboard = ref(true)
+
+// AJOUTER cette variable
+let topLeaderboardInterval = null
+
+// AJOUTER dans onMounted (après ton code existant)
+onMounted(() => {
+  // Switch entre les top leaderboards toutes les 30s
+  topLeaderboardInterval = setInterval(() => {
+    showTopStreakLeaderboard.value = !showTopStreakLeaderboard.value
+  }, GAME_CONFIG.DELAY_SLIDE_LEADERBOARD)
+})
+
+// MODIFIER onUnmounted pour cleanup
+onUnmounted(() => {
+  socket.disconnect()
+  stopSpeakPiper()
+  if (topLeaderboardInterval) clearInterval(topLeaderboardInterval) // AJOUTER
+})
+
 </script>
 
 <style scoped>
 .player-view {
   min-height: 100vh;
   width: 650px;
-  padding: 30px;
   padding-top: 10px;
   border: 3px solid #231f3586;
-  border-radius: 30px;
-  background: #2726349c;
+  border-radius: 3px;
+  background: #231d277c;
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -309,14 +342,33 @@ h1 {
 /*  Leaderbaord */
 .leaderboards-container {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
+  margin-top: 5px;
+  background: rgb(113 80 158 / 80%);
+  border: 3px solid rgba(255, 255, 255, 0.192);
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {
   .leaderboards-container {
     flex-direction: column;
   }
+}
+
+/* REMPLACER les classes slide-fade par: */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.6s ease;
+}
+
+.slide-fade-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+  display: none;
 }
 
 </style>

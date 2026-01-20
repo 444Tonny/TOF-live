@@ -1,8 +1,8 @@
 <template>
   <div class="streak-leaderboard">
-    <h3>🔥 Classement Streak</h3>
+    <h3>🔥 Streak Leaderboard</h3>
     <div v-if="players.length === 0" class="empty">
-      En attente de joueurs...
+      Waiting for players...
     </div>
     <div v-else class="players-list">
       <div
@@ -11,11 +11,19 @@
         class="player-item"
         :class="{ 'top-3': index < 3 }"
       >
-        <span class="rank">{{ index + 1 }}</span>
+        <span class="rank">#{{ index + 1 }}</span>
+        <img 
+          v-if="player.profile_picture"
+          :src="player.profile_picture" 
+          :alt="player.username"
+          class="profile-picture"
+        />
+        <div v-else class="profile-placeholder">
+          {{ player.username.charAt(0).toUpperCase() }}
+        </div>
         <span class="username">{{ player.username }}</span>
         <div class="streaks">
-          <span class="current-streak">🔥 {{ player.current_streak }}</span>
-          <span class="best-streak">⭐ {{ player.best_streak }}</span>
+          <span class="current-streak">{{ player.current_streak }}<i>pts</i></span>
         </div>
       </div>
     </div>
@@ -36,14 +44,17 @@ defineProps({
 
 <style scoped>
 .streak-leaderboard {
-  background: white;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 20px;
   border-radius: 10px;
+  color: #fdfdfd;
 }
 
 h3 {
   margin-bottom: 15px;
-  color: #333;
+  color: #fdfdfd;
 }
 
 .empty {
@@ -62,13 +73,14 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  background: #f9fafb;
+  padding: 12px 18px;
+  background: #15002057;
   border-radius: 8px;
+  border: 3px solid #667eea;
 }
 
 .player-item.top-3 {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  background: linear-gradient(135deg, #667eea7c 0%, #667eeac5 100%);
   font-weight: bold;
 }
 
@@ -76,26 +88,64 @@ h3 {
   width: 30px;
   text-align: center;
   font-weight: bold;
-  color: #ef4444;
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .username {
   flex: 1;
   margin-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .streaks {
-  display: flex;
-  gap: 10px;
+  font-weight: bold;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.streaks i {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  color: #ffffff;
+  margin-left: 3px;
 }
 
 .current-streak {
   font-weight: bold;
-  color: #ef4444;
+  color: #ffffff;
 }
 
 .best-streak {
   font-size: 0.9rem;
   color: #f59e0b;
 }
+
+/* Photo de profil */
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.profile-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #667eea;
+}
+
+
 </style>

@@ -64,14 +64,13 @@ export function useHostGame() {
         // Relancer la prochaine question si en mode auto
         if (isAutoMode.value) {
           if (currentQuestionIndex >= GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION) {
-            console.log('Session terminée : 50 questions atteintes')
+            console.log('Session terminée : XX questions atteintes')
             stopAutoMode()
           } else {
-            console.log("Index -" + currentQuestionIndex)
             let bool = shouldShowMidGameLeaderboard(currentQuestionIndex)
-            console.log("Bookl -" + bool)
             if(bool === false)
             {
+              console.log('Transcomplete')
               nextQuestionGame()
               broadcastRandomQuestion()
             }
@@ -82,7 +81,6 @@ export function useHostGame() {
 
       // AJOUTER : Écouter la fin de la pause mid-game
       socket.on('midgame-pause:complete', () => {
-        console.log('Pause mid-game terminée, lancement question suivante')
         nextQuestionGame()
         broadcastRandomQuestion()
       })
@@ -221,7 +219,6 @@ export function useHostGame() {
     }
 
     const shouldShowMidGameLeaderboard = (position) => {
-      console.log(position)
 
       if (position <= 0) {
         return false

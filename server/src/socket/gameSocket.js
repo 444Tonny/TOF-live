@@ -81,23 +81,9 @@ function setupGameSocket(io) {
          * PLAYER : Réponse soumise (notification temps réel)
          */
         socket.on('player:answer-submitted', async ({ sessionId, playerId, isCorrect }) => {
-            try {
-                // Récupérer le classement mis à jour
-                const scoreLeaderboard = await SessionModel.getLeaderboard(sessionId);
-                const streakLeaderboard = await SessionModel.getStreakLeaderboard(sessionId);
-
-                const data = {
-                    score: scoreLeaderboard,
-                    streak: streakLeaderboard
-                };
-
-                // Envoyer aux joueurs ET au host
-                io.to(`session:${sessionId}`).emit('leaderboard:update', data);
-                io.to(`host:${sessionId}`).emit('leaderboard:update', data); // AJOUTER
-
-                // Notifier le joueur du résultat
-                socket.emit('answer:result', { isCorrect });
-
+            try 
+            {
+                await handleAnswerSubmitted(io, sessionId);
             } catch (error) {
                 console.error('Erreur answer-submitted:', error);
             }
