@@ -111,10 +111,10 @@ class TikTokService {
     parseAnswer(message) {
         const msg = message.toLowerCase().trim();
         
-        if (['true', 'vrai', '1', 'oui', 'yes', 'v', 't'].includes(msg)) {
+        if (['true', '1'].includes(msg)) {
             return true;
         }
-        if (['false', 'faux', '0', 'non', 'no', 'f'].includes(msg)) {
+        if (['false', '0'].includes(msg)) {
             return false;
         }
         

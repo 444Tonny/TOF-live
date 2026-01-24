@@ -1,4 +1,5 @@
 import api from './api'
+import { isAnySpeechPlaying, waitForSpeechAvailability } from '@/utils/speechLock'
 
 /**
  * Service pour gérer la lecture des intro/outro avec Speechify
@@ -19,6 +20,9 @@ class speechifyService {
     try {
       // Arrêter toute lecture en cours
       this.stopSpeakSpeechify()
+
+      await waitForSpeechAvailability()
+      isAnySpeechPlaying.value = true
 
       // Si audio vide, ne rien faire
       if (!text || !text.trim()) {
@@ -47,6 +51,7 @@ class speechifyService {
       await new Promise((resolve, reject) => {
         this.currentAudio.onended = () => {
           this.isSpeechifyPlaying = false
+          isAnySpeechPlaying.value = false // Marquer comme non en cours de lecture globalement 
           URL.revokeObjectURL(audioUrl)
           resolve()
         }
@@ -54,6 +59,7 @@ class speechifyService {
         this.currentAudio.onerror = (error) => {
           console.error('Erreur lecture audio intro/outro:', error)
           this.isSpeechifyPlaying = false
+           isAnySpeechPlaying.value = false // Marquer comme non en cours de lecture globalement
           URL.revokeObjectURL(audioUrl)
           reject(error)
         }
@@ -64,6 +70,7 @@ class speechifyService {
     } catch (error) {
       console.error('Erreur génération audio intro/outro Speechify:', error)
       this.isSpeechifyPlaying = false
+      isAnySpeechPlaying.value = false // Global
       throw error
     }
   }

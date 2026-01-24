@@ -12,20 +12,59 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { BANNER_MESSAGES } from '@/constants/bannerMessages'
 
+const props = defineProps({
+  scoreLeaderboard: {
+    type: Array,
+    default: () => []
+  },
+  streakLeaderboard: {
+    type: Array,
+    default: () => []
+  }
+})
+
 const currentIndex = ref(0)
 let interval = null
 
-const currentMessage = computed(() => BANNER_MESSAGES[currentIndex.value])
+const currentMessage = computed(() => {
+  let message = BANNER_MESSAGES[currentIndex.value]
+  
+  // Remplacer les placeholders par les vraies données
+  if (message.includes('{topScorePlayer}')) {
+    const topPlayer = props.scoreLeaderboard[0]
+    if (topPlayer) {
+      message = message
+        .replace('{topScorePlayer}', topPlayer.username)
+        .replace('{topScore}', topPlayer.score)
+    } else {
+      message = "🏆 Be the first to score!"
+    }
+  }
+  
+  if (message.includes('{topStreakPlayer}')) {
+    const topStreakPlayer = props.streakLeaderboard[0]
+    if (topStreakPlayer) {
+      message = message
+        .replace('{topStreakPlayer}', topStreakPlayer.username)
+        .replace('{topStreak}', topStreakPlayer.current_streak)
+    } else {
+      message = "🔥 Start your winning streak now!"
+    }
+  }
+  
+  return message
+})
 
 onMounted(() => {
   interval = setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % BANNER_MESSAGES.length
-  }, 8000) // Change toutes les 8 secondes
+  }, 8000)
 })
 
 onUnmounted(() => {
   if (interval) clearInterval(interval)
 })
+
 </script>
 
 <style scoped>

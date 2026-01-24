@@ -87,8 +87,6 @@ defineEmits(['answer'])
 <style scoped>
 .question-card {
   background: var(--color--bg3);
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
   margin-left: 15px;
   margin-right: 15px;
   padding: 40px;

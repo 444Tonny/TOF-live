@@ -5,24 +5,21 @@
       Waiting for players…
     </div>
     <div v-else class="players-list">
-      <div
-        v-for="(player, index) in players.slice(0, 3)"
-        :key="index"
-        class="player-item"
-        :class="{'top-3': index < 3, ['rank-' + (index + 1)]: true}"
-      >
+      <div v-for="(player, index) in players.slice(0, 3)" :key="index" class="player-item"
+        :class="{ 'top-3': index < 3, ['rank-' + (index + 1)]: true }">
         <span class="username"><span class="rank">{{ index + 1 }}. </span>{{ player.username }}</span>
-        <img 
-          v-if="player.profile_picture"
-          :src="player.profile_picture" 
-          :alt="player.username"
-          class="profile-picture"
-        />
+        <img v-if="player.profile_picture" :src="player.profile_picture" :alt="player.username"
+          class="profile-picture" />
         <div v-else class="profile-placeholder">
           {{ player.username.charAt(0).toUpperCase() }}
         </div>
         <div class="streaks">
-          <span class="current-streak">{{ player.current_streak }}<i>{{ player.current_streak === 1 ? 'pt' : 'pts' }}</i></span>
+          <Transition name="zoom">
+            <span class="current-streak" :key="player.current_streak">
+              {{ player.current_streak }}
+              <i>{{ player.current_streak === 1 ? 'pt' : 'pts' }}</i>
+            </span>
+          </Transition>
         </div>
       </div>
     </div>
@@ -72,7 +69,7 @@ h3 {
 }
 
 .player-item {
-  flex: 1;  
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -143,53 +140,63 @@ h3 {
 }
 
 .profile-placeholder {
-  width: 40px;
-  height: 40px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #667eea 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 32px;
   color: white;
 }
 
-.rank-1
-{
+.rank-1 {
   order: 2;
 }
 
-.rank-2
-{
+.rank-2 {
   order: 1;
 }
 
-.rank-3
-{
+.rank-3 {
   order: 3;
 }
 
-.rank-1 .profile-picture
-{
-  width: 120px;
-  height: 120px;
+.rank-1 .profile-picture,
+.rank-1 .profile-placeholder {
+  width: 120px !important;
+  height: 120px !important;
 }
 
-.rank-1 .rank
-{
+.rank-1 .rank {
   color: #ffb22c;
   font-size: 22px;
 }
 
-.rank-2 .rank
-{
+.rank-2 .rank {
   color: #f5f5f5;
 }
 
-.rank-3 .rank
-{
+.rank-3 .rank {
   color: #864d2c;
 }
 
+/* Animation */
+.zoom-enter-active {
+  animation: zoomOut 0.45s ease-out;
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 </style>

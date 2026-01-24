@@ -186,3 +186,20 @@ INSERT INTO questions (question, answer, answer_detail, image_file) VALUES ('Fra
 
 ALTER TABLE players 
 ADD COLUMN profile_picture VARCHAR(500) NULL AFTER platform_user_id;
+
+-- Ajouter la colonne category
+ALTER TABLE questions 
+ADD COLUMN category VARCHAR(50) DEFAULT 'general' AFTER answer_detail;
+
+-- Mettre à jour les questions existantes sans catégorie
+UPDATE questions 
+SET category = 'general' 
+WHERE category IS NULL OR category = '';
+
+ALTER TABLE questions 
+ADD COLUMN is_video_only BOOLEAN DEFAULT FALSE AFTER category;
+
+-- S'assurer que toutes les questions existantes sont FALSE
+UPDATE questions 
+SET is_video_only = FALSE 
+WHERE is_video_only IS NULL;

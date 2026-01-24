@@ -49,8 +49,11 @@
         <WaitingRoom v-if="!currentQuestion" />
 
         <!-- Question active -->
-        <div v-else class="question-section">    
-          <QuestionCounter :current="currentQuestionPosition" :total="totalQuestionsInSession" />
+        <div v-else class="question-section">  
+          <div class="questions-infos">
+            <QuestionCounter :current="currentQuestionPosition" :total="totalQuestionsInSession" />
+            <QuestionCategory :category="currentQuestion.category" />
+          </div>  
 
           <QuestionCard
             :question="currentQuestion"
@@ -75,7 +78,10 @@
           v-if="currentQuestion" :question="currentQuestion"
         />
 
-        <ScrollingBanner />
+        <ScrollingBanner 
+          :scoreLeaderboard="scoreLeaderboard"
+          :streakLeaderboard="streakLeaderboard"
+        />
         
         <!-- Classements -->
         <div class="leaderboards-container">
@@ -113,6 +119,8 @@ import ImageIllustration from '@/components/ImageIllustration.vue'
 import MidGameLeaderboard from '../components/player/MidGameLeaderboard.vue' // AJOUTER
 import ScrollingBanner from '@/components/player/ScrollingBanner.vue'
 import { GAME_CONFIG } from '../constants/gameConfig' // AJOUTER
+import QuestionCategory from '../components/QuestionCategory.vue'
+import TopStreakAnnouncement from '@/components/player/TopStreakAnnouncement.vue'
 
 /**
  * Interface joueur
@@ -136,6 +144,9 @@ const {
   scoreLeaderboard,
   streakLeaderboard,
   showMidGameLeaderboard,
+  showTopStreakAnnouncement,
+  announcedPlayer,
+  announcedPosition,
 
   joinSession,
   submitAnswer
@@ -188,32 +199,6 @@ onUnmounted(() => {
   animation: fadeIn 0.5s ease-out;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-/* AJOUTER ces styles */
-.header-actions {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.voice-indicator {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-align: center;
-  margin-bottom: 15px;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-  animation: pulse 2s infinite;
-}
-
 @keyframes pulse {
   0%, 100% { 
     opacity: 1;
@@ -223,6 +208,15 @@ header {
   }
 }
 /* */
+
+.questions-infos
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-right: 15px;
+}
 
 h1 {
   color: white;

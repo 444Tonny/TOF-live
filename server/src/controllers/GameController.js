@@ -39,15 +39,15 @@ class GameController {
                 profile_picture // NOUVEAU
             );
 
-            // Vérifier s'il a déjà répondu
+            //Vérifier s'il a déjà répondu
             const hasAnswered = await PlayerModel.hasAnswered(player.id, session.current_question_id);
             if (hasAnswered) {
-                return res.status(400).json({ message: 'Déjà répondu à cette question' });
+                return res.status(200).json({ message: 'Déjà répondu à cette question' });
             }
 
             // Récupérer la bonne réponse
             const [rows] = await db.execute(
-                'SELECT answer FROM questions WHERE id = ?',
+                'SELECT answer FROM questions WHERE id = ? and is_video_only = FALSE',
                 [session.current_question_id]
             );
 
@@ -90,7 +90,7 @@ class GameController {
 
         } catch (error) {
             console.error('Erreur submitAnswer:', error);
-            res.status(500).json({ message: 'Erreur serveur' });
+            res.status(500).json({ message: 'Erreur serveur:' + error });
         }
     }
 }

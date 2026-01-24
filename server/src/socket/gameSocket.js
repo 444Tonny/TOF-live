@@ -47,7 +47,7 @@ function setupGameSocket(io) {
             try {
                 // Récupérer la question
                 const [rows] = await db.execute(
-                    'SELECT id, question, answer, answer_detail, image_file FROM questions WHERE id = ?',
+                    'SELECT id, question, answer, answer_detail, image_file, category FROM questions WHERE id = ? AND is_video_only = FALSE',
                     [questionId]
                 );
 
@@ -118,6 +118,23 @@ function setupGameSocket(io) {
             io.to(`host:${sessionId}`).emit('midgame-pause:complete')
             
             console.log(`✅ Pause mid-game terminée pour session ${sessionId}`)
+        })
+
+        // AJOUTER après host:broadcast-midgame-pause
+        socket.on('host:broadcast-endgame-pause', ({ sessionId, currentPosition, totalQuestions }) => {
+            io.to(`session:${sessionId}`).emit('endgame-pause:start', {
+                currentPosition,
+                totalQuestions
+            })
+            
+            console.log(`🏁 Pause fin de session pour session ${sessionId}`)
+        })
+
+        // AJOUTER après player:midgame-pause-complete
+        socket.on('player:endgame-pause-complete', ({ sessionId }) => {
+        io.to(`host:${sessionId}`).emit('endgame-pause:complete')
+        
+        console.log(`✅ Pause fin de session terminée pour session ${sessionId}`)
         })
 
         /**

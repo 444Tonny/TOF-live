@@ -62,7 +62,7 @@ class SessionModel {
      */
     static async getLeaderboard(sessionId) {
         const [rows] = await db.execute(
-            'SELECT username, score, profile_picture FROM players WHERE session_id = ? ORDER BY score DESC, created_at ASC LIMIT 10',
+            'SELECT id, platform_user_id, username, score, profile_picture FROM players WHERE session_id = ? ORDER BY score DESC, created_at ASC LIMIT 10',
             [sessionId]
         );
         return rows;
@@ -73,7 +73,7 @@ class SessionModel {
      */
     static async getStreakLeaderboard(sessionId) {
     const [rows] = await db.execute(
-        'SELECT username, current_streak, best_streak, profile_picture FROM players WHERE session_id = ? ORDER BY current_streak DESC, best_streak DESC, created_at ASC LIMIT 10',
+        'SELECT id, platform_user_id, username, current_streak, best_streak, profile_picture FROM players WHERE session_id = ? ORDER BY current_streak DESC, best_streak DESC, created_at ASC LIMIT 10',
         [sessionId]
     );
     return rows;

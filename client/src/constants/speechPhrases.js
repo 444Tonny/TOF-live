@@ -95,7 +95,23 @@ export const MID_GAME_LEADERBOARD_OUTRO = [
   "Let's move on"
 ]
 
-
+export const TOP_STREAK_ENTRY_MESSAGES = {
+  1: [
+    "Congrats {username}! You're leading the streak leaderboard! Keep it up! ... Next?",
+    "Amazing {username}! You've taken first place! Don't stop now! ... Next?",
+    "Wow {username}! Number one streak! Keep that momentum going! ... Ready for the next one?"
+  ],
+  2: [
+    "Nice {username}! Second place — you're on fire! ... Next?",
+    "Great job {username}! You're climbing to second! Keep pushing! ... Next?",
+    "Well done {username}! Second in the streak! Almost at the top! ... Next question?"
+  ],
+  3: [
+    "Well played {username}! You've made it into the top 3! ... Next?",
+    "Congrats {username}! You just entered the top 3 streak! ... Next?",
+    "Nice work {username}! Top 3! Keep those correct answers coming! ... Next?"
+  ]
+}
 /**
  * Sélectionner une phrase aléatoire depuis un tableau
  */

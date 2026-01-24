@@ -1,4 +1,5 @@
 import { speechService } from './api'
+import { isAnySpeechPlaying, waitForSpeechAvailability } from '@/utils/speechLock'
 
 /**
  * Service pour gérer la lecture audio avec Piper
@@ -6,7 +7,7 @@ import { speechService } from './api'
 class AudioPiperService {
   constructor() {
     this.audio = null
-    this.isPlaying = false
+    this.isPiperSpeaking = false
   }
 
   /**
@@ -16,6 +17,10 @@ class AudioPiperService {
     try {
       // Arrêter toute lecture en cours
       this.stopSpeakPiper()
+
+      await waitForSpeechAvailability()
+      isAnySpeechPlaying.value = true
+      this.isPiperSpeaking = true
 
       // Si audio vide, ne rien faire
       if (!text || !text.trim()) {
@@ -32,19 +37,21 @@ class AudioPiperService {
       // Créer et jouer l'audio
       this.audio = new Audio(audioUrl)
       this.audio.playbackRate = 1.25
-      this.isPlaying = true
+      this.isPiperSpeaking = true
 
       // Attendre la fin de la lecture
       await new Promise((resolve, reject) => {
         this.audio.onended = () => {
-          this.isPlaying = false
+          this.isPiperSpeaking = false
+          isAnySpeechPlaying.value = false
           URL.revokeObjectURL(audioUrl)
           resolve()
         }
 
-        this.audio.onerror = (error) => {
+        this.audio.onerror = (error) => { 
           console.error('Erreur lecture audio:', error)
-          this.isPlaying = false
+          this.isPiperSpeaking = false
+          isAnySpeechPlaying.value = false
           URL.revokeObjectURL(audioUrl)
           reject(error)
         }
@@ -54,7 +61,8 @@ class AudioPiperService {
 
     } catch (error) {
       console.error('Erreur génération audio:', error)
-      this.isPlaying = false
+      this.isPiperSpeaking = false
+      isAnySpeechPlaying.value = false
       throw error
     }
   }
@@ -66,15 +74,15 @@ class AudioPiperService {
     if (this.audio) {
       this.audio.pause()
       this.audio.currentTime = 0
-      this.isPlaying = false
+      this.isPiperSpeaking = false
     }
   }
 
   /**
    * Vérifier si en lecture
    */
-  getIsPlaying() {
-    return this.isPlaying
+  getIsPiperSpeaking() {
+    return this.isPiperSpeaking
   }
 }
 

@@ -64,13 +64,11 @@ export function useHostGame() {
         // Relancer la prochaine question si en mode auto
         if (isAutoMode.value) {
           if (currentQuestionIndex >= GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION) {
-            console.log('Session terminée : XX questions atteintes')
-            stopAutoMode()
+            emitEndGameLeaderboardPause()
           } else {
             let bool = shouldShowMidGameLeaderboard(currentQuestionIndex)
             if(bool === false)
             {
-              console.log('Transcomplete')
               nextQuestionGame()
               broadcastRandomQuestion()
             }
@@ -83,6 +81,12 @@ export function useHostGame() {
       socket.on('midgame-pause:complete', () => {
         nextQuestionGame()
         broadcastRandomQuestion()
+      })
+
+      socket.on('endgame-pause:complete', () => {
+        console.log('Fin de session, redémarrage...')
+        currentQuestionIndex = 1 // Reset à 1
+        broadcastRandomQuestion() // Relancer
       })
 
       // Charger le classement initial
@@ -218,19 +222,27 @@ export function useHostGame() {
       })
     }
 
+    // AJOUTER après emitMidGameLeaderboardPause
+    const emitEndGameLeaderboardPause = () => {
+      socket.emit('host:broadcast-endgame-pause', {
+        sessionId: session.value.id,
+        currentPosition: currentQuestionIndex,
+        totalQuestions: GAME_CONFIG.NUMBER_OF_QUESTION_IN_SESSION
+      })
+    }
+
     const shouldShowMidGameLeaderboard = (position) => {
 
       if (position <= 0) {
         return false
       }
 
-      if (position % 5 !== 0) {
+      if (position % 25 !== 0) {
         return false
       }
 
       return true
     }
-
 
 
   // Initialiser au montage

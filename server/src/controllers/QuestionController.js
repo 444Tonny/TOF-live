@@ -14,7 +14,7 @@ class QuestionController {
     // Récupérer les IDs des questions déjà utilisées (envoyés depuis le frontend)
     const usedIds = req.query.exclude ? req.query.exclude.split(',').map(Number) : [];
     
-    let query = 'SELECT * FROM questions';
+    let query = 'SELECT * FROM questions WHERE is_video_only = FALSE';
     let params = [];
     
     // Si des questions sont déjà utilisées, les exclure
@@ -68,7 +68,7 @@ class QuestionController {
       
       // Récupérer la question
       const [rows] = await db.execute(
-        'SELECT answer FROM questions WHERE id = ?',
+        'SELECT answer FROM questions WHERE id = ? AND is_video_only = FALSE',
         [questionId]
       );
       
@@ -99,7 +99,7 @@ class QuestionController {
    */
   static async getAllQuestions(req, res) {
     try {
-      const [rows] = await db.execute('SELECT * FROM questions');
+      const [rows] = await db.execute('SELECT * FROM questions WHERE is_video_only = FALSE');
       res.json(rows);
     } catch (error) {
       console.error('Erreur:', error);

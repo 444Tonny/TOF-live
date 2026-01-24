@@ -3,10 +3,10 @@ import { sessionService, gameService } from '../services/api'
 import socket from '../services/socket'
 import { usePiperSpeech } from './usePiperSpeech' // AJOUTER
 import { useGameTimer } from './useGameTimer'
-import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, MID_GAME_LEADERBOARD_INTRO, MID_GAME_LEADERBOARD_OUTRO, getRandomPhrase } from '../constants/speechPhrases' // AJOUTER
+import { ANSWER_CONNECTORS, NEXT_QUESTION_TRANSITIONS, MID_GAME_LEADERBOARD_INTRO, MID_GAME_LEADERBOARD_OUTRO, TOP_STREAK_ENTRY_MESSAGES, getRandomPhrase } from '../constants/speechPhrases' // AJOUTER
 import { GAME_CONFIG } from '../constants/gameConfig' // AJOUTER
 import { useLeaderboard } from './useLeaderboard' // AJOUTER
-
+import speechifyService from '../services/speechifyService'
 /**
  * Composable pour le Player (viewers)
  */
@@ -32,6 +32,12 @@ export function usePlayerGame() {
     const selectedAnswer = ref(null) // AJOUTER
 
     const showMidGameLeaderboard = ref(false) // AJOUTER - midgame leaderboard
+
+    const previousTop3Ids = ref([]) // Garder les IDs du top 3 précédent
+
+    const showTopStreakAnnouncement = ref(false)
+    const announcedPlayer = ref(null)
+    const announcedPosition = ref(0)
 
     /**
      * Rejoindre la session active
@@ -64,7 +70,8 @@ export function usePlayerGame() {
                 socket.on('leaderboard:update', (newLeaderboard) => {
                 leaderboard.value = newLeaderboard
             }) */
-            socket.on('leaderboard:update', (newLeaderboard) => {
+            socket.on('leaderboard:update', async (newLeaderboard) => {
+                console.log("Mise à jour du classement reçue:", newLeaderboard);
                 updateLeaderboards(newLeaderboard)
             })
 
@@ -91,7 +98,17 @@ export function usePlayerGame() {
 
                 // MODIFIER : Démarrer le timer avec callback pour jouer la transition
                 startQuestionTimer(async () => {
-                    await playTransition(dataQuestion)
+                    
+                    // 1. Détecter s'il y a un nouveau joueur
+                    const newPlayerInfo = detectNewTopStreakPlayer(streakLeaderboard.value)
+
+                    // 2. Jouer la transition (sans "Next" si nouveau joueur)
+                    await playTransition(currentQuestion.value, !!newPlayerInfo)
+
+                    // 3. Si nouveau joueur, annoncer avec Speechify
+                    if (newPlayerInfo) {
+                        await announceNewTopStreakPlayer(newPlayerInfo)
+                    }
 
                     // AJOUTER : Signaler au host que la transition est terminée
                     socket.emit('player:transition-complete', {
@@ -119,6 +136,18 @@ export function usePlayerGame() {
                 
                 // Signaler au host que la pause est terminée
                 socket.emit('player:midgame-pause-complete', {
+                    sessionId: session.value.id
+                })
+            })
+
+            // AJOUTER après midgame-pause:start
+            socket.on('endgame-pause:start', async ({ currentPosition, totalQuestions }) => {
+                console.log(`🏁 Pause fin de session détectée`)
+                
+                // Même transition que mid-game
+                await playMidGameTransition()
+                
+                socket.emit('player:endgame-pause-complete', {
                     sessionId: session.value.id
                 })
             })
@@ -167,17 +196,19 @@ export function usePlayerGame() {
     /**
    * Jouer la transition vocale côté player apres une question
    */
-    const playTransition = async (question) => {
+    const playTransition = async (question, skipTransition = false) => {
         const answerText = question.answer ? 'true' : 'false'
         const connector = getRandomPhrase(ANSWER_CONNECTORS)
         const answerDetail = question.answer_detail || ''
-        const transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)
+
+        // Ne pas jouer de transition si skipTransition = true
+        const transition = skipTransition ? '' : getRandomPhrase(NEXT_QUESTION_TRANSITIONS)
 
         const speechSequence = [
         `${connector}, ${answerText}.`,
             answerDetail,
             transition
-        ]
+        ].filter(text => text)
 
         //debugger
         pauseQuestionTimer()
@@ -212,10 +243,79 @@ export function usePlayerGame() {
         stopSpeakPiper()
     }
 
+    /**
+     * Détecter et annoncer un nouveau joueur dans le top 3 streak
+     */
+    /**
+     * Détecte s'il y a un nouveau joueur dans le top 3
+     * @returns {Object|null} - {player, position} ou null
+     */
+    const detectNewTopStreakPlayer = (newStreakLeaderboard) => {
+        if (!newStreakLeaderboard || newStreakLeaderboard.length === 0) return null
+
+        const currentTop3 = newStreakLeaderboard.slice(0, 3)
+        const currentTop3Ids = currentTop3.map(p => p.id)
+
+        // Première fois : initialiser
+        if (previousTop3Ids.value.length === 0) {
+            previousTop3Ids.value = currentTop3Ids
+            return null
+        }
+
+        // Trouver les nouveaux joueurs
+        const newPlayers = currentTop3.filter(player => {
+            return !previousTop3Ids.value.includes(player.id)
+        })
+
+        // Mettre à jour
+        previousTop3Ids.value = currentTop3Ids
+
+        // S'il y a un nouveau joueur
+        if (newPlayers.length > 0) {
+            const topNewPlayer = newPlayers[0]
+            const position = currentTop3.findIndex(p => p.id === topNewPlayer.id) + 1
+            
+            return {
+                player: topNewPlayer,
+                position: position
+            }
+        }
+
+        return null
+    }
+
+    /**
+     * Annonce un nouveau joueur dans le top 3 avec Speechify
+     */
+    const announceNewTopStreakPlayer = async (playerInfo) => {
+        if (!playerInfo) return
+
+        const messages = TOP_STREAK_ENTRY_MESSAGES[playerInfo.position]
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)]
+        const message = randomMessage.replace('{username}', playerInfo.player.username)
+
+        console.log(`🎤 Position ${playerInfo.position}: ${playerInfo.player.username}`)
+
+        // AJOUTER: Afficher l'annonce avant le speech
+        announcedPlayer.value = playerInfo.player
+        announcedPosition.value = playerInfo.position
+        showTopStreakAnnouncement.value = true
+
+        // Petit délai avant le speech
+        await new Promise(resolve => setTimeout(resolve, 300))
+        
+        // Speech
+        await speechifyService.speakSpeechify(message)
+
+        // AJOUTER: Cacher l'annonce
+        showTopStreakAnnouncement.value = true
+    }
+
     // Nettoyer à la destruction
     onUnmounted(() => {
         socket.disconnect()
         stopSpeakPiper()
+        speechifyService.stopSpeakSpeechify() // AJOUTER
     })
 
     return {
@@ -237,6 +337,9 @@ export function usePlayerGame() {
         revealAnswer,
         selectedAnswer,
         showMidGameLeaderboard, // AJOUTER
+        showTopStreakAnnouncement,
+        announcedPlayer,
+        announcedPosition,
         joinSession,
         submitAnswer,
         loadLeaderboards,

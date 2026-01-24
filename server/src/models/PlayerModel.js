@@ -100,8 +100,18 @@ class PlayerModel {
      * Vérifier si un joueur a déjà répondu
      */
     static async hasAnswered(playerId, questionId) {
+
+        console.log('[hasAnswered] Checking answer:', {
+            playerId,
+            questionId,
+            timeWindow: 'last 2 minutes'
+        });
+
         const [rows] = await db.execute(
-            'SELECT id FROM player_answers WHERE player_id = ? AND question_id = ?',
+            `SELECT id FROM player_answers 
+            WHERE player_id = ? 
+            AND question_id = ? 
+            AND answered_at > DATE_SUB(NOW(), INTERVAL 2 MINUTE)`,
             [playerId, questionId]
         );
         return rows.length > 0;
