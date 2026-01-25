@@ -19,6 +19,10 @@ class TikTokService {
         // Queue pour gérer les commentaires
         this.commentQueue = [];
         this.isProcessingQueue = false;
+        
+        // AJOUTER: Tracker la question actuelle
+        this.currentQuestionId = null;
+        this.questionStartTime = null;
     }
 
     async connect(username) {
@@ -92,18 +96,24 @@ class TikTokService {
     }
 
     handleComment(data) {
-        // Afficher les infos
-        console.log('\n💬 COMMENTAIRE:');
-        console.log('👤 Username:', data.uniqueId);
-        console.log('🆔 User ID:', data.userId);
-        console.log('💬 Message:', data.comment);
-        console.log('🖼️  Photo:', data.profilePictureUrl);
-
         // Parser la réponse
         const answer = this.parseAnswer(data.comment);
         
         if (answer !== null) {
             console.log(`🎯 Réponse détectée: ${answer}`);
+
+            // AJOUTER: Vérifier si la réponse est dans les temps
+            const elapsed = Date.now() - this.questionStartTime;
+            const ANSWER_TIMER = 15; // xxx
+            const MAX_TIME = (ANSWER_TIMER * 1000) + 2500;
+
+            if (elapsed > MAX_TIME) {
+                console.log(`⏰ Réponse tardive de ${data.uniqueId} (${Math.floor(elapsed/1000)}s écoulées) - IGNORÉE`);
+                return; // Ne pas soumettre
+            }
+
+            console.log(`🎯 Réponse détectée: ${answer} (${Math.floor(elapsed/1000)}s)`);
+            
             this.submitToGame(data.uniqueId, data.userId, answer, data.profilePictureUrl);
         }
     }
@@ -119,6 +129,20 @@ class TikTokService {
         }
         
         return null;
+    }
+
+    /**
+     * Appelé quand une nouvelle question est diffusée
+     */
+    resetQueueForNewQuestion(questionId) {
+        console.log(`🔄 Nouvelle question ${questionId} - vidage de la queue`);
+        
+        // Vider la queue des anciens commentaires
+        this.commentQueue = [];
+        
+        // Mettre à jour la question actuelle
+        this.currentQuestionId = questionId;
+        this.questionStartTime = Date.now();
     }
 
     async submitToGame(username, userId, answer, profilePicture) {

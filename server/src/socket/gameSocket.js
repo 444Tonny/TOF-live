@@ -53,6 +53,14 @@ function setupGameSocket(io) {
 
                 if (rows.length === 0) return;
 
+                // AJOUTER: Enregistrer l'heure de début de la question
+                await db.execute(
+                    'UPDATE game_sessions SET current_question_id = ?, question_started_at = NOW() WHERE id = ?',
+                    [questionId, sessionId]
+                );
+
+                await SessionModel.updateStatus(sessionId, 'active');
+
                 const question = rows[0];
 
                 // Mettre à jour la session
@@ -70,7 +78,9 @@ function setupGameSocket(io) {
                 io.to(`session:${sessionId}`).emit('question:new', payload);
                 io.to(`host:${sessionId}`).emit('question:new', payload);
 
-                //console.log(`📢 Question ${questionId} envoyée à session ${sessionId}`);
+                // AJOUTER: Notifier TikTok service de la nouvelle question
+                const TikTokService = require('../services/TikTokService');
+                TikTokService.resetForNewQuestion(questionId);
 
             } catch (error) {
                 console.error('Erreur broadcast-question:', error);

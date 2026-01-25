@@ -5,7 +5,7 @@ import { GAME_CONFIG } from '@/constants/gameConfig'
  * Composable pour gérer le timer du jeu
  */
 export function useGameTimer() {
-  const timeQuestionLeft = ref(GAME_CONFIG.ANSWER_TIMER_VIDEO) // Temps restant en secondes
+  const timeQuestionLeft = ref(GAME_CONFIG.ANSWER_TIMER) // Temps restant en secondes
   const isQuestionTimerRunning = ref(false)
   const isQuestionTimerPaused = ref(false)
   let intervalId = null
@@ -15,7 +15,7 @@ export function useGameTimer() {
    * Progression du timer en pourcentage
    */
   const progress = computed(() => {
-    return (timeQuestionLeft.value / GAME_CONFIG.ANSWER_TIMER_VIDEO) * 100
+    return (timeQuestionLeft.value / GAME_CONFIG.ANSWER_TIMER) * 100
   })
 
   /**
@@ -73,7 +73,7 @@ export function useGameTimer() {
   const startQuestionTimer = (callback) => {
     if (isQuestionTimerRunning.value) return
 
-    timeQuestionLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
+    timeQuestionLeft.value = GAME_CONFIG.ANSWER_TIMER
     isQuestionTimerRunning.value = true
     isQuestionTimerPaused.value = false
     stopCountdownTimerAudio() // Arrêter l'audio au cas où
@@ -119,7 +119,7 @@ export function useGameTimer() {
    */
   const resetQuestionTimer = () => {
     stopQuestionTimer()
-    timeQuestionLeft.value = GAME_CONFIG.ANSWER_TIMER_VIDEO
+    timeQuestionLeft.value = GAME_CONFIG.ANSWER_TIMER
     isQuestionTimerPaused.value = false
   }
 

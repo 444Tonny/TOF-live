@@ -203,3 +203,7 @@ ADD COLUMN is_video_only BOOLEAN DEFAULT FALSE AFTER category;
 UPDATE questions 
 SET is_video_only = FALSE 
 WHERE is_video_only IS NULL;
+
+-- Ajouter le timestamp
+ALTER TABLE game_sessions 
+ADD COLUMN question_started_at TIMESTAMP NULL AFTER current_question_id;

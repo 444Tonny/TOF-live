@@ -1,6 +1,6 @@
 <template>
   <div class="game-timer" :class="{ warning: timeQuestionLeft <= 6, paused: isQuestionTimerPaused }">
-    <div class="timer-circle">
+    <div class="timer-circle" :style="{ '--progress': progress }">
       <svg class="timer-svg" viewBox="0 0 100 100">
         <circle
           class="timer-bg"
@@ -51,89 +51,85 @@ const strokeDashoffset = computed(() => {
 })
 </script>
 
-<style scoped>
+<style>
 .game-timer {
   display: flex;
   justify-content: center;
   background: var(--color--bg3);
-  padding-top: 5px;
-  padding-bottom: 14px;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
+  padding: 0px 0 15px;
   margin: 15px;
-  margin-top: 0px;
-  border: 3px solid rgba(250, 250, 250, 0.2);
+  margin-top: 0;
+  border-radius: 0 0 7px 7px;
+  border: 3px solid rgba(255,255,255,0.15);
   border-top: none;
 }
 
+/* Container */
 .timer-circle {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: none;;
+  border: 4px solid #2b2b2b;
 }
 
+/* SVG invisible, utilisé seulement pour le calcul */
 .timer-svg {
-  transform: rotate(-90deg);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+/* === FILL EFFECT === */
+.timer-circle::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(var(--progress, 100) * 1%);
+  background: #202020;
+  transition: height 1s linear;
 }
 
-.timer-bg {
-  fill: none;
-  stroke: var(--color--bg3);
-  stroke-width: 8;
-}
-
-.timer-progress {
-  fill: none;
-  stroke: var(--color--white);
-  stroke-width: 10;
-  stroke-linecap: round;
-  stroke-dasharray: 283;
-  transition: stroke-dashoffset 1s linear, stroke 0.3s;
-}
-
-.game-timer.warning .timer-progress {
-  stroke: var(--color--fail);
-  animation: pulse-stroke 0.5s infinite;
-}
-
-.game-timer.paused .timer-progress {
-  stroke: var(--color--white);
-}
-
-@keyframes pulse-stroke {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
+/* === TEXT === */
 .timer-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .time {
-  display: block;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 46px;
+  font-weight: 800;
   color: #E6E6E6;
-  line-height: 4px;
+}
+
+/* === WARNING MODE === */
+.game-timer.warning .timer-circle::before {
+  background: #4a1d1f;
+  animation: warning-pulse 0.8s infinite;
 }
 
 .game-timer.warning .time {
-  color: var(--color--fail);
-  animation: pulse-text 0.5s infinite;
+  color: #b80940;
 }
 
-.game-timer.paused .time {
-  color: var(--color--white);
+/* === PAUSED === */
+.game-timer.paused .timer-circle::before {
+  animation-play-state: paused;
+  filter: grayscale(1);
 }
 
-@keyframes pulse-text {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+/* === ANIMATIONS === */
+@keyframes warning-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
+
 </style>
