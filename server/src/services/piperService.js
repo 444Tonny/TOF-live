@@ -24,7 +24,7 @@ class PiperService {
             this.modelPath = '/piper/models/en_US-lessac-medium.onnx';
         }
 
-        this.outputDir = path.join(__dirname, '../../public/audio/temp');
+        this.outputDir = '/public/audio/temp';
         this.ensureOutputDir();
     }
 
