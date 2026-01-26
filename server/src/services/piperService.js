@@ -13,10 +13,12 @@ class PiperService {
         const isProduction = process.env.NODE_ENV === 'production';
 
         if (isWindows) {
+            console.log('⚙️ Environnement Windows détecté');
             // Local Windows
             this.piperPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\piper.exe';
             this.modelPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\espeak-ng-data\\voices\\en_US-bryce-medium.onnx';
         } else {
+            console.log('⚙️ Environnement Linux détecté');
             // Production Linux (Coolify)
             this.piperPath = 'piper'; // Commande globale
             this.modelPath = '/opt/piper-voices/en_US-lessac-medium.onnx';
