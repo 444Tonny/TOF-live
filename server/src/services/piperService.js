@@ -20,7 +20,7 @@ class PiperService {
         } else {
             console.log('⚙️ Environnement Linux détecté');
             // Production Linux (Coolify)
-            this.piperPath = '/root/.local/bin/piper'; // Commande globale
+            this.piperPath = 'piper'; // Commande globale
             this.modelPath = '/opt/piper-voices/en_US-lessac-medium.onnx';
         }
 
