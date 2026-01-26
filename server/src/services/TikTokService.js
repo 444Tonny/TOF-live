@@ -5,7 +5,7 @@ class TikTokService {
     constructor() {
         this.connection = null;
         this.isConnected = false;
-        this.baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+        this.baseUrl = process.env.BASE_URL;
         
         // Configuration axios optimisée pour high-traffic
         this.axiosInstance = axios.create({

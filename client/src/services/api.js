@@ -3,7 +3,8 @@ import axios from 'axios'
 /**
  * Configuration de l'API * Centralise tous les appels vers le backend
  */
-const API_URL = 'http://localhost:3000/api'
+//const API_URL = 'http://localhost:3000/api'
+const API_URL = import.meta.env.VITE_API_URL
 
 const api = axios.create({
   baseURL: API_URL,

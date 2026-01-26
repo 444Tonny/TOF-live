@@ -95,6 +95,6 @@ setupGameSocket(io);
  * Démarrer le serveur
  */
 server.listen(PORT, () => {
-  console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
-  console.log(`🔌 WebSocket disponible sur ws://localhost:${PORT}`);
+  console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+  console.log(`🔌 WebSocket disponible sur le port ${PORT}`);
 });

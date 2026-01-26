@@ -11,7 +11,7 @@ class SocketService {
   connect() {
     if (this.socket?.connected) return
 
-    this.socket = io('http://localhost:3000', {
+    this.socket = io(import.meta.env.VITE_BACKEND_BASE_URL, {
       autoConnect: true
     })
 

@@ -17,7 +17,7 @@ defineProps({
  * Construire l'URL de l'image
  */
 const getImageUrl = (filename) => {
-    return `http://localhost:3000/images/questions/${filename}`
+    return`${import.meta.env.VITE_BACKEND_BASE_URL}/images/questions/${filename}`;
 }
 
 /**

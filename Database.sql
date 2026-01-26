@@ -78,10 +78,6 @@ ADD COLUMN best_streak INT DEFAULT 0;
 ALTER TABLE questions 
 ADD COLUMN image_file VARCHAR(255) NULL;
 
--- Exemple d'ajout d'images
-UPDATE questions SET image_file = 'eiffel_tower.jpg' WHERE id = 1;
-UPDATE questions SET image_file = 'solar_system.jpg' WHERE id = 2;
-
 INSERT INTO questions (question, answer, answer_detail, image_file) VALUES
 (
   'The Eiffel Tower is over 300 meters tall',

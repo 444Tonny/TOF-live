@@ -2,13 +2,18 @@
   <!-- Background vidéo -->
   <div class="video-background">
     <video autoplay muted loop playsinline>
-      <source src="http://localhost:3000/images/background/loop1.mp4" type="video/mp4">
+      <source :src="`${BACKEND_BASE_URL}/images/background/loop1.mp4`" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
   </div>
 
   <router-view />
 </template>
+
+<script setup>
+  const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL
+</script>
+
 
 <style>
 * {
