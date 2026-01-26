@@ -80,7 +80,7 @@ function setupGameSocket(io) {
 
                 // AJOUTER: Notifier TikTok service de la nouvelle question
                 const TikTokService = require('../services/TikTokService');
-                TikTokService.resetForNewQuestion(questionId);
+                TikTokService.resetQueueForNewQuestion(questionId);
 
             } catch (error) {
                 console.error('Erreur broadcast-question:', error);

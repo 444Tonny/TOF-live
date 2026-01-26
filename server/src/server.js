@@ -41,14 +41,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors()); // Permettre les requêtes depuis le frontend
 app.use(express.json()); // Parser le JSON
 
-// ===============================
-// SERVIR LE FRONTEND (VUE BUILD)
-// ===============================
-const clientDistPath = path.join(__dirname, '../../client/dist');
-
-// servir les fichiers statiques Vue
-app.use(express.static(clientDistPath));
-
 // AJOUTER : Servir les fichiers statiques
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
 app.use('/audio', express.static(path.join(__dirname, '../public/audio'))); // AJOUTER
@@ -58,7 +50,7 @@ app.use('/images', express.static(path.join(__dirname, '../public/images')));
 
 /**
  * Routes API
- */
+*/
 app.use('/api/sessions', sessionRoutes);
 app.use('/api/game', gameRoutes);
 app.use('/api/questions', questionRoutes);
@@ -68,7 +60,7 @@ app.use('/api/speechify', speechifyRoutes);
 
 /**
  * Routes TikTok
- */
+*/
 app.use('/api/tiktok', tiktokRoutes); 
 
 // Route de test
@@ -76,12 +68,14 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Serveur opérationnel' });
 });
 
-// ===============================
-// SPA fallback (Vue Router)
-// ===============================
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(clientDistPath, 'index.html'));
-});
+if (process.env.NODE_ENV !== 'production') {
+  const clientDistPath = path.join(__dirname, '../../client/dist');
+
+  app.use(express.static(clientDistPath));
+  app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
 
 // AJOUTER : Rendre io accessible dans les routes
 app.set('io', io);
