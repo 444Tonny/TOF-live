@@ -20,8 +20,8 @@ class PiperService {
         } else {
             console.log('⚙️ Environnement Linux détecté');
             // Production Linux (Coolify)
-            this.piperPath = path.join(__dirname, '../piper/piper');
-            this.modelPath = path.join(__dirname, '../piper/models/en_US-lessac-medium.onnx');
+            this.piperPath = '/piper/piper';
+            this.modelPath = '/piper/models/en_US-lessac-medium.onnx';
         }
 
         this.outputDir = path.join(__dirname, '../../public/audio/temp');
