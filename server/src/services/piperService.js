@@ -8,12 +8,21 @@ const crypto = require('crypto');
  */
 class PiperService {
     constructor() {
-        // AJUSTEZ ces chemins selon votre installation
-        this.piperPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\piper.exe';
-        this.modelPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\espeak-ng-data\\voices\\en_US-bryce-medium.onnx';
-        //this.modelPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\espeak-ng-data\\voices\\en_US-kristin-medium.onnx';
-        this.outputDir = path.join(__dirname, '../../public/audio/temp');
+        // Détection automatique de l'environnement
+        const isWindows = process.platform === 'win32';
+        const isProduction = process.env.NODE_ENV === 'production';
 
+        if (isWindows) {
+            // Local Windows
+            this.piperPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\piper.exe';
+            this.modelPath = 'C:\\ProgrammesPersonnels\\piper_windows_amd64\\piper\\espeak-ng-data\\voices\\en_US-bryce-medium.onnx';
+        } else {
+            // Production Linux (Coolify)
+            this.piperPath = 'piper'; // Commande globale
+            this.modelPath = '/opt/piper-voices/en_US-lessac-medium.onnx';
+        }
+
+        this.outputDir = path.join(__dirname, '../../public/audio/temp');
         this.ensureOutputDir();
     }
 
