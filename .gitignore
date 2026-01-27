@@ -43,3 +43,6 @@ pids/
 *.pid
 *.seed
 *.mp4
+
+#autres
+server/public/audio/temp/
