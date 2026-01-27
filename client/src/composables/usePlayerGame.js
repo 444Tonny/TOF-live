@@ -94,7 +94,7 @@ export function usePlayerGame() {
                 // AJOUTER : Lire la question
                 setTimeout(() => {
                     speakPiper(dataQuestion.question)
-                }, 100)
+                }, 400)
 
                 // MODIFIER : Démarrer le timer avec callback pour jouer la transition
                 startQuestionTimer(async () => {
@@ -302,7 +302,7 @@ export function usePlayerGame() {
         showTopStreakAnnouncement.value = true
 
         // Petit délai avant le speech
-        await new Promise(resolve => setTimeout(resolve, 300))
+        await new Promise(resolve => setTimeout(resolve, 400))
         
         // Speech
         await speechifyService.speakSpeechify(message)

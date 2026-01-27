@@ -197,7 +197,7 @@ onUnmounted(() => {
   border-radius: 3px;
   background: #231d277c;
   animation: fadeIn 0.5s ease-out;
-  transform: scale(0.75);
+  transform: scale(0.8);
 }
 
 @keyframes pulse {
