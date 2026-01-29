@@ -1,7 +1,7 @@
 <template>
   <div class="waiting-room">
-    <h2>En attente...</h2>
-    <p>Le host va bientôt lancer une question</p>
+    <h2>Waiting...</h2>
+    <p>The host will lauch the game soon</p>
     <div class="loader"></div>
   </div>
 </template>

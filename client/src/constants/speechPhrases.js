@@ -10,7 +10,6 @@ export const ANSWER_CONNECTORS = [
   "It's",
   "That's",
   "It was",
-  /*
   "The answer was",
   "And it was",
   "The correct answer is",
@@ -23,10 +22,8 @@ export const ANSWER_CONNECTORS = [
   "Correct answer",
   "And the answer is",
   "The right answer is",
-  "Here it comes",
   "Answer was",
   "And it is"
-  */
 ]
 
 /**
@@ -35,8 +32,7 @@ export const ANSWER_CONNECTORS = [
 export const NEXT_QUESTION_TRANSITIONS = [
   "Next",
   "Next!",
-  "Next?",
-  /*
+  "Next question!",
   "Following question",
   "Let's move on to the next one",
   "Let's continue",
@@ -51,7 +47,6 @@ export const NEXT_QUESTION_TRANSITIONS = [
   "Keep going",
   "Up next",
   "Ready for the next one"
-  */
 ]
 
 export const INTRO_PHRASES = [
@@ -92,24 +87,25 @@ export const MID_GAME_LEADERBOARD_OUTRO = [
   "Let's keep going",
   "Let's resume the game",
   "Here we go again",
-  "Let's move on"
+  "Let's move on",
+  "Get ready for the next question!"
 ]
 
 export const TOP_STREAK_ENTRY_MESSAGES = {
   1: [
-    "Congrats {username}! You're leading the streak leaderboard! Keep it up! ... Next?",
-    "Amazing {username}! You've taken first place! Don't stop now! ... Next?",
-    "Wow {username}! Number one streak! Keep that momentum going! ... Ready for the next one?"
+    "Congrats {username}! You're leading the streak leaderboard! Keep it up!",
+    "Amazing {username}! You've taken first place! Don't stop now!",
+    "Wow {username}! Number one streak! Keep that momentum going!"
   ],
   2: [
-    "Nice {username}! Second place — you're on fire! ... Next?",
-    "Great job {username}! You're climbing to second! Keep pushing! ... Next?",
-    "Well done {username}! Second in the streak! Almost at the top! ... Next question?"
+    "Nice {username}! Second place — you're on fire!",
+    "Great job {username}! You're climbing to second! Keep pushing!",
+    "Well done {username}! Second in the streak! Almost at the top!"
   ],
   3: [
-    "Well played {username}! You've made it into the top 3! ... Next?",
-    "Congrats {username}! You just entered the top 3 streak! ... Next?",
-    "Nice work {username}! Top 3! Keep those correct answers coming! ... Next?"
+    "Well played {username}! You've made it into the top 3!",
+    "Congrats {username}! You just entered the top 3 streak!",
+    "Nice work {username}! Top 3! Keep those correct answers coming!"
   ]
 }
 /**

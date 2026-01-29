@@ -54,10 +54,11 @@ const strokeDashoffset = computed(() => {
 <style>
 .game-timer {
   display: flex;
+  width: 490px;
   justify-content: center;
   background: var(--color--bg3);
   padding: 0px 0 15px;
-  margin: 15px;
+  margin: 5px;
   margin-top: 0;
   border-radius: 0 0 7px 7px;
   border: 3px solid rgba(255,255,255,0.15);
@@ -67,8 +68,8 @@ const strokeDashoffset = computed(() => {
 /* Container */
 .timer-circle {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 85px;
+  height: 85px;
   overflow: hidden;
   border-radius: 50%;
   background: none;;

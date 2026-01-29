@@ -36,13 +36,19 @@ defineProps({
 }
 
 .counter-text {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   text-transform: capitalize;
+  
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .counter-text strong {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 }
 </style>

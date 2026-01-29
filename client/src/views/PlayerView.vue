@@ -191,13 +191,12 @@ onUnmounted(() => {
 <style scoped>
 .player-view {
   min-height: 100vh;
-  width: 650px;
-  padding-top: 10px;
+  width: 100%;
   border: 3px solid #231f3586;
   border-radius: 3px;
   background: #231d277c;
   animation: fadeIn 0.5s ease-out;
-  transform: scale(0.8);
+  transform: 1;
 }
 
 @keyframes pulse {
@@ -292,7 +291,7 @@ h1 {
 
 /* Interface de jeu */
 .game-interface {
-  max-width: 700px;
+  width: 500px;
   margin: 0 auto;
 }
 

@@ -70,15 +70,15 @@ onUnmounted(() => {
 <style scoped>
 .scrolling-banner {
   width: 100%;
-  background: linear-gradient(90deg, #b80940 0%, #b80940 100%);
-  padding: 12px 0;
+  background: #34293e;
+  padding: 8px 0;
   overflow: hidden;
   position: relative;
 }
 
 .banner-text {
   color: white;
-  font-size: 21px;
+  font-size: 17px;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;

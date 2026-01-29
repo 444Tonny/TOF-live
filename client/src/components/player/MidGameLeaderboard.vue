@@ -1,7 +1,5 @@
 <template>
   <div class="mid-game-leaderboard">
-    <h2>RANKINGS</h2>
-    
     <div class="countdown">{{ countdown }}s</div>
     <div class="leaderboards-wrapper">
        <Transition name="slide-fade">
@@ -23,8 +21,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import Leaderboard from '../host/Leaderboard.vue'
-import StreakLeaderboard from '../host/StreakLeaderboard.vue'
+import Leaderboard from '../host/GeneralScorerLeaderboard.vue'
+import StreakLeaderboard from '../host/GeneralStreakLeaderboard.vue'
 import { GAME_CONFIG } from '../../constants/gameConfig' // AJOUTER
 
 defineProps({
@@ -81,7 +79,7 @@ onUnmounted(() => {
   z-index: 1000;
   animation: fadeIn 0.5s ease-out;
   box-sizing: border-box;
-  padding: 40px 30px;
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -90,19 +88,18 @@ onUnmounted(() => {
 }
 
 .countdown {
-  margin-bottom: 25px;
-  top: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background: white;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 50px;
+  min-height: 50px;
+  background: #fffc57;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #667eea;
+  color: #15192c;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 

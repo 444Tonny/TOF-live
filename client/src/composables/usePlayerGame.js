@@ -194,8 +194,8 @@ export function usePlayerGame() {
     }
 
     /**
-   * Jouer la transition vocale côté player apres une question
-   */
+    * Jouer la transition vocale côté player apres une question
+    */
     const playTransition = async (question, skipTransition = false) => {
         const answerText = question.answer ? 'true' : 'false'
         const connector = getRandomPhrase(ANSWER_CONNECTORS)
@@ -289,12 +289,12 @@ export function usePlayerGame() {
      */
     const announceNewTopStreakPlayer = async (playerInfo) => {
         if (!playerInfo) return
+        console.log(`🎤 Position ${playerInfo.position}: ${playerInfo.player.username}`)
 
         const messages = TOP_STREAK_ENTRY_MESSAGES[playerInfo.position]
         const randomMessage = messages[Math.floor(Math.random() * messages.length)]
         const message = randomMessage.replace('{username}', playerInfo.player.username)
 
-        console.log(`🎤 Position ${playerInfo.position}: ${playerInfo.player.username}`)
 
         // AJOUTER: Afficher l'annonce avant le speech
         announcedPlayer.value = playerInfo.player
@@ -302,13 +302,18 @@ export function usePlayerGame() {
         showTopStreakAnnouncement.value = true
 
         // Petit délai avant le speech
-        await new Promise(resolve => setTimeout(resolve, 400))
-        
+        await new Promise(resolve => setTimeout(resolve, 300))
         // Speech
         await speechifyService.speakSpeechify(message)
 
+        const transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)
+        // Petit délai avant le speech
+        await new Promise(resolve => setTimeout(resolve, 300))
+        // Speech
+        await speechifyService.speakSpeechify(transition)
+
         // AJOUTER: Cacher l'annonce
-        showTopStreakAnnouncement.value = true
+        showTopStreakAnnouncement.value = false
     }
 
     // Nettoyer à la destruction

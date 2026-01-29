@@ -1,6 +1,6 @@
 <template>
   <div class="streak-leaderboard">
-    <h3>Correct Answers Streak #</h3>
+    <h3>TOP 3 🔥 STREAKS</h3>
     <div v-if="players.length === 0" class="empty">
       Waiting for players…
     </div>
@@ -89,19 +89,26 @@ h3 {
   width: 30px;
   text-align: center;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: -10px;
-  margin-right: 3px;
+  margin-right: 2px;
 }
 
 .username {
+  display: flex;
+  flex-wrap: nowrap;
   flex: 1;
   margin-bottom: 15px;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: 500;
   max-width: 161px;
   overflow-x: hidden;
   overflow-y: hidden;
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .streaks {

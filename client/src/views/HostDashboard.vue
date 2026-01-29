@@ -85,8 +85,8 @@
 <script setup>
 import { useHostGame } from '../composables/useHostGame'
 import QuestionSelector from '../components/host/QuestionSelector.vue'
-import Leaderboard from '../components/host/Leaderboard.vue'
-import StreakLeaderboard from '../components/host/StreakLeaderboard.vue'
+import Leaderboard from '../components/host/GeneralScorerLeaderboard.vue'
+import StreakLeaderboard from '../components/host/GeneralStreakLeaderboard.vue'
 import GameTimer from '../components/GameTimer.vue' // AJOUTER
 import TikTokPanel from '../components/host/TikTokPanel.vue' // NOUVEAU
 

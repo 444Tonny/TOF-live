@@ -86,19 +86,20 @@ defineEmits(['answer'])
 
 <style scoped>
 .question-card {
+  width: 490px;
   background: var(--color--bg3);
-  margin-left: 15px;
-  margin-right: 15px;
-  padding: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 20px;
   padding-bottom: 20px;
   border: 3px solid rgba(250, 250, 250, 0.2);
   border-bottom: none;
 }
 
 .question-text {
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 700;
-  line-height: 55px;
+  line-height: 50px;
   text-align: center;
   margin-bottom: 30px;
   color: #e6e6e6;

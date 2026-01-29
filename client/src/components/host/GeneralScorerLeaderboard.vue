@@ -1,6 +1,6 @@
 <template>
   <div class="leaderboard">
-    <h3>TOP STREAKS</h3>
+    <h3>TOP 10 🏆 Most Correct Answers</h3>
     <div v-if="players.length === 0" class="empty">
       Waiting for players...
     </div>
@@ -23,7 +23,7 @@
         </div>
 
         <span class="username">{{ player.username }}</span>
-        <span class="score">{{ player.score }}<i>pts</i></span>
+        <span class="score">{{ player.score }}<i></i></span>
       </div>
     </div>
   </div>
@@ -53,7 +53,9 @@ defineProps({
 
 h3 {
   margin-bottom: 15px;
-  color: #fdfdfd;
+  color: #e7e7e7;
+  text-align: center;
+  font-weight: 600;
 }
 
 .empty {
@@ -72,10 +74,10 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 18px;
+  padding: 6px 18px;
   background: #15002057;
   border-radius: 8px;
-  border: 3px solid #667eea;
+  border: 2px solid #272f53;
 }
 
 .player-item.top-3 {
@@ -87,15 +89,22 @@ h3 {
   width: 30px;
   text-align: center;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   color: #ffffff;
+  margin-right: 8px;
 }
 
 .username {
+  max-width: 275px;
   flex: 1;
-  margin-left: 10px;
-  font-size: 25px;
-  font-weight: 600;
+  margin-left: 12px;
+  margin-right: auto;
+  font-size: 22px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .score {
@@ -114,8 +123,8 @@ h3 {
 
 /* Photo de profil */
 .profile-picture {
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #ffffff;
@@ -124,8 +133,8 @@ h3 {
 }
 
 .profile-placeholder {
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   display: flex;

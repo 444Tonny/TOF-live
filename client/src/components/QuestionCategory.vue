@@ -32,5 +32,11 @@ defineProps({
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
+  
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 </style>
