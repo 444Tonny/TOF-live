@@ -89,7 +89,7 @@ onUnmounted(() => {
 
 .countdown {
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   width: 50px;
   min-height: 50px;
   background: #fffc57;

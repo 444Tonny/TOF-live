@@ -238,7 +238,7 @@ export function usePlayerGame() {
         await speakPiper(outroPhraseLeaderboard)
 
         // Cacher le classement
-        showMidGameLeaderboard.value = true
+        showMidGameLeaderboard.value = false
 
         stopSpeakPiper()
     }

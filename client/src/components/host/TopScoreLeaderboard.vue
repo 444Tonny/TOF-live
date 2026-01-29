@@ -50,7 +50,7 @@ h3 {
   width: 100%;
   margin-bottom: 22px;
   color: #ffffff;
-  font-size: 23px;
+  font-size: 20px;
   text-transform: capitalize;
   text-align: center;
 }

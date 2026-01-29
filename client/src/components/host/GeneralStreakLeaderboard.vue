@@ -68,14 +68,14 @@ h3 {
 .players-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
 
 .player-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 18px;
+  padding: 5px 15px;
   background: #15002057;
   border-radius: 8px;
   border: 2px solid #272f53;
@@ -90,9 +90,9 @@ h3 {
   width: 30px;
   text-align: center;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   color: #ffffff;
-  margin-right: 8px;
+  margin-right: 15px;
 }
 
 .username {
@@ -110,7 +110,7 @@ h3 {
 
 .streaks {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 26px;
   color: #ffffff;
 }
 

@@ -30,7 +30,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px !important;
+  padding: 0px 5px !important;
 }
 
 :root {

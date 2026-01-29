@@ -98,11 +98,11 @@ defineEmits(['answer'])
 }
 
 .question-text {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 700;
-  line-height: 46px;
+  line-height: 44px;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #e6e6e6;
 }
 

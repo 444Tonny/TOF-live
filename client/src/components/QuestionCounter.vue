@@ -37,7 +37,7 @@ defineProps({
 
 .counter-text {
   width: 95%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   text-transform: capitalize;
   white-space: nowrap;
@@ -48,7 +48,7 @@ defineProps({
 }
 
 .counter-text strong {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
 }
 </style>
