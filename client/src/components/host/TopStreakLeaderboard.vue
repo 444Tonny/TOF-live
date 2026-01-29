@@ -7,7 +7,11 @@
     <div v-else class="players-list">
       <div v-for="(player, index) in players.slice(0, 3)" :key="index" class="player-item"
         :class="{ 'top-3': index < 3, ['rank-' + (index + 1)]: true }">
-        <span class="username"><span class="rank">{{ index + 1 }}. </span>{{ player.username }}</span>
+        <span class="ranked-username">
+          <span class="rank">{{ index + 1 }}<i style="font-weight: 100;">.</i></span>
+          <span class="username">{{ player.username }} </span>
+        </span>
+
         <img v-if="player.profile_picture" :src="player.profile_picture" :alt="player.username"
           class="profile-picture" />
         <div v-else class="profile-placeholder">
@@ -16,8 +20,7 @@
         <div class="streaks">
           <Transition name="zoom">
             <span class="current-streak" :key="player.current_streak">
-              {{ player.current_streak }}
-              <i>{{ player.current_streak === 1 ? 'pt' : 'pts' }}</i>
+              {{ player.current_streak }}<i>{{ player.current_streak === 1 ? 'pt' : 'pts' }}</i>
             </span>
           </Transition>
         </div>
@@ -40,15 +43,15 @@ defineProps({
 
 <style scoped>
 .streak-leaderboard {
-  padding: 20px;
+  padding: 15px 5px;
   width: 100%;
 }
 
 h3 {
   width: 100%;
-  margin-bottom: 35px;
+  margin-bottom: 22px;
   color: #ffffff;
-  font-size: 26px;
+  font-size: 23px;
   text-transform: capitalize;
   text-align: center;
 }
@@ -60,7 +63,7 @@ h3 {
 }
 
 .players-list {
-  gap: 8px;
+  gap: 3px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -74,7 +77,7 @@ h3 {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
+  padding: 6px;
   background: #f9fafb;
   border-radius: 8px;
   color: white;
@@ -85,30 +88,35 @@ h3 {
   font-weight: bold;
 }
 
+.ranked-username {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  max-width: 160px;
+  width: 125px;
+}
+
 .rank {
-  width: 30px;
-  text-align: center;
+  width: 25px;
+  text-align: left;
   font-weight: bold;
-  font-size: 17px;
-  margin-bottom: -10px;
+  font-size: 16px;
+  margin-bottom: -5px;
   margin-right: 2px;
+  opacity: 0.6;
 }
 
 .username {
-  display: flex;
-  flex-wrap: nowrap;
-  flex: 1;
-  margin-bottom: 15px;
-  font-size: 18px;
-  font-weight: 500;
-  max-width: 161px;
+  width: 100%;
+  text-align: center;
   overflow-x: hidden;
   overflow-y: hidden;
-  width: 130px;
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
   text-overflow: ellipsis;
-  display: inline-block;
 }
 
 .streaks {
@@ -118,17 +126,17 @@ h3 {
 
 .current-streak {
   font-weight: bold;
-  font-size: 36px;
+  font-size: 30px;
   color: #ffffff;
   position: relative;
-  right: -10px;
+  right: -5px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .current-streak i {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
-  font-size: 19px;
+  font-size: 17px;
   font-style: normal;
   margin-left: 2px;
 }
@@ -139,16 +147,16 @@ h3 {
 
 /* Photo de profil */
 .profile-picture {
-  width: 85px;
-  height: 85px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #667eea;
 }
 
 .profile-placeholder {
-  width: 85px;
-  height: 85px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #667eea 100%);
   display: flex;
@@ -173,13 +181,13 @@ h3 {
 
 .rank-1 .profile-picture,
 .rank-1 .profile-placeholder {
-  width: 120px !important;
-  height: 120px !important;
+  width: 100px !important;
+  height: 100px !important;
 }
 
 .rank-1 .rank {
   color: #ffb22c;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .rank-2 .rank {
@@ -188,6 +196,12 @@ h3 {
 
 .rank-3 .rank {
   color: #864d2c;
+}
+
+.rank-2 .ranked-username,  
+.rank-3 .ranked-username {
+  width: 107px;
+  font-size: 15px;
 }
 
 /* Animation */

@@ -54,7 +54,7 @@ const getButtonClass = (value) => {
 .btn {
   flex: 1;
   width: 170px;
-  height: 65px;
+  height: 60px;
   font-size: 22px;
   font-weight: bold;
   border: none;

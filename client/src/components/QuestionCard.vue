@@ -36,7 +36,7 @@
     <!-- Révélation de la réponse (mode Player) -->
     <div v-if="revealAnswer && isPlayerMode" :key="question.id" class="answer-reveal">
       <p class="reveal-text">
-        ANSWER: 
+        It's 
         <strong
           :class="question.answer ? 'answer-true' : 'answer-false'"
         >
@@ -86,7 +86,8 @@ defineEmits(['answer'])
 
 <style scoped>
 .question-card {
-  width: 490px;
+  width: 100%;
+  max-width: 490px;
   background: var(--color--bg3);
   margin-left: 5px;
   margin-right: 5px;
@@ -97,11 +98,11 @@ defineEmits(['answer'])
 }
 
 .question-text {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 700;
-  line-height: 50px;
+  line-height: 46px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   color: #e6e6e6;
 }
 
@@ -115,7 +116,7 @@ defineEmits(['answer'])
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  height: 65px;
+  height: 60px;
   background: white;
   border-radius: 10px;
   margin-top: 20px;
@@ -127,13 +128,16 @@ defineEmits(['answer'])
   display: block;
   text-align: center;
   margin: auto;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
-  color: #242424;
+  color: #b4b4b4;
+  
 }
 
 .reveal-text strong {
-  font-size: 25px;
+  font-size: 32px;
+  text-shadow: 1px 1px 2px #dadada;
+  text-transform: capitalize;
 }
 
 .answer-true {

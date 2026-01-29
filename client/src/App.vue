@@ -26,10 +26,11 @@ body {
 }
 
 #app {
-  min-height: 100vh;
+  min-height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px !important;
 }
 
 :root {

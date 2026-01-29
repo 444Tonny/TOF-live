@@ -194,7 +194,6 @@ onUnmounted(() => {
   width: 100%;
   border: 3px solid #231f3586;
   border-radius: 3px;
-  background: #231d277c;
   animation: fadeIn 0.5s ease-out;
   transform: 1;
 }
@@ -216,6 +215,7 @@ onUnmounted(() => {
   justify-content: space-between;
   margin-left: 15px;
   margin-right: 15px;
+  width: 100%;
 }
 
 h1 {
@@ -291,8 +291,14 @@ h1 {
 
 /* Interface de jeu */
 .game-interface {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .player-info {
@@ -320,6 +326,12 @@ h1 {
 
 .question-section {
   margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes fadeIn {
@@ -335,8 +347,10 @@ h1 {
 
 /*  Leaderbaord */
 .leaderboards-container {
+  width: 107%;
+  padding: auto 3%;
+  max-width: 500px;
   display: flex;
-  margin-top: 5px;
   background: rgb(113 80 158 / 80%);
   border: 3px solid rgba(255, 255, 255, 0.192);
   border-radius: 10px;

@@ -34,8 +34,8 @@ const handleImageError = (event) => {
 .question-image {
     margin: auto;
     margin-top: 10px;
-    width: 300px;
-    height: 190px;
+    width: 250px;
+    height: 155px;
     overflow: hidden;
 }
 

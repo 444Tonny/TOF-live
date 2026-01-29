@@ -99,7 +99,7 @@ h3 {
   flex: 1;
   margin-left: 12px;
   margin-right: auto;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;

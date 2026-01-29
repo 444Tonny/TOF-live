@@ -1,6 +1,6 @@
 <template>
   <div class="mid-game-leaderboard">
-    <div class="countdown">{{ countdown }}s</div>
+    <div class="countdown">{{ countdown }}</div>
     <div class="leaderboards-wrapper">
        <Transition name="slide-fade">
         <Leaderboard 
