@@ -69,7 +69,7 @@ onUnmounted(() => {
 
 <style scoped>
 .scrolling-banner {
-  width: 150%;
+  width: 110%;
   background: #34293e;
   padding: 8px 0;
   overflow: hidden;

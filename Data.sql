@@ -35,370 +35,366 @@
 
 -- Manga
 INSERT INTO `questions` (`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('One Piece is the best-selling manga of all time',1,'Yes, it holds the all-time sales record.','manga',false,'one_piece.jpg');
-INSERT INTO `questions` VALUES ('Naruto was originally planned to be a short manga',1,'Yes, Kishimoto planned a shorter story.','manga',false,'naruto.jpg');
-INSERT INTO `questions` VALUES ('Attack on Titan ended with a happy ending',0,'No, the ending is tragic and controversial.','manga',false,'aot.jpg');
-INSERT INTO `questions` VALUES ('Dragon Ball popularized power scaling in shonen manga',1,'Yes, it heavily influenced battle shonen tropes.','manga',false,'dragon_ball.jpg');
-INSERT INTO `questions` VALUES ('Bleach was cancelled by its author',0,'No, it ended due to health and scheduling issues.','manga',false,'bleach.jpg');
+INSERT INTO `questions` (`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('Naruto was originally planned to be a short manga',1,'Yes, Kishimoto planned a shorter story.','manga',false,'naruto.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Attack on Titan ended with a happy ending',0,'No, the ending is tragic and controversial.','manga',false,'aot.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Dragon Ball popularized power scaling in shonen manga',1,'Yes, it heavily influenced battle shonen tropes.','manga',false,'dragon_ball.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Bleach was cancelled by its author',0,'No, it ended due to health and scheduling issues.','manga',false,'bleach.jpg');
 
-INSERT INTO `questions` VALUES ('Demon Slayer became popular mainly due to its anime',1,'Yes, the anime boosted manga sales massively.','manga',false,'demon_slayer.jpg');
-INSERT INTO `questions` VALUES ('Jujutsu Kaisen author was inspired by Bleach',1,'Yes, Gege Akutami cited Bleach as influence.','manga',false,'jjk.jpg');
-INSERT INTO `questions` VALUES ('My Hero Academia takes place in a post-apocalyptic world',0,'No, it takes place in a superhero society.','manga',false,'mha.jpg');
-INSERT INTO `questions` VALUES ('Death Note was first published in Weekly Shonen Jump',1,'Yes, it debuted in Shonen Jump.','manga',false,'death_note.jpg');
-INSERT INTO `questions` VALUES ('Light Yagami is considered a traditional hero',0,'No, he is an anti-hero/villain.','manga',false,'light.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Demon Slayer became popular mainly due to its anime',1,'Yes, the anime boosted manga sales massively.','manga',false,'demon_slayer.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Jujutsu Kaisen author was inspired by Bleach',1,'Yes, Gege Akutami cited Bleach as influence.','manga',false,'jjk.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('My Hero Academia takes place in a post-apocalyptic world',0,'No, it takes place in a superhero society.','manga',false,'mha.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Death Note was first published in Weekly Shonen Jump',1,'Yes, it debuted in Shonen Jump.','manga',false,'death_note.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Light Yagami is considered a traditional hero',0,'No, he is an anti-hero/villain.','manga',false,'light.jpg');
 
-INSERT INTO `questions` VALUES ('Chainsaw Man mixes horror with dark comedy',1,'Yes, it blends gore and absurd humor.','manga',false,'chainsaw_man.jpg');
-INSERT INTO `questions` VALUES ('Tokyo Ghoul was originally intended as a romance manga',0,'No, it was planned as dark fantasy.','manga',false,'tokyo_ghoul.jpg');
-INSERT INTO `questions` VALUES ('Hunter x Hunter is known for frequent hiatuses',1,'Yes, the author often pauses the series.','manga',false,'hxh.jpg');
-INSERT INTO `questions` VALUES ('Fullmetal Alchemist has two different anime endings',1,'Yes, Brotherhood followed the manga.','manga',false,'fma.jpg');
-INSERT INTO `questions` VALUES ('Berserk was completed before the author’s death',0,'No, it continues posthumously.','manga',false,'berserk.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chainsaw Man mixes horror with dark comedy',1,'Yes, it blends gore and absurd humor.','manga',false,'chainsaw_man.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Tokyo Ghoul was originally intended as a romance manga',0,'No, it was planned as dark fantasy.','manga',false,'tokyo_ghoul.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Hunter x Hunter is known for frequent hiatuses',1,'Yes, the author often pauses the series.','manga',false,'hxh.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Fullmetal Alchemist has two different anime endings',1,'Yes, Brotherhood followed the manga.','manga',false,'fma.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Berserk was completed before the author’s death',0,'No, it continues posthumously.','manga',false,'berserk.jpg');
 
-INSERT INTO `questions` VALUES ('One Punch Man started as a webcomic',1,'Yes, it began online before serialization.','manga',false,'one_punch_man.jpg');
-INSERT INTO `questions` VALUES ('JoJo’s Bizarre Adventure changes protagonists each part',1,'Yes, each part follows a new JoJo.','manga',false,'jojo.jpg');
-INSERT INTO `questions` VALUES ('Spy x Family is a dark psychological manga',0,'No, it is mainly comedy and action.','manga',false,'spy_family.jpg');
-INSERT INTO `questions` VALUES ('Vinland Saga is inspired by real historical figures',1,'Yes, it uses Viking history.','manga',false,'vinland_saga.jpg');
-INSERT INTO `questions` VALUES ('Attack on Titan was the first manga to use 3D maneuver gear',1,'Yes, it introduced a unique combat system.','manga',false,'aot_gear.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('One Punch Man started as a webcomic',1,'Yes, it began online before serialization.','manga',false,'one_punch_man.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('JoJo’s Bizarre Adventure changes protagonists each part',1,'Yes, each part follows a new JoJo.','manga',false,'jojo.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Spy x Family is a dark psychological manga',0,'No, it is mainly comedy and action.','manga',false,'spy_family.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Vinland Saga is inspired by real historical figures',1,'Yes, it uses Viking history.','manga',false,'vinland_saga.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Attack on Titan was the first manga to use 3D maneuver gear',1,'Yes, it introduced a unique combat system.','manga',false,'aot_gear.jpg');
 
-INSERT INTO `questions` VALUES ('Black Clover was inspired by Naruto',1,'Yes, rivalry themes are similar.','manga',false,'black_clover.jpg');
-INSERT INTO `questions` VALUES ('Dragon Ball Z was originally meant to end with Frieza',1,'Yes, that was the initial plan.','manga',false,'frieza.jpg');
-INSERT INTO `questions` VALUES ('Haikyuu!! is considered one of the best sports manga',1,'Yes, it is widely praised.','manga',false,'haikyuu.jpg');
-INSERT INTO `questions` VALUES ('Slam Dunk is more popular outside Japan than inside',0,'No, it was massive in Japan.','manga',false,'slam_dunk.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Black Clover was inspired by Naruto',1,'Yes, rivalry themes are similar.','manga',false,'black_clover.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Dragon Ball Z was originally meant to end with Frieza',1,'Yes, that was the initial plan.','manga',false,'frieza.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Haikyuu!! is considered one of the best sports manga',1,'Yes, it is widely praised.','manga',false,'haikyuu.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Slam Dunk is more popular outside Japan than inside',0,'No, it was massive in Japan.','manga',false,'slam_dunk.jpg');
 
-INSERT INTO `questions` VALUES ('Demon Slayer holds the record for fastest manga sales growth',1,'Yes, during its peak years.','manga',false,'demon_sales.jpg');
-INSERT INTO `questions` VALUES ('My Hero Academia is set in the same universe as One Punch Man',0,'No, they are unrelated.','manga',false,'mha_opm.jpg');
-INSERT INTO `questions` VALUES ('Tokyo Revengers mixes time travel with gang drama',1,'Yes, that is its core concept.','manga',false,'tokyo_revengers.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Demon Slayer holds the record for fastest manga sales growth',1,'Yes, during its peak years.','manga',false,'demon_sales.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('My Hero Academia is set in the same universe as One Punch Man',0,'No, they are unrelated.','manga',false,'mha_opm.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Tokyo Revengers mixes time travel with gang drama',1,'Yes, that is its core concept.','manga',false,'tokyo_revengers.jpg');
 
-INSERT INTO `questions` VALUES ('Berserk heavily influenced Dark Souls games',1,'Yes, creators confirmed inspiration.','manga',false,'berserk_ds.jpg');
-INSERT INTO `questions` VALUES ('Attack on Titan explores political and philosophical themes',1,'Yes, beyond pure action.','manga',false,'aot_themes.jpg');
-INSERT INTO `questions` VALUES ('One Piece has been running for over 25 years',1,'Yes, it started in 1997.','manga',false,'one_piece_years.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Berserk heavily influenced Dark Souls games',1,'Yes, creators confirmed inspiration.','manga',false,'berserk_ds.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Attack on Titan explores political and philosophical themes',1,'Yes, beyond pure action.','manga',false,'aot_themes.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('One Piece has been running for over 25 years',1,'Yes, it started in 1997.','manga',false,'one_piece_years.jpg');
 
-INSERT INTO `questions` VALUES ('Vinland Saga shifts from action to pacifism',1,'Yes, Thorfinn’s philosophy changes.','manga',false,'vinland_pacifism.jpg');
-INSERT INTO `questions` VALUES ('JoJo popularized stylized poses in manga',1,'Yes, it became iconic.','manga',false,'jojo_pose.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Vinland Saga shifts from action to pacifism',1,'Yes, Thorfinn’s philosophy changes.','manga',false,'vinland_pacifism.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('JoJo popularized stylized poses in manga',1,'Yes, it became iconic.','manga',false,'jojo_pose.jpg');
 
-INSERT INTO `questions` VALUES ('Attack on Titan manga finished before its anime',1,'Yes, the manga ended first.','manga',false,'aot_manga.jpg');
-INSERT INTO `questions` VALUES ('Berserk is considered one of the darkest manga ever',1,'Yes, due to extreme themes.','manga',false,'berserk_dark.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Attack on Titan manga finished before its anime',1,'Yes, the manga ended first.','manga',false,'aot_manga.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Berserk is considered one of the darkest manga ever',1,'Yes, due to extreme themes.','manga',false,'berserk_dark.jpg');
 
-INSERT INTO `questions` (`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) 
-VALUES ('Luffy can stretch because he ate the Gomu Gomu no Mi',0,'No, it was revealed to be the Hito Hito no Mi, Model: Nika.','manga',false,'luffy_nika.jpg');
-INSERT INTO `questions` VALUES ('In One Piece, Gear 5 represents the awakening of Luffy’s Devil Fruit',1,'Yes, it is the awakened form of his fruit.','manga',false,'gear5.jpg');
-INSERT INTO `questions` VALUES ('In One Piece, Zoro has permanently lost his left eye in One Piece',1,'Yes, it has never been opened again.','manga',false,'zoro_eye.jpg');
-INSERT INTO `questions` VALUES ('In One Piece, Shanks uses a Devil Fruit power',0,'No, Shanks relies on Haki.','manga',false,'shanks.jpg');
-INSERT INTO `questions` VALUES ('In One Piece, Kaido was defeated in a 1v1 fight',0,'No, multiple fighters weakened him first.','manga',false,'kaido.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('Luffy can stretch because he ate the Gomu Gomu no Mi',0,'No, it was revealed to be the Hito Hito no Mi, Model: Nika.','manga',false,'luffy_nika.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('In One Piece, Gear 5 represents the awakening of Luffy’s Devil Fruit',1,'Yes, it is the awakened form of his fruit.','manga',false,'gear5.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('In One Piece, Zoro has permanently lost his left eye in One Piece',1,'Yes, it has never been opened again.','manga',false,'zoro_eye.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('In One Piece, Shanks uses a Devil Fruit power',0,'No, Shanks relies on Haki.','manga',false,'shanks.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('In One Piece, Kaido was defeated in a 1v1 fight',0,'No, multiple fighters weakened him first.','manga',false,'kaido.jpg');
 
-INSERT INTO `questions` VALUES ('Eren Yeager can see future memories',1,'Yes, through the Attack Titan’s power.','manga',false,'eren_future.jpg');
-INSERT INTO `questions` VALUES ('Mikasa is biologically linked to the Ackerman clan’s power',1,'Yes, Ackermans possess awakened abilities.','manga',false,'mikasa.jpg');
-INSERT INTO `questions` VALUES ('Levi Ackerman is the strongest Titan shifter',0,'No, he is not a Titan shifter.','manga',false,'levi.jpg');
-INSERT INTO `questions` VALUES ('The Rumbling activates all Titans worldwide',0,'No, it activates the Wall Titans only.','manga',false,'rumbling.jpg');
-INSERT INTO `questions` VALUES ('Eren dies at the end of Attack on Titan',1,'Yes, he is killed by Mikasa.','manga',false,'eren_end.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Eren Yeager can see future memories',1,'Yes, through the Attack Titan’s power.','manga',false,'eren_future.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Mikasa is biologically linked to the Ackerman clan’s power',1,'Yes, Ackermans possess awakened abilities.','manga',false,'mikasa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Levi Ackerman is the strongest Titan shifter',0,'No, he is not a Titan shifter.','manga',false,'levi.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Rumbling activates all Titans worldwide',0,'No, it activates the Wall Titans only.','manga',false,'rumbling.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Eren dies at the end of Attack on Titan',1,'Yes, he is killed by Mikasa.','manga',false,'eren_end.jpg');
 
-INSERT INTO `questions` VALUES ('Gojo Satoru’s Infinity stops attacks automatically',1,'Yes, it creates infinite distance.','manga',false,'gojo_infinity.jpg');
-INSERT INTO `questions` VALUES ('Sukuna originally possessed Megumi first',0,'No, Yuji was Sukuna’s first vessel.','manga',false,'sukuna.jpg');
-INSERT INTO `questions` VALUES ('Domain Expansions guarantee a hit unless countered',1,'Yes, unless another domain or technique interferes.','manga',false,'domain_expansion.jpg');
-INSERT INTO `questions` VALUES ('Gojo can be harmed inside his own domain',0,'No, his domain strengthens him further.','manga',false,'gojo_domain.jpg');
-INSERT INTO `questions` VALUES ('Sukuna can use Megumi’s Ten Shadows Technique',1,'Yes, after taking over his body.','manga',false,'ten_shadows.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Gojo Satoru’s Infinity stops attacks automatically',1,'Yes, it creates infinite distance.','manga',false,'gojo_infinity.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Sukuna originally possessed Megumi first',0,'No, Yuji was Sukuna’s first vessel.','manga',false,'sukuna.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Domain Expansions guarantee a hit unless countered',1,'Yes, unless another domain or technique interferes.','manga',false,'domain_expansion.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Gojo can be harmed inside his own domain',0,'No, his domain strengthens him further.','manga',false,'gojo_domain.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Sukuna can use Megumi’s Ten Shadows Technique',1,'Yes, after taking over his body.','manga',false,'ten_shadows.jpg');
 
-INSERT INTO `questions` VALUES ('Light Yagami needed a face and name to kill',1,'Yes, both are required by the Death Note.','manga',false,'death_note_rules.jpg');
-INSERT INTO `questions` VALUES ('L could legally arrest Light without proof',0,'No, proof was required to act.','manga',false,'l_detective.jpg');
-INSERT INTO `questions` VALUES ('Ryuk cares about human morality',0,'No, he is neutral and bored.','manga',false,'ryuk.jpg');
-INSERT INTO `questions` VALUES ('The Death Note has a limit on how many names it can store',0,'No, it has no known limit.','manga',false,'death_note.jpg');
-INSERT INTO `questions` VALUES ('Light dies believing he is justice',1,'Yes, he never admits defeat.','manga',false,'light_end.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Light Yagami needed a face and name to kill',1,'Yes, both are required by the Death Note.','manga',false,'death_note_rules.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('L could legally arrest Light without proof',0,'No, proof was required to act.','manga',false,'l_detective.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Ryuk cares about human morality',0,'No, he is neutral and bored.','manga',false,'ryuk.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Death Note has a limit on how many names it can store',0,'No, it has no known limit.','manga',false,'death_note.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Light dies believing he is justice',1,'Yes, he never admits defeat.','manga',false,'light_end.jpg');
 
-INSERT INTO `questions` VALUES ('Tanjiro’s breathing style is Hinokami Kagura',1,'Yes, it is a Sun Breathing derivative.','manga',false,'tanjiro.jpg');
-INSERT INTO `questions` VALUES ('Nezuko remains immune to sunlight permanently',0,'No, she later overcomes it uniquely.','manga',false,'nezuko.jpg');
-INSERT INTO `questions` VALUES ('Muzan can kill demons remotely',1,'Yes, he controls their cells.','manga',false,'muzan.jpg');
-INSERT INTO `questions` VALUES ('All Hashira survive the final arc',0,'No, several Hashira die.','manga',false,'hashira.jpg');
-INSERT INTO `questions` VALUES ('Demon Slayer demons regenerate using human blood',1,'Yes, blood strengthens them.','manga',false,'demons.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Tanjiro’s breathing style is Hinokami Kagura',1,'Yes, it is a Sun Breathing derivative.','manga',false,'tanjiro.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Nezuko remains immune to sunlight permanently',0,'No, she later overcomes it uniquely.','manga',false,'nezuko.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Muzan can kill demons remotely',1,'Yes, he controls their cells.','manga',false,'muzan.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All Hashira survive the final arc',0,'No, several Hashira die.','manga',false,'hashira.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Demon Slayer demons regenerate using human blood',1,'Yes, blood strengthens them.','manga',false,'demons.jpg');
 
-INSERT INTO `questions` VALUES ('Guts uses the Berserker Armor at the cost of his body',1,'Yes, it damages him severely.','manga',false,'berserker_armor.jpg');
-INSERT INTO `questions` VALUES ('Griffith sacrificed the Band of the Hawk',1,'Yes, during the Eclipse.','manga',false,'eclipse.jpg');
-INSERT INTO `questions` VALUES ('Casca fully recovers mentally immediately',0,'No, her recovery is gradual.','manga',false,'casca.jpg');
-INSERT INTO `questions` VALUES ('The Behelit activates by choice',0,'No, it activates when fate demands.','manga',false,'behelit.jpg');
-INSERT INTO `questions` VALUES ('Femto is a member of the God Hand',1,'Yes, after Griffith’s rebirth.','manga',false,'femto.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Guts uses the Berserker Armor at the cost of his body',1,'Yes, it damages him severely.','manga',false,'berserker_armor.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Griffith sacrificed the Band of the Hawk',1,'Yes, during the Eclipse.','manga',false,'eclipse.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Casca fully recovers mentally immediately',0,'No, her recovery is gradual.','manga',false,'casca.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Behelit activates by choice',0,'No, it activates when fate demands.','manga',false,'behelit.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Femto is a member of the God Hand',1,'Yes, after Griffith’s rebirth.','manga',false,'femto.jpg');
 
-INSERT INTO `questions` VALUES ('Denji’s heart is actually Pochita',1,'Yes, Pochita replaced his heart.','manga',false,'pochita.jpg');
-INSERT INTO `questions` VALUES ('Makima controls people through fear alone',0,'No, her power relies on contracts and dominance.','manga',false,'makima.jpg');
-INSERT INTO `questions` VALUES ('Devils grow stronger the more they are feared',1,'Yes, fear fuels their power.','manga',false,'devils.jpg');
-INSERT INTO `questions` VALUES ('Chainsaw Man erases devils permanently',1,'Yes, devils eaten by him vanish from existence.','manga',false,'chainsaw_power.jpg');
-INSERT INTO `questions` VALUES ('Denji fights mainly for heroic reasons',0,'No, his motivations are selfish and simple.','manga',false,'denji.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Denji’s heart is actually Pochita',1,'Yes, Pochita replaced his heart.','manga',false,'pochita.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Makima controls people through fear alone',0,'No, her power relies on contracts and dominance.','manga',false,'makima.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Devils grow stronger the more they are feared',1,'Yes, fear fuels their power.','manga',false,'devils.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chainsaw Man erases devils permanently',1,'Yes, devils eaten by him vanish from existence.','manga',false,'chainsaw_power.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Denji fights mainly for heroic reasons',0,'No, his motivations are selfish and simple.','manga',false,'denji.jpg');
+ 
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Thorfinn initially seeks revenge against Askeladd',1,'Yes, revenge drives him early on.','manga',false,'thorfinn.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Askeladd is purely evil',0,'No, he has complex motivations.','manga',false,'askeladd.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Vinland Saga later focuses on pacifism',1,'Yes, violence is rejected later.','manga',false,'vinland.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Thorfinn becomes physically weaker later',1,'Yes, he abandons combat.','manga',false,'thorfinn_change.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The story is based entirely on myth',0,'No, it uses real Viking history.','manga',false,'viking.jpg');
 
-INSERT INTO `questions` VALUES ('Thorfinn initially seeks revenge against Askeladd',1,'Yes, revenge drives him early on.','manga',false,'thorfinn.jpg');
-INSERT INTO `questions` VALUES ('Askeladd is purely evil',0,'No, he has complex motivations.','manga',false,'askeladd.jpg');
-INSERT INTO `questions` VALUES ('Vinland Saga later focuses on pacifism',1,'Yes, violence is rejected later.','manga',false,'vinland.jpg');
-INSERT INTO `questions` VALUES ('Thorfinn becomes physically weaker later',1,'Yes, he abandons combat.','manga',false,'thorfinn_change.jpg');
-INSERT INTO `questions` VALUES ('The story is based entirely on myth',0,'No, it uses real Viking history.','manga',false,'viking.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Ichigo has powers from multiple races',1,'Yes, Shinigami, Hollow, Quincy and Human.','manga',false,'ichigo.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Aizen planned Ichigo’s entire life',1,'Yes, he manipulated events.','manga',false,'aizen.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Bankai can be used without training',0,'No, mastering it takes years.','manga',false,'bankai.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Hollows are corrupted human souls',1,'Yes, they originate from lost souls.','manga',false,'hollow.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Ichigo permanently loses his powers',0,'No, he regains them later.','manga',false,'ichigo_power.jpg');
 
-INSERT INTO `questions` VALUES ('Ichigo has powers from multiple races',1,'Yes, Shinigami, Hollow, Quincy and Human.','manga',false,'ichigo.jpg');
-INSERT INTO `questions` VALUES ('Aizen planned Ichigo’s entire life',1,'Yes, he manipulated events.','manga',false,'aizen.jpg');
-INSERT INTO `questions` VALUES ('Bankai can be used without training',0,'No, mastering it takes years.','manga',false,'bankai.jpg');
-INSERT INTO `questions` VALUES ('Hollows are corrupted human souls',1,'Yes, they originate from lost souls.','manga',false,'hollow.jpg');
-INSERT INTO `questions` VALUES ('Ichigo permanently loses his powers',0,'No, he regains them later.','manga',false,'ichigo_power.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Naruto contains Kurama entirely by birth',0,'No, Kurama was sealed after birth.','manga',false,'kurama.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Sasuke awakens Rinnegan through Hagoromo',1,'Yes, it was granted to him.','manga',false,'sasuke_rinnegan.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Itachi killed his clan purely out of hatred',0,'No, he acted under orders.','manga',false,'itachi.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Naruto becomes Hokage at a young age',0,'No, he becomes Hokage as an adult.','manga',false,'naruto_hokage.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chakra is a mix of physical and spiritual energy',1,'Yes, both are required.','manga',false,'chakra.jpg');
 
-INSERT INTO `questions` VALUES ('Naruto contains Kurama entirely by birth',0,'No, Kurama was sealed after birth.','manga',false,'kurama.jpg');
-INSERT INTO `questions` VALUES ('Sasuke awakens Rinnegan through Hagoromo',1,'Yes, it was granted to him.','manga',false,'sasuke_rinnegan.jpg');
-INSERT INTO `questions` VALUES ('Itachi killed his clan purely out of hatred',0,'No, he acted under orders.','manga',false,'itachi.jpg');
-INSERT INTO `questions` VALUES ('Naruto becomes Hokage at a young age',0,'No, he becomes Hokage as an adult.','manga',false,'naruto_hokage.jpg');
-INSERT INTO `questions` VALUES ('Chakra is a mix of physical and spiritual energy',1,'Yes, both are required.','manga',false,'chakra.jpg');
-
-INSERT INTO `questions` VALUES ('Blue Lock rewards teamwork over ego',0,'No, ego is the core philosophy.','manga',false,'blue_lock_ego.jpg');
-INSERT INTO `questions` VALUES ('Isagi’s main weapon is spatial awareness',1,'Yes, it defines his playstyle.','manga',false,'isagi.jpg');
-INSERT INTO `questions` VALUES ('Elimination in Blue Lock means career death',1,'Yes, players are banned from national team.','manga',false,'blue_lock_rule.jpg');
-INSERT INTO `questions` VALUES ('Blue Lock is supervised by FIFA',0,'No, it is fictional.','manga',false,'blue_lock_fifa.jpg');
-INSERT INTO `questions` VALUES ('The project aims to create the world’s best striker',1,'Yes, not a full team.','manga',false,'blue_lock_goal.jpg');
-
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Blue Lock rewards teamwork over ego',0,'No, ego is the core philosophy.','manga',false,'blue_lock_ego.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Isagi’s main weapon is spatial awareness',1,'Yes, it defines his playstyle.','manga',false,'isagi.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Elimination in Blue Lock means career death',1,'Yes, players are banned from national team.','manga',false,'blue_lock_rule.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Blue Lock is supervised by FIFA',0,'No, it is fictional.','manga',false,'blue_lock_fifa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The project aims to create the world’s best striker',1,'Yes, not a full team.','manga',false,'blue_lock_goal.jpg');
 
 -- Soccer
-INSERT INTO `questions` (`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('Brazil has won the FIFA World Cup more times than any other country',1,'Yes, Brazil has won the World Cup five times.','soccer',false,'brazil_wc.jpg');
-INSERT INTO `questions` VALUES ('Lionel Messi won his first Ballon d’Or after age 25',0,'No, Messi won his first Ballon d’Or at age 22.','soccer',false,'messi_ballondor.jpg');
-INSERT INTO `questions` VALUES ('The World Cup has been hosted in Africa only once',1,'Yes, South Africa hosted it in 2010.','soccer',false,'wc_africa.jpg');
-INSERT INTO `questions` VALUES ('Cristiano Ronaldo has scored in five different World Cups',1,'Yes, he scored in every World Cup from 2006 to 2022.','soccer',false,'ronaldo_wc.jpg');
-INSERT INTO `questions` VALUES ('A goalkeeper cannot score a goal',0,'No, goalkeepers can score goals.','soccer',false,'goalkeeper_goal.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('Brazil has won the FIFA World Cup more times than any other country',1,'Yes, Brazil has won the World Cup five times.','soccer',false,'brazil_wc.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Lionel Messi won his first Ballon d’Or after age 25',0,'No, Messi won his first Ballon d’Or at age 22.','soccer',false,'messi_ballondor.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The World Cup has been hosted in Africa only once',1,'Yes, South Africa hosted it in 2010.','soccer',false,'wc_africa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Cristiano Ronaldo has scored in five different World Cups',1,'Yes, he scored in every World Cup from 2006 to 2022.','soccer',false,'ronaldo_wc.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A goalkeeper cannot score a goal',0,'No, goalkeepers can score goals.','soccer',false,'goalkeeper_goal.jpg');
 
-INSERT INTO `questions` VALUES ('The Premier League started in 1992',1,'Yes, it replaced the old First Division.','soccer',false,'premier_league.jpg');
-INSERT INTO `questions` VALUES ('Pelé won three World Cups',1,'Yes, he won in 1958, 1962, and 1970.','soccer',false,'pele_wc.jpg');
-INSERT INTO `questions` VALUES ('No African team has ever reached a World Cup semifinal',0,'No, Morocco reached the semifinals in 2022.','soccer',false,'morocco_wc.jpg');
-INSERT INTO `questions` VALUES ('The offside rule has always existed in football',0,'No, it was introduced later in the sport’s history.','soccer',false,'offside.jpg');
-INSERT INTO `questions` VALUES ('The Ballon d’Or was originally only for European players',1,'Yes, non-Europeans were excluded at first.','soccer',false,'ballon_dor.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Premier League started in 1992',1,'Yes, it replaced the old First Division.','soccer',false,'premier_league.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Pelé won three World Cups',1,'Yes, he won in 1958, 1962, and 1970.','soccer',false,'pele_wc.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('No African team has ever reached a World Cup semifinal',0,'No, Morocco reached the semifinals in 2022.','soccer',false,'morocco_wc.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The offside rule has always existed in football',0,'No, it was introduced later in the sport’s history.','soccer',false,'offside.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Ballon d’Or was originally only for European players',1,'Yes, non-Europeans were excluded at first.','soccer',false,'ballon_dor.jpg');
 
-INSERT INTO `questions` VALUES ('A red card always results in a match suspension',0,'No, suspensions depend on competition rules.','soccer',false,'red_card.jpg');
-INSERT INTO `questions` VALUES ('Germany has won the World Cup more than Italy',0,'No, both have four World Cups.','soccer',false,'germany_italy.jpg');
-INSERT INTO `questions` VALUES ('VAR was first used in a World Cup in 2018',1,'Yes, Russia 2018 introduced VAR.','soccer',false,'var_wc.jpg');
-INSERT INTO `questions` VALUES ('The Champions League final has always been played at night',0,'No, early finals were daytime matches.','soccer',false,'ucl_final.jpg');
-INSERT INTO `questions` VALUES ('Zinedine Zidane scored twice in the 1998 World Cup final',1,'Yes, both goals were headers.','soccer',false,'zidane_1998.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A red card always results in a match suspension',0,'No, suspensions depend on competition rules.','soccer',false,'red_card.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Germany has won the World Cup more than Italy',0,'No, both have four World Cups.','soccer',false,'germany_italy.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('VAR was first used in a World Cup in 2018',1,'Yes, Russia 2018 introduced VAR.','soccer',false,'var_wc.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Champions League final has always been played at night',0,'No, early finals were daytime matches.','soccer',false,'ucl_final.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Zinedine Zidane scored twice in the 1998 World Cup final',1,'Yes, both goals were headers.','soccer',false,'zidane_1998.jpg');
 
-INSERT INTO `questions` VALUES ('No player has ever scored a hat-trick in a World Cup final',0,'No, Geoff Hurst did it in 1966.','soccer',false,'hurst_1966.jpg');
-INSERT INTO `questions` VALUES ('The fastest red card in football history was under 5 seconds',1,'Yes, it happened after kickoff.','soccer',false,'fast_red.jpg');
-INSERT INTO `questions` VALUES ('Barcelona has never been relegated from La Liga',1,'Yes, Barcelona has always stayed in La Liga.','soccer',false,'barcelona.jpg');
-INSERT INTO `questions` VALUES ('A match can legally end 0–0',1,'Yes, draws without goals are allowed.','soccer',false,'draw.jpg');
-INSERT INTO `questions` VALUES ('The first World Cup was held in Europe',0,'No, it was held in Uruguay.','soccer',false,'wc_1930.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('No player has ever scored a hat-trick in a World Cup final',0,'No, Geoff Hurst did it in 1966.','soccer',false,'hurst_1966.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The fastest red card in football history was under 5 seconds',1,'Yes, it happened after kickoff.','soccer',false,'fast_red.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Barcelona has never been relegated from La Liga',1,'Yes, Barcelona has always stayed in La Liga.','soccer',false,'barcelona.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A match can legally end 0–0',1,'Yes, draws without goals are allowed.','soccer',false,'draw.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first World Cup was held in Europe',0,'No, it was held in Uruguay.','soccer',false,'wc_1930.jpg');
 
-INSERT INTO `questions` VALUES ('A football team must have exactly 11 players on the field',0,'No, matches can continue with fewer players.','soccer',false,'players.jpg');
-INSERT INTO `questions` VALUES ('Real Madrid has won the Champions League more than any other club',1,'Yes, they are the most successful club.','soccer',false,'real_madrid.jpg');
-INSERT INTO `questions` VALUES ('Penalty shootouts were always part of football rules',0,'No, they were introduced later.','soccer',false,'penalty.jpg');
-INSERT INTO `questions` VALUES ('The yellow card was introduced after the 1966 World Cup',1,'Yes, it was added to improve communication.','soccer',false,'yellow_card.jpg');
-INSERT INTO `questions` VALUES ('Goal-line technology uses cameras to detect goals',1,'Yes, multiple cameras track the ball.','soccer',false,'goal_line.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A football team must have exactly 11 players on the field',0,'No, matches can continue with fewer players.','soccer',false,'players.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Real Madrid has won the Champions League more than any other club',1,'Yes, they are the most successful club.','soccer',false,'real_madrid.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Penalty shootouts were always part of football rules',0,'No, they were introduced later.','soccer',false,'penalty.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The yellow card was introduced after the 1966 World Cup',1,'Yes, it was added to improve communication.','soccer',false,'yellow_card.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Goal-line technology uses cameras to detect goals',1,'Yes, multiple cameras track the ball.','soccer',false,'goal_line.jpg');
 
-INSERT INTO `questions` VALUES ('A referee can award a goal without the ball crossing the line',0,'No, the ball must fully cross the line.','soccer',false,'goal_rule.jpg');
-INSERT INTO `questions` VALUES ('The FIFA headquarters is located in Switzerland',1,'Yes, it is based in Zurich.','soccer',false,'fifa_hq.jpg');
-INSERT INTO `questions` VALUES ('All professional football pitches have the same dimensions',0,'No, pitch sizes can vary within limits.','soccer',false,'pitch.jpg');
-INSERT INTO `questions` VALUES ('The Copa Libertadores is older than the Champions League',1,'Yes, it started in 1960.','soccer',false,'libertadores.jpg');
-INSERT INTO `questions` VALUES ('A player can score directly from a corner kick',1,'Yes, it is called an olimpico.','soccer',false,'corner_goal.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A referee can award a goal without the ball crossing the line',0,'No, the ball must fully cross the line.','soccer',false,'goal_rule.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The FIFA headquarters is located in Switzerland',1,'Yes, it is based in Zurich.','soccer',false,'fifa_hq.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All professional football pitches have the same dimensions',0,'No, pitch sizes can vary within limits.','soccer',false,'pitch.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Copa Libertadores is older than the Champions League',1,'Yes, it started in 1960.','soccer',false,'libertadores.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A player can score directly from a corner kick',1,'Yes, it is called an olimpico.','soccer',false,'corner_goal.jpg');
 
-INSERT INTO `questions` VALUES ('The World Cup trophy has always been the same design',0,'No, the original Jules Rimet trophy was replaced.','soccer',false,'wc_trophy.jpg');
-INSERT INTO `questions` VALUES ('A football match lasts exactly 90 minutes',0,'No, added time can extend it.','soccer',false,'extra_time.jpg');
-INSERT INTO `questions` VALUES ('Only captains are allowed to speak to the referee',0,'No, others can speak but captains have priority.','soccer',false,'referee.jpg');
-INSERT INTO `questions` VALUES ('UEFA organizes the Champions League',1,'Yes, it is a European competition.','soccer',false,'uefa.jpg');
-INSERT INTO `questions` VALUES ('A team can make unlimited substitutions',0,'No, substitutions are limited by rules.','soccer',false,'substitution.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The World Cup trophy has always been the same design',0,'No, the original Jules Rimet trophy was replaced.','soccer',false,'wc_trophy.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A football match lasts exactly 90 minutes',0,'No, added time can extend it.','soccer',false,'extra_time.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Only captains are allowed to speak to the referee',0,'No, others can speak but captains have priority.','soccer',false,'referee.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('UEFA organizes the Champions League',1,'Yes, it is a European competition.','soccer',false,'uefa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A team can make unlimited substitutions',0,'No, substitutions are limited by rules.','soccer',false,'substitution.jpg');
 
-INSERT INTO `questions` VALUES ('The handball rule has never changed',0,'No, it has been modified many times.','soccer',false,'handball.jpg');
-INSERT INTO `questions` VALUES ('Argentina won the World Cup in 2022',1,'Yes, they defeated France in the final.','soccer',false,'argentina_2022.jpg');
-INSERT INTO `questions` VALUES ('The away goals rule still applies in the Champions League',0,'No, UEFA removed it in 2021.','soccer',false,'away_goals.jpg');
-INSERT INTO `questions` VALUES ('A player can receive a red card after the final whistle',1,'Yes, disciplinary actions still apply.','soccer',false,'post_match_red.jpg');
-INSERT INTO `questions` VALUES ('The World Cup is held every two years',0,'No, it is held every four years.','soccer',false,'wc_cycle.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The handball rule has never changed',0,'No, it has been modified many times.','soccer',false,'handball.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Argentina won the World Cup in 2022',1,'Yes, they defeated France in the final.','soccer',false,'argentina_2022.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The away goals rule still applies in the Champions League',0,'No, UEFA removed it in 2021.','soccer',false,'away_goals.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A player can receive a red card after the final whistle',1,'Yes, disciplinary actions still apply.','soccer',false,'post_match_red.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The World Cup is held every two years',0,'No, it is held every four years.','soccer',false,'wc_cycle.jpg');
 
-INSERT INTO `questions` VALUES ('Futsal is played with a smaller ball',1,'Yes, the ball is designed to bounce less.','soccer',false,'futsal.jpg');
-INSERT INTO `questions` VALUES ('A referee can stop a match permanently',1,'Yes, for safety or serious incidents.','soccer',false,'match_stop.jpg');
-INSERT INTO `questions` VALUES ('England invented modern football rules',1,'Yes, the FA codified the rules.','soccer',false,'england_fa.jpg');
-INSERT INTO `questions` VALUES ('All football boots are made with metal studs',0,'No, many use rubber or plastic studs.','soccer',false,'boots.jpg');
-INSERT INTO `questions` VALUES ('The Champions League anthem is based on classical music',1,'Yes, it is adapted from Handel.','soccer',false,'ucl_anthem.jpg');
-
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Futsal is played with a smaller ball',1,'Yes, the ball is designed to bounce less.','soccer',false,'futsal.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A referee can stop a match permanently',1,'Yes, for safety or serious incidents.','soccer',false,'match_stop.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('England invented modern football rules',1,'Yes, the FA codified the rules.','soccer',false,'england_fa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All football boots are made with metal studs',0,'No, many use rubber or plastic studs.','soccer',false,'boots.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Champions League anthem is based on classical music',1,'Yes, it is adapted from Handel.','soccer',false,'ucl_anthem.jpg');
 
 -- Technology 100
-INSERT INTO `questions` (`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('The first computer virus was created in the 1970s',1,'Creeper appeared in 1971.','technology',false,'computer_virus.jpg');
-INSERT INTO `questions` VALUES ('The Internet was originally designed for entertainment',0,'It began as a military research network.','technology',false,'arpanet.jpg');
-INSERT INTO `questions` VALUES ('Email existed before the World Wide Web',1,'Email dates back to the early 1970s.','technology',false,'email.jpg');
-INSERT INTO `questions` VALUES ('Moore’s Law predicts exponential growth in transistor count',1,'It observes doubling roughly every two years.','technology',false,'moores_law.jpg');
-INSERT INTO `questions` VALUES ('The first smartphone was the iPhone',0,'IBM Simon existed in 1994.','technology',false,'ibm_simon.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first computer virus was created in the 1970s',1,'Creeper appeared in 1971.','technology',false,'computer_virus.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Internet was originally designed for entertainment',0,'It began as a military research network.','technology',false,'arpanet.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Email existed before the World Wide Web',1,'Email dates back to the early 1970s.','technology',false,'email.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Moore’s Law predicts exponential growth in transistor count',1,'It observes doubling roughly every two years.','technology',false,'moores_law.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first smartphone was the iPhone',0,'IBM Simon existed in 1994.','technology',false,'ibm_simon.jpg');
+ 
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Linux was originally developed as a hobby project',1,'Linus Torvalds started it in 1991.','technology',false,'linux.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Bluetooth is named after a Viking king',1,'Harald Bluetooth united Denmark.','technology',false,'bluetooth.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The term “bug” in computing came from a real insect',1,'A moth caused a hardware issue.','technology',false,'computer_bug.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Quantum computers store data as bits',0,'They use qubits instead.','technology',false,'quantum.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first website is still online',1,'Yes, the website is about the WWW project.','technology',false,'first_website.jpg');
 
-INSERT INTO `questions` VALUES ('Linux was originally developed as a hobby project',1,'Linus Torvalds started it in 1991.','technology',false,'linux.jpg');
-INSERT INTO `questions` VALUES ('Bluetooth is named after a Viking king',1,'Harald Bluetooth united Denmark.','technology',false,'bluetooth.jpg');
-INSERT INTO `questions` VALUES ('The term “bug” in computing came from a real insect',1,'A moth caused a hardware issue.','technology',false,'computer_bug.jpg');
-INSERT INTO `questions` VALUES ('Quantum computers store data as bits',0,'They use qubits instead.','technology',false,'quantum.jpg');
-INSERT INTO `questions` VALUES ('The first website is still online',1,'Yes, the website is about the WWW project.','technology',false,'first_website.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Wi-Fi stands for Wireless Fidelity',0,'It is not an acronym.','technology',false,'wifi.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The QWERTY keyboard was designed to slow typists',1,'It reduced mechanical jams.','technology',false,'qwerty.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Passwords were introduced in the 1980s',0,'They existed as early as the 1960s.','technology',false,'password.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('NASA helped invent the computer mouse',0,'It was developed at Stanford.','technology',false,'mouse.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first hard drive weighed over one ton',1,'IBM 305 RAMAC was massive.','technology',false,'hard_drive.jpg');
 
-INSERT INTO `questions` VALUES ('Wi-Fi stands for Wireless Fidelity',0,'It is not an acronym.','technology',false,'wifi.jpg');
-INSERT INTO `questions` VALUES ('The QWERTY keyboard was designed to slow typists',1,'It reduced mechanical jams.','technology',false,'qwerty.jpg');
-INSERT INTO `questions` VALUES ('Passwords were introduced in the 1980s',0,'They existed as early as the 1960s.','technology',false,'password.jpg');
-INSERT INTO `questions` VALUES ('NASA helped invent the computer mouse',0,'It was developed at Stanford.','technology',false,'mouse.jpg');
-INSERT INTO `questions` VALUES ('The first hard drive weighed over one ton',1,'IBM 305 RAMAC was massive.','technology',false,'hard_drive.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Open-source software is always free',0,'Some open-source software is paid.','technology',false,'opensource.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('GPS requires signals from at least four satellites',1,'To calculate accurate positioning.','technology',false,'gps.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The original Nintendo used cartridges',1,NULL,'technology',false,'nintendo.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Artificial intelligence can fully explain its decisions',0,'Many models act as black boxes.','technology',false,'ai_blackbox.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first webcam was used to monitor coffee',1,'At Cambridge University.','technology',false,'webcam.jpg');
 
-INSERT INTO `questions` VALUES ('Open-source software is always free',0,'Some open-source software is paid.','technology',false,'opensource.jpg');
-INSERT INTO `questions` VALUES ('GPS requires signals from at least four satellites',1,'To calculate accurate positioning.','technology',false,'gps.jpg');
-INSERT INTO `questions` VALUES ('The original Nintendo used cartridges',1,NULL,'technology',false,'nintendo.jpg');
-INSERT INTO `questions` VALUES ('Artificial intelligence can fully explain its decisions',0,'Many models act as black boxes.','technology',false,'ai_blackbox.jpg');
-INSERT INTO `questions` VALUES ('The first webcam was used to monitor coffee',1,'At Cambridge University.','technology',false,'webcam.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('CAPTCHA was created to stop bots',1,NULL,'technology',false,'captcha.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('HTML is a programming language',0,'It is a markup language.','technology',false,'html.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first computer programmer was a woman',1,'Ada Lovelace wrote early algorithms.','technology',false,'ada_lovelace.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Smartphones emit ionizing radiation',0,'They emit non-ionizing radiation.','technology',false,'radiation.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Data stored in the cloud exists physically',1,'It resides on servers.','technology',false,'cloud_servers.jpg');
 
-INSERT INTO `questions` VALUES ('CAPTCHA was created to stop bots',1,NULL,'technology',false,'captcha.jpg');
-INSERT INTO `questions` VALUES ('HTML is a programming language',0,'It is a markup language.','technology',false,'html.jpg');
-INSERT INTO `questions` VALUES ('The first computer programmer was a woman',1,'Ada Lovelace wrote early algorithms.','technology',false,'ada_lovelace.jpg');
-INSERT INTO `questions` VALUES ('Smartphones emit ionizing radiation',0,'They emit non-ionizing radiation.','technology',false,'radiation.jpg');
-INSERT INTO `questions` VALUES ('Data stored in the cloud exists physically',1,'It resides on servers.','technology',false,'cloud_servers.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('USB was created to reduce cable clutter',1,NULL,'technology',false,'usb.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Facial recognition works equally well on all faces',0,'Bias issues exist.','technology',false,'facial_recognition.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first computer game was created in the 1950s',1,'Tennis for Two appeared in 1958.','technology',false,'first_game.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Encryption guarantees 100% data security',0,'Human error still matters.','technology',false,'encryption.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Supercomputers are mainly used for gaming',0,NULL,'technology',false,'supercomputer.jpg');
 
-INSERT INTO `questions` VALUES ('USB was created to reduce cable clutter',1,NULL,'technology',false,'usb.jpg');
-INSERT INTO `questions` VALUES ('Facial recognition works equally well on all faces',0,'Bias issues exist.','technology',false,'facial_recognition.jpg');
-INSERT INTO `questions` VALUES ('The first computer game was created in the 1950s',1,'Tennis for Two appeared in 1958.','technology',false,'first_game.jpg');
-INSERT INTO `questions` VALUES ('Encryption guarantees 100% data security',0,'Human error still matters.','technology',false,'encryption.jpg');
-INSERT INTO `questions` VALUES ('Supercomputers are mainly used for gaming',0,NULL,'technology',false,'supercomputer.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Touchscreens existed before smartphones',1,'Early versions appeared decades earlier.','technology',false,'touchscreen.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Blockchain can only be used for cryptocurrencies',0,'It has many other applications.','technology',false,'blockchain.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first computer monitor was a modified TV',1,NULL,'technology',false,'monitor.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All programming languages are based on English',0,'Some use symbols or non-English words.','technology',false,'programming.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('A terabyte equals exactly 1000 gigabytes',0,'In computing it can be 1024.','technology',false,'storage.jpg');
 
-INSERT INTO `questions` VALUES ('Touchscreens existed before smartphones',1,'Early versions appeared decades earlier.','technology',false,'touchscreen.jpg');
-INSERT INTO `questions` VALUES ('Blockchain can only be used for cryptocurrencies',0,'It has many other applications.','technology',false,'blockchain.jpg');
-INSERT INTO `questions` VALUES ('The first computer monitor was a modified TV',1,NULL,'technology',false,'monitor.jpg');
-INSERT INTO `questions` VALUES ('All programming languages are based on English',0,'Some use symbols or non-English words.','technology',false,'programming.jpg');
-INSERT INTO `questions` VALUES ('A terabyte equals exactly 1000 gigabytes',0,'In computing it can be 1024.','technology',false,'storage.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Biometric data can be changed like passwords',0,'Biometrics are permanent.','technology',false,'biometric.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first email message was sent in 1971',1,NULL,'technology',false,'first_email.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Machine learning requires massive datasets',0,'Small datasets can also be used.','technology',false,'machine_learning.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Internet and the Web are the same thing',0,'The Web runs on the Internet.','technology',false,'internet_web.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Self-driving cars rely on multiple sensor types',1,'Cameras, radar, and lidar.','technology',false,'self_driving.jpg');
 
-INSERT INTO `questions` VALUES ('Biometric data can be changed like passwords',0,'Biometrics are permanent.','technology',false,'biometric.jpg');
-INSERT INTO `questions` VALUES ('The first email message was sent in 1971',1,NULL,'technology',false,'first_email.jpg');
-INSERT INTO `questions` VALUES ('Machine learning requires massive datasets',0,'Small datasets can also be used.','technology',false,'machine_learning.jpg');
-INSERT INTO `questions` VALUES ('The Internet and the Web are the same thing',0,'The Web runs on the Internet.','technology',false,'internet_web.jpg');
-INSERT INTO `questions` VALUES ('Self-driving cars rely on multiple sensor types',1,'Cameras, radar, and lidar.','technology',false,'self_driving.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All data deleted from a computer is unrecoverable',0,'Data can often be recovered.','technology',false,'data_recovery.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first domain name ever registered was symbolics.com',1,NULL,'technology',false,'domain.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('5G networks are slower than 4G',0,NULL,'technology',false,'5g.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Early computers were programmed using switches',1,'Physical wiring was required.','technology',false,'early_computer.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Virtual reality can cause motion sickness',1,NULL,'technology',false,'vr.jpg');
 
-INSERT INTO `questions` VALUES ('All data deleted from a computer is unrecoverable',0,'Data can often be recovered.','technology',false,'data_recovery.jpg');
-INSERT INTO `questions` VALUES ('The first domain name ever registered was symbolics.com',1,NULL,'technology',false,'domain.jpg');
-INSERT INTO `questions` VALUES ('5G networks are slower than 4G',0,NULL,'technology',false,'5g.jpg');
-INSERT INTO `questions` VALUES ('Early computers were programmed using switches',1,'Physical wiring was required.','technology',false,'early_computer.jpg');
-INSERT INTO `questions` VALUES ('Virtual reality can cause motion sickness',1,NULL,'technology',false,'vr.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first Apple logo featured Isaac Newton',1,'It was later simplified.','technology',false,'apple_logo.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('AI models understand meaning like humans do',0,'They recognize patterns, not understanding.','technology',false,'ai_understanding.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Cybersecurity is only a concern for large companies',0,NULL,'technology',false,'cybersecurity.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Satellites help synchronize global time systems',1,'GPS provides precise time signals.','technology',false,'satellite_time.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first calculator was digital',0,'Early ones were mechanical.','technology',false,'calculator.jpg');
 
-INSERT INTO `questions` VALUES ('The first Apple logo featured Isaac Newton',1,'It was later simplified.','technology',false,'apple_logo.jpg');
-INSERT INTO `questions` VALUES ('AI models understand meaning like humans do',0,'They recognize patterns, not understanding.','technology',false,'ai_understanding.jpg');
-INSERT INTO `questions` VALUES ('Cybersecurity is only a concern for large companies',0,NULL,'technology',false,'cybersecurity.jpg');
-INSERT INTO `questions` VALUES ('Satellites help synchronize global time systems',1,'GPS provides precise time signals.','technology',false,'satellite_time.jpg');
-INSERT INTO `questions` VALUES ('The first calculator was digital',0,'Early ones were mechanical.','technology',false,'calculator.jpg');
-
-INSERT INTO `questions` VALUES ('Data centers consume significant global electricity',1,NULL,'technology',false,'data_center.jpg');
-INSERT INTO `questions` VALUES ('All software bugs are easy to fix',0,NULL,'technology',false,'software_bug.jpg');
-INSERT INTO `questions` VALUES ('Augmented reality overlays digital content onto the real world',1,NULL,'technology',false,'ar.jpg');
-INSERT INTO `questions` VALUES ('The first computer mouse was wireless',0,'It was wired.','technology',false,'mouse_wire.jpg');
-INSERT INTO `questions` VALUES ('Technology progress always reduces energy consumption',0,'Some tech increases demand.','technology',false,'energy.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Data centers consume significant global electricity',1,NULL,'technology',false,'data_center.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All software bugs are easy to fix',0,NULL,'technology',false,'software_bug.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Augmented reality overlays digital content onto the real world',1,NULL,'technology',false,'ar.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The first computer mouse was wireless',0,'It was wired.','technology',false,'mouse_wire.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Technology progress always reduces energy consumption',0,'Some tech increases demand.','technology',false,'energy.jpg');
 
 --Geography 100
-INSERT INTO `questions` (`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('Russia spans more than 11 time zones',1,'It is the largest country on Earth.','geography',false,'russia_map.jpg');
-INSERT INTO `questions` VALUES ('Africa has only one time zone',0,'Africa spans multiple time zones.','geography',false,'africa_timezone.jpg');
-INSERT INTO `questions` VALUES ('Mount Everest grows slightly every year',1,'Due to tectonic plate movement.','geography',false,'everest.jpg');
-INSERT INTO `questions` VALUES ('The Nile is the longest river in the world',0,'The Amazon is often considered longer.','geography',false,'nile.jpg');
-INSERT INTO `questions` VALUES ('Australia is wider than the Moon',1,'The Moon is about 3,400 km wide.','geography',false,'australia_moon.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Russia spans more than 11 time zones',1,'It is the largest country on Earth.','geography',false,'russia_map.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Africa has only one time zone',0,'Africa spans multiple time zones.','geography',false,'africa_timezone.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Mount Everest grows slightly every year',1,'Due to tectonic plate movement.','geography',false,'everest.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Nile is the longest river in the world',0,'The Amazon is often considered longer.','geography',false,'nile.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Australia is wider than the Moon',1,'The Moon is about 3,400 km wide.','geography',false,'australia_moon.jpg');
 
-INSERT INTO `questions` VALUES ('Greenland is the largest island on Earth',1,'Australia is classified as a continent.','geography',false,'greenland.jpg');
-INSERT INTO `questions` VALUES ('Europe is larger than South America',0,NULL,'geography',false,'europe_sa.jpg');
-INSERT INTO `questions` VALUES ('Japan consists of over 6,000 islands',1,'Many are uninhabited.','geography',false,'japan_islands.jpg');
-INSERT INTO `questions` VALUES ('The Sahara is the largest desert in the world',0,'Antarctica is technically the largest.','geography',false,'sahara.jpg');
-INSERT INTO `questions` VALUES ('Iceland has no mosquitoes',1,'They cannot survive its climate.','geography',false,'iceland.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Greenland is the largest island on Earth',1,'Australia is classified as a continent.','geography',false,'greenland.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Europe is larger than South America',0,NULL,'geography',false,'europe_sa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Japan consists of over 6,000 islands',1,'Many are uninhabited.','geography',false,'japan_islands.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Sahara is the largest desert in the world',0,'Antarctica is technically the largest.','geography',false,'sahara.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Iceland has no mosquitoes',1,'They cannot survive its climate.','geography',false,'iceland.jpg');
 
-INSERT INTO `questions` VALUES ('Vatican City is smaller than Central Park',1,'It is under 1 km².','geography',false,'vatican.jpg');
-INSERT INTO `questions` VALUES ('Brazil borders every South American country',0,'It does not border Chile or Ecuador.','geography',false,'brazil_map.jpg');
-INSERT INTO `questions` VALUES ('There are countries entirely below sea level',1,'The Netherlands is partly below sea level.','geography',false,'netherlands.jpg');
-INSERT INTO `questions` VALUES ('Canada has more lakes than the rest of the world combined',1,'It has over 2 million lakes.','geography',false,'canada_lakes.jpg');
-INSERT INTO `questions` VALUES ('The equator passes through Europe',0,NULL,'geography',false,'equator.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Vatican City is smaller than Central Park',1,'It is under 1 km².','geography',false,'vatican.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Brazil borders every South American country',0,'It does not border Chile or Ecuador.','geography',false,'brazil_map.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('There are countries entirely below sea level',1,'The Netherlands is partly below sea level.','geography',false,'netherlands.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Canada has more lakes than the rest of the world combined',1,'It has over 2 million lakes.','geography',false,'canada_lakes.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The equator passes through Europe',0,NULL,'geography',false,'equator.jpg');
 
-INSERT INTO `questions` VALUES ('Indonesia is located on the Pacific Ring of Fire',1,'It has frequent volcanic activity.','geography',false,'indonesia_volcano.jpg');
-INSERT INTO `questions` VALUES ('Alaska is closer to Africa than Florida',0,NULL,'geography',false,'alaska_map.jpg');
-INSERT INTO `questions` VALUES ('France has borders in South America',1,'French Guiana is overseas territory.','geography',false,'french_guiana.jpg');
-INSERT INTO `questions` VALUES ('The Dead Sea is one of the saltiest bodies of water',1,'Its salinity is extremely high.','geography',false,'dead_sea.jpg');
-INSERT INTO `questions` VALUES ('All European capitals are inland cities',0,NULL,'geography',false,'europe_capitals.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Indonesia is located on the Pacific Ring of Fire',1,'It has frequent volcanic activity.','geography',false,'indonesia_volcano.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Alaska is closer to Africa than Florida',0,NULL,'geography',false,'alaska_map.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('France has borders in South America',1,'French Guiana is overseas territory.','geography',false,'french_guiana.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Dead Sea is one of the saltiest bodies of water',1,'Its salinity is extremely high.','geography',false,'dead_sea.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All European capitals are inland cities',0,NULL,'geography',false,'europe_capitals.jpg');
 
-INSERT INTO `questions` VALUES ('Chile stretches across more than 35 degrees of latitude',1,'It spans a very long north-south range.','geography',false,'chile_map.jpg');
-INSERT INTO `questions` VALUES ('Antarctica has active volcanoes',1,'Mount Erebus is still active.','geography',false,'antarctica_volcano.jpg');
-INSERT INTO `questions` VALUES ('The Amazon rainforest is shrinking every year',1,'Deforestation is ongoing.','geography',false,'amazon.jpg');
-INSERT INTO `questions` VALUES ('The UK is closer to the US than to Russia',1,'Measured coast to coast.','geography',false,'uk_distance.jpg');
-INSERT INTO `questions` VALUES ('Spain is part of Africa',0,NULL,'geography',false,'spain_africa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chile stretches across more than 35 degrees of latitude',1,'It spans a very long north-south range.','geography',false,'chile_map.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Antarctica has active volcanoes',1,'Mount Erebus is still active.','geography',false,'antarctica_volcano.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Amazon rainforest is shrinking every year',1,'Deforestation is ongoing.','geography',false,'amazon.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The UK is closer to the US than to Russia',1,'Measured coast to coast.','geography',false,'uk_distance.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Spain is part of Africa',0,NULL,'geography',false,'spain_africa.jpg');
 
-INSERT INTO `questions` VALUES ('There are more pyramids in Sudan than Egypt',1,'Sudan has over 200 pyramids.','geography',false,'sudan_pyramids.jpg');
-INSERT INTO `questions` VALUES ('China has only one official time zone',1,'Despite its large size.','geography',false,'china_timezone.jpg');
-INSERT INTO `questions` VALUES ('Mexico is part of Central America',0,NULL,'geography',false,'mexico_map.jpg');
-INSERT INTO `questions` VALUES ('Lake Baikal contains about 20% of Earth’s fresh water',1,'It is the deepest lake.','geography',false,'baikal.jpg');
-INSERT INTO `questions` VALUES ('The Mediterranean Sea is shrinking',1,'Africa and Europe are converging.','geography',false,'mediterranean.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('There are more pyramids in Sudan than Egypt',1,'Sudan has over 200 pyramids.','geography',false,'sudan_pyramids.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('China has only one official time zone',1,'Despite its large size.','geography',false,'china_timezone.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Mexico is part of Central America',0,NULL,'geography',false,'mexico_map.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Lake Baikal contains about 20% of Earth’s fresh water',1,'It is the deepest lake.','geography',false,'baikal.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Mediterranean Sea is shrinking',1,'Africa and Europe are converging.','geography',false,'mediterranean.jpg');
 
-INSERT INTO `questions` VALUES ('No country lies entirely in the Southern Hemisphere',0,NULL,'geography',false,'southern_hemi.jpg');
-INSERT INTO `questions` VALUES ('Nepal has the highest elevation range of any country',1,'From near sea level to Everest.','geography',false,'nepal.jpg');
-INSERT INTO `questions` VALUES ('The Arctic is a continent',0,NULL,'geography',false,'arctic.jpg');
-INSERT INTO `questions` VALUES ('Turkey lies on two continents',1,'Europe and Asia.','geography',false,'turkey_map.jpg');
-INSERT INTO `questions` VALUES ('All deserts are hot',0,'Some deserts are frozen.','geography',false,'cold_desert.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('No country lies entirely in the Southern Hemisphere',0,NULL,'geography',false,'southern_hemi.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Nepal has the highest elevation range of any country',1,'From near sea level to Everest.','geography',false,'nepal.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Arctic is a continent',0,NULL,'geography',false,'arctic.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Turkey lies on two continents',1,'Europe and Asia.','geography',false,'turkey_map.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All deserts are hot',0,'Some deserts are frozen.','geography',false,'cold_desert.jpg');
 
-INSERT INTO `questions` VALUES ('The Panama Canal connects two oceans',1,'Atlantic and Pacific.','geography',false,'panama_canal.jpg');
-INSERT INTO `questions` VALUES ('Switzerland has no coastline',1,NULL,'geography',false,'switzerland.jpg');
-INSERT INTO `questions` VALUES ('The longest mountain range is the Andes',0,'The mid-ocean ridge is longer.','geography',false,'andes.jpg');
-INSERT INTO `questions` VALUES ('Italy has more UNESCO sites than any other country',1,NULL,'geography',false,'italy_unesco.jpg');
-INSERT INTO `questions` VALUES ('Every country has a national capital',0,'Some territories do not.','geography',false,'capital.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Panama Canal connects two oceans',1,'Atlantic and Pacific.','geography',false,'panama_canal.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Switzerland has no coastline',1,NULL,'geography',false,'switzerland.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The longest mountain range is the Andes',0,'The mid-ocean ridge is longer.','geography',false,'andes.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Italy has more UNESCO sites than any other country',1,NULL,'geography',false,'italy_unesco.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Every country has a national capital',0,'Some territories do not.','geography',false,'capital.jpg');
+ 
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Mongolia has the lowest population density',1,'One of the sparsest globally.','geography',false,'mongolia.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('New Zealand is part of Australia',0,NULL,'geography',false,'nz_map.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Great Wall is visible from space with the naked eye',0,'This is a myth.','geography',false,'great_wall.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Iran has more mountains than deserts',1,'Zagros and Alborz ranges dominate.','geography',false,'iran_mountains.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Africa is split by the Prime Meridian',1,NULL,'geography',false,'prime_meridian.jpg');
 
-INSERT INTO `questions` VALUES ('Mongolia has the lowest population density',1,'One of the sparsest globally.','geography',false,'mongolia.jpg');
-INSERT INTO `questions` VALUES ('New Zealand is part of Australia',0,NULL,'geography',false,'nz_map.jpg');
-INSERT INTO `questions` VALUES ('The Great Wall is visible from space with the naked eye',0,'This is a myth.','geography',false,'great_wall.jpg');
-INSERT INTO `questions` VALUES ('Iran has more mountains than deserts',1,'Zagros and Alborz ranges dominate.','geography',false,'iran_mountains.jpg');
-INSERT INTO `questions` VALUES ('Africa is split by the Prime Meridian',1,NULL,'geography',false,'prime_meridian.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('South Africa has three capital cities',1,'Each serves a different function.','geography',false,'south_africa.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All volcanoes are found on land',0,NULL,'geography',false,'underwater_volcano.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Caspian Sea is technically a lake',1,'It is landlocked.','geography',false,'caspian.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The equator passes through Kenya',1,NULL,'geography',false,'kenya.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('No country begins with the letter A',0,'Afghanistan, Albania, etc.','geography',false,'countries_a.jpg');
 
-INSERT INTO `questions` VALUES ('South Africa has three capital cities',1,'Each serves a different function.','geography',false,'south_africa.jpg');
-INSERT INTO `questions` VALUES ('All volcanoes are found on land',0,NULL,'geography',false,'underwater_volcano.jpg');
-INSERT INTO `questions` VALUES ('The Caspian Sea is technically a lake',1,'It is landlocked.','geography',false,'caspian.jpg');
-INSERT INTO `questions` VALUES ('The equator passes through Kenya',1,NULL,'geography',false,'kenya.jpg');
-INSERT INTO `questions` VALUES ('No country begins with the letter A',0,'Afghanistan, Albania, etc.','geography',false,'countries_a.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Indonesia is the most volcanically active country',1,NULL,'geography',false,'indonesia.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('All rivers flow southward',0,NULL,'geography',false,'river_flow.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The US state with the most coastline is Alaska',1,NULL,'geography',false,'alaska.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Antarctica has no permanent residents',1,NULL,'geography',false,'antarctica_station.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Paris is south of Montreal',1,NULL,'geography',false,'paris_montreal.jpg');
 
-INSERT INTO `questions` VALUES ('Indonesia is the most volcanically active country',1,NULL,'geography',false,'indonesia.jpg');
-INSERT INTO `questions` VALUES ('All rivers flow southward',0,NULL,'geography',false,'river_flow.jpg');
-INSERT INTO `questions` VALUES ('The US state with the most coastline is Alaska',1,NULL,'geography',false,'alaska.jpg');
-INSERT INTO `questions` VALUES ('Antarctica has no permanent residents',1,NULL,'geography',false,'antarctica_station.jpg');
-INSERT INTO `questions` VALUES ('Paris is south of Montreal',1,NULL,'geography',false,'paris_montreal.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Bolivia has lost its coastline',1,'After the War of the Pacific.','geography',false,'bolivia.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The equator is the hottest place on Earth',0,'Deserts are often hotter.','geography',false,'equator_heat.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Asia is the largest continent by land area',1,NULL,'geography',false,'asia.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Every country has access to fresh water',0,NULL,'geography',false,'water_access.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('The Maldives is the lowest-lying country',1,'Average elevation is about 1.5m.','geography',false,'maldives.jpg');
 
-INSERT INTO `questions` VALUES ('Bolivia has lost its coastline',1,'After the War of the Pacific.','geography',false,'bolivia.jpg');
-INSERT INTO `questions` VALUES ('The equator is the hottest place on Earth',0,'Deserts are often hotter.','geography',false,'equator_heat.jpg');
-INSERT INTO `questions` VALUES ('Asia is the largest continent by land area',1,NULL,'geography',false,'asia.jpg');
-INSERT INTO `questions` VALUES ('Every country has access to fresh water',0,NULL,'geography',false,'water_access.jpg');
-INSERT INTO `questions` VALUES ('The Maldives is the lowest-lying country',1,'Average elevation is about 1.5m.','geography',false,'maldives.jpg');
+-- celebrity 100
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Leonardo DiCaprio won his first Oscar for The Revenant', 1, 'He won Best Actor in 2016.', 'celebrity', false, 'leo_oscar.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Rihanna is the best-selling female artist of the 21st century', 1, 'Based on global sales and certifications.', 'celebrity', false, 'rihanna.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Tom Cruise performs most of his own stunts', 1, 'Including high-risk Mission Impossible scenes.', 'celebrity', false, 'cruise_stunt.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Taylor Swift started her career in pop music', 0, 'She began as a country singer.', 'celebrity', false, 'swift_country.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Dwayne Johnson was a professional wrestler before acting', 1, 'He was known as The Rock in WWE.', 'celebrity', false, 'rock_wwe.jpg');
 
--- celebrity
-INSERT INTO `questions` (`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`) VALUES ('Leonardo DiCaprio won his first Oscar for The Revenant', 1, 'He won Best Actor in 2016.', 'celebrity', false, 'leo_oscar.jpg');
-INSERT INTO `questions` VALUES ('Rihanna is the best-selling female artist of the 21st century', 1, 'Based on global sales and certifications.', 'celebrity', false, 'rihanna.jpg');
-INSERT INTO `questions` VALUES ('Tom Cruise performs most of his own stunts', 1, 'Including high-risk Mission Impossible scenes.', 'celebrity', false, 'cruise_stunt.jpg');
-INSERT INTO `questions` VALUES ('Taylor Swift started her career in pop music', 0, 'She began as a country singer.', 'celebrity', false, 'swift_country.jpg');
-INSERT INTO `questions` VALUES ('Dwayne Johnson was a professional wrestler before acting', 1, 'He was known as The Rock in WWE.', 'celebrity', false, 'rock_wwe.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Beyoncé holds the record for most Grammy wins', 1, 'She surpassed all artists.', 'celebrity', false, 'beyonce_grammy.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Johnny Depp has never played a villain', 0, 'He played multiple antagonistic roles.', 'celebrity', false, 'depp_villain.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Lady Gaga studied at NYU Tisch School of the Arts', 1, 'She attended before pursuing music full-time.', 'celebrity', false, 'gaga_nyu.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Will Smith declined the role of Neo in The Matrix', 1, 'He chose another project.', 'celebrity', false, 'smith_matrix.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Brad Pitt and Angelina Jolie met on a red carpet', 0, 'They met on a movie set.', 'celebrity', false, 'pitt_jolie.jpg');
+ 
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Keanu Reeves donated a large part of his Matrix earnings', 1, 'He supported crew and charities.', 'celebrity', false, 'reeves_matrix.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Emma Watson voiced Belle in Beauty and the Beast', 1, 'She starred in the live-action remake.', 'celebrity', false, 'emma_belle.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Elon Musk has appeared in Hollywood films', 1, 'Including Iron Man 2 cameos.', 'celebrity', false, 'musk_movie.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chris Evans initially turned down Captain America', 1, 'He hesitated before accepting.', 'celebrity', false, 'evans_cap.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Scarlett Johansson is the highest-grossing actor ever', 1, 'Based on worldwide box office totals.', 'celebrity', false, 'scarlett_box.jpg');
 
-INSERT INTO `questions` VALUES ('Beyoncé holds the record for most Grammy wins', 1, 'She surpassed all artists.', 'celebrity', false, 'beyonce_grammy.jpg');
-INSERT INTO `questions` VALUES ('Johnny Depp has never played a villain', 0, 'He played multiple antagonistic roles.', 'celebrity', false, 'depp_villain.jpg');
-INSERT INTO `questions` VALUES ('Lady Gaga studied at NYU Tisch School of the Arts', 1, 'She attended before pursuing music full-time.', 'celebrity', false, 'gaga_nyu.jpg');
-INSERT INTO `questions` VALUES ('Will Smith declined the role of Neo in The Matrix', 1, 'He chose another project.', 'celebrity', false, 'smith_matrix.jpg');
-INSERT INTO `questions` VALUES ('Brad Pitt and Angelina Jolie met on a red carpet', 0, 'They met on a movie set.', 'celebrity', false, 'pitt_jolie.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Robert Downey Jr. was Marvel’s first casting choice for Iron Man', 0, 'The choice was considered risky.', 'celebrity', false, 'rdj_ironman.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Adele once worked as a music producer', 0, 'She worked in retail before fame.', 'celebrity', false, 'adele_job.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Zendaya won an Emmy before age 25', 1, 'For her role in Euphoria.', 'celebrity', false, 'zendaya_emmy.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Drake was a child actor before music fame', 1, 'He starred in Degrassi.', 'celebrity', false, 'drake_degrassi.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Jennifer Lawrence won an Oscar before age 25', 1, 'She won for Silver Linings Playbook.', 'celebrity', false, 'lawrence_oscar.jpg');
+ 
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Morgan Freeman was born with his iconic voice', 0, 'His voice deepened with age.', 'celebrity', false, 'freeman_voice.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Margot Robbie is Australian', 1, 'She was born in Queensland.', 'celebrity', false, 'robbie_aus.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Ryan Gosling was a member of the Mickey Mouse Club', 1, 'Alongside other future stars.', 'celebrity', false, 'gosling_mmc.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Daniel Radcliffe earned more from Harry Potter than the author', 0, 'J.K. Rowling earned more overall.', 'celebrity', false, 'radcliffe_hp.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Natalie Portman holds a degree from Harvard', 1, 'She studied psychology.', 'celebrity', false, 'portman_harvard.jpg');
+ 
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chris Pratt was homeless before acting success', 1, 'He lived in a van in Hawaii.', 'celebrity', false, 'pratt_story.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Selena Gomez started her career on Disney Channel', 1, 'She starred in Wizards of Waverly Place.', 'celebrity', false, 'selena_disney.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Eminem has never won an Oscar', 0, 'He won for Lose Yourself.', 'celebrity', false, 'eminem_oscar.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Angelina Jolie has directed multiple films', 1, 'She directed several dramas.', 'celebrity', false, 'jolie_director.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Timothée Chalamet was born in France', 0, 'He was born in the USA.', 'celebrity', false, 'chalamet_birth.jpg');
+ 
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Bruno Mars is part of Silk Sonic', 1, 'The duo includes Anderson .Paak.', 'celebrity', false, 'bruno_silk.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Hugh Jackman almost rejected Wolverine', 1, 'He was cast late.', 'celebrity', false, 'jackman_wolverine.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Kanye West never produced music for other artists', 0, 'He produced for many before fame.', 'celebrity', false, 'kanye_producer.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Gal Gadot served in the Israeli military', 1, 'Service is mandatory in Israel.', 'celebrity', false, 'gadot_idf.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Tom Holland trained as a dancer', 1, 'He studied ballet and gymnastics.', 'celebrity', false, 'holland_dance.jpg');
 
-INSERT INTO `questions` VALUES ('Keanu Reeves donated a large part of his Matrix earnings', 1, 'He supported crew and charities.', 'celebrity', false, 'reeves_matrix.jpg');
-INSERT INTO `questions` VALUES ('Emma Watson voiced Belle in Beauty and the Beast', 1, 'She starred in the live-action remake.', 'celebrity', false, 'emma_belle.jpg');
-INSERT INTO `questions` VALUES ('Elon Musk has appeared in Hollywood films', 1, 'Including Iron Man 2 cameos.', 'celebrity', false, 'musk_movie.jpg');
-INSERT INTO `questions` VALUES ('Chris Evans initially turned down Captain America', 1, 'He hesitated before accepting.', 'celebrity', false, 'evans_cap.jpg');
-INSERT INTO `questions` VALUES ('Scarlett Johansson is the highest-grossing actor ever', 1, 'Based on worldwide box office totals.', 'celebrity', false, 'scarlett_box.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Oprah Winfrey was the first Black female billionaire', 1, 'She reached billionaire status.', 'celebrity', false, 'oprah_billion.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chris Hemsworth learned acting after becoming Thor', 0, 'He acted years before Marvel.', 'celebrity', false, 'hemsworth_thor.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Billie Eilish records music only in professional studios', 0, 'She recorded early songs at home.', 'celebrity', false, 'billie_home.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Samuel L. Jackson appears in over 100 films', 1, 'He is one of the most prolific actors.', 'celebrity', false, 'jackson_films.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Miley Cyrus was born Hannah Montana', 0, 'That was her character name.', 'celebrity', false, 'miley_name.jpg');
 
-INSERT INTO `questions` VALUES ('Robert Downey Jr. was Marvel’s first casting choice for Iron Man', 0, 'The choice was considered risky.', 'celebrity', false, 'rdj_ironman.jpg');
-INSERT INTO `questions` VALUES ('Adele once worked as a music producer', 0, 'She worked in retail before fame.', 'celebrity', false, 'adele_job.jpg');
-INSERT INTO `questions` VALUES ('Zendaya won an Emmy before age 25', 1, 'For her role in Euphoria.', 'celebrity', false, 'zendaya_emmy.jpg');
-INSERT INTO `questions` VALUES ('Drake was a child actor before music fame', 1, 'He starred in Degrassi.', 'celebrity', false, 'drake_degrassi.jpg');
-INSERT INTO `questions` VALUES ('Jennifer Lawrence won an Oscar before age 25', 1, 'She won for Silver Linings Playbook.', 'celebrity', false, 'lawrence_oscar.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Ryan Reynolds owns stakes in multiple companies', 1, 'Including Aviation Gin.', 'celebrity', false, 'reynolds_business.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Jackie Chan performed many of his own stunts', 1, 'Often resulting in injuries.', 'celebrity', false, 'chan_stunts.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Jennifer Lopez started as a backup dancer', 1, 'She danced for Janet Jackson.', 'celebrity', false, 'jlo_dancer.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Brad Pitt won an Oscar for acting before producing', 0, 'He won first as a producer.', 'celebrity', false, 'pitt_oscar.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Ed Sheeran was once a street performer', 1, 'He busked before fame.', 'celebrity', false, 'sheeran_busker.jpg');
 
-INSERT INTO `questions` VALUES ('Morgan Freeman was born with his iconic voice', 0, 'His voice deepened with age.', 'celebrity', false, 'freeman_voice.jpg');
-INSERT INTO `questions` VALUES ('Margot Robbie is Australian', 1, 'She was born in Queensland.', 'celebrity', false, 'robbie_aus.jpg');
-INSERT INTO `questions` VALUES ('Ryan Gosling was a member of the Mickey Mouse Club', 1, 'Alongside other future stars.', 'celebrity', false, 'gosling_mmc.jpg');
-INSERT INTO `questions` VALUES ('Daniel Radcliffe earned more from Harry Potter than the author', 0, 'J.K. Rowling earned more overall.', 'celebrity', false, 'radcliffe_hp.jpg');
-INSERT INTO `questions` VALUES ('Natalie Portman holds a degree from Harvard', 1, 'She studied psychology.', 'celebrity', false, 'portman_harvard.jpg');
-
-INSERT INTO `questions` VALUES ('Chris Pratt was homeless before acting success', 1, 'He lived in a van in Hawaii.', 'celebrity', false, 'pratt_story.jpg');
-INSERT INTO `questions` VALUES ('Selena Gomez started her career on Disney Channel', 1, 'She starred in Wizards of Waverly Place.', 'celebrity', false, 'selena_disney.jpg');
-INSERT INTO `questions` VALUES ('Eminem has never won an Oscar', 0, 'He won for Lose Yourself.', 'celebrity', false, 'eminem_oscar.jpg');
-INSERT INTO `questions` VALUES ('Angelina Jolie has directed multiple films', 1, 'She directed several dramas.', 'celebrity', false, 'jolie_director.jpg');
-INSERT INTO `questions` VALUES ('Timothée Chalamet was born in France', 0, 'He was born in the USA.', 'celebrity', false, 'chalamet_birth.jpg');
-
-INSERT INTO `questions` VALUES ('Bruno Mars is part of Silk Sonic', 1, 'The duo includes Anderson .Paak.', 'celebrity', false, 'bruno_silk.jpg');
-INSERT INTO `questions` VALUES ('Hugh Jackman almost rejected Wolverine', 1, 'He was cast late.', 'celebrity', false, 'jackman_wolverine.jpg');
-INSERT INTO `questions` VALUES ('Kanye West never produced music for other artists', 0, 'He produced for many before fame.', 'celebrity', false, 'kanye_producer.jpg');
-INSERT INTO `questions` VALUES ('Gal Gadot served in the Israeli military', 1, 'Service is mandatory in Israel.', 'celebrity', false, 'gadot_idf.jpg');
-INSERT INTO `questions` VALUES ('Tom Holland trained as a dancer', 1, 'He studied ballet and gymnastics.', 'celebrity', false, 'holland_dance.jpg');
-
-INSERT INTO `questions` VALUES ('Oprah Winfrey was the first Black female billionaire', 1, 'She reached billionaire status.', 'celebrity', false, 'oprah_billion.jpg');
-INSERT INTO `questions` VALUES ('Chris Hemsworth learned acting after becoming Thor', 0, 'He acted years before Marvel.', 'celebrity', false, 'hemsworth_thor.jpg');
-INSERT INTO `questions` VALUES ('Billie Eilish records music only in professional studios', 0, 'She recorded early songs at home.', 'celebrity', false, 'billie_home.jpg');
-INSERT INTO `questions` VALUES ('Samuel L. Jackson appears in over 100 films', 1, 'He is one of the most prolific actors.', 'celebrity', false, 'jackson_films.jpg');
-INSERT INTO `questions` VALUES ('Miley Cyrus was born Hannah Montana', 0, 'That was her character name.', 'celebrity', false, 'miley_name.jpg');
-
-INSERT INTO `questions` VALUES ('Ryan Reynolds owns stakes in multiple companies', 1, 'Including Aviation Gin.', 'celebrity', false, 'reynolds_business.jpg');
-INSERT INTO `questions` VALUES ('Jackie Chan performed many of his own stunts', 1, 'Often resulting in injuries.', 'celebrity', false, 'chan_stunts.jpg');
-INSERT INTO `questions` VALUES ('Jennifer Lopez started as a backup dancer', 1, 'She danced for Janet Jackson.', 'celebrity', false, 'jlo_dancer.jpg');
-INSERT INTO `questions` VALUES ('Brad Pitt won an Oscar for acting before producing', 0, 'He won first as a producer.', 'celebrity', false, 'pitt_oscar.jpg');
-INSERT INTO `questions` VALUES ('Ed Sheeran was once a street performer', 1, 'He busked before fame.', 'celebrity', false, 'sheeran_busker.jpg');
-
-INSERT INTO `questions` VALUES ('Chris Rock voiced a character in Madagascar', 1, 'He voiced Marty the zebra.', 'celebrity', false, 'chrisrock_voice.jpg');
-INSERT INTO `questions` VALUES ('Nicole Kidman was born in the United States', 1, 'She later grew up in Australia.', 'celebrity', false, 'kidman_birth.jpg');
-INSERT INTO `questions` VALUES ('Leonardo DiCaprio has never starred in a superhero movie', 1, 'He has avoided the genre.', 'celebrity', false, 'leo_superhero.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Chris Rock voiced a character in Madagascar', 1, 'He voiced Marty the zebra.', 'celebrity', false, 'chrisrock_voice.jpg');
+INSERT INTO `questions`(`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`)  VALUES ('Nicole Kidman was born in the United States', 1, 'She later grew up in Australia.', 'celebrity', false, 'kidman_birth.jpg');
 
 -- Games 50
 INSERT INTO `questions`
@@ -809,3 +805,5 @@ VALUES
 ('Older music is always recorded at lower quality', 0, 'Many recordings were remastered.', 'music', false, 'remaster.jpg'),
 ('Every hit song follows music theory rules', 0, NULL, 'music', false, 'rules.jpg'),
 ('Music genres evolve independently from technology', 0, 'Tech heavily influences genres.', 'music', false, 'music_tech.jpg');
+
+-- First

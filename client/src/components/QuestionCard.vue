@@ -100,7 +100,7 @@ defineEmits(['answer'])
 .question-text {
   font-size: 27px;
   font-weight: 700;
-  line-height: 44px;
+  line-height: 38px;
   text-align: center;
   margin-bottom: 20px;
   color: #e6e6e6;

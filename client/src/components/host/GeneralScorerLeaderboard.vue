@@ -109,7 +109,7 @@ h3 {
 
 .score {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 26px;
   color: #ffffff;
 }
 

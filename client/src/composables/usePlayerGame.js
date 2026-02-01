@@ -303,14 +303,19 @@ export function usePlayerGame() {
 
         // Petit délai avant le speech
         await new Promise(resolve => setTimeout(resolve, 300))
+
         // Speech
         await speechifyService.speakSpeechify(message)
 
         const transition = getRandomPhrase(NEXT_QUESTION_TRANSITIONS)
+
         // Petit délai avant le speech
         await new Promise(resolve => setTimeout(resolve, 300))
+
         // Speech
         await speechifyService.speakSpeechify(transition)
+        
+        await new Promise(resolve => setTimeout(resolve, 200))
 
         // AJOUTER: Cacher l'annonce
         showTopStreakAnnouncement.value = false

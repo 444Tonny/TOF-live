@@ -102,4 +102,25 @@ export const speechService = {
   }
 }
 
+// Intercepteur pour ajouter le mot de passe
+api.interceptors.request.use(config => {
+    const password = localStorage.getItem('gamePassword')
+    if (password) {
+        config.headers['x-game-password'] = password
+    }
+    return config
+})
+
+// Intercepteur pour gérer erreur 401
+api.interceptors.response.use(
+    response => response,
+    error => {
+        if (error.response?.status === 401) {
+            localStorage.removeItem('gamePassword')
+            window.location.href = '/login'
+        }
+        return Promise.reject(error)
+    }
+)
+
 export default api

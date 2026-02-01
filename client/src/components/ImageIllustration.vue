@@ -1,11 +1,12 @@
 <template>
     <!-- AJOUTER : Image si présente -->
     <div v-if="question.image_file" class="question-image">
-        <img :src="getImageUrl(question.image_file)" :alt="question.question" @error="handleImageError" />
+        <img :src="getImageUrl(question.image_file)" @error="$event.target.style.display = 'none'" />
     </div>
 </template>
 
 <script setup>
+
 defineProps({
     question: {
         type: Object,
@@ -24,9 +25,10 @@ const getImageUrl = (filename) => {
  * Gérer l'erreur de chargement d'image
  */
 const handleImageError = (event) => {
+    //showImage.value = false
     console.error('Erreur chargement image:', event.target.src)
-    //event.target.style.display = 'none'
 }
+
 </script>
 
 <style>

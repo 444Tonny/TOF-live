@@ -16,7 +16,7 @@ class speechifyService {
    * @param {string} text - Texte à lire
    * @param {string} voiceId - ID de la voix Speechify
    */
-  async speakSpeechify(text, voiceId = 'henry') { // XYZ
+  async speakSpeechify(text, voiceId = 'lindsey') { // XYZ henry
     try {
       // Arrêter toute lecture en cours
       this.stopSpeakSpeechify()

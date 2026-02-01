@@ -49,6 +49,45 @@ export const NEXT_QUESTION_TRANSITIONS = [
   "Ready for the next one"
 ]
 
+export const MID_GAME_LEADERBOARD_INTRO = [
+  "But first, here is the current leaderboard.",
+  "Before we move on, here is the current leaderboard.",
+  "Before we continue, let's take a look at the leaderboard.",
+  "Before that, let's take a look at the leaderboard.",
+  "Before that, let's take a moment to look at the current leaderboard.",
+  "But let's pause for a moment and check the leaderboard."
+]
+
+export const MID_GAME_LEADERBOARD_OUTRO = [
+  "Alright, next question",
+  "Let's keep going",
+  "Let's resume the game",
+  "Here we go again",
+  "Let's move on",
+  "Get ready for the next question!"
+]
+
+export const TOP_STREAK_ENTRY_MESSAGES = {
+  1: [
+    "Congratulations {username}! You're leading the streak leaderboard!",
+    "Amazing {username}! You've taken first place!",
+    "Well done {username}! You're dominating the leaderboard!",
+    "{username}, you keep getting the right answers! — you’re now first on the leaderboard!"
+  ],
+  2: [
+    "Great run {username}! You're now second on the leaderboard!",
+    "Nice {username}! you're on fire!",
+    "Well played {username}! You're climbing to the second place!",
+  ],
+  3: [
+    "Well played {username}! You've entered the top 3!",
+    "Well played {username}! You've made it into the top 3!",
+    "Congrats {username}! You just entered the top 3 streak!",
+    "Nice work {username}! Top 3 secured!",
+  ]
+}
+
+// Video
 export const INTRO_PHRASES = [
   "Do you think you know geography? Let’s find out!"/*
   "Do you really know Naruto? Let’s find out!"/*
@@ -74,40 +113,6 @@ export const OUTRO_PHRASES = [
   */
 ]
 
-export const MID_GAME_LEADERBOARD_INTRO = [
-  "Here is the current leaderboard",
-  "Let's take a look at the leaderboard",
-  "Let's see where the players stand",
-  "Here are the current scores",
-  "Current rankings"
-]
-
-export const MID_GAME_LEADERBOARD_OUTRO = [
-  "Alright, next question",
-  "Let's keep going",
-  "Let's resume the game",
-  "Here we go again",
-  "Let's move on",
-  "Get ready for the next question!"
-]
-
-export const TOP_STREAK_ENTRY_MESSAGES = {
-  1: [
-    "Congrats {username}! You're leading the streak leaderboard! Keep it up!",
-    "Amazing {username}! You've taken first place! Don't stop now!",
-    "Wow {username}! Number one streak! Keep that momentum going!"
-  ],
-  2: [
-    "Nice {username}! Second place — you're on fire!",
-    "Great job {username}! You're climbing to second! Keep pushing!",
-    "Well done {username}! Second in the streak! Almost at the top!"
-  ],
-  3: [
-    "Well played {username}! You've made it into the top 3!",
-    "Congrats {username}! You just entered the top 3 streak!",
-    "Nice work {username}! Top 3! Keep those correct answers coming!"
-  ]
-}
 /**
  * Sélectionner une phrase aléatoire depuis un tableau
  */

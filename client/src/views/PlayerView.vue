@@ -171,13 +171,13 @@ const showTopStreakLeaderboard = ref(true)
 // AJOUTER cette variable
 let topLeaderboardInterval = null
 
-// AJOUTER dans onMounted (après ton code existant)
+/* AJOUTER dans onMounted (après ton code existant)
 onMounted(() => {
   // Switch entre les top leaderboards toutes les 30s
   topLeaderboardInterval = setInterval(() => {
     showTopStreakLeaderboard.value = !showTopStreakLeaderboard.value
   }, GAME_CONFIG.DELAY_SLIDE_LEADERBOARD)
-})
+}) */
 
 // MODIFIER onUnmounted pour cleanup
 onUnmounted(() => {

@@ -1,6 +1,7 @@
 <template>
   <div class="streak-leaderboard">
     <h3>TOP 3 🔥 STREAKS</h3>
+    <p class="h3_subtitle1">(Most consecutive right answers)</p>
     <div v-if="players.length === 0" class="empty">
       Waiting for players…
     </div>
@@ -49,11 +50,21 @@ defineProps({
 
 h3 {
   width: 100%;
-  margin-bottom: 22px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   color: #ffffff;
   font-size: 20px;
   text-transform: capitalize;
   text-align: center;
+}
+
+.h3_subtitle1 {
+  color: #ffffffd9;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .empty {

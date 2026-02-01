@@ -14,6 +14,8 @@ const speechRoutes = require('./routes/speech'); // piper
 const speechifyRoutes = require('./routes/speechify'); // NOUVEAU
 const tiktokRoutes = require('./routes/tiktok');
 
+const authMiddleware = require('./middleware/authMiddleware');
+
 
 const app = express();
 const server = http.createServer(app);
@@ -51,20 +53,20 @@ app.use('/images', express.static(path.join(__dirname, '../public/images')));
 /**
  * Routes API
 */
-app.use('/api/sessions', sessionRoutes);
-app.use('/api/game', gameRoutes);
-app.use('/api/questions', questionRoutes);
+app.use('/api/sessions',authMiddleware, sessionRoutes);
+app.use('/api/game',authMiddleware, gameRoutes);
+app.use('/api/questions',authMiddleware, questionRoutes);
 
-app.use('/api/speech', speechRoutes); 
-app.use('/api/speechify', speechifyRoutes);
+app.use('/api/speech',authMiddleware, speechRoutes); 
+app.use('/api/speechify',authMiddleware, speechifyRoutes);
 
 /**
  * Routes TikTok
 */
-app.use('/api/tiktok', tiktokRoutes); 
+app.use('/api/tiktok',authMiddleware, tiktokRoutes); 
 
 // Route de test
-app.get('/api/health', (req, res) => {
+app.get('/api/health',authMiddleware, (req, res) => {
   res.json({ status: 'OK', message: 'Serveur opérationnel' });
 });
 
