@@ -35,9 +35,9 @@ const handleImageError = (event) => {
 /* AJOUTER : Style pour l'image */
 .question-image {
     margin: auto;
-    margin-top: 10px;
+    margin-top: 2px;
     width: 250px;
-    height: 155px;
+    height: 145px;
     overflow: hidden;
 }
 

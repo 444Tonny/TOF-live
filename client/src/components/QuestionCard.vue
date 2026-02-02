@@ -116,7 +116,7 @@ defineEmits(['answer'])
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  height: 60px;
+  height: 52px;
   background: white;
   border-radius: 10px;
   margin-top: 20px;

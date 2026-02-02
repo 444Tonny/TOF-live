@@ -69,8 +69,8 @@ const strokeDashoffset = computed(() => {
 /* Container */
 .timer-circle {
   position: relative;
-  width: 81px;
-  height: 81px;
+  width: 72px;
+  height: 72px;
   overflow: hidden;
   border-radius: 50%;
   background: none;;
@@ -107,7 +107,7 @@ const strokeDashoffset = computed(() => {
 }
 
 .time {
-  font-size: 46px;
+  font-size: 40px;
   font-weight: 800;
   color: #E6E6E6;
 }

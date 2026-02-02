@@ -192,8 +192,8 @@ h3 {
 
 .rank-1 .profile-picture,
 .rank-1 .profile-placeholder {
-  width: 100px !important;
-  height: 100px !important;
+  width: 88px !important;
+  height: 88px !important;
 }
 
 .rank-1 .rank {

@@ -48,13 +48,13 @@ const getButtonClass = (value) => {
 .answer-buttons {
   display: flex;
   gap: 15px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .btn {
   flex: 1;
   width: 170px;
-  height: 60px;
+  height: 52px;
   font-size: 22px;
   font-weight: bold;
   border: none;
