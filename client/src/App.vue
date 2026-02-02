@@ -1,11 +1,10 @@
 <template>
-  <!-- Background vidéo 
   <div class="video-background">
     <video autoplay muted loop playsinline>
       <source :src="`${BACKEND_BASE_URL}/images/background/loop1.mp4`" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
-  </div>-->
+  </div>
 
   <router-view />
 </template>
