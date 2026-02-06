@@ -36,8 +36,7 @@ const router = createRouter({
     {
       path: '/play',
       name: 'play',
-      component: PlayerView,
-      meta: { requiresAuth: true }
+      component: PlayerView
     },
     {
       path: '/video',

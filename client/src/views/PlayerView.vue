@@ -179,6 +179,15 @@ onMounted(() => {
   }, GAME_CONFIG.DELAY_SLIDE_LEADERBOARD)
 }) */
 
+// Auto-join si ?guest dans l'URL
+onMounted(() => {
+  if (route.query.guest !== undefined) {
+    const guestName = `guest${Math.floor(10000 + Math.random() * 90000)}`
+    username.value = guestName
+    handleJoin()
+  }
+})
+
 // MODIFIER onUnmounted pour cleanup
 onUnmounted(() => {
   socket.disconnect()
