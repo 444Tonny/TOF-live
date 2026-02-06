@@ -22,7 +22,7 @@
     -->
 
       <!-- Formulaire de connexion -->
-      <div v-if="!player && !isAutoJoining" class="join-form">
+      <div v-if="!player" class="join-form">
         <h2>Entrez votre pseudo</h2>
         <input
           v-model="username"
@@ -121,14 +121,11 @@ import ScrollingBanner from '@/components/player/ScrollingBanner.vue'
 import { GAME_CONFIG } from '../constants/gameConfig' // AJOUTER
 import QuestionCategory from '../components/QuestionCategory.vue'
 import TopStreakAnnouncement from '@/components/player/TopStreakAnnouncement.vue'
-import { useRoute } from 'vue-router'
 
 /**
  * Interface joueur
  */
 const username = ref('')
-const route = useRoute()
-const isAutoJoining = ref(false)
 
 const {
   player,
@@ -174,22 +171,12 @@ const showTopStreakLeaderboard = ref(true)
 // AJOUTER cette variable
 let topLeaderboardInterval = null
 
-/* AJOUTER dans onMounted (après ton code existant)
+// AJOUTER dans onMounted (après ton code existant)
 onMounted(() => {
   // Switch entre les top leaderboards toutes les 30s
   topLeaderboardInterval = setInterval(() => {
     showTopStreakLeaderboard.value = !showTopStreakLeaderboard.value
   }, GAME_CONFIG.DELAY_SLIDE_LEADERBOARD)
-}) */
-
-// Auto-join si ?guest dans l'URL
-onMounted(() => {
-  if (route.query.guest !== undefined) {
-    isAutoJoining.value = true
-    const guestName = `guest${Math.floor(10000 + Math.random() * 90000)}`
-    username.value = guestName
-    handleJoin()
-  }
 })
 
 // MODIFIER onUnmounted pour cleanup
@@ -364,6 +351,7 @@ h1 {
   padding: auto 3%;
   max-width: 500px;
   display: flex;
+  margin-top: 5px;
   background: rgb(113 80 158 / 80%);
   border: 3px solid rgba(255, 255, 255, 0.192);
   border-radius: 10px;
