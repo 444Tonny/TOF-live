@@ -121,12 +121,13 @@ import ScrollingBanner from '@/components/player/ScrollingBanner.vue'
 import { GAME_CONFIG } from '../constants/gameConfig' // AJOUTER
 import QuestionCategory from '../components/QuestionCategory.vue'
 import TopStreakAnnouncement from '@/components/player/TopStreakAnnouncement.vue'
+import { useRoute } from 'vue-router'
 
 /**
  * Interface joueur
  */
 const username = ref('')
-
+const route = useRoute()
 const isAutoJoining = ref(false)
 
 const {
