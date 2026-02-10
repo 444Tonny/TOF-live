@@ -209,7 +209,7 @@ const toggleFullscreen = () => {
 
 const startMusic = () => {
   if (bgMusic.value) {
-    bgMusic.value.volume = 0.2
+    bgMusic.value.volume = 0.1
 
     bgMusic.value.play()
       .then(() => {
