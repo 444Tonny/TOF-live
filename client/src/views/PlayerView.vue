@@ -23,16 +23,16 @@
 
       <!-- Formulaire de connexion -->
       <div v-if="!player" class="join-form">
-        <h2>Entrez votre pseudo</h2>
+        <h2>Enter your username</h2>
         <input
           v-model="username"
           @keyup.enter="handleJoin"
           type="text"
-          placeholder="Votre pseudo"
+          placeholder="Your username"
           class="username-input"
         />
         <button @click="handleJoin" :disabled="!username" class="join-btn">
-          Rejoindre
+          Join Game
         </button>
       </div>
 
@@ -100,9 +100,21 @@
           </Transition>
         </div>
 
+        <button @click="toggleFullscreen" class="fullscreen-btn">
+          {{ isFullscreen ? '🗗' : '⛶' }} Full Screen
+        </button>
+
+        <button @click="startMusic" class="music-btn" v-if="!musicStarted">
+          🔊 Music
+        </button>
+
       </div>
     </div>
   </div>
+
+  <audio ref="bgMusic" loop autoplay>
+    <source src="/music/lofi1.mp3" type="audio/mpeg">
+  </audio>
 </template>
 
 <script setup>
@@ -126,6 +138,11 @@ import TopStreakAnnouncement from '@/components/player/TopStreakAnnouncement.vue
  * Interface joueur
  */
 const username = ref('')
+const bgMusic = ref(null)
+const showTopStreakLeaderboard = ref(true)
+let topLeaderboardInterval = null
+const isFullscreen = ref(false)
+const musicStarted = ref(false)
 
 const {
   player,
@@ -165,18 +182,12 @@ const handleJoin = async () => {
   }
 }
 
-// AJOUTER cette ref
-const showTopStreakLeaderboard = ref(true)
-
-// AJOUTER cette variable
-let topLeaderboardInterval = null
-
-// AJOUTER dans onMounted (après ton code existant)
 onMounted(() => {
-  // Switch entre les top leaderboards toutes les 30s
+  /* Switch entre les top leaderboards toutes les 30s
   topLeaderboardInterval = setInterval(() => {
     showTopStreakLeaderboard.value = !showTopStreakLeaderboard.value
   }, GAME_CONFIG.DELAY_SLIDE_LEADERBOARD)
+  */
 })
 
 // MODIFIER onUnmounted pour cleanup
@@ -186,13 +197,37 @@ onUnmounted(() => {
   if (topLeaderboardInterval) clearInterval(topLeaderboardInterval) // AJOUTER
 })
 
+const toggleFullscreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen()
+    isFullscreen.value = true
+  } else {
+    document.exitFullscreen()
+    isFullscreen.value = false
+  }
+}
+
+const startMusic = () => {
+  if (bgMusic.value) {
+    bgMusic.value.volume = 0.2
+
+    bgMusic.value.play()
+      .then(() => {
+        musicStarted.value = true
+        console.log('🎵 Music started')
+      })
+      .catch(err => {
+        console.error('Erreur audio:', err)
+      })
+  }
+}
+
 </script>
 
 <style scoped>
 .player-view {
   min-height: 100vh;
   width: 100%;
-  border: 3px solid #231f3586;
   border-radius: 3px;
   animation: fadeIn 0.5s ease-out;
   transform: 1;
@@ -216,6 +251,7 @@ onUnmounted(() => {
   margin-left: 15px;
   margin-right: 15px;
   width: 100%;
+  max-width: 490px;
 }
 
 h1 {
@@ -352,7 +388,7 @@ h1 {
   max-width: 500px;
   display: flex;
   margin-top: 5px;
-  background: rgb(113 80 158 / 80%);
+  background: rgba(40, 29, 55, 0.9);
   border: 3px solid rgba(255, 255, 255, 0.192);
   border-radius: 10px;
 }
@@ -378,6 +414,29 @@ h1 {
   transform: translateX(-100%);
   opacity: 0;
   display: none;
+}
+
+.fullscreen-btn,
+.music-btn {
+  font-size: 18px;
+  font-weight: 600;
+  background: rgb(65, 37, 102);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.fullscreen-btn
+{ 
+  margin-top: 100px;
+}
+
+.music-btn{
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 </style>

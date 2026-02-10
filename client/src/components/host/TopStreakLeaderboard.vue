@@ -1,7 +1,7 @@
 <template>
   <div class="streak-leaderboard">
     <h3>TOP 3 🔥 STREAKS</h3>
-    <p class="h3_subtitle1">(Most consecutive right answers)</p>
+    <p class="h3_subtitle1">(Consecutive right answers)</p>
     <div v-if="players.length === 0" class="empty">
       Waiting for players…
     </div>
@@ -62,8 +62,8 @@ h3 {
   color: #ffffffd9;
   text-align: center;
   margin-bottom: 25px;
-  font-size: 11px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 500;
   text-transform: uppercase;
 }
 
@@ -114,13 +114,18 @@ h3 {
   width: 25px;
   text-align: left;
   font-weight: bold;
-  font-size: 16px;
-  margin-bottom: -5px;
+  font-size: 15px;
+  margin-bottom: -2px;
   margin-right: 2px;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .username {
+  background: #322543;
+  border-radius: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
   width: 100%;
   text-align: center;
   overflow-x: hidden;
@@ -169,7 +174,7 @@ h3 {
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #667eea 100%);
+  background: linear-gradient(135deg, #4c2271 0%, #667eea 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -197,7 +202,7 @@ h3 {
 }
 
 .rank-1 .rank {
-  color: #ffb22c;
+  color: #ffe600;
   font-size: 18px;
 }
 
@@ -211,7 +216,7 @@ h3 {
 
 .rank-2 .ranked-username,  
 .rank-3 .ranked-username {
-  width: 107px;
+  width: 109px;
   font-size: 15px;
 }
 

@@ -12,9 +12,9 @@ export const BANNER_MESSAGES = [
 
   "Your answer can’t be changed once submitted",
 
-  "🏆 {topScorePlayer} is the top scorer with {topScore} pts!",
+  "🏆 {topScorePlayer} is the top scorer with : {topScore} pts!",
   
-  "🔥 {topStreakPlayer} has the longest streak {topStreak} pts!",
+  "🔥 {topStreakPlayer} has the longest streak with : {topStreak} pts!",
 
   // Follow CTA
   "❤️ Like & Follow to keep playing!"

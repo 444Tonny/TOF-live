@@ -5,33 +5,24 @@
 --(28, 'A volcano can erupt underwater', 1, '2026-01-11 02:37:55', '', 'fun fact', 1, 'volcano.jpg'), 
 --La colonne answer_detail, peut etre null, donc rempli 50% des questions seulement. 
 --Le reste laisse vide. la colonne created at par defaut. doonne moi 3 exemples d'abord que je talide puis tu fais les 100
+-- exemple: INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('The song "Happy Birthday" was once copyrighted', 1, 'It entered public domain in 2016.', 'music', false, 'happy_birthday.jpg'),
+('Mozart wrote his first symphony at age 8', 1, NULL, 'music', false, 'mozart.jpg'),
 
 
--- General
--- Soccer x 100
--- Technology x 100
--- Geography x 100
--- Fun Fact x 100
--- Manga x 200
--- NBA x 100
--- Science
--- Games x 50
--- History
--- Astronomy
--- Art
--- Cinema x 100
--- Music x 100
--- HipHop
--- Celebrity x 100
--- Animals x 100
--- Food x 100
--- Politics
--- Tennis
--- Golf
--- Formule1
--- Myths
--- Guinness
--- Internet
+--
+genere moi 100 questions vrai ou false variées et de difficulte varies mais 70% difficile et 30% moyen.
+-- La colonne answer_detail, peut etre null, donc rempli pour 50% des questions seulement, et il doit repondre ou expliquer en une phrase courte pourquoi c'est vrai ou c'est faux, ou alors juste donner des details si c'est pertinent. exemple (Yes, Manchester city won the treble in 2023.) ou (No, the Premier League started in 1992.) ou sans Yes ou No, juste une explication du genre (It is the most popular sport worldwide.) ou (It was invented in England in the 19th century.)
+ Il faut que ca soit une phrase courte. Le 50% restant tu laisse vide. la colonne created at par defaut. 
+La colonne image file contient un nom generique (ex: ronaldo.jsp, soccer.jpg, barcelona.jsp, soccer_referee.jsg) et peut etre reutilisé, pas precis et avec extension .jpg
+Ecrit insert into juste une fois et les values sur une seule ligne par question. 
+Mets is_video_only a false pour tous
+Je veux 60% de vrai et 40% de faux.
+Il faut que les questions soient le plus varie possible et evite de donner des questions faux ou vrai super Evident et facile.
+Vu que les questions seront de categorie differente, il faudra que pour 60% des questions que tu genere, tu precise le sujet si besoin. Exemple si la categorie est "mange", ttu peux dire "Naruto is a jinchuriki since he was born", mais tu ne peux pas dire "SonGoku is the tailed beast with 4 queues", car Songoku est aussi le nom d'un autre manga, donc ce que je veux dire c'est que si le contexte n'est pas precis et que la question n'est pas trop longues, tu devras ajouter des : "In the naruto manga, ..." au debut ou a la fin de la question.
+Parfait, maintenant avec ces condition, genere moi 100 question avec categorie: "Soccer"
 
 -- Manga
 INSERT INTO `questions` (`question`,`answer`,`answer_detail`,`category`,`is_video_only`,`image_file`) VALUES ('One Piece is the best-selling manga of all time',1,'Yes, it holds the all-time sales record.','manga',false,'one_piece.jpg');
@@ -807,3 +798,698 @@ VALUES
 ('Music genres evolve independently from technology', 0, 'Tech heavily influences genres.', 'music', false, 'music_tech.jpg');
 
 -- First
+
+-- Categorie
+
+-- General x 50
+-- Soccer x 450
+-- Technology x 100
+-- Geography x 100
+-- Fun Fact x 100
+-- Manga x 200
+-- NBA x 100
+-- Science
+-- Games x 50
+-- History x 100
+-- Astronomy x100
+-- Art
+-- Cinema x 100
+-- Music x 100
+-- Rap x 200
+-- Celebrity x 100
+-- Animals x 100
+-- Food x 100
+-- Politics x 100
+-- Tennis
+-- Golf
+-- Formule1
+-- Myths
+-- Guinness x 50
+-- Internet
+
+-- Second wave
+
+
+-- Soccer 300 
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('In the FIFA World Cup, Brazil is the only nation to have won the tournament on four different continents.', 1, 'Their titles came in South America, Europe, North America, and Asia.', 'Soccer', false, 'soccer1.jpg'),
+('In European club football, AC Milan has won more Champions League titles than Real Madrid.', 0, 'Real Madrid holds the record with the most Champions League titles.', 'Soccer', false, 'soccer2.jpg'),
+('The offside rule applies when any part of the body that can score is beyond the last defender.', 1, 'Hands and arms are excluded from offside considerations.', 'Soccer', false, 'soccer3.jpg'),
+('In the Premier League, no team has ever finished a season unbeaten.', 0, 'Arsenal went unbeaten during the 2003–04 season.', 'Soccer', false, 'soccer4.jpg'),
+('In international soccer, penalty shootouts were first introduced in the 1970s.', 1, 'They were adopted to avoid replayed matches.', 'Soccer', false, 'soccer5.jpg'),
+('Lionel Messi has won league titles in three different countries.', 1, 'He won domestic leagues in Spain and France, plus later abroad.', 'Soccer', false, 'soccer6.jpg'),
+('In the FIFA Laws of the Game, a goalkeeper can handle the ball anywhere inside the penalty area.', 0, 'They cannot handle deliberate back-passes from teammates.', 'Soccer', false, 'soccer7.jpg'),
+('In World Cup history, the Golden Boot can be shared by multiple players.', 1, 'Ties are decided by assists and minutes only in recent editions.', 'Soccer', false, 'soccer8.jpg'),
+('In European soccer, promotion and relegation systems exist in most national leagues.', 1, NULL, 'Soccer', false, 'soccer9.jpg'),
+('Cristiano Ronaldo scored his first professional goal in the UEFA Champions League.', 0, 'His first senior goal came in domestic competition.', 'Soccer', false, 'soccer10.jpg'),
+
+('In the FIFA World Cup, host nations are automatically qualified for the tournament.', 1, NULL, 'Soccer', false, 'soccer11.jpg'),
+('In soccer, a direct free kick can be scored without touching another player.', 1, 'The ball can go directly into the goal.', 'Soccer', false, 'soccer12.jpg'),
+('In international soccer, yellow cards reset after the group stage of the World Cup.', 0, 'Accumulated cards can carry over to knockout rounds.', 'Soccer', false, 'soccer13.jpg'),
+('In European football history, Juventus has never been relegated.', 0, 'Juventus was relegated to Serie B in 2006.', 'Soccer', false, 'soccer14.jpg'),
+('In the Premier League, goal difference is used before head-to-head results to rank teams.', 1, NULL, 'Soccer', false, 'soccer15.jpg'),
+('The FIFA World Cup trophy is made entirely of solid gold.', 0, 'It is hollow and made of 18-carat gold.', 'Soccer', false, 'soccer16.jpg'),
+('In soccer, a player can score an own goal directly from a corner kick.', 0, 'A corner leading directly to an own goal results in another corner.', 'Soccer', false, 'soccer17.jpg'),
+('In the Champions League, away goals are no longer used as a tiebreaker.', 1, 'UEFA abolished the rule in 2021.', 'Soccer', false, 'soccer18.jpg'),
+('In international soccer, a match can end without any added time.', 1, NULL, 'Soccer', false, 'soccer19.jpg'),
+('In European soccer, Bayern Munich has won the Bundesliga more times than any other club.', 1, NULL, 'Soccer', false, 'soccer20.jpg'),
+
+('In soccer rules, a dropped ball must always be contested by at least two players.', 0, 'Modern rules allow uncontested dropped balls.', 'Soccer', false, 'soccer21.jpg'),
+('In World Cup history, no African team has reached a semifinal.', 0, 'Morocco reached the semifinals in 2022.', 'Soccer', false, 'soccer22.jpg'),
+('In professional soccer, squad numbers were mandatory before the 1950s.', 0, 'Permanent squad numbers came much later.', 'Soccer', false, 'soccer23.jpg'),
+('In soccer, VAR can overturn goals for offside decisions made by millimeters.', 1, 'Technology uses calibrated lines for decisions.', 'Soccer', false, 'soccer24.jpg'),
+('In European competitions, clubs from the same country can face each other in early knockout rounds.', 1, NULL, 'Soccer', false, 'soccer25.jpg'),
+('In FIFA regulations, a match can be abandoned if a team has fewer than seven players.', 1, 'Seven players is the minimum required.', 'Soccer', false, 'soccer26.jpg'),
+('In the Premier League, referees are allowed to wear non-black kits.', 1, NULL, 'Soccer', false, 'soccer27.jpg'),
+('In World Cup history, the final has always been played on a Sunday.', 0, 'Some finals were played on different days.', 'Soccer', false, 'soccer28.jpg'),
+('In soccer tactics, a false nine refers to a midfielder playing as a striker.', 1, 'The player drops deep to create space.', 'Soccer', false, 'soccer29.jpg'),
+('In European football, Ajax has won the Champions League more times than Barcelona.', 0, 'Barcelona has more Champions League titles.', 'Soccer', false, 'soccer30.jpg'),
+
+('In international soccer, a player can represent more than one national team in official matches.', 0, 'Once capped competitively, a switch is restricted.', 'Soccer', false, 'soccer31.jpg'),
+('In soccer, the penalty spot is exactly 12 yards from the goal line.', 1, NULL, 'Soccer', false, 'soccer32.jpg'),
+('In World Cup tournaments, goalkeepers have won the Golden Ball award.', 1, 'Oliver Kahn won it in 2002.', 'Soccer', false, 'soccer33.jpg'),
+('In professional soccer, artificial turf is banned by FIFA.', 0, 'Artificial turf is allowed under regulations.', 'Soccer', false, 'soccer34.jpg'),
+('In soccer history, the back-pass rule was introduced in the 1990s.', 1, 'It aimed to reduce time-wasting.', 'Soccer', false, 'soccer35.jpg'),
+('In European club football, PSG won the Champions League before 2020.', 0, 'PSG reached the final but did not win.', 'Soccer', false, 'soccer36.jpg'),
+('In FIFA competitions, extra time is always played before penalties.', 1, NULL, 'Soccer', false, 'soccer37.jpg'),
+('In soccer, a throw-in can result directly in a goal for the throwing team.', 0, 'It must touch another player first.', 'Soccer', false, 'soccer38.jpg'),
+('In international soccer, Germany has won the World Cup more times than Italy.', 0, 'Italy has four titles, Germany also has four.', 'Soccer', false, 'soccer39.jpg'),
+('In European soccer leagues, winter breaks are common but not universal.', 1, NULL, 'Soccer', false, 'soccer40.jpg'),
+
+('In soccer, a match referee has the authority to stop a game permanently.', 1, 'Safety concerns can justify abandonment.', 'Soccer', false, 'soccer41.jpg'),
+('In World Cup history, no final has ever gone to penalties.', 0, 'The 1994 final was decided by penalties.', 'Soccer', false, 'soccer42.jpg'),
+('In professional soccer, shirt sponsorships were common before the 1960s.', 0, 'They became widespread much later.', 'Soccer', false, 'soccer43.jpg'),
+('In soccer, advantage can be applied even after a foul inside the penalty area.', 1, 'Referees may delay the whistle.', 'Soccer', false, 'soccer44.jpg'),
+('In European football, clubs can qualify for continental competitions through domestic cups.', 1, NULL, 'Soccer', false, 'soccer45.jpg'),
+('In FIFA World Cup history, Pelé scored in every final he played.', 1, 'He scored in the 1958 and 1970 finals.', 'Soccer', false, 'soccer46.jpg'),
+('In soccer, a goalkeeper cannot score a goal from open play.', 0, 'Goalkeepers have scored goals from play.', 'Soccer', false, 'soccer47.jpg'),
+('In European leagues, points deductions can be applied for financial violations.', 1, NULL, 'Soccer', false, 'soccer48.jpg'),
+('In soccer history, red cards were introduced before yellow cards.', 0, 'Yellow and red cards were introduced together.', 'Soccer', false, 'soccer49.jpg'),
+('In international soccer, substitutions were always allowed since the sport began.', 0, 'Substitutions were introduced much later.', 'Soccer', false, 'soccer50.jpg'),
+
+('In soccer, a free kick can be indirect even if awarded inside the penalty area.', 1, 'Indirect free kicks can occur for technical fouls.', 'Soccer', false, 'soccer51.jpg'),
+('In World Cup history, France has won the tournament as both host and non-host.', 1, NULL, 'Soccer', false, 'soccer52.jpg'),
+('In professional soccer, referees can add unlimited stoppage time.', 1, 'There is no formal upper limit.', 'Soccer', false, 'soccer53.jpg'),
+('In European football, Manchester United has never been relegated from the Premier League era.', 1, NULL, 'Soccer', false, 'soccer54.jpg'),
+('In soccer rules, a goal can be awarded after the final whistle.', 0, 'Play must be active for a goal to count.', 'Soccer', false, 'soccer55.jpg'),
+('In international soccer, the Confederations Cup is still an active tournament.', 0, 'It was discontinued by FIFA.', 'Soccer', false, 'soccer56.jpg'),
+('In soccer tactics, a low block refers to a defensive line positioned deep.', 1, NULL, 'Soccer', false, 'soccer57.jpg'),
+('In World Cup history, South American teams have won tournaments held in Europe.', 1, 'Brazil won the 1958 World Cup in Sweden.', 'Soccer', false, 'soccer58.jpg'),
+('In professional soccer, goal-line technology is mandatory in all leagues.', 0, 'Its use depends on the competition.', 'Soccer', false, 'soccer59.jpg'),
+('In soccer, a team can win a match despite having zero shots on target.', 1, 'Own goals can decide matches.', 'Soccer', false, 'soccer60.jpg'),
+
+('In international soccer, the captain is the only player allowed to speak to the referee.', 0, 'Other players may speak respectfully.', 'Soccer', false, 'soccer61.jpg'),
+('In European football, Sevilla holds the record for most Europa League titles.', 1, NULL, 'Soccer', false, 'soccer62.jpg'),
+('In soccer history, floodlights were introduced before televised matches.', 1, 'They enabled night games before TV broadcasts.', 'Soccer', false, 'soccer63.jpg'),
+('In FIFA rules, a player can be offside from a throw-in.', 0, 'Offside does not apply to throw-ins.', 'Soccer', false, 'soccer64.jpg'),
+('In professional soccer, managers can receive yellow and red cards.', 1, NULL, 'Soccer', false, 'soccer65.jpg'),
+('In World Cup history, Italy has never lost a final in regular time.', 1, 'All Italian final losses came via penalties.', 'Soccer', false, 'soccer66.jpg'),
+('In soccer, a match must be replayed if it ends in a draw.', 0, 'League matches often allow draws.', 'Soccer', false, 'soccer67.jpg'),
+('In European football, clubs can be banned from competitions for fan behavior.', 1, NULL, 'Soccer', false, 'soccer68.jpg'),
+('In soccer rules, a handball is always a yellow card offense.', 0, 'Context determines disciplinary action.', 'Soccer', false, 'soccer69.jpg'),
+('In international soccer, referees are required to speak English.', 0, 'There is no such requirement.', 'Soccer', false, 'soccer70.jpg'),
+
+('In soccer, a match ball must be spherical and meet size regulations.', 1, NULL, 'Soccer', false, 'soccer71.jpg'),
+('In World Cup history, England has won more than one World Cup.', 0, 'England has won only once.', 'Soccer', false, 'soccer72.jpg'),
+('In professional soccer, players can be transferred outside of transfer windows.', 0, 'Transfers are restricted to windows.', 'Soccer', false, 'soccer73.jpg'),
+('In soccer, a goal kick can result directly in a goal for the kicking team.', 1, 'Law changes now allow direct goals.', 'Soccer', false, 'soccer74.jpg'),
+('In European football, referees are selected independently from clubs.', 1, NULL, 'Soccer', false, 'soccer75.jpg'),
+('In international soccer, FIFA was founded before UEFA.', 1, 'FIFA was founded in 1904.', 'Soccer', false, 'soccer76.jpg'),
+('In soccer, players can wear any color boots without restriction.', 1, NULL, 'Soccer', false, 'soccer77.jpg'),
+('In World Cup history, the same country has won three consecutive titles.', 0, 'No nation has won three in a row.', 'Soccer', false, 'soccer78.jpg'),
+('In professional soccer, referees can review decisions on a pitch-side monitor.', 1, NULL, 'Soccer', false, 'soccer79.jpg'),
+('In soccer, a draw always benefits both teams equally.', 0, 'Standings context affects impact.', 'Soccer', false, 'soccer80.jpg'),
+
+('In international soccer, FIFA rankings are based solely on match results.', 0, 'They also consider opponent strength.', 'Soccer', false, 'soccer81.jpg'),
+('In European football, some leagues award three points for a win.', 1, NULL, 'Soccer', false, 'soccer82.jpg'),
+('In soccer history, the World Cup has been canceled more than once.', 0, 'It was canceled only during WWII.', 'Soccer', false, 'soccer83.jpg'),
+('In professional soccer, medical staff can enter the field without referee permission.', 0, 'Referee approval is required.', 'Soccer', false, 'soccer84.jpg'),
+('In soccer, a match can be decided by a coin toss.', 0, 'Coin tosses only decide kickoff.', 'Soccer', false, 'soccer85.jpg'),
+('In international soccer, substitution limits have changed over time.', 1, NULL, 'Soccer', false, 'soccer86.jpg'),
+('In European football, clubs can be owned by foreign investors.', 1, NULL, 'Soccer', false, 'soccer87.jpg'),
+('In soccer rules, a penalty can be retaken if the goalkeeper moves early.', 1, 'Encroachment rules apply.', 'Soccer', false, 'soccer88.jpg'),
+('In World Cup history, every host nation has reached the knockout stage.', 0, 'Some hosts were eliminated early.', 'Soccer', false, 'soccer89.jpg'),
+('In professional soccer, referees can end a match early due to weather.', 1, 'Safety conditions can end matches.', 'Soccer', false, 'soccer90.jpg'),
+
+('In soccer, a player can score with any part of the body except arms and hands.', 1, NULL, 'Soccer', false, 'soccer91.jpg'),
+('In European football, VAR is mandatory in all competitions.', 0, 'Its usage depends on the competition.', 'Soccer', false, 'soccer92.jpg'),
+('In international soccer, the World Cup has always featured 32 teams.', 0, 'Earlier tournaments had fewer teams.', 'Soccer', false, 'soccer93.jpg'),
+('In professional soccer, referees are paid by the home club.', 0, 'They are paid by governing bodies.', 'Soccer', false, 'soccer94.jpg'),
+('In soccer tactics, pressing refers to applying pressure without the ball.', 1, NULL, 'Soccer', false, 'soccer95.jpg'),
+('In World Cup history, the Golden Boot winner always comes from the winning team.', 0, 'Top scorers can be from other teams.', 'Soccer', false, 'soccer96.jpg'),
+('In soccer, a red card always results in a multi-match suspension.', 0, 'Suspensions depend on competition rules.', 'Soccer', false, 'soccer97.jpg'),
+('In European football, clubs must meet financial fair play requirements.', 1, NULL, 'Soccer', false, 'soccer98.jpg'),
+('In international soccer, referees can overrule assistant referees.', 1, 'The referee has final authority.', 'Soccer', false, 'soccer99.jpg'),
+('In soccer, a match can officially end before 90 minutes are completed.', 1, 'Abandonment can end matches early.', 'Soccer', false, 'soccer100.jpg');
+
+
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('In the Premier League, Riyad Mahrez won the PFA Player of the Year award in 2016.', 1, 'He won it after Leicester City’s title season.', 'Soccer', false, 'premier_league.jpg'),
+('N’Golo Kanté won league titles in both France and England in consecutive seasons.', 1, 'With Leicester City then Chelsea.', 'Soccer', false, 'soccer_player.jpg'),
+('Cesc Fàbregas provided over 100 assists in the Premier League.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('In the Champions League, Blaise Matuidi never scored a knockout-stage goal.', 0, 'He scored during Juventus knockout matches.', 'Soccer', false, 'soccer_player.jpg'),
+('In La Liga, Karim Benzema won a Pichichi Trophy.', 1, 'He won it in the 2021–22 season.', 'Soccer', false, 'soccer_player.jpg'),
+('In international tournaments, Luka Modrić has won a Golden Ball award.', 1, 'He won it at the 2018 World Cup.', 'Soccer', false, 'soccer_player.jpg'),
+('In the Bundesliga, Robert Lewandowski broke Gerd Müller’s single-season goal record.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('In the Serie A, Zlatan Ibrahimović never won a league title.', 0, 'He won titles with AC Milan and Inter.', 'Soccer', false, 'soccer_player.jpg'),
+('In the Premier League, Thierry Henry won the Golden Boot four times.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('In international football, Didier Drogba never scored at a World Cup.', 1, 'He failed to score in his World Cup appearances.', 'Soccer', false, 'premier_league.jpg'),
+
+('In the Champions League, Cristiano Ronaldo scored more than 130 goals.', 1, NULL, 'Soccer', false, 'ronaldo.jpg'),
+('Lionel Messi has won the Ballon d’Or more times than any other player.', 1, NULL, 'Soccer', false, 'messi.jpg'),
+('In the Premier League, Kevin De Bruyne equaled the single-season assist record.', 1, 'He matched Thierry Henry’s record.', 'Soccer', false, 'messi.jpg'),
+('In La Liga, Xavi Hernández never scored more than 5 goals in a season.', 0, 'He scored more than that in several seasons.', 'Soccer', false, 'premier_league.jpg'),
+('In international football, Andrés Iniesta scored the winning goal in a World Cup final.', 1, NULL, 'Soccer', false, 'xavi.jpg'),
+('In the Premier League, Mohamed Salah scored 32 goals in a single season.', 1, 'During the 2017–18 season.', 'Soccer', false, 'premier_league.jpg'),
+('In Serie A, Gianluigi Buffon won more than 10 league titles.', 1, NULL, 'Soccer', false, 'soccer_goalkeeper.jpg'),
+('In the Champions League, Manuel Neuer has provided an assist.', 1, 'He assisted a goal with Bayern Munich.', 'Soccer', false, 'soccer_goalkeeper.jpg'),
+('In La Liga, Ronaldinho won the league only once.', 0, 'He won it twice with Barcelona.', 'Soccer', false, 'soccer_player.jpg'),
+('In the Premier League, Patrick Vieira was never team captain.', 0, 'He captained Arsenal.', 'Soccer', false, 'premier_league.jpg'),
+
+('In international football, Kylian Mbappé scored a hat-trick in a World Cup final.', 1, NULL, 'Soccer', false, 'mbappe.jpg'),
+('In Ligue 1, Neymar never reached 20 assists in a season.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('In the Champions League, Sergio Ramos scored more goals than many forwards.', 1, 'He is one of the top-scoring defenders.', 'Soccer', false, 'soccer_player.jpg'),
+('In the Premier League, Virgil van Dijk went an entire season without being dribbled past.', 1, 'During the 2018–19 season.', 'Soccer', false, 'soccer_player.jpg'),
+('In Serie A, Andrea Pirlo won the league with two different clubs.', 1, 'With AC Milan and Juventus.', 'Soccer', false, 'pirlo.jpg'),
+('In La Liga, Luka Modrić never won a domestic cup.', 0, 'He won multiple Copa del Rey titles.', 'Soccer', false, 'modric.jpg'),
+('In international football, Xabi Alonso scored in two different World Cup finals.', 0, 'He scored only once in a final.', 'Soccer', false, 'soccer_player.jpg'),
+('In the Bundesliga, Thomas Müller has recorded more than 20 assists in a season.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('In Ligue 1, Zlatan Ibrahimović won the league four times consecutively.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('In the Premier League, Eden Hazard never scored a headed goal.', 0, 'He scored headers for Chelsea.', 'Soccer', false, 'soccer_player.jpg'),
+
+('In the Champions League, Chelsea won the tournament without losing a match in 2012.', 1, NULL, 'Soccer', false, 'soccer_club.jpg'),
+('AC Milan have won more Champions League titles than Barcelona.', 1, NULL, 'Soccer', false, 'acmilan.jpg'),
+('In the Premier League era, Manchester City won their first title in 2012.', 1, 'They won it on goal difference.', 'Soccer', false, 'manchester_city.jpg'),
+('In La Liga, Atlético Madrid won the league in the 2013–14 season.', 1, NULL, 'Soccer', false, 'atletico.jpg'),
+('In Serie A, Juventus were relegated to Serie B in 2006.', 1, 'Due to the Calciopoli scandal.', 'Soccer', false, 'juventus.jpg'),
+('In the Bundesliga, Bayern Munich have won more than 30 league titles.', 1, NULL, 'Soccer', false, 'bayern.jpg'),
+('In Ligue 1, AS Monaco won the league undefeated in 2017.', 0, 'They lost matches that season.', 'Soccer', false, 'soccer_club.jpg'),
+('In the Premier League, Arsenal completed a season unbeaten.', 1, 'The 2003–04 Invincibles.', 'Soccer', false, 'arsenal.jpg'),
+('In La Liga, Real Madrid won five consecutive Champions League titles.', 1, 'Between 1956 and 1960.', 'Soccer', false, 'real_madrid.jpg'),
+('In Serie A, Inter Milan won a continental treble in 2010.', 1, NULL, 'Soccer', false, 'inter.jpg'),
+
+('In modern football sponsorships, Adidas has sponsored both Lionel Messi and Mohamed Salah.', 1, NULL, 'Soccer', false, 'soccer_brand.jpg'),
+('Nike has sponsored more World Cup winning teams than Adidas.', 0, 'Adidas sponsored more winners.', 'Soccer', false, 'nike.jpg'),
+('In the Premier League, referees began using VAR in the 2019–20 season.', 1, NULL, 'Soccer', false, 'soccer_referee.jpg'),
+('In international football, goal-line technology was first used in a World Cup in 2014.', 1, NULL, 'Soccer', false, 'soccer_referee.jpg');
+
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('Lionel Messi scored at least one goal in every calendar year between 2005 and 2023.', 1, NULL, 'Soccer', false, 'messi.jpg'),
+('Cristiano Ronaldo has scored official goals with both his left foot and right foot more than headers.', 1, 'Most of his goals are non-headed finishes.', 'Soccer', false, 'ronaldo.jpg'),
+('N’Golo Kanté has never received a red card in his professional club career.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('Riyad Mahrez scored a hat-trick in a UEFA Champions League knockout match.', 1, 'He did so with Manchester City.', 'Soccer', false, 'soccer_player.jpg'),
+('Cesc Fàbregas registered more assists than goals across his entire club career.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('Didier Drogba scored more goals in finals than in group-stage finals.', 1, 'He was known as a big-game scorer.', 'Soccer', false, 'soccer_player.jpg'),
+('Zlatan Ibrahimović has scored a goal in league play after the age of 40.', 1, 'He scored with AC Milan.', 'Soccer', false, 'ibrahimovic.jpg'),
+('Karim Benzema won the Ballon d’Or without winning the Champions League that same year.', 0, 'He won both in 2022.', 'Soccer', false, 'soccer_player.jpg'),
+('Luka Modrić has played in a World Cup final and a Champions League final in the same year.', 1, 'He did so in 2018.', 'Soccer', false, 'modric.jpg'),
+('Andrés Iniesta never scored from outside the penalty box in his career.', 0, 'He scored several long-range goals.', 'Soccer', false, 'xavi.jpg'),
+
+('Thierry Henry recorded a 20 goals / 20 assists season in league play.', 1, 'He achieved this with Arsenal.', 'Soccer', false, 'thierry_henry.jpg'),
+('Mohamed Salah has scored a goal with his weaker foot in a Champions League final.', 0, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('Kevin De Bruyne has provided assists in three different Champions League semifinals.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('Virgil van Dijk finished second in the Ballon d’Or voting.', 1, 'He finished second in 2019.', 'Soccer', false, 'soccer_player.jpg'),
+('Sergio Ramos has scored more Champions League goals than some midfielders.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('Manuel Neuer has been credited with redefining the sweeper-keeper role.', 1, NULL, 'Soccer', false, 'soccer_goalkeeper.jpg'),
+('Gianluigi Buffon won a Champions League title as a starting goalkeeper.', 0, 'He lost three finals.', 'Soccer', false, 'soccer_goalkeeper.jpg'),
+('Iker Casillas won the Champions League before turning 21.', 1, 'He won it in 2000.', 'Soccer', false, 'soccer_goalkeeper.jpg'),
+('Ronaldinho won a Champions League title with Barcelona.', 1, NULL, 'Soccer', false, 'soccer_player.jpg'),
+('Kaká won the Ballon d’Or without winning a domestic league title that season.', 1, 'AC Milan finished second.', 'Soccer', false, 'soccer_player.jpg'),
+
+('Real Madrid have won the Champions League with three different managers in a row.', 1, 'Ancelotti and Zidane were involved.', 'Soccer', false, 'real_madrid.jpg'),
+('Barcelona once won a Champions League final without conceding a single shot on target.', 1, NULL, 'Soccer', false, 'barcelona.jpg'),
+('AC Milan have appeared in more Champions League finals than Bayern Munich.', 1, NULL, 'Soccer', false, 'acmilan.jpg'),
+('Manchester United won a Champions League final after scoring twice in stoppage time.', 1, 'The 1999 final.', 'Soccer', false, 'manchester_united.jpg'),
+('Chelsea won the Champions League despite finishing outside the top two domestically.', 1, NULL, 'Soccer', false, 'chelsea.jpg'),
+('Juventus have lost more Champions League finals than any other club.', 1, NULL, 'Soccer', false, 'juventus.jpg'),
+('Atlético Madrid have reached multiple Champions League finals without winning one.', 1, NULL, 'Soccer', false, 'atletico.jpg'),
+('Inter Milan won a continental treble under José Mourinho.', 1, NULL, 'Soccer', false, 'inter.jpg'),
+('Bayern Munich once won the Champions League without losing a single match.', 1, NULL, 'Soccer', false, 'bayern.jpg'),
+('Arsenal have won a Champions League final.', 0, NULL, 'Soccer', false, 'arsenal.jpg'),
+
+('A World Cup Golden Boot winner has never won the tournament in the same year.', 0, 'This has happened multiple times.', 'Soccer', false, 'soccer_trophy.jpg'),
+('The World Cup has been won by a host nation more than once.', 1, NULL, 'Soccer', false, 'soccer_trophy.jpg'),
+('Pelé won three World Cups while starting all matches in each tournament.', 0, 'He missed matches due to injury.', 'Soccer', false, 'soccer_legend.jpg'),
+('Diego Maradona scored a goal directly from a corner kick in his career.', 0, NULL, 'Soccer', false, 'soccer_legend.jpg'),
+('Zinedine Zidane received a red card in a World Cup final.', 1, NULL, 'Soccer', false, 'soccer_legend.jpg'),
+('France won a World Cup without conceding a goal from open play.', 1, 'In 1998.', 'Soccer', false, 'soccer_worldcup.jpg'),
+('Brazil have never lost a World Cup final when scoring first.', 1, NULL, 'Soccer', false, 'soccer_worldcup.jpg'),
+('Germany won a World Cup final with a goal scored in extra time.', 1, 'The 2014 final.', 'Soccer', false, 'soccer_worldcup.jpg'),
+('Argentina won a World Cup final decided by penalties.', 1, 'In 2022.', 'Soccer', false, 'soccer_worldcup.jpg'),
+('Italy won a World Cup final without scoring a goal in regular time.', 1, 'The 2006 final.', 'Soccer', false, 'soccer_worldcup.jpg'),
+
+('The offside rule was originally introduced to prevent goal-hanging.', 1, NULL, 'Soccer', false, 'soccer_rules.jpg'),
+('A goalkeeper can legally score from a goal kick without another touch.', 1, 'If it enters the opponent’s goal directly.', 'Soccer', false, 'soccer_rules.jpg'),
+('VAR can overturn a referee decision even if play has restarted.', 0, NULL, 'Soccer', false, 'soccer_referee.jpg'),
+('A penalty kick can legally be taken backwards.', 1, 'As long as it moves forward initially.', 'Soccer', false, 'soccer_rules.jpg'),
+('A player can be offside from a throw-in.', 0, NULL, 'Soccer', false, 'soccer_rules.jpg'),
+
+('Nike has sponsored both Cristiano Ronaldo and Kylian Mbappé at the same time.', 1, NULL, 'Soccer', false, 'soccer_brand.jpg'),
+('Adidas has been the official World Cup ball supplier since 1970.', 1, NULL, 'Soccer', false, 'soccer_brand.jpg'),
+('Puma has sponsored a Champions League winning team.', 1, 'Manchester City.', 'Soccer', false, 'soccer_brand.jpg'),
+('Umbro has never sponsored a national team in a World Cup.', 0, 'They sponsored England.', 'Soccer', false, 'soccer_brand.jpg');
+
+
+-- Guiness 50
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('The tallest man ever recorded was over 2.7 meters tall.', 1, 'Yes, Robert Wadlow.', 'Guiness', false, 'guinness.jpg'),
+('The longest fingernails ever recorded exceeded 9 meters combined.', 1, 'Yes, they exceeded 9 meters.', 'Guiness', false, 'guinness.jpg'),
+('The fastest 100-meter sprint by a human was under 9.5 seconds.', 0, 'No, the record is 9.58 seconds.', 'Guiness', false, 'guinness.jpg'),
+('The largest pizza ever made was over 1,200 square meters.', 1, 'Yes, it was made in Italy.', 'Guiness', false, 'pizza.jpg'),
+('The longest time without sleep officially recorded exceeded 11 days.', 1, 'Yes, over 260 hours.', 'Guiness', false, 'sleep.jpg'),
+
+('The heaviest aircraft ever to fly was the Airbus A380.', 1, 'Yes, at maximum takeoff weight.', 'Guiness', false, 'guinness.jpg'),
+('The most goals scored in a single World Cup tournament is 16.', 1, 'Yes, by Just Fontaine.', 'Guiness', false, 'guinnessd.jpg'),
+('The largest human pyramid ever involved more than 9,000 people.', 0, NULL, 'Guiness', false, 'guinness.jpg'),
+('The longest marathon playing video games lasted more than 130 hours.', 1, 'Yes, over five days.', 'Guiness', false, 'guinness.jpg'),
+('The tallest building ever completed is over 1,000 meters high.', 0, 'No, it is under 1,000 meters.', 'Guiness', false, 'guinness.jpg'),
+
+('The fastest land animal recorded is the cheetah.', 1, 'Yes, officially measured.', 'Guiness', false, 'guinness2.jpg'),
+('The longest beard ever recorded measured over 5 meters.', 1, 'Yes, by Hans Langseth.', 'Guiness', false, 'guinness3.jpg'),
+('The most expensive car ever sold at auction exceeded 100 million dollars.', 1, 'Yes, a Ferrari 250 GTO.', 'Guiness', false, 'guinness.jpg'),
+('The largest chocolate bar ever made weighed more than 5,000 kg.', 1, NULL, 'Guiness', false, 'guinness.jpg'),
+('The longest official kiss lasted more than 50 hours.', 1, 'Yes, over two days.', 'Guiness', false, 'guinness.jpg'),
+
+('The most viewed YouTube video of all time is a music video.', 1, 'Yes, a music video.', 'Guiness', false, 'guinness.jpg'),
+('The longest-running TV show has aired for over 80 years.', 0, 'No, it is under 80 years.', 'Guiness', false, 'guinness.jpg'),
+('The fastest time to solve a Rubik’s Cube is under 4 seconds.', 1, 'Yes, under 4 seconds.', 'Guiness', false, 'guinness.jpg'),
+('The most expensive painting ever sold exceeded 450 million dollars.', 1, 'Yes, Leonardo da Vinci’s work.', 'Guiness', false, 'guinness.jpg'),
+('The largest stadium ever built can hold over 150,000 people.', 1, 'Yes, Rungrado Stadium.', 'Guiness', false, 'guinness.jpg'),
+
+('The longest snake ever recorded was over 10 meters long.', 1, 'Yes, a reticulated python.', 'Guiness', false, 'guinness.jpg'),
+('The fastest commercial airplane exceeded Mach 3.', 0, 'No, it was under Mach 3.', 'Guiness', false, 'guinness.jpg'),
+('The most tattoos on a single person exceeds 95 percent body coverage.', 1, 'Yes, nearly full coverage.', 'Guiness', false, 'guindness.jpg'),
+('The longest-running video game franchise is over 50 years old.', 0, NULL, 'Guiness', false, 'guinness.jpg'),
+('The largest concert crowd ever recorded exceeded 3 million people.', 1, 'Yes, at Copacabana.', 'Guiness', false, 'guinness.jpg'),
+
+('The fastest goal ever scored in professional football was under 3 seconds.', 1, 'Yes, around 2 seconds.', 'Guiness', false, 'guinness.jpg'),
+('The longest time holding breath underwater exceeds 20 minutes.', 1, 'Yes, with oxygen.', 'Guiness', false, 'guinness.jpg'),
+('The heaviest pumpkin ever grown weighed over 1,200 kg.', 1, 'Yes, a record-breaking pumpkin.', 'Guiness', false, 'guinness.jpg'),
+('The most languages spoken fluently by one person exceeds 40.', 1, 'Yes, more than 40.', 'Guiness', false, 'guinness.jpg'),
+('The largest ship ever built was over 450 meters long.', 0, 'No, it was shorter.', 'Guiness', false, 'guinness.jpg'),
+
+('The longest time spent balancing a ball on the head exceeded 2 hours.', 1, NULL, 'Guiness', false, 'guinness.jpg'),
+('The most downloaded mobile game of all time exceeded 10 billion downloads.', 1, 'Yes, across all versions.', 'Guiness', false, 'gudinness.jpg'),
+('The tallest dog ever recorded stood over 1 meter at the shoulder.', 1, 'Yes, a Great Dane.', 'Guiness', false, 'guinfness.jpg'),
+('The longest railway platform in the world exceeds 1 kilometer.', 1, 'Yes, in India.', 'Guiness', false, 'guinnesgs.jpg'),
+('The largest collection of sneakers exceeds 20,000 pairs.', 1, 'Yes, officially recorded.', 'Guiness', false, 'guinndess.jpg');
+
+
+-- History 
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('The Roman Empire officially fell in 476 AD.', 1, 'Yes, with the fall of Romulus Augustulus.', 'History', false, 'roman_empire.jpg'),
+('Julius Caesar was killed inside the Roman Senate.', 1, 'Yes, on the Ides of March.', 'History', false, 'roman_senate.jpg'),
+('Cleopatra was ethnically Egyptian.', 0, 'No, she was of Greek origin.', 'History', false, 'cleopatra.jpg'),
+('The Great Wall of China was built as a single continuous project.', 0, NULL, 'History', false, 'great_wall.jpg'),
+('Napoleon Bonaparte crowned himself emperor.', 1, 'Yes, in 1804.', 'History', false, 'napoleon.jpg'),
+
+('The French Revolution began in 1789.', 1, NULL, 'History', false, 'french_revolution.jpg'),
+('Marie Antoinette said “Let them eat cake.”', 0, 'No, the quote is apocryphal.', 'History', false, 'marie_antoinette.jpg'),
+('The Bastille was a functioning prison holding many inmates in 1789.', 0, 'No, it held very few prisoners.', 'History', false, 'bastille.jpg'),
+('The Magna Carta was signed in 1215.', 1, NULL, 'History', false, 'magna_carta.jpg'),
+('Medieval knights commonly fought in full plate armor.', 1, NULL, 'History', false, 'medieval_knight.jpg'),
+
+('Vikings reached North America before Christopher Columbus.', 1, 'Yes, around the year 1000.', 'History', false, 'vikings.jpg'),
+('Christopher Columbus believed he had reached Asia.', 1, NULL, 'History', false, 'columbus.jpg'),
+('The Aztec Empire was conquered by Hernán Cortés.', 1, NULL, 'History', false, 'aztec.jpg'),
+('The Inca Empire had a written language.', 0, 'No, they used quipus.', 'History', false, 'inca.jpg'),
+('The Black Death killed over one third of Europe’s population.', 1, NULL, 'History', false, 'plague.jpg'),
+
+('The Hundred Years’ War lasted more than 100 years.', 1, 'Yes, from 1337 to 1453.', 'History', false, 'medieval_war.jpg'),
+('Joan of Arc was executed by the English.', 1, NULL, 'History', false, 'joan_of_arc.jpg'),
+('The Ottoman Empire captured Constantinople in 1453.', 1, NULL, 'History', false, 'constantinople.jpg'),
+('Gunpowder was first invented in Europe.', 0, 'No, it originated in China.', 'History', false, 'gunpowder.jpg'),
+('The Renaissance began in Italy.', 1, NULL, 'History', false, 'renaissance.jpg'),
+
+('Leonardo da Vinci painted the Mona Lisa.', 1, NULL, 'History', false, 'mona_lisa.jpg'),
+('The printing press was invented by Johannes Gutenberg.', 1, NULL, 'History', false, 'printing_press.jpg'),
+('The Protestant Reformation was started by Martin Luther.', 1, 'Yes, in 1517.', 'History', false, 'martin_luther.jpg'),
+('The Thirty Years’ War was primarily a religious conflict.', 1, NULL, 'History', false, 'thirty_years_war.jpg'),
+('The Treaty of Versailles officially ended World War I.', 1, NULL, 'History', false, 'versailles.jpg'),
+
+('World War I began in 1914.', 1, NULL, 'History', false, 'ww1.jpg'),
+('The assassination of Archduke Franz Ferdinand triggered World War I.', 1, NULL, 'History', false, 'franz_ferdinand.jpg'),
+('World War II ended in 1944.', 0, 'No, it ended in 1945.', 'History', false, 'ww2.jpg'),
+('The Normandy landings occurred on D-Day.', 1, NULL, 'History', false, 'd_day.jpg'),
+('The atomic bomb was used on Japan during World War II.', 1, NULL, 'History', false, 'atomic_bomb.jpg'),
+
+('The Cold War involved direct military conflict between the USA and USSR.', 0, 'No, it was mostly indirect.', 'History', false, 'cold_war.jpg'),
+('The Berlin Wall fell in 1989.', 1, NULL, 'History', false, 'berlin_wall.jpg'),
+('The Soviet Union collapsed in 1991.', 1, NULL, 'History', false, 'soviet_union.jpg'),
+('The first human landed on the Moon in 1969.', 1, 'Yes, Neil Armstrong.', 'History', false, 'moon_landing.jpg'),
+('Ancient Egypt used a decimal system for counting.', 1, NULL, 'History', false, 'ancient_egypt.jpg');
+
+-- RAP 200
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('Jay-Z released his debut album in the 1990s.', 1, 'Yes, Reasonable Doubt.', 'Rap', false, 'jayz.jpg'),
+('Nas won a Grammy for his album Illmatic.', 0, 'No, it never won a Grammy.', 'Rap', false, 'nas.jpg'),
+('Tupac Shakur released more than one album after his death.', 1, 'Yes, several posthumous albums.', 'Rap', false, 'tupac.jpg'),
+('The Notorious B.I.G. released only two studio albums while alive.', 1, NULL, 'Rap', false, 'biggie.jpg'),
+('Dr. Dre founded the record label Death Row Records.', 0, 'No, he co-founded Aftermath.', 'Rap', false, 'drdre.jpg'),
+
+('Eminem won an Oscar for a rap song.', 1, 'Yes, for Lose Yourself.', 'Rap', false, 'eminem.jpg'),
+('Kanye West has won more than 20 Grammy Awards.', 1, NULL, 'Rap', false, 'kanye.jpg'),
+('50 Cent’s debut album sold over 800,000 copies in its first week.', 1, 'Yes, Get Rich or Die Tryin’.', 'Rap', false, '50cent.jpg'),
+('Snoop Dogg was originally discovered by Ice Cube.', 0, 'No, he was discovered by Dr. Dre.', 'Rap', false, 'snoop.jpg'),
+('Ice Cube was a member of the group N.W.A.', 1, NULL, 'Rap', false, 'nwa.jpg'),
+
+('N.W.A.’s album Straight Outta Compton was banned by some retailers.', 1, 'Yes, due to its content.', 'Rap', false, 'album.jpg'),
+('Wu-Tang Clan consists of more than 7 members.', 1, NULL, 'Rap', false, 'wutang.jpg'),
+('The album Enter the Wu-Tang (36 Chambers) was released in the 1980s.', 0, 'No, it was released in 1993.', 'Rap', false, 'album.jpg'),
+('Drake started his career as an actor.', 1, 'Yes, on Degrassi.', 'Rap', false, 'drake.jpg'),
+('Drake has topped the Billboard Hot 100 more than 10 times.', 1, NULL, 'Rap', false, 'charts.jpg'),
+
+('Kendrick Lamar won a Pulitzer Prize for music.', 1, 'Yes, in 2018.', 'Rap', false, 'kendrick.jpg'),
+('J. Cole went platinum without any featured artists.', 1, NULL, 'Rap', false, 'jcole.jpg'),
+('Travis Scott’s album Astroworld debuted at number one.', 1, NULL, 'Rap', false, 'album.jpg'),
+('Post Malone started his career primarily as a rapper.', 1, NULL, 'Rap', false, 'postmalone.jpg'),
+('Lil Wayne was signed to Cash Money Records as a teenager.', 1, 'Yes, at age 11.', 'Rap', false, 'lilwayne.jpg'),
+
+('Nicki Minaj was the first female rapper to top the Billboard Hot 100.', 0, 'No, she peaked at number two.', 'Rap', false, 'nicki.jpg'),
+('Cardi B won a Grammy for Best Rap Album.', 1, 'Yes, Invasion of Privacy.', 'Rap', false, 'cardib.jpg'),
+('Missy Elliott was inducted into the Rock and Roll Hall of Fame.', 1, NULL, 'Rap', false, 'missy.jpg'),
+('Lauryn Hill won Album of the Year at the Grammys.', 1, 'Yes, in 1999.', 'Rap', false, 'laurynhill.jpg'),
+('The Fugees released more than two studio albums.', 0, NULL, 'Rap', false, 'fugees.jpg'),
+
+('OutKast won Album of the Year at the Grammys.', 1, 'Yes, for Speakerboxxx/The Love Below.', 'Rap', false, 'outkast.jpg'),
+('André 3000 has released a solo rap album.', 0, 'No official solo rap album.', 'Rap', false, 'andre3000.jpg'),
+('Big Boi released multiple solo albums.', 1, NULL, 'Rap', false, 'bigboi.jpg'),
+('Run-D.M.C. collaborated with Aerosmith.', 1, 'Yes, Walk This Way.', 'Rap', false, 'run_dmc.jpg'),
+('LL Cool J was one of the first rap artists to achieve mainstream success.', 1, NULL, 'Rap', false, 'llcoolj.jpg'),
+
+('Public Enemy were known for politically charged lyrics.', 1, NULL, 'Rap', false, 'publicenemy.jpg'),
+('The Source magazine is influential in hip-hop culture.', 1, NULL, 'Rap', false, 'magazine.jpg'),
+('Def Jam Recordings played a major role in hip-hop’s rise.', 1, NULL, 'Rap', false, 'defjam.jpg'),
+('Jay-Z was once the president of Def Jam.', 1, 'Yes, in the mid-2000s.', 'Rap', false, 'label.jpg'),
+('Roc-A-Fella Records was co-founded by Jay-Z.', 1, NULL, 'Rap', false, 'label.jpg'),
+
+('SoundCloud played a major role in the rise of modern rap artists.', 1, NULL, 'Rap', false, 'soundcloud.jpg'),
+('Chance the Rapper won a Grammy without selling physical albums.', 1, 'Yes, streaming only.', 'Rap', false, 'chance.jpg'),
+('XXXTENTACION released his debut album in the early 2010s.', 0, 'No, it was released in 2017.', 'Rap', false, 'xxxtentacion.jpg'),
+('Juice WRLD was known for freestyling entire songs.', 1, NULL, 'Rap', false, 'juicewrld.jpg'),
+('Playboi Carti popularized minimalist trap production.', 1, NULL, 'Rap', false, 'playboicarti.jpg'),
+
+('Future is credited with popularizing melodic trap vocals.', 1, NULL, 'Rap', false, 'future.jpg'),
+('Migos popularized the triplet flow in mainstream rap.', 1, NULL, 'Rap', false, 'migos.jpg'),
+('Offset has released a solo album.', 1, NULL, 'Rap', false, 'offset.jpg'),
+('Quavo has never released solo music.', 0, NULL, 'Rap', false, 'quavo.jpg'),
+('Takeoff released a solo album before his death.', 1, 'Yes, in 2022.', 'Rap', false, 'takeoff.jpg'),
+
+('DMX released multiple number-one albums.', 1, NULL, 'Rap', false, 'dmx.jpg'),
+('A$AP Rocky is associated with the A$AP Mob collective.', 1, NULL, 'Rap', false, 'asaprocky.jpg'),
+('Mac Miller transitioned from frat rap to more experimental styles.', 1, NULL, 'Rap', false, 'macmiller.jpg'),
+('Tyler, The Creator founded the Odd Future collective.', 1, NULL, 'Rap', false, 'tyler.jpg'),
+('Childish Gambino released music under a different stage name.', 1, 'Yes, Donald Glover.', 'Rap', false, 'childishgambino.jpg'),
+
+('French Montana is originally from Morocco.', 1, NULL, 'Rap', false, 'frenchmontana.jpg'),
+('DJ Khaled is primarily known as a producer and curator.', 1, NULL, 'Rap', false, 'djkhaled.jpg'),
+('Rick Ross was formerly a correctional officer.', 1, 'Yes, before his rap career.', 'Rap', false, 'rickross.jpg'),
+('Meek Mill was involved in criminal justice reform advocacy.', 1, NULL, 'Rap', false, 'meekmill.jpg'),
+('Lil Uzi Vert released an album longer than 30 tracks.', 1, NULL, 'Rap', false, 'liluzi.jpg');
+
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('Jay-Z was the first rapper to become a billionaire.', 1, 'Yes, according to Forbes.', 'Rap', false, 'jayz.jpg'),
+('Nas released Illmatic after the year 2000.', 0, 'No, it was released in 1994.', 'Rap', false, 'nas.jpg'),
+('Tupac Shakur appeared in multiple feature films.', 1, NULL, 'Rap', false, 'tupac.jpg'),
+('The Notorious B.I.G. was part of Junior M.A.F.I.A.', 1, NULL, 'Rap', false, 'biggie.jpg'),
+('Dr. Dre produced tracks for Eminem.', 1, NULL, 'Rap', false, 'drdre.jpg'),
+
+('Eminem holds the record for fastest rap verse.', 1, 'Yes, in Godzilla.', 'Rap', false, 'eminem.jpg'),
+('Kanye West began his career as a DJ.', 0, 'No, he started as a producer.', 'Rap', false, 'kanye.jpg'),
+('50 Cent survived being shot multiple times.', 1, NULL, 'Rap', false, '50cent.jpg'),
+('Snoop Dogg changed his stage name multiple times.', 1, NULL, 'Rap', false, 'snoop.jpg'),
+('Ice Cube pursued an acting career after rap success.', 1, NULL, 'Rap', false, 'nwa.jpg'),
+
+('Straight Outta Compton was N.W.A.’s debut album.', 1, NULL, 'Rap', false, 'album.jpg'),
+('Wu-Tang Clan allowed members to sign solo deals.', 1, 'Yes, a unique contract.', 'Rap', false, 'wutang.jpg'),
+('Enter the Wu-Tang (36 Chambers) went multi-platinum.', 1, NULL, 'Rap', false, 'album.jpg'),
+('Drake has released more than one mixtape.', 1, NULL, 'Rap', false, 'drake.jpg'),
+('Drake holds the record for most Billboard Hot 100 entries.', 1, NULL, 'Rap', false, 'charts.jpg'),
+
+('Kendrick Lamar released DAMN. before good kid, m.A.A.d city.', 0, 'No, it was released later.', 'Rap', false, 'kendrick.jpg'),
+('J. Cole founded the Dreamville label.', 1, NULL, 'Rap', false, 'jcole.jpg'),
+('Astroworld was Travis Scott’s first studio album.', 0, NULL, 'Rap', false, 'album.jpg'),
+('Post Malone blends rap with rock and pop.', 1, NULL, 'Rap', false, 'postmalone.jpg'),
+('Lil Wayne released Tha Carter series.', 1, NULL, 'Rap', false, 'lilwayne.jpg'),
+
+('Nicki Minaj has multiple alter egos in her music.', 1, NULL, 'Rap', false, 'nicki.jpg'),
+('Cardi B started her career on social media.', 1, 'Yes, Instagram.', 'Rap', false, 'cardib.jpg'),
+('Missy Elliott is known for experimental music videos.', 1, NULL, 'Rap', false, 'missy.jpg'),
+('Lauryn Hill released only one solo studio album.', 1, NULL, 'Rap', false, 'laurynhill.jpg'),
+('The Fugees won a Grammy Award.', 1, NULL, 'Rap', false, 'fugees.jpg'),
+
+('OutKast is a duo from Atlanta.', 1, NULL, 'Rap', false, 'outkast.jpg'),
+('André 3000 rarely releases rap verses today.', 1, NULL, 'Rap', false, 'andre3000.jpg'),
+('Big Boi collaborated with Phantogram.', 1, NULL, 'Rap', false, 'bigboi.jpg'),
+('Run-D.M.C. helped bring hip-hop to MTV.', 1, NULL, 'Rap', false, 'run_dmc.jpg'),
+('LL Cool J had a long-running TV career.', 1, NULL, 'Rap', false, 'llcoolj.jpg'),
+
+('Public Enemy influenced conscious rap.', 1, NULL, 'Rap', false, 'publicenemy.jpg'),
+('The Source magazine used a mic rating system.', 1, NULL, 'Rap', false, 'magazine.jpg'),
+('Def Jam Recordings worked with multiple hip-hop legends.', 1, NULL, 'Rap', false, 'defjam.jpg'),
+('Jay-Z left Def Jam before becoming its president.', 0, NULL, 'Rap', false, 'label.jpg'),
+('Roc-A-Fella Records launched Kanye West’s career.', 1, NULL, 'Rap', false, 'label.jpg'),
+
+('SoundCloud helped launch underground rap scenes.', 1, NULL, 'Rap', false, 'soundcloud.jpg'),
+('Chance the Rapper refused major label deals early on.', 1, NULL, 'Rap', false, 'chance.jpg'),
+('XXXTENTACION blended rap with rock influences.', 1, NULL, 'Rap', false, 'xxxtentacion.jpg'),
+('Juice WRLD was associated with emo-rap.', 1, NULL, 'Rap', false, 'juicewrld.jpg'),
+('Playboi Carti is known for ad-lib heavy performances.', 1, NULL, 'Rap', false, 'playboicarti.jpg'),
+
+('Future has collaborated frequently with Drake.', 1, NULL, 'Rap', false, 'future.jpg'),
+('Migos originated from Atlanta.', 1, NULL, 'Rap', false, 'migos.jpg'),
+('Offset is part of the group Migos.', 1, NULL, 'Rap', false, 'offset.jpg'),
+('Quavo is related to the other Migos members.', 1, NULL, 'Rap', false, 'quavo.jpg'),
+('Takeoff was known for a quieter public persona.', 1, NULL, 'Rap', false, 'takeoff.jpg'),
+
+('DMX was known for his aggressive vocal style.', 1, NULL, 'Rap', false, 'dmx.jpg'),
+('A$AP Rocky has worked in fashion modeling.', 1, NULL, 'Rap', false, 'asaprocky.jpg'),
+('Mac Miller played multiple instruments.', 1, NULL, 'Rap', false, 'macmiller.jpg'),
+('Tyler, The Creator later distanced himself from Odd Future.', 1, NULL, 'Rap', false, 'tyler.jpg'),
+('Childish Gambino released an album titled Because the Internet.', 1, NULL, 'Rap', false, 'childishgambino.jpg'),
+
+('French Montana grew up in New York City.', 1, NULL, 'Rap', false, 'frenchmontana.jpg'),
+('DJ Khaled often appears on songs without rapping.', 1, NULL, 'Rap', false, 'djkhaled.jpg'),
+('Rick Ross founded the Maybach Music Group label.', 1, NULL, 'Rap', false, 'rickross.jpg'),
+('Meek Mill was associated with Dream Chasers.', 1, NULL, 'Rap', false, 'meekmill.jpg'),
+('Lil Uzi Vert is known for a punk-inspired aesthetic.', 1, NULL, 'Rap', false, 'liluzi.jpg');
+
+-- Politics
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('The United Nations was founded after World War II.', 1, 'Yes, in 1945.', 'Politics', false, 'un.jpg'),
+('The United States has had more than 50 presidents.', 0, 'No, fewer than 50.', 'Politics', false, 'usa.jpg'),
+('The European Union uses the euro as its currency.', 0, 'No, not all members use it.', 'Politics', false, 'eu.jpg'),
+('The Cold War involved direct military conflict between the US and USSR.', 0, 'No, it was mostly indirect.', 'Politics', false, 'coldwar.jpg'),
+('The UN Security Council has five permanent members.', 1, NULL, 'Politics', false, 'un.jpg'),
+
+('China is a one-party state.', 1, NULL, 'Politics', false, 'china.jpg'),
+('Russia operates under a parliamentary system.', 0, 'No, it is semi-presidential.', 'Politics', false, 'russia.jpg'),
+('The UK Prime Minister is elected directly by voters.', 0, 'No, appointed by Parliament.', 'Politics', false, 'uk.jpg'),
+('The US Constitution was written in the 18th century.', 1, NULL, 'Politics', false, 'constitution.jpg'),
+('France operates under a semi-presidential system.', 1, NULL, 'Politics', false, 'france.jpg'),
+
+('NATO was created primarily as a military alliance.', 1, NULL, 'Politics', false, 'nato.jpg'),
+('Germany has a federal political system.', 1, NULL, 'Politics', false, 'germany.jpg'),
+('The UN General Assembly resolutions are legally binding.', 0, 'No, they are non-binding.', 'Politics', false, 'un.jpg'),
+('The US Supreme Court justices are elected.', 0, 'No, they are appointed.', 'Politics', false, 'supremecourt.jpg'),
+('The Roman Republic preceded the Roman Empire.', 1, NULL, 'Politics', false, 'history.jpg'),
+
+('Democracy originated in ancient Greece.', 1, NULL, 'Politics', false, 'greece.jpg'),
+('The president of the EU is elected by EU citizens.', 0, 'No, selected by leaders.', 'Politics', false, 'eu.jpg'),
+('Brazil is a presidential republic.', 1, NULL, 'Politics', false, 'brazil.jpg'),
+('The US has a two-party dominant political system.', 1, NULL, 'Politics', false, 'usa.jpg'),
+('The UK has a written constitution.', 0, 'No, it is unwritten.', 'Politics', false, 'uk.jpg'),
+
+('The UN headquarters is located in New York City.', 1, NULL, 'Politics', false, 'un.jpg'),
+('The African Union was inspired by the European Union.', 1, NULL, 'Politics', false, 'africa.jpg'),
+('The president of China is limited to two terms.', 0, 'No, term limits were removed.', 'Politics', false, 'china.jpg'),
+('The US Senate has 100 members.', 1, NULL, 'Politics', false, 'usa.jpg'),
+('The House of Commons is part of the UK Parliament.', 1, NULL, 'Politics', false, 'uk.jpg'),
+
+('The World Bank focuses mainly on development financing.', 1, NULL, 'Politics', false, 'worldbank.jpg'),
+('The IMF provides military assistance to countries.', 0, 'No, financial assistance.', 'Politics', false, 'imf.jpg'),
+('Japan is a constitutional monarchy.', 1, NULL, 'Politics', false, 'japan.jpg'),
+('North Korea allows free multi-party elections.', 0, NULL, 'Politics', false, 'nkorea.jpg'),
+('South Africa ended apartheid in the 1990s.', 1, NULL, 'Politics', false, 'southafrica.jpg'),
+
+('The UN Secretary-General is elected by popular vote.', 0, 'No, appointed by members.', 'Politics', false, 'un.jpg'),
+('The European Parliament is directly elected.', 1, NULL, 'Politics', false, 'eu.jpg'),
+('Canada is a constitutional monarchy.', 1, NULL, 'Politics', false, 'canada.jpg'),
+('The US Electoral College directly reflects the popular vote.', 0, NULL, 'Politics', false, 'usa.jpg'),
+('The term “Cold War” refers to economic competition only.', 0, 'No, ideological and political.', 'Politics', false, 'coldwar.jpg'),
+
+('The Berlin Wall fell in 1989.', 1, NULL, 'Politics', false, 'history.jpg'),
+('The UN was created before World War II.', 0, NULL, 'Politics', false, 'un.jpg'),
+('The EU originated as an economic cooperation project.', 1, NULL, 'Politics', false, 'eu.jpg'),
+('A veto can block UN Security Council resolutions.', 1, NULL, 'Politics', false, 'un.jpg'),
+('The president of France can dissolve parliament.', 1, NULL, 'Politics', false, 'france.jpg'),
+
+('The US Declaration of Independence was signed in 1776.', 1, NULL, 'Politics', false, 'history.jpg'),
+('The UK monarch has absolute political power.', 0, NULL, 'Politics', false, 'uk.jpg'),
+('The concept of separation of powers includes three branches.', 1, NULL, 'Politics', false, 'constitution.jpg'),
+('Italy has had more than 60 governments since WWII.', 1, NULL, 'Politics', false, 'italy.jpg'),
+('The UN Security Council has more than 20 members.', 0, NULL, 'Politics', false, 'un.jpg'),
+
+('Freedom of speech is protected by the US First Amendment.', 1, NULL, 'Politics', false, 'constitution.jpg'),
+('The EU can impose fines on member states.', 1, NULL, 'Politics', false, 'eu.jpg'),
+('The term “authoritarian” refers to limited political freedoms.', 1, NULL, 'Politics', false, 'politics.jpg'),
+('A referendum is a vote by elected officials only.', 0, 'No, it is a public vote.', 'Politics', false, 'vote.jpg'),
+('The UN includes almost every recognized country.', 1, NULL, 'Politics', false, 'un.jpg'),
+
+('The US Vice President presides over the Senate.', 1, NULL, 'Politics', false, 'usa.jpg'),
+('The UK Prime Minister lives at 10 Downing Street.', 1, NULL, 'Politics', false, 'uk.jpg'),
+('The EU has its own standing army.', 0, NULL, 'Politics', false, 'eu.jpg'),
+('The concept of nationalism predates the modern state.', 0, 'No, it emerged later.', 'Politics', false, 'history.jpg'),
+('Political asylum protects individuals from persecution.', 1, NULL, 'Politics', false, 'politics.jpg');
+
+
+-- Astronomy 100
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('The Sun is classified as a G-type main-sequence star.', 1, NULL, 'Astronomy', false, 'sun.jpg'),
+('Jupiter is the largest planet in the Solar System.', 1, NULL, 'Astronomy', false, 'jupiter.jpg'),
+('Mercury has the shortest year of any planet.', 1, NULL, 'Astronomy', false, 'mercury.jpg'),
+('Venus rotates in the opposite direction to most planets.', 1, NULL, 'Astronomy', false, 'venus.jpg'),
+('Mars has two natural moons.', 1, NULL, 'Astronomy', false, 'mars.jpg'),
+
+('Saturn is less dense than water.', 1, 'Yes, it would float in theory.', 'Astronomy', false, 'saturn.jpg'),
+('Uranus rotates on its side.', 1, NULL, 'Astronomy', false, 'uranus.jpg'),
+('Neptune was discovered using a telescope.', 1, NULL, 'Astronomy', false, 'neptune.jpg'),
+('Pluto is classified as a gas giant.', 0, 'No, it is a dwarf planet.', 'Astronomy', false, 'pluto.jpg'),
+('The asteroid belt lies between Mars and Jupiter.', 1, NULL, 'Astronomy', false, 'asteroid.jpg'),
+
+('A light-year measures time.', 0, 'No, it measures distance.', 'Astronomy', false, 'space.jpg'),
+('The Milky Way is a spiral galaxy.', 1, NULL, 'Astronomy', false, 'milkyway.jpg'),
+('The Andromeda Galaxy is moving toward the Milky Way.', 1, NULL, 'Astronomy', false, 'galaxy.jpg'),
+('Black holes can form from collapsed massive stars.', 1, NULL, 'Astronomy', false, 'blackhole.jpg'),
+('Nothing can escape a black hole once past the event horizon.', 1, NULL, 'Astronomy', false, 'blackhole.jpg'),
+
+('The Moon has its own atmosphere similar to Earth.', 0, 'No, it has a very thin exosphere.', 'Astronomy', false, 'moon.jpg'),
+('Solar eclipses occur when the Moon blocks the Sun.', 1, NULL, 'Astronomy', false, 'eclipse.jpg'),
+('Lunar eclipses occur during a new moon.', 0, 'No, during a full moon.', 'Astronomy', false, 'eclipse.jpg'),
+('The Moon always shows the same face to Earth.', 1, NULL, 'Astronomy', false, 'moon.jpg'),
+('The far side of the Moon never receives sunlight.', 0, 'No, it does receive sunlight.', 'Astronomy', false, 'moon.jpg'),
+
+('Stars produce energy through nuclear fusion.', 1, NULL, 'Astronomy', false, 'star.jpg'),
+('Red giants are smaller than main-sequence stars.', 0, NULL, 'Astronomy', false, 'star.jpg'),
+('White dwarfs are the remnants of low-mass stars.', 1, NULL, 'Astronomy', false, 'star.jpg'),
+('A supernova marks the death of certain stars.', 1, NULL, 'Astronomy', false, 'supernova.jpg'),
+('Neutron stars are extremely dense.', 1, NULL, 'Astronomy', false, 'neutronstar.jpg'),
+
+('The Hubble Space Telescope orbits the Earth.', 1, NULL, 'Astronomy', false, 'telescope.jpg'),
+('The James Webb Space Telescope observes mainly in infrared.', 1, NULL, 'Astronomy', false, 'telescope.jpg'),
+('Telescopes in space avoid atmospheric distortion.', 1, NULL, 'Astronomy', false, 'telescope.jpg'),
+('The first human landed on the Moon in 1972.', 0, 'No, it was 1969.', 'Astronomy', false, 'apollo.jpg'),
+('Apollo missions were operated by NASA.', 1, NULL, 'Astronomy', false, 'apollo.jpg'),
+
+('The Sun accounts for over 99% of the Solar System’s mass.', 1, NULL, 'Astronomy', false, 'sun.jpg'),
+('Comets are primarily made of ice and dust.', 1, NULL, 'Astronomy', false, 'comet.jpg'),
+('Meteorites originate from Earth’s crust.', 0, 'No, from space.', 'Astronomy', false, 'meteor.jpg'),
+('A shooting star is actually a meteor.', 1, NULL, 'Astronomy', false, 'meteor.jpg'),
+('The Kuiper Belt lies beyond Neptune.', 1, NULL, 'Astronomy', false, 'space.jpg'),
+
+('The Oort Cloud is thought to surround the Solar System.', 1, NULL, 'Astronomy', false, 'space.jpg'),
+('Dark matter emits visible light.', 0, NULL, 'Astronomy', false, 'cosmos.jpg'),
+('Dark energy is linked to the expansion of the universe.', 1, NULL, 'Astronomy', false, 'cosmos.jpg'),
+('The universe is estimated to be over 13 billion years old.', 1, NULL, 'Astronomy', false, 'cosmos.jpg'),
+('The Big Bang describes the expansion of the universe.', 1, NULL, 'Astronomy', false, 'bigbang.jpg'),
+
+('The cosmic microwave background is leftover radiation.', 1, NULL, 'Astronomy', false, 'cosmos.jpg'),
+('Galaxies are evenly distributed throughout the universe.', 0, 'No, they form clusters.', 'Astronomy', false, 'galaxy.jpg'),
+('Elliptical galaxies lack spiral arms.', 1, NULL, 'Astronomy', false, 'galaxy.jpg'),
+('Our Solar System is located near the center of the Milky Way.', 0, NULL, 'Astronomy', false, 'milkyway.jpg'),
+('Sagittarius A* is a supermassive black hole.', 1, NULL, 'Astronomy', false, 'blackhole.jpg'),
+
+('Exoplanets orbit stars outside our Solar System.', 1, NULL, 'Astronomy', false, 'exoplanet.jpg'),
+('Thousands of exoplanets have been confirmed.', 1, NULL, 'Astronomy', false, 'exoplanet.jpg'),
+('The habitable zone depends on distance from a star.', 1, NULL, 'Astronomy', false, 'exoplanet.jpg'),
+('Earth is the only planet with an atmosphere.', 0, NULL, 'Astronomy', false, 'earth.jpg'),
+('The Earth’s axis tilt causes seasons.', 1, NULL, 'Astronomy', false, 'earth.jpg'),
+
+('The Sun will eventually become a red giant.', 1, NULL, 'Astronomy', false, 'sun.jpg'),
+('Time passes slower near massive objects.', 1, 'Yes, due to relativity.', 'Astronomy', false, 'cosmos.jpg'),
+('Gravity is the weakest of the four fundamental forces.', 1, NULL, 'Astronomy', false, 'cosmos.jpg'),
+('The International Space Station orbits the Sun.', 0, 'No, it orbits Earth.', 'Astronomy', false, 'iss.jpg'),
+('Astronomy is different from astrology.', 1, NULL, 'Astronomy', false, 'telescope.jpg');
+
+-- General 50
+
+INSERT INTO `questions`
+(`question`, `answer`, `answer_detail`, `category`, `is_video_only`, `image_file`)
+VALUES
+('A heavier object falls faster than a lighter one in a vacuum.', 0, 'No, they fall at the same rate.', 'General', false, 'physics.jpg'),
+('Humans share more than 95% of their DNA with chimpanzees.', 1, NULL, 'General', false, 'dna.jpg'),
+('The color of an object depends on the wavelengths it reflects.', 1, NULL, 'General', false, 'light.jpg'),
+('Time passes at the same rate everywhere on Earth.', 0, 'No, gravity affects time.', 'General', false, 'time.jpg'),
+('An average adult human has more bacterial cells than human cells.', 1, NULL, 'General', false, 'biology.jpg'),
+
+('Glass is technically a supercooled liquid.', 0, 'No, it is an amorphous solid.', 'General', false, 'glass.jpg'),
+('A year on Venus is shorter than a day on Venus.', 1, NULL, 'General', false, 'space.jpg'),
+('Humans can survive longer without food than without sleep.', 0, 'Sleep deprivation is less immediately fatal.', 'General', false, 'body.jpg'),
+('Most of the oxygen we breathe comes from oceans.', 1, NULL, 'General', false, 'ocean.jpg'),
+('Memory works like a video recording in the brain.', 0, 'No, memory is reconstructive.', 'General', false, 'brain.jpg'),
+
+('Cold water can boil faster than hot water under certain conditions.', 1, 'Yes, known as the Mpemba effect.', 'General', false, 'water.jpg'),
+('The human eye can distinguish more than a million colors.', 1, NULL, 'General', false, 'eye.jpg'),
+('Sound can travel through a vacuum.', 0, NULL, 'General', false, 'sound.jpg'),
+('Most dust in homes comes from human skin.', 1, NULL, 'General', false, 'home.jpg'),
+('A coin tossed into the air has a 50/50 chance if perfectly fair.', 0, 'Real-world conditions affect probability.', 'General', false, 'coin.jpg'),
+
+('Plants can communicate with each other chemically.', 1, NULL, 'General', false, 'plant.jpg'),
+('The human brain consumes about 20% of the body’s energy.', 1, NULL, 'General', false, 'brain.jpg'),
+('You can see lightning before hearing thunder due to light speed.', 1, NULL, 'General', false, 'storm.jpg'),
+('All maps distort reality in some way.', 1, NULL, 'General', false, 'map.jpg'),
+('A mirror reverses left and right but not up and down.', 0, 'It reverses front and back.', 'General', false, 'mirror.jpg'),
+
+('Most decisions humans make are unconscious.', 1, NULL, 'General', false, 'mind.jpg'),
+('Metal feels colder than wood at the same temperature.', 1, NULL, 'General', false, 'metal.jpg'),
+('A calorie is a unit of energy, not weight.', 1, NULL, 'General', false, 'food.jpg'),
+('Humans use only 10% of their brain.', 0, 'This is a myth.', 'General', false, 'brain.jpg'),
+('Sweat itself does not cool the body.', 0, 'Evaporation causes cooling.', 'General', false, 'body.jpg'),
+
+('The Moon influences Earth’s tides.', 1, NULL, 'General', false, 'moon.jpg'),
+('All randomness in computers is truly random.', 0, 'Most is pseudo-random.', 'General', false, 'computer.jpg'),
+('Your fingerprints are unique, even among identical twins.', 1, NULL, 'General', false, 'fingerprint.jpg'),
+('A straight line is always the shortest distance between two points.', 0, 'Only in flat geometry.', 'General', false, 'math.jpg'),
+('Humans perceive time faster as they age.', 1, NULL, 'General', false, 'time.jpg'),
+
+('The brain predicts reality rather than just reacting to it.', 1, NULL, 'General', false, 'brain.jpg'),
+('Multitasking reduces efficiency for complex tasks.', 1, NULL, 'General', false, 'focus.jpg'),
+('The placebo effect can cause real physical changes.', 1, NULL, 'General', false, 'medicine.jpg'),
+('Memory improves with stress.', 0, 'Stress often impairs memory.', 'General', false, 'brain.jpg'),
+('Blue light can affect sleep cycles.', 1, NULL, 'General', false, 'screen.jpg'),
+
+('A shadow can move faster than the speed of light.', 1, 'Yes, shadows are not physical objects.', 'General', false, 'light.jpg'),
+('Taste is mostly influenced by smell.', 1, NULL, 'General', false, 'food.jpg'),
+('The human body glows faintly.', 1, 'Yes, due to bioluminescence.', 'General', false, 'body.jpg'),
+('You can feel humidity more than temperature.', 1, NULL, 'General', false, 'weather.jpg'),
+('A day is always exactly 24 hours long.', 0, 'Earth’s rotation varies.', 'General', false, 'time.jpg'),
+
+('Language influences how people perceive reality.', 1, NULL, 'General', false, 'language.jpg'),
+('People are better at recognizing faces than objects.', 1, NULL, 'General', false, 'face.jpg'),
+('Silence is completely silent.', 0, 'There is always background noise.', 'General', false, 'sound.jpg'),
+('Most decisions are made emotionally, then justified logically.', 1, NULL, 'General', false, 'mind.jpg'),
+('Cold temperatures can preserve food by slowing bacteria growth.', 1, NULL, 'General', false, 'food.jpg'),
+
+('Humans can subconsciously detect patterns they cannot explain.', 1, NULL, 'General', false, 'pattern.jpg'),
+('The brain fills in blind spots without you noticing.', 1, NULL, 'General', false, 'eye.jpg'),
+('Smiling can improve mood even if forced.', 1, NULL, 'General', false, 'emotion.jpg'),
+('People underestimate exponential growth.', 1, NULL, 'General', false, 'math.jpg'),
+('Sleep improves problem-solving abilities.', 1, NULL, 'General', false, 'sleep.jpg');

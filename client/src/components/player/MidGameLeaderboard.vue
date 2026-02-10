@@ -57,7 +57,7 @@ onMounted(() => {
   // AJOUTER: Switch toutes les 10s
   switchInterval = setInterval(() => {
     showScoreLeaderboard.value = !showScoreLeaderboard.value
-  }, (GAME_CONFIG.DELAY_LEADERBOARD_MIDGAME/2))
+  }, (GAME_CONFIG.DELAY_LEADERBOARD_MIDGAME/2) + 1000) // CHANGER: était 10000
 })
 
 // AJOUTER onUnmounted

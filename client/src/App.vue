@@ -1,16 +1,26 @@
 <template>
-  <div class="video-background">
-    <video autoplay muted loop playsinline>
-      <source :src="`${BACKEND_BASE_URL}/images/background/loop1.mp4`" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-  </div>
+<div class="video-background">
+  <video autoplay muted loop playsinline preload="auto">
+    <source :src="`${BACKEND_BASE_URL}/images/background/loop1.mp4`" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+</div>
 
   <router-view />
 </template>
 
 <script setup>
+  import { ref, onMounted, } from 'vue'
+
   const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL
+  const bgVideo = ref(null)
+
+  onMounted(() => {
+    if (bgVideo.value) {
+      bgVideo.value.play().catch(() => {})
+    }
+  })
+
 </script>
 
 <style>

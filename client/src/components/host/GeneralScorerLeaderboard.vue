@@ -1,6 +1,6 @@
 <template>
   <div class="leaderboard">
-    <h3>TOP 10 🏆 Most Correct Answers</h3>
+    <h3>🏆 <b>GLOBAL</b> 🏆 <br> (Most Correct Answers)</h3>
     <div v-if="players.length === 0" class="empty">
       Waiting for players...
     </div>
@@ -55,7 +55,7 @@ h3 {
   margin-bottom: 15px;
   color: #e7e7e7;
   text-align: center;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .empty {
@@ -78,6 +78,7 @@ h3 {
   background: #15002057;
   border-radius: 8px;
   border: 2px solid #272f53;
+  background: linear-gradient(135deg, #667eea7c 0%, #4c2271c4 100%);
 }
 
 .player-item.top-3 {
@@ -100,7 +101,7 @@ h3 {
   margin-left: 12px;
   margin-right: auto;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -109,7 +110,7 @@ h3 {
 
 .score {
   font-weight: bold;
-  font-size: 26px;
+  font-size: 24px;
   color: #ffffff;
 }
 

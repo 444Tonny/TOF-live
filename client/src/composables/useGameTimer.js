@@ -24,7 +24,7 @@ export function useGameTimer() {
   const initcountdownTimerAudio = () => {
     if (!countdownTimerAudio) {
       countdownTimerAudio = new Audio('/audio/timer2.mp3')
-      countdownTimerAudio.volume = 0.8 // Ajustez le volume (0 à 1)
+      countdownTimerAudio.volume = 0.6 // Ajustez le volume (0 à 1)
     }
   }
 

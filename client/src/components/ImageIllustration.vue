@@ -37,7 +37,7 @@ const handleImageError = (event) => {
     margin: auto;
     margin-top: 2px;
     width: 250px;
-    height: 145px;
+    height: 125px;
     overflow: hidden;
 }
 
