@@ -17,19 +17,20 @@ defineProps({
 
 <style scoped>
 .question-category {
-  width: 165px;
+  width: fit-content;
+  min-width: 165px;
   border: 3px solid rgba(250, 250, 250, 0.2);
   border-bottom: none;
   color: rgba(158, 158, 158, 0.801);
   background-color: var(--color--bg3);
-  padding: 6px 5px;
+  padding: 10px 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   text-align: center;
 }
 
 .category-text {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   width: 95%;

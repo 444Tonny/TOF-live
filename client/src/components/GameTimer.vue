@@ -72,7 +72,7 @@ const strokeDashoffset = computed(() => {
   width: 72px;
   height: 72px;
   overflow: hidden !important;
-  border-radius: 12%;
+  border-radius: 50%;
   background: none;;
   border: 4px solid #2b2b2b;
 }
@@ -115,7 +115,6 @@ const strokeDashoffset = computed(() => {
 
 /* === WARNING MODE === */
 .game-timer.warning .timer-circle::before {
-  border-radius: 50%;
   background: #4a1d1f;
   animation: warning-pulse 0.8s infinite;
 }

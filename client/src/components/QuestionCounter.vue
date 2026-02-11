@@ -30,7 +30,7 @@ defineProps({
   border-bottom: none;
   color: rgba(158, 158, 158, 0.801);
   background-color: var(--color--bg3);
-  padding: 6px 10px;
+  padding: 10px 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   text-align: center;
@@ -40,7 +40,7 @@ defineProps({
 
 .counter-text {
   width: 100%;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   text-transform: capitalize;
   white-space: nowrap;
