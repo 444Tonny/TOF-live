@@ -72,7 +72,8 @@ const strokeDashoffset = computed(() => {
   width: 72px;
   height: 72px;
   overflow: hidden !important;
-  border-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
   background: none;;
   border: 4px solid #2b2b2b;
 }
@@ -94,7 +95,6 @@ const strokeDashoffset = computed(() => {
   height: calc(var(--progress, 100) * 1%);
   background: #202020;
   transition: height 1s linear;
-  border-radius: 50%;
 }
 
 /* === TEXT === */
