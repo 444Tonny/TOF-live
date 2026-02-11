@@ -1,34 +1,25 @@
+
 <template>
-    <!-- AJOUTER : Image si présente -->
-    <div v-if="question.image_file" class="question-image">
-        <img :src="getImageUrl(question.image_file)" @error="$event.target.style.display = 'none'" />
-    </div>
+  <div v-if="imageExists" class="question-image">
+    <img :src="getImageUrl(question.image_file)" @error="imageExists = false" />
+  </div>
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
 
-defineProps({
-    question: {
-        type: Object,
-        required: true
-    }
-});
+const props = defineProps({
+  question: {
+    type: Object,
+    required: true
+  }
+})
 
-/**
- * Construire l'URL de l'image
- */
+const imageExists = ref(!!props.question.image_file)
+
 const getImageUrl = (filename) => {
-    return`${import.meta.env.VITE_BACKEND_BASE_URL}/images/questions/${filename}`;
+  return `${import.meta.env.VITE_BACKEND_BASE_URL}/images/questions/${filename}`
 }
-
-/**
- * Gérer l'erreur de chargement d'image
- */
-const handleImageError = (event) => {
-    //showImage.value = false
-    console.error('Erreur chargement image:', event.target.src)
-}
-
 </script>
 
 <style>

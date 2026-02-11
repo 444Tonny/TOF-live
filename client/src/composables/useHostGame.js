@@ -190,6 +190,7 @@ export function useHostGame() {
     }
 
     isAutoMode.value = true
+    //socket.emit('host:start-auto', { sessionId: session.value.id });
     
     // Lancer la première question immédiatement
     broadcastRandomQuestion()
@@ -200,6 +201,7 @@ export function useHostGame() {
    */
   const stopAutoMode = () => {
     isAutoMode.value = false
+    //socket.emit('host:stop-auto');
     currentQuestionIndex = 1 // Reset
     resetQuestionTimer()
   }

@@ -71,7 +71,7 @@ export function usePlayerGame() {
                 leaderboard.value = newLeaderboard
             }) */
             socket.on('leaderboard:update', async (newLeaderboard) => {
-                console.log("Mise à jour du classement reçue:", newLeaderboard);
+                //console.log("Mise à jour du classement reçue:", newLeaderboard);
                 updateLeaderboards(newLeaderboard)
             })
 

@@ -36,7 +36,7 @@ class AudioPiperService {
 
       // Créer et jouer l'audio
       this.audio = new Audio(audioUrl)
-      this.audio.playbackRate = 1.3
+      //this.audio.playbackRate = 1.3
       this.isPiperSpeaking = true
 
       // Attendre la fin de la lecture

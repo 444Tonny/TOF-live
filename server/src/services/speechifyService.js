@@ -44,7 +44,12 @@ class speechifyService {
 
     } catch (error) {
       console.error('Erreur speechify intro/outro:', error);
-      throw new Error('Impossible de générer l\'audio avec speechify');
+
+      console.warn('⚠️ Speechify indisponible, fallback Piper:', error.message);
+        
+      // Fallback Piper
+      const piperService = require('./piperService');
+      return await piperService.generateAudioBuffer(text);
     }
   }
 }

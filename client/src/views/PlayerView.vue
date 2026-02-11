@@ -104,7 +104,7 @@
           {{ isFullscreen ? '🗗' : '⛶' }} Full Screen
         </button>
 
-        <button @click="startMusic" class="music-btn" v-if="!musicStarted">
+        <button @click="startMusic" class="music-btn">
           🔊 Music
         </button>
 
@@ -431,7 +431,7 @@ h1 {
 
 .fullscreen-btn
 { 
-  margin-top: 200px;
+  margin-top: 300px;
 }
 
 .music-btn{

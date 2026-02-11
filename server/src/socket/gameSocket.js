@@ -1,6 +1,7 @@
 const SessionModel = require('../models/SessionModel');
 const PlayerModel = require('../models/PlayerModel');
 const db = require('../config/database');
+//const AutoGameService = require('../services/AutoGameService');
 
 /**
  * Gestion des événements Socket.io
@@ -20,6 +21,24 @@ function setupGameSocket(io) {
             } catch (error) {
                 console.error('Erreur host:join:', error);
             }
+        });
+
+        // AJOUTER après host:join
+        socket.on('host:start-auto', async ({ sessionId }) => {
+            try {
+                const [questions] = await db.execute(
+                'SELECT * FROM questions WHERE is_video_only = FALSE'
+                );
+                AutoGameService.start(io, sessionId, questions);
+                socket.emit('auto:started');
+            } catch (error) {
+                console.error('Erreur start auto:', error);
+            }
+            });
+
+            socket.on('host:stop-auto', () => {
+            AutoGameService.stop();
+            socket.emit('auto:stopped');
         });
 
         /**

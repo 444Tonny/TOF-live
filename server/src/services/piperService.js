@@ -57,7 +57,9 @@ class PiperService {
             await fs.writeFile(textFile, text, 'utf8');
 
             // Commande Piper
-            const command = `"${this.piperPath}" --model "${this.modelPath}" --output_file "${outputFile}" < "${textFile}"`;
+            //const command = `"${this.piperPath}" --model "${this.modelPath}" --output_file "${outputFile}" < "${textFile}"`;
+            const command = `"${this.piperPath}" --model "${this.modelPath}" --length_scale 0.77 --output_file "${outputFile}" < "${textFile}"`;
+
 
             await this.executeCommand(command);
 
@@ -70,6 +72,15 @@ class PiperService {
             console.error('Erreur Piper TTS:', error);
             throw new Error('Impossible de générer l\'audio');
         }
+    }
+
+    /**
+     * Générer audio et retourner le buffer (pour fallback Speechify)
+     */
+    async generateAudioBuffer(text) {
+        const outputFile = await this.textToSpeech(text);
+        const buffer = await fs.readFile(outputFile);
+        return buffer;
     }
 
     executeCommand(command) {
