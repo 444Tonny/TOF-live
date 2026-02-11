@@ -431,7 +431,7 @@ h1 {
 
 .fullscreen-btn
 { 
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .music-btn{

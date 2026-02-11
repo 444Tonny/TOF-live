@@ -71,8 +71,8 @@ const strokeDashoffset = computed(() => {
   position: relative;
   width: 72px;
   height: 72px;
-  overflow: hidden;
-  border-radius: 50%;
+  overflow: hidden !important;
+  border-radius: 12%;
   background: none;;
   border: 4px solid #2b2b2b;
 }
@@ -94,6 +94,7 @@ const strokeDashoffset = computed(() => {
   height: calc(var(--progress, 100) * 1%);
   background: #202020;
   transition: height 1s linear;
+  border-radius: 50%;
 }
 
 /* === TEXT === */
@@ -114,6 +115,7 @@ const strokeDashoffset = computed(() => {
 
 /* === WARNING MODE === */
 .game-timer.warning .timer-circle::before {
+  border-radius: 50%;
   background: #4a1d1f;
   animation: warning-pulse 0.8s infinite;
 }
