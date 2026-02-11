@@ -68,6 +68,8 @@ body {
   height: 100%;
   z-index: -1;
   overflow: hidden;
+  padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 .video-background video {

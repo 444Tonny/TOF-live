@@ -335,6 +335,8 @@ h1 {
   justify-content: center;
   align-content: center;
   align-items: center;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 .player-info {
