@@ -92,7 +92,7 @@ body {
   width: 100%;
   height: 100%;
   background: #220202;
-  opacity: 0.85;
+  opacity: 0.65;
   filter: 
     brightness(0.6)
     contrast(1.1)
